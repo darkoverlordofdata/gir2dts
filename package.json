@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darkoverlordofdata/gir2dts.git"
+    "url": "https://github.com/darkoverlordofdata/gir2dts.git"
   },
   "keywords": [
     "typescript",

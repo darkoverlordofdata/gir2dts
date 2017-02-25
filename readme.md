@@ -7,7 +7,7 @@ Provides normalized access to amd, commonjs and gjs imports
 wip - not yet fully automated. The current payload had to be manually scrubbed before release.
 
 
-example tsconfig usage:
+example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player)
 ```
 {
     "compilerOptions": {
@@ -18,15 +18,15 @@ example tsconfig usage:
         "allowJs": true 
     },
     "files": [
-        "node_modules/gir2dts/gjs.d.ts",     // Gjs
-        "node_modules/gir2dts/gobject.d.ts", // GObject
-        "node_modules/gir2dts/atk.d.ts",     // Atk
-        "node_modules/gir2dts/glib.d.ts",    // GLib
-        "node_modules/gir2dts/gio.d.ts",     // Gio
-        "node_modules/gir2dts/gdk.d.ts",     // Gdk
-        "node_modules/gir2dts/gtk.d.ts",     // Gtk
-        "node_modules/gir2dts/pango.d.ts",   // Pango
-        "node_modules/gir2dts/gjs.js",       // module loader/helper
+        "node_modules/gir2dts/src/gjs.d.ts",     // Gjs
+        "node_modules/gir2dts/src/gobject.d.ts", // GObject
+        "node_modules/gir2dts/src/atk.d.ts",     // Atk
+        "node_modules/gir2dts/src/glib.d.ts",    // GLib
+        "node_modules/gir2dts/src/gio.d.ts",     // Gio
+        "node_modules/gir2dts/src/gdk.d.ts",     // Gdk
+        "node_modules/gir2dts/src/gtk.d.ts",     // Gtk
+        "node_modules/gir2dts/src/pango.d.ts",   // Pango
+        "node_modules/gir2dts/src/gjs.js",       // module loader/helper
         
         "src/common.d.ts",                  // nodejs: xml2js
         "src/common.js",                    // browserify bundle
@@ -34,4 +34,21 @@ example tsconfig usage:
         
     ]
 }
+```
+
+### example
+
+usage combining different sources
+
+```
+import * as Gtk from 'Gtk'                      // From Gir
+import {parseString} from 'xml2js'              // From nodejs via browserify
+import {NotebookTab} from 'tabs/NotebookTab'    // From local project folder
+/**
+ *
+ * GResource data view
+ *
+ */
+export class ResourceTab extends NotebookTab {
+...    
 ```
