@@ -1,0 +1,74 @@
+{
+    "module": {
+        "Atk": {
+            "source": "/usr/share/gir-1.0/Atk-1.0.gir",
+            "patch": "",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        },
+        "Gio": {
+            "source": "/usr/share/gir-1.0/Gio-2.0.gir",
+            "patch": "src/patches/gio.d.ts",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        },
+        "GLib": {
+            "source": "/usr/share/gir-1.0/GLib-2.0.gir",
+            "patch": "",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        },
+        "GObject": {
+            "source": "/usr/share/gir-1.0/GObject-2.0.gir",
+            "patch": "",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        },
+        "Gtk": {
+            "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
+            "patch": "",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        },
+        "Gdk": {
+            "source": "/usr/share/gir-1.0/Gdk-3.0.gir",
+            "patch": "",
+            "types": {
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
+            }
+
+        },
+        "Pango": {
+            "source": "/usr/share/gir-1.0/Pango-1.0.gir",
+            "patch": "",
+            "types": {
+                "enum": [],
+                "function": [],
+                "class": []
+            }
+
+        }
+    }
+}
