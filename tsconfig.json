@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "rootDir": "src",
+    "allowJs": true,
+    "outFile": "index.js"
+  },
+  "files": [
+    "gir/atk-1.0.d.ts",
+    "gir/gio-2.0.d.ts",
+    "gir/glib-2.0.d.ts",
+    "gir/gobject-2.0.d.ts",
+    "gir/gtk-3.0.d.ts",
+    "gir/gdk-3.0.d.ts",
+    "gir/pango-1.0.d.ts",
+    "gir/webkit-3.0.d.ts"
+  ]
+}

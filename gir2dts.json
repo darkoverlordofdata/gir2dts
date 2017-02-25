@@ -2,57 +2,63 @@
     "module": {
         "Atk": {
             "source": "/usr/share/gir-1.0/Atk-1.0.gir",
-            "patch": "",
+            "output": "gir/atk-1.0.d.ts",
+            "patch": "patches/atk.d.ts",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         },
         "Gio": {
             "source": "/usr/share/gir-1.0/Gio-2.0.gir",
-            "patch": "src/patches/gio.d.ts",
+            "output": "gir/gio-2.0.d.ts",
+            "patch": "patches/gio.d.ts",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         },
         "GLib": {
             "source": "/usr/share/gir-1.0/GLib-2.0.gir",
+            "output": "gir/glib-2.0.d.ts",
             "patch": "",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         },
         "GObject": {
             "source": "/usr/share/gir-1.0/GObject-2.0.gir",
-            "patch": "",
+            "output": "gir/gobject-2.0.d.ts",
+            "patch": "patches/gobject.d.ts",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         },
         "Gtk": {
             "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
-            "patch": "",
+            "output": "gir/gtk-3.0.d.ts",
+            "patch": "patches/gtk.d.ts",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         },
         "Gdk": {
             "source": "/usr/share/gir-1.0/Gdk-3.0.gir",
-            "patch": "",
+            "output": "gir/gdk-3.0.d.ts",
+            "patch": "patches/gdk.d.ts",
             "types": {
                 "enum": ["*"],
                 "function": ["*"],
@@ -62,13 +68,26 @@
         },
         "Pango": {
             "source": "/usr/share/gir-1.0/Pango-1.0.gir",
-            "patch": "",
+            "output": "gir/pango-1.0.d.ts",
+            "patch": "patches/pango.d.ts",
             "types": {
-                "enum": [],
-                "function": [],
-                "class": []
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
+            }
+
+        },
+        "WebKit": {
+            "source": "/usr/share/gir-1.0/WebKit-3.0.gir",
+            "output": "gir/webkit-3.0.d.ts",
+            "patch": "patches/webkit.d.ts",
+            "types": {
+                "enum": ["*"],
+                "function": ["*"],
+                "class": ["*"]
             }
 
         }
     }
 }
+

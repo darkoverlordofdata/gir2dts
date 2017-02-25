@@ -11,8 +11,7 @@ const {execSync} = require('child_process')
 const {parseString} = require('xml2js')
 
 const cfg = require('./gir2dts.json')
-const dstpath = 'src/gjs.d.ts'
-
+const sym = {}
 let gir = {}
 let count = Object.keys(cfg.module).length
 
@@ -30,15 +29,59 @@ for (let name in cfg.module) {
 }
 
 function build(cfg, gir) {
-    let out = []
-    for (let name in cfg.module) {
-        out.push(generateModule(name, gir[name], cfg.module[name]))
+    const ts = {
+        "compilerOptions": {
+            "target": "es5",                    // es5 compatability for gjs
+            "module": "amd",                    // pack using amd module format
+            "rootDir": "src",                   // maodule names based from src
+            "allowJs": true,                    // amd loader & nodejs modules are js
+            "outFile": "index.js"       // the target executable
+        },
+        "files": [
+        ]
     }
-    fs.writeFileSync(dstpath, out.join('\n'))
+    for (let name in gir) {
+        getSymbols(name, gir[name])
+    }
+    for (let name in cfg.module) {
+        let out = []
+        out.push(generateModule(name, gir[name], cfg.module[name]))
+        fs.writeFileSync(cfg.module[name].output, out.join('\n'))
+        ts.files.push(cfg.module[name].output)
+    }
+    fs.writeFileSync("./tsconfig.json", JSON.stringify(ts, null, 2))
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
+// pass 1 - generate a symbol table of all known identifiers
+////////////////////////////////////////////////////////////////////////////////////////////
+function getSymbols(module, gir) {
 
+    let ns = gir.repository.namespace[0]
+    if (ns.function) 
+        for (let func of ns.function) {
+            let name = getName(func.$['name'])
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.enumeration)
+        for (let enumeration of ns.enumeration) {
+            let name = enumeration.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.bitfield)
+        for (let bitfield of ns.bitfield) {
+            let name = bitfield.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.class)
+        for (let klass of ns.class) {
+            let name = klass.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+// pass 2 - process each file
+////////////////////////////////////////////////////////////////////////////////////////////
 function generateModule(name, gir, module) {
     out = ['/**']
     out.push(` * ${name}.d.ts`)
@@ -47,13 +90,13 @@ function generateModule(name, gir, module) {
     out.push(`declare module '${name}' {`)
     if (module.patch !== '')
         out.push(fs.readFileSync(module.patch, {encoding: 'utf8'}))
-    addGirInfo(gir, module.types.function, module.types.enum, module.types.class, out)
+    addGirInfo(name, gir, module.types.function, module.types.enum, module.types.class, out)
     out.push('}')
     return out.join('\n')
 }
 
 
-function addGirInfo(gir, funcs, enums, classes, out) {
+function addGirInfo(modName, gir, funcs, enums, classes, out) {
 
     let ns = gir.repository.namespace[0]
 
@@ -71,7 +114,7 @@ function addGirInfo(gir, funcs, enums, classes, out) {
                             for (let parameter of func.parameters[0].parameter) {
                                 let name = getName(parameter.$['name'])
                                 if (name === '...') name = '...args'
-                                def.push(`${name}: ${getType(parameter)}`)
+                                def.push(`${name}: ${getType(modName, parameter)}`)
                                 def.push(', ')
                             }
                     }
@@ -79,7 +122,7 @@ function addGirInfo(gir, funcs, enums, classes, out) {
                         def[def.length-1] = ")"
                     else
                         def.push(')')
-                    def.push(getReturnType(func))
+                    def.push(getReturnType(modName, func))
                     out.push(def.join(''))
                 } catch (e) {
                     console.log(e.message)
@@ -146,7 +189,7 @@ function addGirInfo(gir, funcs, enums, classes, out) {
                                     for (let parameter of constructor.parameters[0].parameter) {
                                         let name = getName(parameter.$['name'])
                                         if (name === '...') name = '...args'
-                                        con.push(`${name}: ${getType(parameter)}`)
+                                        con.push(`${name}: ${getType(modName, parameter)}`)
                                         con.push(', ')
                                     }
                                 }
@@ -171,7 +214,7 @@ function addGirInfo(gir, funcs, enums, classes, out) {
                                     for (let parameter of method.parameters[0].parameter) {
                                         let name = getName(parameter.$['name'])
                                         if (name === '...') name = '...args'
-                                        line.push(`${name}: ${getType(parameter)}`)
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
                                         line.push(', ')
                                     }
                             }
@@ -179,7 +222,7 @@ function addGirInfo(gir, funcs, enums, classes, out) {
                                 line[line.length-1] = ")"
                             else
                                 line.push(')')
-                            line.push(getReturnType(method))
+                            line.push(getReturnType(modName, method))
                             out.push(line.join(''))
                         }
                     }
@@ -207,7 +250,7 @@ function getName(name) {
 }
 
 /* Decode the type */
-function getType(parameter) {
+function getType(modName, parameter) {
     let [name, isArray] = ['', '']
 
     if (parameter.array) {
@@ -230,6 +273,14 @@ function getType(parameter) {
         case 'utf8':     return 'string'+isArray
         case 'none':     return 'void'+isArray
         case 'double':   return 'number'+isArray
+        case 'guint32':   return 'number'+isArray
+        case 'guint16':   return 'number'+isArray
+        case 'gint16':   return 'number'+isArray
+        case 'gunichar':   return 'number'+isArray
+        case 'gint8':   return 'number'+isArray
+        case 'gint32':   return 'number'+isArray
+        case 'gushort':   return 'number'+isArray
+        case 'gfloat':   return 'number'+isArray
         case 'gboolean': return 'boolean'+isArray
         case 'gpointer': return 'object'+isArray
         case 'gchar':    return 'number'+isArray
@@ -243,17 +294,22 @@ function getType(parameter) {
         case 'gdouble':  return 'number'+isArray
         case 'gssize':   return 'number'+isArray
         case 'gsize':    return 'number'+isArray
+        case 'long':    return 'number'+isArray
         case 'object':   return 'any'+isArray
         case 'va_list':  return 'any'+isArray
-        default: return name+isArray
+        default:
+            if (sym[name] || sym[`${modName}.${name}`]) 
+                return name+isArray
+            else
+                return 'any'+isArray
     }
     return '_unknown'+isArray
 }
 
 /* Process the return type */
-function getReturnType(method) {
+function getReturnType(modName, method) {
     if (method['return-value']) {
-        return ':'+getType(method['return-value'][0])
+        return ':'+getType(modName, method['return-value'][0])
     } else return ''
 
 }

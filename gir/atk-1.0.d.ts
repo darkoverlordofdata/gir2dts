@@ -1,13 +1,15 @@
 /**
  * Atk.d.ts
- * 
+ *
  */
-declare module "Atk" {
-  export function add_focus_tracker(focus_tracker: EventListener):number
-  export function add_global_event_listener(listener: GObject.SignalEmissionHook, event_type: string):number
-  export function add_key_event_listener(listener: KeySnoopFunc, data: any):number
-  export function attribute_set_free(attrib_set: AttributeSet):void
-  export function focus_tracker_init(init: EventListenerInit):void
+declare module 'Atk' {
+    import * as GObject from "GObject"
+
+  export function add_focus_tracker(focus_tracker: any):number
+  export function add_global_event_listener(listener: any, event_type: string):number
+  export function add_key_event_listener(listener: any, data: object):number
+  export function attribute_set_free(attrib_set: any):void
+  export function focus_tracker_init(init: any):void
   export function focus_tracker_notify(object: Object):void
   export function get_binary_age():number
   export function get_default_registry():Registry
@@ -37,7 +39,7 @@ declare module "Atk" {
   export function text_attribute_get_name(attr: TextAttribute):string
   export function text_attribute_get_value(attr: TextAttribute, index_: number):string
   export function text_attribute_register(name: string):TextAttribute
-  export function text_free_ranges(ranges: TextRange[]):void
+  export function text_free_ranges(ranges: any[]):void
   export function value_type_get_localized_name(value_type: ValueType):string
   export function value_type_get_name(value_type: ValueType):string
   export enum CoordType{
@@ -348,8 +350,8 @@ declare module "Atk" {
   }
   export class Object extends GObject.Object {
     add_relationship(relationship: RelationType, target: Object):boolean
-    connect_property_change_handler(handler: PropertyChangeHandler):number
-    get_attributes():AttributeSet
+    connect_property_change_handler(handler: any):number
+    get_attributes():any
     get_description():string
     get_index_in_parent():number
     get_layer():Layer
@@ -359,8 +361,8 @@ declare module "Atk" {
     get_object_locale():string
     get_parent():Object
     get_role():Role
-    initialize(data: any):void
-    notify_state_change(state: State, value: boolean):void
+    initialize(data: object):void
+    notify_state_change(state: any, value: boolean):void
     peek_parent():Object
     ref_accessible_child(i: number):Object
     ref_relation_set():RelationSet
@@ -374,16 +376,16 @@ declare module "Atk" {
   }
   export class ObjectFactory extends GObject.Object {
     create_accessible(obj: GObject.Object):Object
-    get_accessible_type():number
+    get_accessible_type():any
     invalidate():void
   }
   export class Plug extends Object {
     get_id():string
   }
   export class Registry extends GObject.Object {
-    get_factory(type: number):ObjectFactory
-    get_factory_type(type: number):number
-    set_factory_type(type: number, factory_type: number):void
+    get_factory(type: any):ObjectFactory
+    get_factory_type(type: any):any
+    set_factory_type(type: any, factory_type: any):void
   }
   export class Relation extends GObject.Object {
     constructor(targets: Object[], n_targets: number, relationship: RelationType)

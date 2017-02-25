@@ -1,0 +1,7 @@
+.tscache
+dist
+build
+node_modules
+bower_components
+packages
+gir

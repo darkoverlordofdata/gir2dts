@@ -1,10 +1,17 @@
 /**
  * Gtk.d.ts
- * 
+ *
  */
-declare module "Gtk" {
+declare module 'Gtk' {
+    import * as GObject from "GObject"
+    import * as GLib from "GLib"
+    import * as Gio from "Gio"
+    import * as Gdk from "Gdk"
+    import * as Atk from "Atk"
+    import * as Pango from "Pango"
+
   export function accel_groups_activate(object: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType):boolean
-  export function accel_groups_from_object(object: GObject.Object):GLib.SList
+  export function accel_groups_from_object(object: GObject.Object):any
   export function accelerator_get_default_mod_mask():Gdk.ModifierType
   export function accelerator_get_label(accelerator_key: number, accelerator_mods: Gdk.ModifierType):string
   export function accelerator_get_label_with_keycode(display: Gdk.Display, accelerator_key: number, keycode: number, accelerator_mods: Gdk.ModifierType):string
@@ -15,52 +22,52 @@ declare module "Gtk" {
   export function accelerator_set_default_mod_mask(default_mod_mask: Gdk.ModifierType):void
   export function accelerator_valid(keyval: number, modifiers: Gdk.ModifierType):boolean
   export function alternative_dialog_button_order(screen: Gdk.Screen):boolean
-  export function binding_entry_add_signal_from_string(binding_set: BindingSet, signal_desc: string):GLib.TokenType
-  export function binding_entry_add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: GLib.SList):void
-  export function binding_entry_remove(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType):void
-  export function binding_entry_skip(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType):void
-  export function binding_set_by_class(object_class: any):BindingSet
-  export function binding_set_find(set_name: string):BindingSet
-  export function binding_set_new(set_name: string):BindingSet
+  export function binding_entry_add_signal_from_string(binding_set: any, signal_desc: string):GLib.TokenType
+  export function binding_entry_add_signall(binding_set: any, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: any):void
+  export function binding_entry_remove(binding_set: any, keyval: number, modifiers: Gdk.ModifierType):void
+  export function binding_entry_skip(binding_set: any, keyval: number, modifiers: Gdk.ModifierType):void
+  export function binding_set_by_class(object_class: object):any
+  export function binding_set_find(set_name: string):any
+  export function binding_set_new(set_name: string):any
   export function bindings_activate(object: GObject.Object, keyval: number, modifiers: Gdk.ModifierType):boolean
-  export function bindings_activate_event(object: GObject.Object, event: Gdk.EventKey):boolean
-  export function builder_error_quark():GLib.Quark
-  export function cairo_should_draw_window(cr: cairo.Context, window: Gdk.Window):boolean
-  export function cairo_transform_to_window(cr: cairo.Context, widget: Widget, window: Gdk.Window):void
+  export function bindings_activate_event(object: GObject.Object, event: any):boolean
+  export function builder_error_quark():any
+  export function cairo_should_draw_window(cr: any, window: Gdk.Window):boolean
+  export function cairo_transform_to_window(cr: any, widget: Widget, window: Gdk.Window):void
   export function check_version(required_major: number, required_minor: number, required_micro: number):string
-  export function css_provider_error_quark():GLib.Quark
+  export function css_provider_error_quark():any
   export function device_grab_add(widget: Widget, device: Gdk.Device, block_others: boolean):void
   export function device_grab_remove(widget: Widget, device: Gdk.Device):void
   export function disable_setlocale():void
-  export function distribute_natural_allocation(extra_space: number, n_requested_sizes: number, sizes: RequestedSize):number
+  export function distribute_natural_allocation(extra_space: number, n_requested_sizes: number, sizes: any):number
   export function drag_cancel(context: Gdk.DragContext):void
-  export function drag_finish(context: Gdk.DragContext, success: boolean, del: boolean, time_: guint32):void
+  export function drag_finish(context: Gdk.DragContext, success: boolean, del: boolean, time_: number):void
   export function drag_get_source_widget(context: Gdk.DragContext):Widget
   export function drag_set_icon_default(context: Gdk.DragContext):void
-  export function drag_set_icon_gicon(context: Gdk.DragContext, icon: Gio.Icon, hot_x: number, hot_y: number):void
+  export function drag_set_icon_gicon(context: Gdk.DragContext, icon: any, hot_x: number, hot_y: number):void
   export function drag_set_icon_name(context: Gdk.DragContext, icon_name: string, hot_x: number, hot_y: number):void
-  export function drag_set_icon_pixbuf(context: Gdk.DragContext, pixbuf: GdkPixbuf.Pixbuf, hot_x: number, hot_y: number):void
+  export function drag_set_icon_pixbuf(context: Gdk.DragContext, pixbuf: any, hot_x: number, hot_y: number):void
   export function drag_set_icon_stock(context: Gdk.DragContext, stock_id: string, hot_x: number, hot_y: number):void
-  export function drag_set_icon_surface(context: Gdk.DragContext, surface: cairo.Surface):void
+  export function drag_set_icon_surface(context: Gdk.DragContext, surface: any):void
   export function drag_set_icon_widget(context: Gdk.DragContext, widget: Widget, hot_x: number, hot_y: number):void
-  export function draw_insertion_cursor(widget: Widget, cr: cairo.Context, location: Gdk.Rectangle, is_primary: boolean, direction: TextDirection, draw_arrow: boolean):void
+  export function draw_insertion_cursor(widget: Widget, cr: any, location: any, is_primary: boolean, direction: TextDirection, draw_arrow: boolean):void
   export function events_pending():boolean
-  export function _false():boolean
-  export function file_chooser_error_quark():GLib.Quark
+  export function false_():boolean
+  export function file_chooser_error_quark():any
   export function get_binary_age():number
-  export function get_current_event():Gdk.Event
+  export function get_current_event():any
   export function get_current_event_device():Gdk.Device
   export function get_current_event_state(state: Gdk.ModifierType):boolean
-  export function get_current_event_time():guint32
+  export function get_current_event_time():number
   export function get_debug_flags():number
-  export function get_default_language():Pango.Language
-  export function get_event_widget(event: Gdk.Event):Widget
+  export function get_default_language():any
+  export function get_event_widget(event: any):Widget
   export function get_interface_age():number
   export function get_locale_direction():TextDirection
   export function get_major_version():number
   export function get_micro_version():number
   export function get_minor_version():number
-  export function get_option_group(open_default_display: boolean):GLib.OptionGroup
+  export function get_option_group(open_default_display: boolean):any
   export function grab_get_current():Widget
   export function icon_size_from_name(name: string):number
   export function icon_size_get_name(size: number):string
@@ -68,121 +75,121 @@ declare module "Gtk" {
   export function icon_size_lookup_for_settings(settings: Settings, size: number, width: number, height: number):boolean
   export function icon_size_register(name: string, width: number, height: number):number
   export function icon_size_register_alias(alias: string, target: number):void
-  export function icon_theme_error_quark():GLib.Quark
+  export function icon_theme_error_quark():any
   export function init(argc: number, argv: string[]):void
   export function init_check(argc: number, argv: string[]):boolean
-  export function init_with_args(argc: number, argv: string[], parameter_string: string, entries: GLib.OptionEntry[], translation_domain: string):boolean
-  export function key_snooper_install(snooper: KeySnoopFunc, func_data: any):number
+  export function init_with_args(argc: number, argv: string[], parameter_string: string, entries: any[], translation_domain: string):boolean
+  export function key_snooper_install(snooper: any, func_data: object):number
   export function key_snooper_remove(snooper_handler_id: number):void
   export function main():void
-  export function main_do_event(event: Gdk.Event):void
+  export function main_do_event(event: any):void
   export function main_iteration():boolean
   export function main_iteration_do(blocking: boolean):boolean
   export function main_level():number
   export function main_quit():void
-  export function paint_arrow(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number):void
-  export function paint_box(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_box_gap(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number):void
-  export function paint_check(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_diamond(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_expander(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, x: number, y: number, expander_style: ExpanderStyle):void
-  export function paint_extension(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType):void
-  export function paint_flat_box(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_focus(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_handle(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation):void
-  export function paint_hline(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, x1: number, x2: number, y: number):void
-  export function paint_layout(style: Style, cr: cairo.Context, state_type: StateType, use_text: boolean, widget: Widget, detail: string, x: number, y: number, layout: Pango.Layout):void
-  export function paint_option(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_resize_grip(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number):void
-  export function paint_shadow(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_shadow_gap(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number):void
-  export function paint_slider(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation):void
-  export function paint_spinner(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, step: number, x: number, y: number, width: number, height: number):void
-  export function paint_tab(style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
-  export function paint_vline(style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, y1_: number, y2_: number, x: number):void
+  export function paint_arrow(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number):void
+  export function paint_box(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_box_gap(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number):void
+  export function paint_check(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_diamond(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_expander(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, x: number, y: number, expander_style: ExpanderStyle):void
+  export function paint_extension(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType):void
+  export function paint_flat_box(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_focus(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_handle(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation):void
+  export function paint_hline(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, x1: number, x2: number, y: number):void
+  export function paint_layout(style: Style, cr: any, state_type: StateType, use_text: boolean, widget: Widget, detail: string, x: number, y: number, layout: Pango.Layout):void
+  export function paint_option(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_resize_grip(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number):void
+  export function paint_shadow(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_shadow_gap(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number):void
+  export function paint_slider(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation):void
+  export function paint_spinner(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, step: number, x: number, y: number, width: number, height: number):void
+  export function paint_tab(style: Style, cr: any, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, x: number, y: number, width: number, height: number):void
+  export function paint_vline(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, y1_: number, y2_: number, x: number):void
   export function paper_size_get_default():string
-  export function paper_size_get_paper_sizes(include_custom: boolean):GLib.List
+  export function paper_size_get_paper_sizes(include_custom: boolean):any
   export function parse_args(argc: number, argv: string[]):boolean
-  export function print_error_quark():GLib.Quark
+  export function print_error_quark():any
   export function print_run_page_setup_dialog(parent: Window, page_setup: PageSetup, settings: PrintSettings):PageSetup
-  export function print_run_page_setup_dialog_async(parent: Window, page_setup: PageSetup, settings: PrintSettings, done_cb: PageSetupDoneFunc, data: any):void
-  export function propagate_event(widget: Widget, event: Gdk.Event):void
-  export function rc_add_default_file(filename: filename):void
-  export function rc_find_module_in_path(module_file: string):filename
-  export function rc_find_pixmap_in_path(settings: Settings, scanner: GLib.Scanner, pixmap_file: string):filename
-  export function rc_get_default_files():filename[]
-  export function rc_get_im_module_file():filename
-  export function rc_get_im_module_path():filename
-  export function rc_get_module_dir():filename
+  export function print_run_page_setup_dialog_async(parent: Window, page_setup: PageSetup, settings: PrintSettings, done_cb: any, data: object):void
+  export function propagate_event(widget: Widget, event: any):void
+  export function rc_add_default_file(filename: any):void
+  export function rc_find_module_in_path(module_file: string):any
+  export function rc_find_pixmap_in_path(settings: Settings, scanner: any, pixmap_file: string):any
+  export function rc_get_default_files():any[]
+  export function rc_get_im_module_file():any
+  export function rc_get_im_module_path():any
+  export function rc_get_module_dir():any
   export function rc_get_style(widget: Widget):Style
-  export function rc_get_style_by_paths(settings: Settings, widget_path: string, class_path: string, type: number):Style
+  export function rc_get_style_by_paths(settings: Settings, widget_path: string, class_path: string, type: any):Style
   export function rc_get_theme_dir():string
   export function rc_parse(filename: string):void
-  export function rc_parse_color(scanner: GLib.Scanner, color: Gdk.Color):number
-  export function rc_parse_color_full(scanner: GLib.Scanner, style: RcStyle, color: Gdk.Color):number
-  export function rc_parse_priority(scanner: GLib.Scanner, priority: PathPriorityType):number
-  export function rc_parse_state(scanner: GLib.Scanner, state: StateType):number
+  export function rc_parse_color(scanner: any, color: any):number
+  export function rc_parse_color_full(scanner: any, style: RcStyle, color: any):number
+  export function rc_parse_priority(scanner: any, priority: PathPriorityType):number
+  export function rc_parse_state(scanner: any, state: StateType):number
   export function rc_parse_string(rc_string: string):void
-  export function rc_property_parse_border(pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value):boolean
-  export function rc_property_parse_color(pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value):boolean
-  export function rc_property_parse_enum(pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value):boolean
-  export function rc_property_parse_flags(pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value):boolean
-  export function rc_property_parse_requisition(pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value):boolean
+  export function rc_property_parse_border(pspec: GObject.ParamSpec, gstring: any, property_value: any):boolean
+  export function rc_property_parse_color(pspec: GObject.ParamSpec, gstring: any, property_value: any):boolean
+  export function rc_property_parse_enum(pspec: GObject.ParamSpec, gstring: any, property_value: any):boolean
+  export function rc_property_parse_flags(pspec: GObject.ParamSpec, gstring: any, property_value: any):boolean
+  export function rc_property_parse_requisition(pspec: GObject.ParamSpec, gstring: any, property_value: any):boolean
   export function rc_reparse_all():boolean
   export function rc_reparse_all_for_settings(settings: Settings, force_load: boolean):boolean
   export function rc_reset_styles(settings: Settings):void
-  export function rc_scanner_new():GLib.Scanner
-  export function rc_set_default_files(filenames: filename[]):void
-  export function recent_chooser_error_quark():GLib.Quark
-  export function recent_manager_error_quark():GLib.Quark
-  export function render_activity(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_arrow(context: StyleContext, cr: cairo.Context, angle: number, x: number, y: number, size: number):void
-  export function render_background(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_check(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_expander(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_extension(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number, gap_side: PositionType):void
-  export function render_focus(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_frame(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_frame_gap(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number, gap_side: PositionType, xy0_gap: number, xy1_gap: number):void
-  export function render_handle(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_icon(context: StyleContext, cr: cairo.Context, pixbuf: GdkPixbuf.Pixbuf, x: number, y: number):void
-  export function render_icon_pixbuf(context: StyleContext, source: IconSource, size: number):GdkPixbuf.Pixbuf
-  export function render_icon_surface(context: StyleContext, cr: cairo.Context, surface: cairo.Surface, x: number, y: number):void
-  export function render_insertion_cursor(context: StyleContext, cr: cairo.Context, x: number, y: number, layout: Pango.Layout, index: number, direction: Pango.Direction):void
-  export function render_layout(context: StyleContext, cr: cairo.Context, x: number, y: number, layout: Pango.Layout):void
-  export function render_line(context: StyleContext, cr: cairo.Context, x0: number, y0: number, x1: number, y1: number):void
-  export function render_option(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number):void
-  export function render_slider(context: StyleContext, cr: cairo.Context, x: number, y: number, width: number, height: number, orientation: Orientation):void
+  export function rc_scanner_new():any
+  export function rc_set_default_files(filenames: any[]):void
+  export function recent_chooser_error_quark():any
+  export function recent_manager_error_quark():any
+  export function render_activity(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_arrow(context: StyleContext, cr: any, angle: number, x: number, y: number, size: number):void
+  export function render_background(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_check(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_expander(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_extension(context: StyleContext, cr: any, x: number, y: number, width: number, height: number, gap_side: PositionType):void
+  export function render_focus(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_frame(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_frame_gap(context: StyleContext, cr: any, x: number, y: number, width: number, height: number, gap_side: PositionType, xy0_gap: number, xy1_gap: number):void
+  export function render_handle(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_icon(context: StyleContext, cr: any, pixbuf: any, x: number, y: number):void
+  export function render_icon_pixbuf(context: StyleContext, source: any, size: number):any
+  export function render_icon_surface(context: StyleContext, cr: any, surface: any, x: number, y: number):void
+  export function render_insertion_cursor(context: StyleContext, cr: any, x: number, y: number, layout: Pango.Layout, index: number, direction: Pango.Direction):void
+  export function render_layout(context: StyleContext, cr: any, x: number, y: number, layout: Pango.Layout):void
+  export function render_line(context: StyleContext, cr: any, x0: number, y0: number, x1: number, y1: number):void
+  export function render_option(context: StyleContext, cr: any, x: number, y: number, width: number, height: number):void
+  export function render_slider(context: StyleContext, cr: any, x: number, y: number, width: number, height: number, orientation: Orientation):void
   export function rgb_to_hsv(r: number, g: number, b: number, h: number, s: number, v: number):void
-  export function selection_add_target(widget: Widget, selection: Gdk.Atom, target: Gdk.Atom, info: number):void
-  export function selection_add_targets(widget: Widget, selection: Gdk.Atom, targets: TargetEntry[], ntargets: number):void
-  export function selection_clear_targets(widget: Widget, selection: Gdk.Atom):void
-  export function selection_convert(widget: Widget, selection: Gdk.Atom, target: Gdk.Atom, time_: guint32):boolean
-  export function selection_owner_set(widget: Widget, selection: Gdk.Atom, time_: guint32):boolean
-  export function selection_owner_set_for_display(display: Gdk.Display, widget: Widget, selection: Gdk.Atom, time_: guint32):boolean
+  export function selection_add_target(widget: Widget, selection: any, target: any, info: number):void
+  export function selection_add_targets(widget: Widget, selection: any, targets: any[], ntargets: number):void
+  export function selection_clear_targets(widget: Widget, selection: any):void
+  export function selection_convert(widget: Widget, selection: any, target: any, time_: number):boolean
+  export function selection_owner_set(widget: Widget, selection: any, time_: number):boolean
+  export function selection_owner_set_for_display(display: Gdk.Display, widget: Widget, selection: any, time_: number):boolean
   export function selection_remove_all(widget: Widget):void
   export function set_debug_flags(flags: number):void
-  export function show_about_dialog(parent: Window, first_property_name: string, ...args: any[]):void
-  export function show_uri(screen: Gdk.Screen, uri: string, timestamp: guint32):boolean
-  export function stock_add(items: StockItem[], n_items: number):void
-  export function stock_add_static(items: StockItem[], n_items: number):void
-  export function stock_list_ids():GLib.SList
-  export function stock_lookup(stock_id: string, item: StockItem):boolean
-  export function stock_set_translate_func(domain: string, func: TranslateFunc, data: any, notify: GLib.DestroyNotify):void
-  export function target_table_free(targets: TargetEntry[], n_targets: number):void
-  export function target_table_new_from_list(list: TargetList, n_targets: number):TargetEntry[]
-  export function targets_include_image(targets: Gdk.Atom[], n_targets: number, writable: boolean):boolean
-  export function targets_include_rich_text(targets: Gdk.Atom[], n_targets: number, buffer: TextBuffer):boolean
-  export function targets_include_text(targets: Gdk.Atom[], n_targets: number):boolean
-  export function targets_include_uri(targets: Gdk.Atom[], n_targets: number):boolean
+  export function show_about_dialog(parent: Window, first_property_name: string, ...args: any):void
+  export function show_uri(screen: Gdk.Screen, uri: string, timestamp: number):boolean
+  export function stock_add(items: any[], n_items: number):void
+  export function stock_add_static(items: any[], n_items: number):void
+  export function stock_list_ids():any
+  export function stock_lookup(stock_id: string, item: any):boolean
+  export function stock_set_translate_func(domain: string, func: any, data: object, notify: any):void
+  export function target_table_free(targets: any[], n_targets: number):void
+  export function target_table_new_from_list(list: any, n_targets: number):any[]
+  export function targets_include_image(targets: any[], n_targets: number, writable: boolean):boolean
+  export function targets_include_rich_text(targets: any[], n_targets: number, buffer: TextBuffer):boolean
+  export function targets_include_text(targets: any[], n_targets: number):boolean
+  export function targets_include_uri(targets: any[], n_targets: number):boolean
   export function test_create_simple_window(window_title: string, dialog_text: string):Widget
-  export function test_create_widget(widget_type: number, first_property_name: string, ...args: any[]):Widget
-  export function test_display_button_window(window_title: string, dialog_text: string, ...args: any[]):Widget
+  export function test_create_widget(widget_type: any, first_property_name: string, ...args: any):Widget
+  export function test_display_button_window(window_title: string, dialog_text: string, ...args: any):Widget
   export function test_find_label(widget: Widget, label_pattern: string):Widget
-  export function test_find_sibling(base_widget: Widget, widget_type: number):Widget
-  export function test_find_widget(widget: Widget, label_pattern: string, widget_type: number):Widget
-  export function test_init(argcp: number, argvp: string[], ...args: any[]):void
-  export function test_list_all_types(n_types: number):number[]
+  export function test_find_sibling(base_widget: Widget, widget_type: any):Widget
+  export function test_find_widget(widget: Widget, label_pattern: string, widget_type: any):Widget
+  export function test_init(argcp: number, argvp: string[], ...args: any):void
+  export function test_list_all_types(n_types: number):any[]
   export function test_register_all_types():void
   export function test_slider_get_value(widget: Widget):number
   export function test_slider_set_perc(widget: Widget, percentage: number):void
@@ -192,12 +199,12 @@ declare module "Gtk" {
   export function test_widget_click(widget: Widget, button: number, modifiers: Gdk.ModifierType):boolean
   export function test_widget_send_key(widget: Widget, keyval: number, modifiers: Gdk.ModifierType):boolean
   export function test_widget_wait_for_draw(widget: Widget):void
-  export function tree_get_row_drag_data(selection_data: SelectionData, tree_model: TreeModel, path: TreePath):boolean
-  export function tree_row_reference_deleted(proxy: GObject.Object, path: TreePath):void
-  export function tree_row_reference_inserted(proxy: GObject.Object, path: TreePath):void
-  export function tree_row_reference_reordered(proxy: GObject.Object, path: TreePath, iter: TreeIter, new_order: number[]):void
-  export function tree_set_row_drag_data(selection_data: SelectionData, tree_model: TreeModel, path: TreePath):boolean
-  export function _true():boolean
+  export function tree_get_row_drag_data(selection_data: any, tree_model: any, path: any):boolean
+  export function tree_row_reference_deleted(proxy: GObject.Object, path: any):void
+  export function tree_row_reference_inserted(proxy: GObject.Object, path: any):void
+  export function tree_row_reference_reordered(proxy: GObject.Object, path: any, iter: any, new_order: number[]):void
+  export function tree_set_row_drag_data(selection_data: any, tree_model: any, path: any):boolean
+  export function true_():boolean
   export enum Align{
     FILL,
     START,
@@ -1065,7 +1072,7 @@ declare module "Gtk" {
     get_documenters():string[]
     get_license():string
     get_license_type():License
-    get_logo():GdkPixbuf.Pixbuf
+    get_logo():any
     get_logo_icon_name():string
     get_program_name():string
     get_translator_credits():string
@@ -1080,7 +1087,7 @@ declare module "Gtk" {
     set_documenters(documenters: string[]):void
     set_license(license: string):void
     set_license_type(license_type: License):void
-    set_logo(logo: GdkPixbuf.Pixbuf):void
+    set_logo(logo: any):void
     set_logo_icon_name(icon_name: string):void
     set_program_name(name: string):void
     set_translator_credits(translator_credits: string):void
@@ -1090,16 +1097,16 @@ declare module "Gtk" {
     set_wrap_license(wrap_license: boolean):void
   }
   export class AccelGroup extends GObject.Object {
-    activate(accel_quark: GLib.Quark, acceleratable: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType):boolean
-    connect(accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags, closure: GObject.Closure):void
-    connect_by_path(accel_path: string, closure: GObject.Closure):void
-    disconnect(closure: GObject.Closure):boolean
+    activate(accel_quark: any, acceleratable: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType):boolean
+    connect(accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags, closure: any):void
+    connect_by_path(accel_path: string, closure: any):void
+    disconnect(closure: any):boolean
     disconnect_key(accel_key: number, accel_mods: Gdk.ModifierType):boolean
-    find(find_func: AccelGroupFindFunc, data: any):AccelKey
+    find(find_func: any, data: object):any
     get_is_locked():boolean
     get_modifier_mask():Gdk.ModifierType
     lock():void
-    query(accel_key: number, accel_mods: Gdk.ModifierType, n_entries: number):AccelGroupEntry[]
+    query(accel_key: number, accel_mods: Gdk.ModifierType, n_entries: number):any[]
     unlock():void
   }
   export class AccelLabel extends Label {
@@ -1109,7 +1116,7 @@ declare module "Gtk" {
     get_accel_width():number
     refetch():boolean
     set_accel(accelerator_key: number, accelerator_mods: Gdk.ModifierType):void
-    set_accel_closure(accel_closure: GObject.Closure):void
+    set_accel_closure(accel_closure: any):void
     set_accel_widget(accel_widget: Widget):void
   }
   export class AccelMap extends GObject.Object {
@@ -1129,15 +1136,15 @@ declare module "Gtk" {
     create_menu_item():Widget
     create_tool_item():Widget
     disconnect_accelerator():void
-    get_accel_closure():GObject.Closure
+    get_accel_closure():any
     get_accel_path():string
     get_always_show_image():boolean
-    get_gicon():Gio.Icon
+    get_gicon():any
     get_icon_name():string
     get_is_important():boolean
     get_label():string
     get_name():string
-    get_proxies():GLib.SList
+    get_proxies():any
     get_sensitive():boolean
     get_short_label():string
     get_stock_id():string
@@ -1150,7 +1157,7 @@ declare module "Gtk" {
     set_accel_group(accel_group: AccelGroup):void
     set_accel_path(accel_path: string):void
     set_always_show_image(always_show: boolean):void
-    set_gicon(icon: Gio.Icon):void
+    set_gicon(icon: any):void
     set_icon_name(icon_name: string):void
     set_is_important(is_important: boolean):void
     set_label(label: string):void
@@ -1173,22 +1180,22 @@ declare module "Gtk" {
     constructor(name: string)
     add_action(action: Action):void
     add_action_with_accel(action: Action, accelerator: string):void
-    add_actions(entries: ActionEntry[], n_entries: number, user_data: any):void
-    add_actions_full(entries: ActionEntry[], n_entries: number, user_data: any, destroy: GLib.DestroyNotify):void
-    add_radio_actions(entries: RadioActionEntry[], n_entries: number, value: number, on_change: GObject.Callback, user_data: any):void
-    add_radio_actions_full(entries: RadioActionEntry[], n_entries: number, value: number, on_change: GObject.Callback, user_data: any, destroy: GLib.DestroyNotify):void
-    add_toggle_actions(entries: ToggleActionEntry[], n_entries: number, user_data: any):void
-    add_toggle_actions_full(entries: ToggleActionEntry[], n_entries: number, user_data: any, destroy: GLib.DestroyNotify):void
+    add_actions(entries: any[], n_entries: number, user_data: object):void
+    add_actions_full(entries: any[], n_entries: number, user_data: object, destroy: any):void
+    add_radio_actions(entries: any[], n_entries: number, value: number, on_change: any, user_data: object):void
+    add_radio_actions_full(entries: any[], n_entries: number, value: number, on_change: any, user_data: object, destroy: any):void
+    add_toggle_actions(entries: any[], n_entries: number, user_data: object):void
+    add_toggle_actions_full(entries: any[], n_entries: number, user_data: object, destroy: any):void
     get_accel_group():AccelGroup
     get_action(action_name: string):Action
     get_name():string
     get_sensitive():boolean
     get_visible():boolean
-    list_actions():GLib.List
+    list_actions():any
     remove_action(action: Action):void
     set_accel_group(accel_group: AccelGroup):void
     set_sensitive(sensitive: boolean):void
-    set_translate_func(func: TranslateFunc, data: any, notify: GLib.DestroyNotify):void
+    set_translate_func(func: any, data: object, notify: any):void
     set_translation_domain(domain: string):void
     set_visible(visible: boolean):void
     translate_string(string: string):string
@@ -1214,14 +1221,14 @@ declare module "Gtk" {
     value_changed():void
   }
   export class Alignment extends Bin {
-    constructor(xalign: gfloat, yalign: gfloat, xscale: gfloat, yscale: gfloat)
+    constructor(xalign: number, yalign: number, xscale: number, yscale: number)
     get_padding(padding_top: number, padding_bottom: number, padding_left: number, padding_right: number):void
-    set(xalign: gfloat, yalign: gfloat, xscale: gfloat, yscale: gfloat):void
+    set(xalign: number, yalign: number, xscale: number, yscale: number):void
     set_padding(padding_top: number, padding_bottom: number, padding_left: number, padding_right: number):void
   }
   export class AppChooserButton extends ComboBox {
     constructor(content_type: string)
-    append_custom_item(name: string, label: string, icon: Gio.Icon):void
+    append_custom_item(name: string, label: string, icon: any):void
     append_separator():void
     get_heading():string
     get_show_default_item():boolean
@@ -1232,7 +1239,7 @@ declare module "Gtk" {
     set_show_dialog_item(setting: boolean):void
   }
   export class AppChooserDialog extends Dialog {
-    constructor(parent: Window, flags: DialogFlags, file: Gio.File)
+    constructor(parent: Window, flags: DialogFlags, file: any)
     constructor(parent: Window, flags: DialogFlags, content_type: string)
     get_heading():string
     get_widget():Widget
@@ -1255,7 +1262,7 @@ declare module "Gtk" {
   }
   export class Application extends Gio.Application {
     constructor(application_id: string, flags: Gio.ApplicationFlags)
-    add_accelerator(accelerator: string, action_name: string, parameter: GLib.Variant):void
+    add_accelerator(accelerator: string, action_name: string, parameter: any):void
     add_window(window: Window):void
     get_accels_for_action(detailed_action_name: string):string[]
     get_actions_for_accel(accel: string):string[]
@@ -1264,12 +1271,12 @@ declare module "Gtk" {
     get_menu_by_id(id: string):Gio.Menu
     get_menubar():Gio.MenuModel
     get_window_by_id(id: number):Window
-    get_windows():GLib.List
+    get_windows():any
     inhibit(window: Window, flags: ApplicationInhibitFlags, reason: string):number
     is_inhibited(flags: ApplicationInhibitFlags):boolean
     list_action_descriptions():string[]
     prefers_app_menu():boolean
-    remove_accelerator(action_name: string, parameter: GLib.Variant):void
+    remove_accelerator(action_name: string, parameter: any):void
     remove_window(window: Window):void
     set_accels_for_action(detailed_action_name: string, accels: string[]):void
     set_app_menu(app_menu: Gio.MenuModel):void
@@ -1289,8 +1296,8 @@ declare module "Gtk" {
   export class ArrowAccessible extends WidgetAccessible {
   }
   export class AspectFrame extends Frame {
-    constructor(label: string, xalign: gfloat, yalign: gfloat, ratio: gfloat, obey_child: boolean)
-    set(xalign: gfloat, yalign: gfloat, ratio: gfloat, obey_child: boolean):void
+    constructor(label: string, xalign: number, yalign: number, ratio: number, obey_child: boolean)
+    set(xalign: number, yalign: number, ratio: number, obey_child: boolean):void
   }
   export class Assistant extends Window {
     add_action_widget(child: Widget):void
@@ -1301,8 +1308,8 @@ declare module "Gtk" {
     get_nth_page(page_num: number):Widget
     get_page_complete(page: Widget):boolean
     get_page_has_padding(page: Widget):boolean
-    get_page_header_image(page: Widget):GdkPixbuf.Pixbuf
-    get_page_side_image(page: Widget):GdkPixbuf.Pixbuf
+    get_page_header_image(page: Widget):any
+    get_page_side_image(page: Widget):any
     get_page_title(page: Widget):string
     get_page_type(page: Widget):AssistantPageType
     insert_page(page: Widget, position: number):number
@@ -1312,11 +1319,11 @@ declare module "Gtk" {
     remove_action_widget(child: Widget):void
     remove_page(page_num: number):void
     set_current_page(page_num: number):void
-    set_forward_page_func(page_func: AssistantPageFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_forward_page_func(page_func: any, data: object, destroy: any):void
     set_page_complete(page: Widget, complete: boolean):void
     set_page_has_padding(page: Widget, has_padding: boolean):void
-    set_page_header_image(page: Widget, pixbuf: GdkPixbuf.Pixbuf):void
-    set_page_side_image(page: Widget, pixbuf: GdkPixbuf.Pixbuf):void
+    set_page_header_image(page: Widget, pixbuf: any):void
+    set_page_side_image(page: Widget, pixbuf: any):void
     set_page_title(page: Widget, title: string):void
     set_page_type(page: Widget, type: AssistantPageType):void
     update_buttons_state():void
@@ -1346,27 +1353,27 @@ declare module "Gtk" {
     constructor(filename: string)
     constructor(resource_path: string)
     constructor(string: string, length: number)
-    add_callback_symbol(callback_name: string, callback_symbol: GObject.Callback):void
-    add_callback_symbols(first_callback_name: string, first_callback_symbol: GObject.Callback, ...args: any[]):void
+    add_callback_symbol(callback_name: string, callback_symbol: any):void
+    add_callback_symbols(first_callback_name: string, first_callback_symbol: any, ...args: any):void
     add_from_file(filename: string):number
     add_from_resource(resource_path: string):number
     add_from_string(buffer: string, length: number):number
     add_objects_from_file(filename: string, object_ids: string[]):number
     add_objects_from_resource(resource_path: string, object_ids: string[]):number
     add_objects_from_string(buffer: string, length: number, object_ids: string[]):number
-    connect_signals(user_data: any):void
-    connect_signals_full(func: BuilderConnectFunc, user_data: any):void
+    connect_signals(user_data: object):void
+    connect_signals_full(func: any, user_data: object):void
     expose_object(name: string, object: GObject.Object):void
     get_application():Application
     get_object(name: string):GObject.Object
-    get_objects():GLib.SList
+    get_objects():any
     get_translation_domain():string
-    get_type_from_name(type_name: string):number
-    lookup_callback_symbol(callback_name: string):GObject.Callback
+    get_type_from_name(type_name: string):any
+    lookup_callback_symbol(callback_name: string):any
     set_application(application: Application):void
     set_translation_domain(domain: string):void
-    value_from_string(pspec: GObject.ParamSpec, string: string, value: GObject.Value):boolean
-    value_from_string_type(type: number, string: string, value: GObject.Value):boolean
+    value_from_string(pspec: GObject.ParamSpec, string: string, value: any):boolean
+    value_from_string_type(type: any, string: string, value: any):boolean
   }
   export class Button extends Bin {
     constructor(icon_name: string, size: number)
@@ -1375,7 +1382,7 @@ declare module "Gtk" {
     constructor(label: string)
     clicked():void
     enter():void
-    get_alignment(xalign: gfloat, yalign: gfloat):void
+    get_alignment(xalign: number, yalign: number):void
     get_always_show_image():boolean
     get_event_window():Gdk.Window
     get_focus_on_click():boolean
@@ -1388,7 +1395,7 @@ declare module "Gtk" {
     leave():void
     pressed():void
     released():void
-    set_alignment(xalign: gfloat, yalign: gfloat):void
+    set_alignment(xalign: number, yalign: number):void
     set_always_show_image(always_show: boolean):void
     set_focus_on_click(focus_on_click: boolean):void
     set_image(image: Widget):void
@@ -1419,7 +1426,7 @@ declare module "Gtk" {
     mark_day(day: number):void
     select_day(day: number):void
     select_month(month: number, year: number):void
-    set_detail_func(func: CalendarDetailFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_detail_func(func: any, data: object, destroy: any):void
     set_detail_height_rows(rows: number):void
     set_detail_width_chars(chars: number):void
     set_display_options(flags: CalendarDisplayOptions):void
@@ -1428,47 +1435,47 @@ declare module "Gtk" {
   export class CellAccessible extends Accessible {
   }
   export class CellArea extends GObject.InitiallyUnowned {
-    activate(context: CellAreaContext, widget: Widget, cell_area: Gdk.Rectangle, flags: CellRendererState, edit_only: boolean):boolean
-    activate_cell(widget: Widget, renderer: CellRenderer, event: Gdk.Event, cell_area: Gdk.Rectangle, flags: CellRendererState):boolean
+    activate(context: CellAreaContext, widget: Widget, cell_area: any, flags: CellRendererState, edit_only: boolean):boolean
+    activate_cell(widget: Widget, renderer: CellRenderer, event: any, cell_area: any, flags: CellRendererState):boolean
     add(renderer: CellRenderer):void
     add_focus_sibling(renderer: CellRenderer, sibling: CellRenderer):void
-    add_with_properties(renderer: CellRenderer, first_prop_name: string, ...args: any[]):void
-    apply_attributes(tree_model: TreeModel, iter: TreeIter, is_expander: boolean, is_expanded: boolean):void
+    add_with_properties(renderer: CellRenderer, first_prop_name: string, ...args: any):void
+    apply_attributes(tree_model: any, iter: any, is_expander: boolean, is_expanded: boolean):void
     attribute_connect(renderer: CellRenderer, attribute: string, column: number):void
     attribute_disconnect(renderer: CellRenderer, attribute: string):void
     attribute_get_column(renderer: CellRenderer, attribute: string):number
-    cell_get(renderer: CellRenderer, first_prop_name: string, ...args: any[]):void
-    cell_get_property(renderer: CellRenderer, property_name: string, value: GObject.Value):void
+    cell_get(renderer: CellRenderer, first_prop_name: string, ...args: any):void
+    cell_get_property(renderer: CellRenderer, property_name: string, value: any):void
     cell_get_valist(renderer: CellRenderer, first_property_name: string, var_args: any):void
-    cell_set(renderer: CellRenderer, first_prop_name: string, ...args: any[]):void
-    cell_set_property(renderer: CellRenderer, property_name: string, value: GObject.Value):void
+    cell_set(renderer: CellRenderer, first_prop_name: string, ...args: any):void
+    cell_set_property(renderer: CellRenderer, property_name: string, value: any):void
     cell_set_valist(renderer: CellRenderer, first_property_name: string, var_args: any):void
     copy_context(context: CellAreaContext):CellAreaContext
     create_context():CellAreaContext
-    event(context: CellAreaContext, widget: Widget, event: Gdk.Event, cell_area: Gdk.Rectangle, flags: CellRendererState):number
+    event(context: CellAreaContext, widget: Widget, event: any, cell_area: any, flags: CellRendererState):number
     focus(direction: DirectionType):boolean
-    foreach(callback: CellCallback, callback_data: any):void
-    foreach_alloc(context: CellAreaContext, widget: Widget, cell_area: Gdk.Rectangle, background_area: Gdk.Rectangle, callback: CellAllocCallback, callback_data: any):void
-    get_cell_allocation(context: CellAreaContext, widget: Widget, renderer: CellRenderer, cell_area: Gdk.Rectangle, allocation: Gdk.Rectangle):void
-    get_cell_at_position(context: CellAreaContext, widget: Widget, cell_area: Gdk.Rectangle, x: number, y: number, alloc_area: Gdk.Rectangle):CellRenderer
+    foreach(callback: any, callback_data: object):void
+    foreach_alloc(context: CellAreaContext, widget: Widget, cell_area: any, background_area: any, callback: any, callback_data: object):void
+    get_cell_allocation(context: CellAreaContext, widget: Widget, renderer: CellRenderer, cell_area: any, allocation: any):void
+    get_cell_at_position(context: CellAreaContext, widget: Widget, cell_area: any, x: number, y: number, alloc_area: any):CellRenderer
     get_current_path_string():string
-    get_edit_widget():CellEditable
+    get_edit_widget():any
     get_edited_cell():CellRenderer
     get_focus_cell():CellRenderer
     get_focus_from_sibling(renderer: CellRenderer):CellRenderer
-    get_focus_siblings(renderer: CellRenderer):GLib.List
+    get_focus_siblings(renderer: CellRenderer):any
     get_preferred_height(context: CellAreaContext, widget: Widget, minimum_height: number, natural_height: number):void
     get_preferred_height_for_width(context: CellAreaContext, widget: Widget, width: number, minimum_height: number, natural_height: number):void
     get_preferred_width(context: CellAreaContext, widget: Widget, minimum_width: number, natural_width: number):void
     get_preferred_width_for_height(context: CellAreaContext, widget: Widget, height: number, minimum_width: number, natural_width: number):void
     get_request_mode():SizeRequestMode
     has_renderer(renderer: CellRenderer):boolean
-    inner_cell_area(widget: Widget, cell_area: Gdk.Rectangle, inner_area: Gdk.Rectangle):void
+    inner_cell_area(widget: Widget, cell_area: any, inner_area: any):void
     is_activatable():boolean
     is_focus_sibling(renderer: CellRenderer, sibling: CellRenderer):boolean
     remove(renderer: CellRenderer):void
     remove_focus_sibling(renderer: CellRenderer, sibling: CellRenderer):void
-    render(context: CellAreaContext, widget: Widget, cr: cairo.Context, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState, paint_focus: boolean):void
+    render(context: CellAreaContext, widget: Widget, cr: any, background_area: any, cell_area: any, flags: CellRendererState, paint_focus: boolean):void
     request_renderer(renderer: CellRenderer, orientation: Orientation, widget: Widget, for_size: number, minimum_size: number, natural_size: number):void
     set_focus_cell(renderer: CellRenderer):void
     stop_editing(canceled: boolean):void
@@ -1492,29 +1499,29 @@ declare module "Gtk" {
     reset():void
   }
   export class CellRenderer extends GObject.InitiallyUnowned {
-    activate(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState):boolean
-    get_aligned_area(widget: Widget, flags: CellRendererState, cell_area: Gdk.Rectangle, aligned_area: Gdk.Rectangle):void
-    get_alignment(xalign: gfloat, yalign: gfloat):void
+    activate(event: any, widget: Widget, path: string, background_area: any, cell_area: any, flags: CellRendererState):boolean
+    get_aligned_area(widget: Widget, flags: CellRendererState, cell_area: any, aligned_area: any):void
+    get_alignment(xalign: number, yalign: number):void
     get_fixed_size(width: number, height: number):void
     get_padding(xpad: number, ypad: number):void
     get_preferred_height(widget: Widget, minimum_size: number, natural_size: number):void
     get_preferred_height_for_width(widget: Widget, width: number, minimum_height: number, natural_height: number):void
-    get_preferred_size(widget: Widget, minimum_size: Requisition, natural_size: Requisition):void
+    get_preferred_size(widget: Widget, minimum_size: any, natural_size: any):void
     get_preferred_width(widget: Widget, minimum_size: number, natural_size: number):void
     get_preferred_width_for_height(widget: Widget, height: number, minimum_width: number, natural_width: number):void
     get_request_mode():SizeRequestMode
     get_sensitive():boolean
-    get_size(widget: Widget, cell_area: Gdk.Rectangle, x_offset: number, y_offset: number, width: number, height: number):void
+    get_size(widget: Widget, cell_area: any, x_offset: number, y_offset: number, width: number, height: number):void
     get_state(widget: Widget, cell_state: CellRendererState):StateFlags
     get_visible():boolean
     is_activatable():boolean
-    render(cr: cairo.Context, widget: Widget, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState):void
-    set_alignment(xalign: gfloat, yalign: gfloat):void
+    render(cr: any, widget: Widget, background_area: any, cell_area: any, flags: CellRendererState):void
+    set_alignment(xalign: number, yalign: number):void
     set_fixed_size(width: number, height: number):void
     set_padding(xpad: number, ypad: number):void
     set_sensitive(sensitive: boolean):void
     set_visible(visible: boolean):void
-    start_editing(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState):CellEditable
+    start_editing(event: any, widget: Widget, path: string, background_area: any, cell_area: any, flags: CellRendererState):any
     stop_editing(canceled: boolean):void
   }
   export class CellRendererAccel extends CellRendererText {
@@ -1543,19 +1550,19 @@ declare module "Gtk" {
   export class CellView extends Widget {
     constructor(area: CellArea, context: CellAreaContext)
     constructor(markup: string)
-    constructor(pixbuf: GdkPixbuf.Pixbuf)
+    constructor(pixbuf: any)
     constructor(text: string)
-    get_displayed_row():TreePath
+    get_displayed_row():any
     get_draw_sensitive():boolean
     get_fit_model():boolean
-    get_model():TreeModel
-    get_size_of_row(path: TreePath, requisition: Requisition):boolean
-    set_background_color(color: Gdk.Color):void
-    set_background_rgba(rgba: Gdk.RGBA):void
-    set_displayed_row(path: TreePath):void
+    get_model():any
+    get_size_of_row(path: any, requisition: any):boolean
+    set_background_color(color: any):void
+    set_background_rgba(rgba: any):void
+    set_displayed_row(path: any):void
     set_draw_sensitive(draw_sensitive: boolean):void
     set_fit_model(fit_model: boolean):void
-    set_model(model: TreeModel):void
+    set_model(model: any):void
   }
   export class CheckButton extends ToggleButton {
     constructor(label: string)
@@ -1578,41 +1585,41 @@ declare module "Gtk" {
     clear():void
     get_display():Gdk.Display
     get_owner():GObject.Object
-    request_contents(target: Gdk.Atom, callback: ClipboardReceivedFunc, user_data: any):void
-    request_image(callback: ClipboardImageReceivedFunc, user_data: any):void
-    request_rich_text(buffer: TextBuffer, callback: ClipboardRichTextReceivedFunc, user_data: any):void
-    request_targets(callback: ClipboardTargetsReceivedFunc, user_data: any):void
-    request_text(callback: ClipboardTextReceivedFunc, user_data: any):void
-    request_uris(callback: ClipboardURIReceivedFunc, user_data: any):void
-    set_can_store(targets: TargetEntry[], n_targets: number):void
-    set_image(pixbuf: GdkPixbuf.Pixbuf):void
+    request_contents(target: any, callback: any, user_data: object):void
+    request_image(callback: any, user_data: object):void
+    request_rich_text(buffer: TextBuffer, callback: any, user_data: object):void
+    request_targets(callback: any, user_data: object):void
+    request_text(callback: any, user_data: object):void
+    request_uris(callback: any, user_data: object):void
+    set_can_store(targets: any[], n_targets: number):void
+    set_image(pixbuf: any):void
     set_text(text: string, len: number):void
-    set_with_data(targets: TargetEntry[], n_targets: number, get_func: ClipboardGetFunc, clear_func: ClipboardClearFunc, user_data: any):boolean
-    set_with_owner(targets: TargetEntry[], n_targets: number, get_func: ClipboardGetFunc, clear_func: ClipboardClearFunc, owner: GObject.Object):boolean
+    set_with_data(targets: any[], n_targets: number, get_func: any, clear_func: any, user_data: object):boolean
+    set_with_owner(targets: any[], n_targets: number, get_func: any, clear_func: any, owner: GObject.Object):boolean
     store():void
-    wait_for_contents(target: Gdk.Atom):SelectionData
-    wait_for_image():GdkPixbuf.Pixbuf
-    wait_for_rich_text(buffer: TextBuffer, format: Gdk.Atom, length: number):number[]
-    wait_for_targets(targets: Gdk.Atom[], n_targets: number):boolean
+    wait_for_contents(target: any):any
+    wait_for_image():any
+    wait_for_rich_text(buffer: TextBuffer, format: any, length: number):number[]
+    wait_for_targets(targets: any[], n_targets: number):boolean
     wait_for_text():string
     wait_for_uris():string[]
     wait_is_image_available():boolean
     wait_is_rich_text_available(buffer: TextBuffer):boolean
-    wait_is_target_available(target: Gdk.Atom):boolean
+    wait_is_target_available(target: any):boolean
     wait_is_text_available():boolean
     wait_is_uris_available():boolean
   }
   export class ColorButton extends Button {
-    constructor(color: Gdk.Color)
-    constructor(rgba: Gdk.RGBA)
-    get_alpha():guint16
-    get_color(color: Gdk.Color):void
-    get_rgba(rgba: Gdk.RGBA):void
+    constructor(color: any)
+    constructor(rgba: any)
+    get_alpha():number
+    get_color(color: any):void
+    get_rgba(rgba: any):void
     get_title():string
     get_use_alpha():boolean
-    set_alpha(alpha: guint16):void
-    set_color(color: Gdk.Color):void
-    set_rgba(rgba: Gdk.RGBA):void
+    set_alpha(alpha: number):void
+    set_color(color: any):void
+    set_rgba(rgba: any):void
     set_title(title: string):void
     set_use_alpha(use_alpha: boolean):void
   }
@@ -1622,23 +1629,23 @@ declare module "Gtk" {
   export class ColorChooserWidget extends Box {
   }
   export class ColorSelection extends Box {
-    get_current_alpha():guint16
-    get_current_color(color: Gdk.Color):void
-    get_current_rgba(rgba: Gdk.RGBA):void
+    get_current_alpha():number
+    get_current_color(color: any):void
+    get_current_rgba(rgba: any):void
     get_has_opacity_control():boolean
     get_has_palette():boolean
-    get_previous_alpha():guint16
-    get_previous_color(color: Gdk.Color):void
-    get_previous_rgba(rgba: Gdk.RGBA):void
+    get_previous_alpha():number
+    get_previous_color(color: any):void
+    get_previous_rgba(rgba: any):void
     is_adjusting():boolean
-    set_current_alpha(alpha: guint16):void
-    set_current_color(color: Gdk.Color):void
-    set_current_rgba(rgba: Gdk.RGBA):void
+    set_current_alpha(alpha: number):void
+    set_current_color(color: any):void
+    set_current_rgba(rgba: any):void
     set_has_opacity_control(has_opacity: boolean):void
     set_has_palette(has_palette: boolean):void
-    set_previous_alpha(alpha: guint16):void
-    set_previous_color(color: Gdk.Color):void
-    set_previous_rgba(rgba: Gdk.RGBA):void
+    set_previous_alpha(alpha: number):void
+    set_previous_color(color: any):void
+    set_previous_rgba(rgba: any):void
   }
   export class ColorSelectionDialog extends Dialog {
     constructor(title: string)
@@ -1647,11 +1654,11 @@ declare module "Gtk" {
   export class ComboBox extends Bin {
     constructor(area: CellArea)
     constructor(area: CellArea)
-    constructor(model: TreeModel)
-    constructor(model: TreeModel)
+    constructor(model: any)
+    constructor(model: any)
     get_active():number
     get_active_id():string
-    get_active_iter(iter: TreeIter):boolean
+    get_active_iter(iter: any):boolean
     get_add_tearoffs():boolean
     get_button_sensitivity():SensitivityType
     get_column_span_column():number
@@ -1659,10 +1666,10 @@ declare module "Gtk" {
     get_focus_on_click():boolean
     get_has_entry():boolean
     get_id_column():number
-    get_model():TreeModel
+    get_model():any
     get_popup_accessible():Atk.Object
     get_popup_fixed_width():boolean
-    get_row_separator_func():TreeViewRowSeparatorFunc
+    get_row_separator_func():any
     get_row_span_column():number
     get_title():string
     get_wrap_width():number
@@ -1671,16 +1678,16 @@ declare module "Gtk" {
     popup_for_device(device: Gdk.Device):void
     set_active(index_: number):void
     set_active_id(active_id: string):boolean
-    set_active_iter(iter: TreeIter):void
+    set_active_iter(iter: any):void
     set_add_tearoffs(add_tearoffs: boolean):void
     set_button_sensitivity(sensitivity: SensitivityType):void
     set_column_span_column(column_span: number):void
     set_entry_text_column(text_column: number):void
     set_focus_on_click(focus_on_click: boolean):void
     set_id_column(id_column: number):void
-    set_model(model: TreeModel):void
+    set_model(model: any):void
     set_popup_fixed_width(fixed: boolean):void
-    set_row_separator_func(func: TreeViewRowSeparatorFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_row_separator_func(func: any, data: object, destroy: any):void
     set_row_span_column(row_span: number):void
     set_title(title: string):void
     set_wrap_width(width: number):void
@@ -1700,32 +1707,32 @@ declare module "Gtk" {
   }
   export class Container extends Widget {
     add(widget: Widget):void
-    add_with_properties(widget: Widget, first_prop_name: string, ...args: any[]):void
+    add_with_properties(widget: Widget, first_prop_name: string, ...args: any):void
     check_resize():void
-    child_get(child: Widget, first_prop_name: string, ...args: any[]):void
-    child_get_property(child: Widget, property_name: string, value: GObject.Value):void
+    child_get(child: Widget, first_prop_name: string, ...args: any):void
+    child_get_property(child: Widget, property_name: string, value: any):void
     child_get_valist(child: Widget, first_property_name: string, var_args: any):void
     child_notify(child: Widget, child_property: string):void
     child_notify_by_pspec(child: Widget, pspec: GObject.ParamSpec):void
-    child_set(child: Widget, first_prop_name: string, ...args: any[]):void
-    child_set_property(child: Widget, property_name: string, value: GObject.Value):void
+    child_set(child: Widget, first_prop_name: string, ...args: any):void
+    child_set_property(child: Widget, property_name: string, value: any):void
     child_set_valist(child: Widget, first_property_name: string, var_args: any):void
-    child_type():number
-    forall(callback: Callback, callback_data: any):void
-    foreach(callback: Callback, callback_data: any):void
+    child_type():any
+    forall(callback: any, callback_data: object):void
+    foreach(callback: any, callback_data: object):void
     get_border_width():number
-    get_children():GLib.List
-    get_focus_chain(focusable_widgets: GLib.List):boolean
+    get_children():any
+    get_focus_chain(focusable_widgets: any):boolean
     get_focus_child():Widget
     get_focus_hadjustment():Adjustment
     get_focus_vadjustment():Adjustment
-    get_path_for_child(child: Widget):WidgetPath
+    get_path_for_child(child: Widget):any
     get_resize_mode():ResizeMode
-    propagate_draw(child: Widget, cr: cairo.Context):void
+    propagate_draw(child: Widget, cr: any):void
     remove(widget: Widget):void
     resize_children():void
     set_border_width(border_width: number):void
-    set_focus_chain(focusable_widgets: GLib.List):void
+    set_focus_chain(focusable_widgets: any):void
     set_focus_child(child: Widget):void
     set_focus_hadjustment(adjustment: Adjustment):void
     set_focus_vadjustment(adjustment: Adjustment):void
@@ -1737,21 +1744,21 @@ declare module "Gtk" {
   }
   export class ContainerCellAccessible extends CellAccessible {
     add_child(child: CellAccessible):void
-    get_children():GLib.List
+    get_children():any
     remove_child(child: CellAccessible):void
   }
   export class CssProvider extends GObject.Object {
     load_from_data(data: number[], length: number):boolean
-    load_from_file(file: Gio.File):boolean
+    load_from_file(file: any):boolean
     load_from_path(path: string):boolean
     load_from_resource(resource_path: string):void
     to_string():string
   }
   export class Dialog extends Window {
-    constructor(title: string, parent: Window, flags: DialogFlags, first_button_text: string, ...args: any[])
+    constructor(title: string, parent: Window, flags: DialogFlags, first_button_text: string, ...args: any)
     add_action_widget(child: Widget, response_id: number):void
     add_button(button_text: string, response_id: number):Widget
-    add_buttons(first_button_text: string, ...args: any[]):void
+    add_buttons(first_button_text: string, ...args: any):void
     get_action_area():Widget
     get_content_area():Box
     get_header_bar():Widget
@@ -1759,7 +1766,7 @@ declare module "Gtk" {
     get_widget_for_response(response_id: number):Widget
     response(response_id: number):void
     run():number
-    set_alternative_button_order(first_response_id: number, ...args: any[]):void
+    set_alternative_button_order(first_response_id: number, ...args: any):void
     set_alternative_button_order_from_array(n_params: number, new_order: number[]):void
     set_default_response(response_id: number):void
     set_response_sensitive(response_id: number, setting: boolean):void
@@ -1769,28 +1776,28 @@ declare module "Gtk" {
   export class Entry extends Widget {
     constructor(buffer: EntryBuffer)
     get_activates_default():boolean
-    get_alignment():gfloat
-    get_attributes():Pango.AttrList
+    get_alignment():number
+    get_attributes():any
     get_buffer():EntryBuffer
     get_completion():EntryCompletion
     get_current_icon_drag_source():number
     get_cursor_hadjustment():Adjustment
     get_has_frame():boolean
     get_icon_activatable(icon_pos: EntryIconPosition):boolean
-    get_icon_area(icon_pos: EntryIconPosition, icon_area: Gdk.Rectangle):void
+    get_icon_area(icon_pos: EntryIconPosition, icon_area: any):void
     get_icon_at_pos(x: number, y: number):number
-    get_icon_gicon(icon_pos: EntryIconPosition):Gio.Icon
+    get_icon_gicon(icon_pos: EntryIconPosition):any
     get_icon_name(icon_pos: EntryIconPosition):string
-    get_icon_pixbuf(icon_pos: EntryIconPosition):GdkPixbuf.Pixbuf
+    get_icon_pixbuf(icon_pos: EntryIconPosition):any
     get_icon_sensitive(icon_pos: EntryIconPosition):boolean
     get_icon_stock(icon_pos: EntryIconPosition):string
     get_icon_storage_type(icon_pos: EntryIconPosition):ImageType
     get_icon_tooltip_markup(icon_pos: EntryIconPosition):string
     get_icon_tooltip_text(icon_pos: EntryIconPosition):string
-    get_inner_border():Border
+    get_inner_border():any
     get_input_hints():InputHints
     get_input_purpose():InputPurpose
-    get_invisible_char():gunichar
+    get_invisible_char():number
     get_layout():Pango.Layout
     get_layout_offsets(x: number, y: number):void
     get_max_length():number
@@ -1799,44 +1806,44 @@ declare module "Gtk" {
     get_placeholder_text():string
     get_progress_fraction():number
     get_progress_pulse_step():number
-    get_tabs():Pango.TabArray
+    get_tabs():any
     get_text():string
-    get_text_area(text_area: Gdk.Rectangle):void
-    get_text_length():guint16
+    get_text_area(text_area: any):void
+    get_text_length():number
     get_visibility():boolean
     get_width_chars():number
     grab_focus_without_selecting():void
-    im_context_filter_keypress(event: Gdk.EventKey):boolean
+    im_context_filter_keypress(event: any):boolean
     layout_index_to_text_index(layout_index: number):number
     progress_pulse():void
     reset_im_context():void
     set_activates_default(setting: boolean):void
-    set_alignment(xalign: gfloat):void
-    set_attributes(attrs: Pango.AttrList):void
+    set_alignment(xalign: number):void
+    set_attributes(attrs: any):void
     set_buffer(buffer: EntryBuffer):void
     set_completion(completion: EntryCompletion):void
     set_cursor_hadjustment(adjustment: Adjustment):void
     set_has_frame(setting: boolean):void
     set_icon_activatable(icon_pos: EntryIconPosition, activatable: boolean):void
-    set_icon_drag_source(icon_pos: EntryIconPosition, target_list: TargetList, actions: Gdk.DragAction):void
-    set_icon_from_gicon(icon_pos: EntryIconPosition, icon: Gio.Icon):void
+    set_icon_drag_source(icon_pos: EntryIconPosition, target_list: any, actions: Gdk.DragAction):void
+    set_icon_from_gicon(icon_pos: EntryIconPosition, icon: any):void
     set_icon_from_icon_name(icon_pos: EntryIconPosition, icon_name: string):void
-    set_icon_from_pixbuf(icon_pos: EntryIconPosition, pixbuf: GdkPixbuf.Pixbuf):void
+    set_icon_from_pixbuf(icon_pos: EntryIconPosition, pixbuf: any):void
     set_icon_from_stock(icon_pos: EntryIconPosition, stock_id: string):void
     set_icon_sensitive(icon_pos: EntryIconPosition, sensitive: boolean):void
     set_icon_tooltip_markup(icon_pos: EntryIconPosition, tooltip: string):void
     set_icon_tooltip_text(icon_pos: EntryIconPosition, tooltip: string):void
-    set_inner_border(border: Border):void
+    set_inner_border(border: any):void
     set_input_hints(hints: InputHints):void
     set_input_purpose(purpose: InputPurpose):void
-    set_invisible_char(ch: gunichar):void
+    set_invisible_char(ch: number):void
     set_max_length(max: number):void
     set_max_width_chars(n_chars: number):void
     set_overwrite_mode(overwrite: boolean):void
     set_placeholder_text(text: string):void
     set_progress_fraction(fraction: number):void
     set_progress_pulse_step(fraction: number):void
-    set_tabs(tabs: Pango.TabArray):void
+    set_tabs(tabs: any):void
     set_text(text: string):void
     set_visibility(visible: boolean):void
     set_width_chars(n_chars: number):void
@@ -1868,7 +1875,7 @@ declare module "Gtk" {
     get_inline_completion():boolean
     get_inline_selection():boolean
     get_minimum_key_length():number
-    get_model():TreeModel
+    get_model():any
     get_popup_completion():boolean
     get_popup_set_width():boolean
     get_popup_single_match():boolean
@@ -1878,9 +1885,9 @@ declare module "Gtk" {
     insert_prefix():void
     set_inline_completion(inline_completion: boolean):void
     set_inline_selection(inline_selection: boolean):void
-    set_match_func(func: EntryCompletionMatchFunc, func_data: any, func_notify: GLib.DestroyNotify):void
+    set_match_func(func: any, func_data: object, func_notify: any):void
     set_minimum_key_length(length: number):void
-    set_model(model: TreeModel):void
+    set_model(model: any):void
     set_popup_completion(popup_completion: boolean):void
     set_popup_set_width(popup_set_width: boolean):void
     set_popup_single_match(popup_single_match: boolean):void
@@ -1897,7 +1904,7 @@ declare module "Gtk" {
   export class EventController extends GObject.Object {
     get_propagation_phase():PropagationPhase
     get_widget():Widget
-    handle_event(event: Gdk.Event):boolean
+    handle_event(event: any):boolean
     reset():void
     set_propagation_phase(phase: PropagationPhase):void
   }
@@ -1934,17 +1941,17 @@ declare module "Gtk" {
     set_width_chars(n_chars: number):void
   }
   export class FileChooserDialog extends Dialog {
-    constructor(title: string, parent: Window, action: FileChooserAction, first_button_text: string, ...args: any[])
+    constructor(title: string, parent: Window, action: FileChooserAction, first_button_text: string, ...args: any)
   }
   export class FileChooserWidget extends Box {
     constructor(action: FileChooserAction)
   }
   export class FileFilter extends GObject.InitiallyUnowned {
-    add_custom(needed: FileFilterFlags, func: FileFilterFunc, data: any, notify: GLib.DestroyNotify):void
+    add_custom(needed: FileFilterFlags, func: any, data: object, notify: any):void
     add_mime_type(mime_type: string):void
     add_pattern(pattern: string):void
     add_pixbuf_formats():void
-    filter(filter_info: FileFilterInfo):boolean
+    filter(filter_info: any):boolean
     get_name():string
     get_needed():FileFilterFlags
     set_name(name: string):void
@@ -1954,7 +1961,7 @@ declare module "Gtk" {
     put(widget: Widget, x: number, y: number):void
   }
   export class FlowBox extends Container {
-    bind_model(model: Gio.ListModel, create_widget_func: FlowBoxCreateWidgetFunc, user_data: any, user_data_free_func: GLib.DestroyNotify):void
+    bind_model(model: any, create_widget_func: any, user_data: object, user_data_free_func: any):void
     get_activate_on_single_click():boolean
     get_child_at_index(idx: number):FlowBoxChild
     get_column_spacing():number
@@ -1962,24 +1969,24 @@ declare module "Gtk" {
     get_max_children_per_line():number
     get_min_children_per_line():number
     get_row_spacing():number
-    get_selected_children():GLib.List
+    get_selected_children():any
     get_selection_mode():SelectionMode
     insert(widget: Widget, position: number):void
     invalidate_filter():void
     invalidate_sort():void
     select_all():void
     select_child(child: FlowBoxChild):void
-    selected_foreach(func: FlowBoxForeachFunc, data: any):void
+    selected_foreach(func: any, data: object):void
     set_activate_on_single_click(single: boolean):void
     set_column_spacing(spacing: number):void
-    set_filter_func(filter_func: FlowBoxFilterFunc, user_data: any, destroy: GLib.DestroyNotify):void
+    set_filter_func(filter_func: any, user_data: object, destroy: any):void
     set_hadjustment(adjustment: Adjustment):void
     set_homogeneous(homogeneous: boolean):void
     set_max_children_per_line(n_children: number):void
     set_min_children_per_line(n_children: number):void
     set_row_spacing(spacing: number):void
     set_selection_mode(mode: SelectionMode):void
-    set_sort_func(sort_func: FlowBoxSortFunc, user_data: any, destroy: GLib.DestroyNotify):void
+    set_sort_func(sort_func: any, user_data: object, destroy: any):void
     set_vadjustment(adjustment: Adjustment):void
     unselect_all():void
     unselect_child(child: FlowBoxChild):void
@@ -2040,11 +2047,11 @@ declare module "Gtk" {
   export class Frame extends Bin {
     constructor(label: string)
     get_label():string
-    get_label_align(xalign: gfloat, yalign: gfloat):void
+    get_label_align(xalign: number, yalign: number):void
     get_label_widget():Widget
     get_shadow_type():ShadowType
     set_label(label: string):void
-    set_label_align(xalign: gfloat, yalign: gfloat):void
+    set_label_align(xalign: number, yalign: number):void
     set_label_widget(label_widget: Widget):void
     set_shadow_type(type: ShadowType):void
   }
@@ -2054,7 +2061,7 @@ declare module "Gtk" {
     attach_buffers():void
     get_auto_render():boolean
     get_context():Gdk.GLContext
-    get_error():GLib.Error
+    get_error():any
     get_has_alpha():boolean
     get_has_depth_buffer():boolean
     get_has_stencil_buffer():boolean
@@ -2062,29 +2069,29 @@ declare module "Gtk" {
     make_current():void
     queue_render():void
     set_auto_render(auto_render: boolean):void
-    set_error(error: GLib.Error):void
+    set_error(error: any):void
     set_has_alpha(has_alpha: boolean):void
     set_has_depth_buffer(has_depth_buffer: boolean):void
     set_has_stencil_buffer(has_stencil_buffer: boolean):void
     set_required_version(major: number, minor: number):void
   }
   export class Gesture extends EventController {
-    get_bounding_box(rect: Gdk.Rectangle):boolean
+    get_bounding_box(rect: any):boolean
     get_bounding_box_center(x: number, y: number):boolean
     get_device():Gdk.Device
-    get_group():GLib.List
-    get_last_event(sequence: Gdk.EventSequence):Gdk.Event
-    get_last_updated_sequence():Gdk.EventSequence
-    get_point(sequence: Gdk.EventSequence, x: number, y: number):boolean
-    get_sequence_state(sequence: Gdk.EventSequence):EventSequenceState
-    get_sequences():GLib.List
+    get_group():any
+    get_last_event(sequence: any):any
+    get_last_updated_sequence():any
+    get_point(sequence: any, x: number, y: number):boolean
+    get_sequence_state(sequence: any):EventSequenceState
+    get_sequences():any
     get_window():Gdk.Window
     group(gesture: Gesture):void
-    handles_sequence(sequence: Gdk.EventSequence):boolean
+    handles_sequence(sequence: any):boolean
     is_active():boolean
     is_grouped_with(other: Gesture):boolean
     is_recognized():boolean
-    set_sequence_state(sequence: Gdk.EventSequence, state: EventSequenceState):boolean
+    set_sequence_state(sequence: any, state: EventSequenceState):boolean
     set_state(state: EventSequenceState):boolean
     set_window(window: Gdk.Window):void
     ungroup():void
@@ -2099,8 +2106,8 @@ declare module "Gtk" {
   }
   export class GestureMultiPress extends GestureSingle {
     constructor(widget: Widget)
-    get_area(rect: Gdk.Rectangle):boolean
-    set_area(rect: Gdk.Rectangle):void
+    get_area(rect: any):boolean
+    set_area(rect: any):void
   }
   export class GesturePan extends GestureDrag {
     constructor(widget: Widget, orientation: Orientation)
@@ -2114,7 +2121,7 @@ declare module "Gtk" {
   export class GestureSingle extends Gesture {
     get_button():number
     get_current_button():number
-    get_current_sequence():Gdk.EventSequence
+    get_current_sequence():any
     get_exclusive():boolean
     get_touch_only():boolean
     set_button(button: number):void
@@ -2201,19 +2208,19 @@ declare module "Gtk" {
   }
   export class IMContext extends GObject.Object {
     delete_surrounding(offset: number, n_chars: number):boolean
-    filter_keypress(event: Gdk.EventKey):boolean
+    filter_keypress(event: any):boolean
     focus_in():void
     focus_out():void
-    get_preedit_string(str: string, attrs: Pango.AttrList, cursor_pos: number):void
+    get_preedit_string(str: string, attrs: any, cursor_pos: number):void
     get_surrounding(text: string, cursor_index: number):boolean
     reset():void
     set_client_window(window: Gdk.Window):void
-    set_cursor_location(area: Gdk.Rectangle):void
+    set_cursor_location(area: any):void
     set_surrounding(text: string, len: number, cursor_index: number):void
     set_use_preedit(use_preedit: boolean):void
   }
   export class IMContextSimple extends IMContext {
-    add_table(data: guint16[], max_seq_len: number, n_seqs: number):void
+    add_table(data: number[], max_seq_len: number, n_seqs: number):void
   }
   export class IMMulticontext extends IMContext {
     append_menuitems(menushell: MenuShell):void
@@ -2221,155 +2228,155 @@ declare module "Gtk" {
     set_context_id(context_id: string):void
   }
   export class IconFactory extends GObject.Object {
-    add(stock_id: string, icon_set: IconSet):void
+    add(stock_id: string, icon_set: any):void
     add_default():void
-    lookup(stock_id: string):IconSet
+    lookup(stock_id: string):any
     remove_default():void
   }
   export class IconInfo extends GObject.Object {
-    constructor(icon_theme: IconTheme, pixbuf: GdkPixbuf.Pixbuf)
+    constructor(icon_theme: IconTheme, pixbuf: any)
     copy():IconInfo
     free():void
-    get_attach_points(points: Gdk.Point[], n_points: number):boolean
+    get_attach_points(points: any[], n_points: number):boolean
     get_base_scale():number
     get_base_size():number
-    get_builtin_pixbuf():GdkPixbuf.Pixbuf
+    get_builtin_pixbuf():any
     get_display_name():string
-    get_embedded_rect(rectangle: Gdk.Rectangle):boolean
-    get_filename():filename
+    get_embedded_rect(rectangle: any):boolean
+    get_filename():any
     is_symbolic():boolean
-    load_icon():GdkPixbuf.Pixbuf
-    load_icon_async(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback, user_data: any):void
-    load_icon_finish(res: Gio.AsyncResult):GdkPixbuf.Pixbuf
-    load_surface(for_window: Gdk.Window):cairo.Surface
-    load_symbolic(fg: Gdk.RGBA, success_color: Gdk.RGBA, warning_color: Gdk.RGBA, error_color: Gdk.RGBA, was_symbolic: boolean):GdkPixbuf.Pixbuf
-    load_symbolic_async(fg: Gdk.RGBA, success_color: Gdk.RGBA, warning_color: Gdk.RGBA, error_color: Gdk.RGBA, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback, user_data: any):void
-    load_symbolic_finish(res: Gio.AsyncResult, was_symbolic: boolean):GdkPixbuf.Pixbuf
-    load_symbolic_for_context(context: StyleContext, was_symbolic: boolean):GdkPixbuf.Pixbuf
-    load_symbolic_for_context_async(context: StyleContext, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback, user_data: any):void
-    load_symbolic_for_context_finish(res: Gio.AsyncResult, was_symbolic: boolean):GdkPixbuf.Pixbuf
-    load_symbolic_for_style(style: Style, state: StateType, was_symbolic: boolean):GdkPixbuf.Pixbuf
+    load_icon():any
+    load_icon_async(cancellable: Gio.Cancellable, callback: any, user_data: object):void
+    load_icon_finish(res: any):any
+    load_surface(for_window: Gdk.Window):any
+    load_symbolic(fg: any, success_color: any, warning_color: any, error_color: any, was_symbolic: boolean):any
+    load_symbolic_async(fg: any, success_color: any, warning_color: any, error_color: any, cancellable: Gio.Cancellable, callback: any, user_data: object):void
+    load_symbolic_finish(res: any, was_symbolic: boolean):any
+    load_symbolic_for_context(context: StyleContext, was_symbolic: boolean):any
+    load_symbolic_for_context_async(context: StyleContext, cancellable: Gio.Cancellable, callback: any, user_data: object):void
+    load_symbolic_for_context_finish(res: any, was_symbolic: boolean):any
+    load_symbolic_for_style(style: Style, state: StateType, was_symbolic: boolean):any
     set_raw_coordinates(raw_coordinates: boolean):void
   }
   export class IconTheme extends GObject.Object {
     add_resource_path(path: string):void
-    append_search_path(path: filename):void
+    append_search_path(path: any):void
     choose_icon(icon_names: string[], size: number, flags: IconLookupFlags):IconInfo
     choose_icon_for_scale(icon_names: string[], size: number, scale: number, flags: IconLookupFlags):IconInfo
     get_example_icon_name():string
     get_icon_sizes(icon_name: string):number[]
-    get_search_path(path: filename[], n_elements: number):void
+    get_search_path(path: any[], n_elements: number):void
     has_icon(icon_name: string):boolean
-    list_contexts():GLib.List
-    list_icons(context: string):GLib.List
-    load_icon(icon_name: string, size: number, flags: IconLookupFlags):GdkPixbuf.Pixbuf
-    load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags):GdkPixbuf.Pixbuf
-    load_surface(icon_name: string, size: number, scale: number, for_window: Gdk.Window, flags: IconLookupFlags):cairo.Surface
-    lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags):IconInfo
-    lookup_by_gicon_for_scale(icon: Gio.Icon, size: number, scale: number, flags: IconLookupFlags):IconInfo
+    list_contexts():any
+    list_icons(context: string):any
+    load_icon(icon_name: string, size: number, flags: IconLookupFlags):any
+    load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags):any
+    load_surface(icon_name: string, size: number, scale: number, for_window: Gdk.Window, flags: IconLookupFlags):any
+    lookup_by_gicon(icon: any, size: number, flags: IconLookupFlags):IconInfo
+    lookup_by_gicon_for_scale(icon: any, size: number, scale: number, flags: IconLookupFlags):IconInfo
     lookup_icon(icon_name: string, size: number, flags: IconLookupFlags):IconInfo
     lookup_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags):IconInfo
-    prepend_search_path(path: filename):void
+    prepend_search_path(path: any):void
     rescan_if_needed():boolean
     set_custom_theme(theme_name: string):void
     set_screen(screen: Gdk.Screen):void
-    set_search_path(path: filename[], n_elements: number):void
+    set_search_path(path: any[], n_elements: number):void
   }
   export class IconView extends Container {
     constructor(area: CellArea)
-    constructor(model: TreeModel)
+    constructor(model: any)
     convert_widget_to_bin_window_coords(wx: number, wy: number, bx: number, by: number):void
-    create_drag_icon(path: TreePath):cairo.Surface
-    enable_model_drag_dest(targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
-    enable_model_drag_source(start_button_mask: Gdk.ModifierType, targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
+    create_drag_icon(path: any):any
+    enable_model_drag_dest(targets: any[], n_targets: number, actions: Gdk.DragAction):void
+    enable_model_drag_source(start_button_mask: Gdk.ModifierType, targets: any[], n_targets: number, actions: Gdk.DragAction):void
     get_activate_on_single_click():boolean
-    get_cell_rect(path: TreePath, cell: CellRenderer, rect: Gdk.Rectangle):boolean
+    get_cell_rect(path: any, cell: CellRenderer, rect: any):boolean
     get_column_spacing():number
     get_columns():number
-    get_cursor(path: TreePath, cell: CellRenderer):boolean
-    get_dest_item_at_pos(drag_x: number, drag_y: number, path: TreePath, pos: IconViewDropPosition):boolean
-    get_drag_dest_item(path: TreePath, pos: IconViewDropPosition):void
-    get_item_at_pos(x: number, y: number, path: TreePath, cell: CellRenderer):boolean
-    get_item_column(path: TreePath):number
+    get_cursor(path: any, cell: CellRenderer):boolean
+    get_dest_item_at_pos(drag_x: number, drag_y: number, path: any, pos: IconViewDropPosition):boolean
+    get_drag_dest_item(path: any, pos: IconViewDropPosition):void
+    get_item_at_pos(x: number, y: number, path: any, cell: CellRenderer):boolean
+    get_item_column(path: any):number
     get_item_orientation():Orientation
     get_item_padding():number
-    get_item_row(path: TreePath):number
+    get_item_row(path: any):number
     get_item_width():number
     get_margin():number
     get_markup_column():number
-    get_model():TreeModel
-    get_path_at_pos(x: number, y: number):TreePath
+    get_model():any
+    get_path_at_pos(x: number, y: number):any
     get_pixbuf_column():number
     get_reorderable():boolean
     get_row_spacing():number
-    get_selected_items():GLib.List
+    get_selected_items():any
     get_selection_mode():SelectionMode
     get_spacing():number
     get_text_column():number
     get_tooltip_column():number
-    get_tooltip_context(x: number, y: number, keyboard_tip: boolean, model: TreeModel, path: TreePath, iter: TreeIter):boolean
-    get_visible_range(start_path: TreePath, end_path: TreePath):boolean
-    item_activated(path: TreePath):void
-    path_is_selected(path: TreePath):boolean
-    scroll_to_path(path: TreePath, use_align: boolean, row_align: gfloat, col_align: gfloat):void
+    get_tooltip_context(x: number, y: number, keyboard_tip: boolean, model: any, path: any, iter: any):boolean
+    get_visible_range(start_path: any, end_path: any):boolean
+    item_activated(path: any):void
+    path_is_selected(path: any):boolean
+    scroll_to_path(path: any, use_align: boolean, row_align: number, col_align: number):void
     select_all():void
-    select_path(path: TreePath):void
-    selected_foreach(func: IconViewForeachFunc, data: any):void
+    select_path(path: any):void
+    selected_foreach(func: any, data: object):void
     set_activate_on_single_click(single: boolean):void
     set_column_spacing(column_spacing: number):void
     set_columns(columns: number):void
-    set_cursor(path: TreePath, cell: CellRenderer, start_editing: boolean):void
-    set_drag_dest_item(path: TreePath, pos: IconViewDropPosition):void
+    set_cursor(path: any, cell: CellRenderer, start_editing: boolean):void
+    set_drag_dest_item(path: any, pos: IconViewDropPosition):void
     set_item_orientation(orientation: Orientation):void
     set_item_padding(item_padding: number):void
     set_item_width(item_width: number):void
     set_margin(margin: number):void
     set_markup_column(column: number):void
-    set_model(model: TreeModel):void
+    set_model(model: any):void
     set_pixbuf_column(column: number):void
     set_reorderable(reorderable: boolean):void
     set_row_spacing(row_spacing: number):void
     set_selection_mode(mode: SelectionMode):void
     set_spacing(spacing: number):void
     set_text_column(column: number):void
-    set_tooltip_cell(tooltip: Tooltip, path: TreePath, cell: CellRenderer):void
+    set_tooltip_cell(tooltip: Tooltip, path: any, cell: CellRenderer):void
     set_tooltip_column(column: number):void
-    set_tooltip_item(tooltip: Tooltip, path: TreePath):void
+    set_tooltip_item(tooltip: Tooltip, path: any):void
     unselect_all():void
-    unselect_path(path: TreePath):void
+    unselect_path(path: any):void
     unset_model_drag_dest():void
     unset_model_drag_source():void
   }
   export class IconViewAccessible extends ContainerAccessible {
   }
   export class Image extends Misc {
-    constructor(animation: GdkPixbuf.PixbufAnimation)
-    constructor(filename: filename)
-    constructor(icon: Gio.Icon, size: number)
+    constructor(animation: any)
+    constructor(filename: any)
+    constructor(icon: any, size: number)
     constructor(icon_name: string, size: number)
-    constructor(icon_set: IconSet, size: number)
-    constructor(pixbuf: GdkPixbuf.Pixbuf)
+    constructor(icon_set: any, size: number)
+    constructor(pixbuf: any)
     constructor(resource_path: string)
     constructor(stock_id: string, size: number)
-    constructor(surface: cairo.Surface)
+    constructor(surface: any)
     clear():void
-    get_animation():GdkPixbuf.PixbufAnimation
-    get_gicon(gicon: Gio.Icon, size: number):void
+    get_animation():any
+    get_gicon(gicon: any, size: number):void
     get_icon_name(icon_name: string, size: number):void
-    get_icon_set(icon_set: IconSet, size: number):void
-    get_pixbuf():GdkPixbuf.Pixbuf
+    get_icon_set(icon_set: any, size: number):void
+    get_pixbuf():any
     get_pixel_size():number
     get_stock(stock_id: string, size: number):void
     get_storage_type():ImageType
-    set_from_animation(animation: GdkPixbuf.PixbufAnimation):void
-    set_from_file(filename: filename):void
-    set_from_gicon(icon: Gio.Icon, size: number):void
+    set_from_animation(animation: any):void
+    set_from_file(filename: any):void
+    set_from_gicon(icon: any, size: number):void
     set_from_icon_name(icon_name: string, size: number):void
-    set_from_icon_set(icon_set: IconSet, size: number):void
-    set_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf):void
+    set_from_icon_set(icon_set: any, size: number):void
+    set_from_pixbuf(pixbuf: any):void
     set_from_resource(resource_path: string):void
     set_from_stock(stock_id: string, size: number):void
-    set_from_surface(surface: cairo.Surface):void
+    set_from_surface(surface: any):void
     set_pixel_size(pixel_size: number):void
   }
   export class ImageAccessible extends WidgetAccessible {
@@ -2389,10 +2396,10 @@ declare module "Gtk" {
     set_use_stock(use_stock: boolean):void
   }
   export class InfoBar extends Box {
-    constructor(first_button_text: string, ...args: any[])
+    constructor(first_button_text: string, ...args: any)
     add_action_widget(child: Widget, response_id: number):void
     add_button(button_text: string, response_id: number):Button
-    add_buttons(first_button_text: string, ...args: any[]):void
+    add_buttons(first_button_text: string, ...args: any):void
     get_action_area():Widget
     get_content_area():Widget
     get_message_type():MessageType
@@ -2412,7 +2419,7 @@ declare module "Gtk" {
     constructor(str: string)
     constructor(str: string)
     get_angle():number
-    get_attributes():Pango.AttrList
+    get_attributes():any
     get_current_uri():string
     get_ellipsize():Pango.EllipsizeMode
     get_justify():Justification
@@ -2433,11 +2440,11 @@ declare module "Gtk" {
     get_use_markup():boolean
     get_use_underline():boolean
     get_width_chars():number
-    get_xalign():gfloat
-    get_yalign():gfloat
+    get_xalign():number
+    get_yalign():number
     select_region(start_offset: number, end_offset: number):void
     set_angle(angle: number):void
-    set_attributes(attrs: Pango.AttrList):void
+    set_attributes(attrs: any):void
     set_ellipsize(mode: Pango.EllipsizeMode):void
     set_justify(jtype: Justification):void
     set_label(str: string):void
@@ -2457,8 +2464,8 @@ declare module "Gtk" {
     set_use_markup(setting: boolean):void
     set_use_underline(setting: boolean):void
     set_width_chars(n_chars: number):void
-    set_xalign(xalign: gfloat):void
-    set_yalign(yalign: gfloat):void
+    set_xalign(xalign: number):void
+    set_yalign(yalign: number):void
   }
   export class LabelAccessible extends WidgetAccessible {
   }
@@ -2503,7 +2510,7 @@ declare module "Gtk" {
   export class LinkButtonAccessible extends ButtonAccessible {
   }
   export class ListBox extends Container {
-    bind_model(model: Gio.ListModel, create_widget_func: ListBoxCreateWidgetFunc, user_data: any, user_data_free_func: GLib.DestroyNotify):void
+    bind_model(model: any, create_widget_func: any, user_data: object, user_data_free_func: any):void
     drag_highlight_row(row: ListBoxRow):void
     drag_unhighlight_row():void
     get_activate_on_single_click():boolean
@@ -2511,7 +2518,7 @@ declare module "Gtk" {
     get_row_at_index(index_: number):ListBoxRow
     get_row_at_y(y: number):ListBoxRow
     get_selected_row():ListBoxRow
-    get_selected_rows():GLib.List
+    get_selected_rows():any
     get_selection_mode():SelectionMode
     insert(child: Widget, position: number):void
     invalidate_filter():void
@@ -2520,14 +2527,14 @@ declare module "Gtk" {
     prepend(child: Widget):void
     select_all():void
     select_row(row: ListBoxRow):void
-    selected_foreach(func: ListBoxForeachFunc, data: any):void
+    selected_foreach(func: any, data: object):void
     set_activate_on_single_click(single: boolean):void
     set_adjustment(adjustment: Adjustment):void
-    set_filter_func(filter_func: ListBoxFilterFunc, user_data: any, destroy: GLib.DestroyNotify):void
-    set_header_func(update_header: ListBoxUpdateHeaderFunc, user_data: any, destroy: GLib.DestroyNotify):void
+    set_filter_func(filter_func: any, user_data: object, destroy: any):void
+    set_header_func(update_header: any, user_data: object, destroy: any):void
     set_placeholder(placeholder: Widget):void
     set_selection_mode(mode: SelectionMode):void
-    set_sort_func(sort_func: ListBoxSortFunc, user_data: any, destroy: GLib.DestroyNotify):void
+    set_sort_func(sort_func: any, user_data: object, destroy: any):void
     unselect_all():void
     unselect_row(row: ListBoxRow):void
   }
@@ -2547,27 +2554,27 @@ declare module "Gtk" {
   export class ListBoxRowAccessible extends ContainerAccessible {
   }
   export class ListStore extends GObject.Object {
-    constructor(n_columns: number, ...args: any[])
-    constructor(n_columns: number, types: number[])
-    append(iter: TreeIter):void
+    constructor(n_columns: number, ...args: any)
+    constructor(n_columns: number, types: any[])
+    append(iter: any):void
     clear():void
-    insert(iter: TreeIter, position: number):void
-    insert_after(iter: TreeIter, sibling: TreeIter):void
-    insert_before(iter: TreeIter, sibling: TreeIter):void
-    insert_with_values(iter: TreeIter, position: number, ...args: any[]):void
-    insert_with_valuesv(iter: TreeIter, position: number, columns: number[], values: GObject.Value[], n_values: number):void
-    iter_is_valid(iter: TreeIter):boolean
-    move_after(iter: TreeIter, position: TreeIter):void
-    move_before(iter: TreeIter, position: TreeIter):void
-    prepend(iter: TreeIter):void
-    remove(iter: TreeIter):boolean
+    insert(iter: any, position: number):void
+    insert_after(iter: any, sibling: any):void
+    insert_before(iter: any, sibling: any):void
+    insert_with_values(iter: any, position: number, ...args: any):void
+    insert_with_valuesv(iter: any, position: number, columns: number[], values: any[], n_values: number):void
+    iter_is_valid(iter: any):boolean
+    move_after(iter: any, position: any):void
+    move_before(iter: any, position: any):void
+    prepend(iter: any):void
+    remove(iter: any):boolean
     reorder(new_order: number[]):void
-    set(iter: TreeIter, ...args: any[]):void
-    set_column_types(n_columns: number, types: number[]):void
-    set_valist(iter: TreeIter, var_args: any):void
-    set_value(iter: TreeIter, column: number, value: GObject.Value):void
-    set_valuesv(iter: TreeIter, columns: number[], values: GObject.Value[], n_values: number):void
-    swap(a: TreeIter, b: TreeIter):void
+    set(iter: any, ...args: any):void
+    set_column_types(n_columns: number, types: any[]):void
+    set_valist(iter: any, var_args: any):void
+    set_value(iter: any, column: number, value: any):void
+    set_valuesv(iter: any, columns: number[], values: any[], n_values: number):void
+    swap(a: any, b: any):void
   }
   export class LockButton extends Button {
     constructor(permission: Gio.Permission)
@@ -2579,7 +2586,7 @@ declare module "Gtk" {
   export class Menu extends MenuShell {
     constructor(model: Gio.MenuModel)
     attach(child: Widget, left_attach: number, right_attach: number, top_attach: number, bottom_attach: number):void
-    attach_to_widget(attach_widget: Widget, detacher: MenuDetachFunc):void
+    attach_to_widget(attach_widget: Widget, detacher: any):void
     detach():void
     get_accel_group():AccelGroup
     get_accel_path():string
@@ -2590,8 +2597,8 @@ declare module "Gtk" {
     get_tearoff_state():boolean
     get_title():string
     popdown():void
-    popup(parent_menu_shell: Widget, parent_menu_item: Widget, func: MenuPositionFunc, data: any, button: number, activate_time: guint32):void
-    popup_for_device(device: Gdk.Device, parent_menu_shell: Widget, parent_menu_item: Widget, func: MenuPositionFunc, data: any, destroy: GLib.DestroyNotify, button: number, activate_time: guint32):void
+    popup(parent_menu_shell: Widget, parent_menu_item: Widget, func: any, data: object, button: number, activate_time: number):void
+    popup_for_device(device: Gdk.Device, parent_menu_shell: Widget, parent_menu_item: Widget, func: any, data: object, destroy: any, button: number, activate_time: number):void
     reorder_child(child: Widget, position: number):void
     reposition():void
     set_accel_group(accel_group: AccelGroup):void
@@ -2678,19 +2685,19 @@ declare module "Gtk" {
     set_menu(menu: Widget):void
   }
   export class MessageDialog extends Dialog {
-    constructor(parent: Window, flags: DialogFlags, type: MessageType, buttons: ButtonsType, message_format: string, ...args: any[])
-    constructor(parent: Window, flags: DialogFlags, type: MessageType, buttons: ButtonsType, message_format: string, ...args: any[])
-    format_secondary_markup(message_format: string, ...args: any[]):void
-    format_secondary_text(message_format: string, ...args: any[]):void
+    constructor(parent: Window, flags: DialogFlags, type: MessageType, buttons: ButtonsType, message_format: string, ...args: any)
+    constructor(parent: Window, flags: DialogFlags, type: MessageType, buttons: ButtonsType, message_format: string, ...args: any)
+    format_secondary_markup(message_format: string, ...args: any):void
+    format_secondary_text(message_format: string, ...args: any):void
     get_image():Widget
     get_message_area():Widget
     set_image(image: Widget):void
     set_markup(str: string):void
   }
   export class Misc extends Widget {
-    get_alignment(xalign: gfloat, yalign: gfloat):void
+    get_alignment(xalign: number, yalign: number):void
     get_padding(xpad: number, ypad: number):void
-    set_alignment(xalign: gfloat, yalign: gfloat):void
+    set_alignment(xalign: number, yalign: number):void
     set_padding(xpad: number, ypad: number):void
   }
   export class ModelButton extends Button {
@@ -2718,12 +2725,12 @@ declare module "Gtk" {
     get_show_border():boolean
     get_show_tabs():boolean
     get_tab_detachable(child: Widget):boolean
-    get_tab_hborder():guint16
+    get_tab_hborder():number
     get_tab_label(child: Widget):Widget
     get_tab_label_text(child: Widget):string
     get_tab_pos():PositionType
     get_tab_reorderable(child: Widget):boolean
-    get_tab_vborder():guint16
+    get_tab_vborder():number
     insert_page(child: Widget, tab_label: Widget, position: number):number
     insert_page_menu(child: Widget, tab_label: Widget, menu_label: Widget, position: number):number
     next_page():void
@@ -2756,20 +2763,20 @@ declare module "Gtk" {
     invalidate():void
   }
   export class NumerableIcon extends Gio.EmblemedIcon {
-    get_background_gicon():Gio.Icon
+    get_background_gicon():any
     get_background_icon_name():string
     get_count():number
     get_label():string
     get_style_context():StyleContext
-    set_background_gicon(icon: Gio.Icon):void
+    set_background_gicon(icon: any):void
     set_background_icon_name(icon_name: string):void
     set_count(count: number):void
     set_label(label: string):void
     set_style_context(style: StyleContext):void
   }
   export class OffscreenWindow extends Window {
-    get_pixbuf():GdkPixbuf.Pixbuf
-    get_surface():cairo.Surface
+    get_pixbuf():any
+    get_surface():any
   }
   export class Overlay extends Bin {
     add_overlay(widget: Widget):void
@@ -2778,8 +2785,8 @@ declare module "Gtk" {
     set_overlay_pass_through(widget: Widget, pass_through: boolean):void
   }
   export class PageSetup extends GObject.Object {
-    constructor(file_name: filename)
-    constructor(key_file: GLib.KeyFile, group_name: string)
+    constructor(file_name: any)
+    constructor(key_file: any, group_name: string)
     copy():PageSetup
     get_bottom_margin(unit: Unit):number
     get_left_margin(unit: Unit):number
@@ -2787,21 +2794,21 @@ declare module "Gtk" {
     get_page_height(unit: Unit):number
     get_page_width(unit: Unit):number
     get_paper_height(unit: Unit):number
-    get_paper_size():PaperSize
+    get_paper_size():any
     get_paper_width(unit: Unit):number
     get_right_margin(unit: Unit):number
     get_top_margin(unit: Unit):number
-    load_file(file_name: filename):boolean
-    load_key_file(key_file: GLib.KeyFile, group_name: string):boolean
+    load_file(file_name: any):boolean
+    load_key_file(key_file: any, group_name: string):boolean
     set_bottom_margin(margin: number, unit: Unit):void
     set_left_margin(margin: number, unit: Unit):void
     set_orientation(orientation: PageOrientation):void
-    set_paper_size(size: PaperSize):void
-    set_paper_size_and_default_margins(size: PaperSize):void
+    set_paper_size(size: any):void
+    set_paper_size_and_default_margins(size: any):void
     set_right_margin(margin: number, unit: Unit):void
     set_top_margin(margin: number, unit: Unit):void
-    to_file(file_name: filename):boolean
-    to_key_file(key_file: GLib.KeyFile, group_name: string):void
+    to_file(file_name: any):boolean
+    to_key_file(key_file: any, group_name: string):void
   }
   export class Paned extends Container {
     constructor(orientation: Orientation)
@@ -2820,10 +2827,10 @@ declare module "Gtk" {
   export class PanedAccessible extends ContainerAccessible {
   }
   export class PlacesSidebar extends ScrolledWindow {
-    add_shortcut(location: Gio.File):void
+    add_shortcut(location: any):void
     get_local_only():boolean
-    get_location():Gio.File
-    get_nth_bookmark(n: number):Gio.File
+    get_location():any
+    get_nth_bookmark(n: number):any
     get_open_flags():PlacesOpenFlags
     get_show_connect_to_server():boolean
     get_show_desktop():boolean
@@ -2831,11 +2838,11 @@ declare module "Gtk" {
     get_show_other_locations():boolean
     get_show_recent():boolean
     get_show_trash():boolean
-    list_shortcuts():GLib.SList
-    remove_shortcut(location: Gio.File):void
+    list_shortcuts():any
+    remove_shortcut(location: any):void
     set_drop_targets_visible(visible: boolean, context: Gdk.DragContext):void
     set_local_only(local_only: boolean):void
-    set_location(location: Gio.File):void
+    set_location(location: any):void
     set_open_flags(flags: PlacesOpenFlags):void
     set_show_connect_to_server(show_connect_to_server: boolean):void
     set_show_desktop(show_desktop: boolean):void
@@ -2845,12 +2852,12 @@ declare module "Gtk" {
     set_show_trash(show_trash: boolean):void
   }
   export class Plug extends Window {
-    constructor(socket_id: xlib.Window)
-    constructor(display: Gdk.Display, socket_id: xlib.Window)
-    construct(socket_id: xlib.Window):void
-    construct_for_display(display: Gdk.Display, socket_id: xlib.Window):void
+    constructor(socket_id: any)
+    constructor(display: Gdk.Display, socket_id: any)
+    construct(socket_id: any):void
+    construct_for_display(display: Gdk.Display, socket_id: any):void
     get_embedded():boolean
-    get_id():xlib.Window
+    get_id():any
     get_socket_window():Gdk.Window
   }
   export class Popover extends Bin {
@@ -2859,13 +2866,13 @@ declare module "Gtk" {
     bind_model(model: Gio.MenuModel, action_namespace: string):void
     get_default_widget():Widget
     get_modal():boolean
-    get_pointing_to(rect: Gdk.Rectangle):boolean
+    get_pointing_to(rect: any):boolean
     get_position():PositionType
     get_relative_to():Widget
     get_transitions_enabled():boolean
     set_default_widget(widget: Widget):void
     set_modal(modal: boolean):void
-    set_pointing_to(rect: Gdk.Rectangle):void
+    set_pointing_to(rect: any):void
     set_position(position: PositionType):void
     set_relative_to(relative_to: Widget):void
     set_transitions_enabled(transitions_enabled: boolean):void
@@ -2878,7 +2885,7 @@ declare module "Gtk" {
   export class PrintContext extends GObject.Object {
     create_pango_context():Pango.Context
     create_pango_layout():Pango.Layout
-    get_cairo_context():cairo.Context
+    get_cairo_context():any
     get_dpi_x():number
     get_dpi_y():number
     get_hard_margins(top: number, bottom: number, left: number, right: number):boolean
@@ -2886,7 +2893,7 @@ declare module "Gtk" {
     get_page_setup():PageSetup
     get_pango_fontmap():Pango.FontMap
     get_width():number
-    set_cairo_context(cr: cairo.Context, dpi_x: number, dpi_y: number):void
+    set_cairo_context(cr: any, dpi_x: number, dpi_y: number):void
   }
   export class PrintOperation extends GObject.Object {
     cancel():void
@@ -2908,7 +2915,7 @@ declare module "Gtk" {
     set_default_page_setup(default_page_setup: PageSetup):void
     set_defer_drawing():void
     set_embed_page_setup(embed: boolean):void
-    set_export_filename(filename: filename):void
+    set_export_filename(filename: any):void
     set_has_selection(has_selection: boolean):void
     set_job_name(job_name: string):void
     set_n_pages(n_pages: number):void
@@ -2920,10 +2927,10 @@ declare module "Gtk" {
     set_use_full_page(full_page: boolean):void
   }
   export class PrintSettings extends GObject.Object {
-    constructor(file_name: filename)
-    constructor(key_file: GLib.KeyFile, group_name: string)
+    constructor(file_name: any)
+    constructor(key_file: any, group_name: string)
     copy():PrintSettings
-    foreach(func: PrintSettingsFunc, user_data: any):void
+    foreach(func: any, user_data: object):void
     get(key: string):string
     get_bool(key: string):boolean
     get_collate():boolean
@@ -2942,10 +2949,10 @@ declare module "Gtk" {
     get_number_up_layout():NumberUpLayout
     get_orientation():PageOrientation
     get_output_bin():string
-    get_page_ranges(num_ranges: number):PageRange[]
+    get_page_ranges(num_ranges: number):any[]
     get_page_set():PageSet
     get_paper_height(unit: Unit):number
-    get_paper_size():PaperSize
+    get_paper_size():any
     get_paper_width(unit: Unit):number
     get_print_pages():PrintPages
     get_printer():string
@@ -2958,8 +2965,8 @@ declare module "Gtk" {
     get_scale():number
     get_use_color():boolean
     has_key(key: string):boolean
-    load_file(file_name: filename):boolean
-    load_key_file(key_file: GLib.KeyFile, group_name: string):boolean
+    load_file(file_name: any):boolean
+    load_key_file(key_file: any, group_name: string):boolean
     set(key: string, value: string):void
     set_bool(key: string, value: boolean):void
     set_collate(collate: boolean):void
@@ -2976,10 +2983,10 @@ declare module "Gtk" {
     set_number_up_layout(number_up_layout: NumberUpLayout):void
     set_orientation(orientation: PageOrientation):void
     set_output_bin(output_bin: string):void
-    set_page_ranges(page_ranges: PageRange[], num_ranges: number):void
+    set_page_ranges(page_ranges: any[], num_ranges: number):void
     set_page_set(page_set: PageSet):void
     set_paper_height(height: number, unit: Unit):void
-    set_paper_size(paper_size: PaperSize):void
+    set_paper_size(paper_size: any):void
     set_paper_width(width: number, unit: Unit):void
     set_print_pages(pages: PrintPages):void
     set_printer(printer: string):void
@@ -2990,8 +2997,8 @@ declare module "Gtk" {
     set_reverse(reverse: boolean):void
     set_scale(scale: number):void
     set_use_color(use_color: boolean):void
-    to_file(file_name: filename):boolean
-    to_key_file(key_file: GLib.KeyFile, group_name: string):void
+    to_file(file_name: any):boolean
+    to_key_file(key_file: any, group_name: string):void
     unset(key: string):void
   }
   export class ProgressBar extends Widget {
@@ -3014,44 +3021,44 @@ declare module "Gtk" {
   export class RadioAction extends ToggleAction {
     constructor(name: string, label: string, tooltip: string, stock_id: string, value: number)
     get_current_value():number
-    get_group():GLib.SList
+    get_group():any
     join_group(group_source: RadioAction):void
     set_current_value(current_value: number):void
-    set_group(group: GLib.SList):void
+    set_group(group: any):void
   }
   export class RadioButton extends CheckButton {
-    constructor(group: GLib.SList)
+    constructor(group: any)
     constructor(radio_group_member: RadioButton)
-    constructor(group: GLib.SList, label: string)
+    constructor(group: any, label: string)
     constructor(radio_group_member: RadioButton, label: string)
-    constructor(group: GLib.SList, label: string)
+    constructor(group: any, label: string)
     constructor(radio_group_member: RadioButton, label: string)
-    get_group():GLib.SList
+    get_group():any
     join_group(group_source: RadioButton):void
-    set_group(group: GLib.SList):void
+    set_group(group: any):void
   }
   export class RadioButtonAccessible extends ToggleButtonAccessible {
   }
   export class RadioMenuItem extends CheckMenuItem {
-    constructor(group: GLib.SList)
+    constructor(group: any)
     constructor(group: RadioMenuItem)
-    constructor(group: GLib.SList, label: string)
+    constructor(group: any, label: string)
     constructor(group: RadioMenuItem, label: string)
-    constructor(group: GLib.SList, label: string)
+    constructor(group: any, label: string)
     constructor(group: RadioMenuItem, label: string)
-    get_group():GLib.SList
+    get_group():any
     join_group(group_source: RadioMenuItem):void
-    set_group(group: GLib.SList):void
+    set_group(group: any):void
   }
   export class RadioMenuItemAccessible extends CheckMenuItemAccessible {
   }
   export class RadioToolButton extends ToggleToolButton {
-    constructor(group: GLib.SList)
-    constructor(group: GLib.SList, stock_id: string)
+    constructor(group: any)
+    constructor(group: any, stock_id: string)
     constructor(group: RadioToolButton)
     constructor(group: RadioToolButton, stock_id: string)
-    get_group():GLib.SList
-    set_group(group: GLib.SList):void
+    get_group():any
+    set_group(group: any):void
   }
   export class Range extends Widget {
     get_adjustment():Adjustment
@@ -3060,7 +3067,7 @@ declare module "Gtk" {
     get_inverted():boolean
     get_lower_stepper_sensitivity():SensitivityType
     get_min_slider_size():number
-    get_range_rect(range_rect: Gdk.Rectangle):void
+    get_range_rect(range_rect: any):void
     get_restrict_to_fill_level():boolean
     get_round_digits():number
     get_show_fill_level():boolean
@@ -3095,8 +3102,8 @@ declare module "Gtk" {
     set_show_numbers(show_numbers: boolean):void
   }
   export class RecentChooserDialog extends Dialog {
-    constructor(title: string, parent: Window, first_button_text: string, ...args: any[])
-    constructor(title: string, parent: Window, manager: RecentManager, first_button_text: string, ...args: any[])
+    constructor(title: string, parent: Window, first_button_text: string, ...args: any)
+    constructor(title: string, parent: Window, manager: RecentManager, first_button_text: string, ...args: any)
   }
   export class RecentChooserMenu extends Menu {
     constructor(manager: RecentManager)
@@ -3109,22 +3116,22 @@ declare module "Gtk" {
   export class RecentFilter extends GObject.InitiallyUnowned {
     add_age(days: number):void
     add_application(application: string):void
-    add_custom(needed: RecentFilterFlags, func: RecentFilterFunc, data: any, data_destroy: GLib.DestroyNotify):void
+    add_custom(needed: RecentFilterFlags, func: any, data: object, data_destroy: any):void
     add_group(group: string):void
     add_mime_type(mime_type: string):void
     add_pattern(pattern: string):void
     add_pixbuf_formats():void
-    filter(filter_info: RecentFilterInfo):boolean
+    filter(filter_info: any):boolean
     get_name():string
     get_needed():RecentFilterFlags
     set_name(name: string):void
   }
   export class RecentManager extends GObject.Object {
-    add_full(uri: string, recent_data: RecentData):boolean
+    add_full(uri: string, recent_data: any):boolean
     add_item(uri: string):boolean
-    get_items():GLib.List
+    get_items():any
     has_item(uri: string):boolean
-    lookup_item(uri: string):RecentInfo
+    lookup_item(uri: string):any
     move_item(uri: string, new_uri: string):boolean
     purge_items():number
     remove_item(uri: string):boolean
@@ -3208,12 +3215,12 @@ declare module "Gtk" {
     connect_entry(entry: Entry):void
     get_search_mode():boolean
     get_show_close_button():boolean
-    handle_event(event: Gdk.Event):boolean
+    handle_event(event: any):boolean
     set_search_mode(search_mode: boolean):void
     set_show_close_button(visible: boolean):void
   }
   export class SearchEntry extends Entry {
-    handle_event(event: Gdk.Event):boolean
+    handle_event(event: any):boolean
   }
   export class Separator extends Widget {
     constructor(orientation: Orientation)
@@ -3227,7 +3234,7 @@ declare module "Gtk" {
   export class Settings extends GObject.Object {
     set_double_property(name: string, v_double: number, origin: string):void
     set_long_property(name: string, v_long: number, origin: string):void
-    set_property_value(name: string, svalue: SettingsValue):void
+    set_property_value(name: string, svalue: any):void
     set_string_property(name: string, v_string: string, origin: string):void
   }
   export class SizeGroup extends GObject.Object {
@@ -3235,14 +3242,14 @@ declare module "Gtk" {
     add_widget(widget: Widget):void
     get_ignore_hidden():boolean
     get_mode():SizeGroupMode
-    get_widgets():GLib.SList
+    get_widgets():any
     remove_widget(widget: Widget):void
     set_ignore_hidden(ignore_hidden: boolean):void
     set_mode(mode: SizeGroupMode):void
   }
   export class Socket extends Container {
-    add_id(window: xlib.Window):void
-    get_id():xlib.Window
+    add_id(window: any):void
+    get_id():any
     get_plug_window():Gdk.Window
   }
   export class SpinButton extends Entry {
@@ -3311,16 +3318,16 @@ declare module "Gtk" {
     set_stack(stack: Stack):void
   }
   export class StatusIcon extends GObject.Object {
-    constructor(filename: filename)
-    constructor(icon: Gio.Icon)
+    constructor(filename: any)
+    constructor(icon: any)
     constructor(icon_name: string)
-    constructor(pixbuf: GdkPixbuf.Pixbuf)
+    constructor(pixbuf: any)
     constructor(stock_id: string)
-    get_geometry(screen: Gdk.Screen, area: Gdk.Rectangle, orientation: Orientation):boolean
-    get_gicon():Gio.Icon
+    get_geometry(screen: Gdk.Screen, area: any, orientation: Orientation):boolean
+    get_gicon():any
     get_has_tooltip():boolean
     get_icon_name():string
-    get_pixbuf():GdkPixbuf.Pixbuf
+    get_pixbuf():any
     get_screen():Gdk.Screen
     get_size():number
     get_stock():string
@@ -3329,12 +3336,12 @@ declare module "Gtk" {
     get_tooltip_markup():string
     get_tooltip_text():string
     get_visible():boolean
-    get_x11_window_id():guint32
+    get_x11_window_id():number
     is_embedded():boolean
-    set_from_file(filename: filename):void
-    set_from_gicon(icon: Gio.Icon):void
+    set_from_file(filename: any):void
+    set_from_gicon(icon: any):void
     set_from_icon_name(icon_name: string):void
-    set_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf):void
+    set_from_pixbuf(pixbuf: any):void
     set_from_stock(stock_id: string):void
     set_has_tooltip(has_tooltip: boolean):void
     set_name(name: string):void
@@ -3355,58 +3362,58 @@ declare module "Gtk" {
   export class StatusbarAccessible extends ContainerAccessible {
   }
   export class Style extends GObject.Object {
-    apply_default_background(cr: cairo.Context, window: Gdk.Window, state_type: StateType, x: number, y: number, width: number, height: number):void
+    apply_default_background(cr: any, window: Gdk.Window, state_type: StateType, x: number, y: number, width: number, height: number):void
     attach(window: Gdk.Window):Style
     copy():Style
     detach():void
-    get(widget_type: number, first_property_name: string, ...args: any[]):void
-    get_style_property(widget_type: number, property_name: string, value: GObject.Value):void
-    get_valist(widget_type: number, first_property_name: string, var_args: any):void
+    get(widget_type: any, first_property_name: string, ...args: any):void
+    get_style_property(widget_type: any, property_name: string, value: any):void
+    get_valist(widget_type: any, first_property_name: string, var_args: any):void
     has_context():boolean
-    lookup_color(color_name: string, color: Gdk.Color):boolean
-    lookup_icon_set(stock_id: string):IconSet
-    render_icon(source: IconSource, direction: TextDirection, state: StateType, size: number, widget: Widget, detail: string):GdkPixbuf.Pixbuf
+    lookup_color(color_name: string, color: any):boolean
+    lookup_icon_set(stock_id: string):any
+    render_icon(source: any, direction: TextDirection, state: StateType, size: number, widget: Widget, detail: string):any
     set_background(window: Gdk.Window, state_type: StateType):void
   }
   export class StyleContext extends GObject.Object {
     add_class(class_name: string):void
-    add_provider(provider: StyleProvider, priority: number):void
+    add_provider(provider: any, priority: number):void
     add_region(region_name: string, flags: RegionFlags):void
-    cancel_animations(region_id: any):void
-    get(state: StateFlags, ...args: any[]):void
-    get_background_color(state: StateFlags, color: Gdk.RGBA):void
-    get_border(state: StateFlags, border: Border):void
-    get_border_color(state: StateFlags, color: Gdk.RGBA):void
-    get_color(state: StateFlags, color: Gdk.RGBA):void
+    cancel_animations(region_id: object):void
+    get(state: StateFlags, ...args: any):void
+    get_background_color(state: StateFlags, color: any):void
+    get_border(state: StateFlags, border: any):void
+    get_border_color(state: StateFlags, color: any):void
+    get_color(state: StateFlags, color: any):void
     get_direction():TextDirection
-    get_font(state: StateFlags):Pango.FontDescription
+    get_font(state: StateFlags):any
     get_frame_clock():Gdk.FrameClock
     get_junction_sides():JunctionSides
-    get_margin(state: StateFlags, margin: Border):void
-    get_padding(state: StateFlags, padding: Border):void
+    get_margin(state: StateFlags, margin: any):void
+    get_padding(state: StateFlags, padding: any):void
     get_parent():StyleContext
-    get_path():WidgetPath
-    get_property(property: string, state: StateFlags, value: GObject.Value):void
+    get_path():any
+    get_property(property: string, state: StateFlags, value: any):void
     get_scale():number
     get_screen():Gdk.Screen
-    get_section(property: string):CssSection
+    get_section(property: string):any
     get_state():StateFlags
-    get_style(...args: any[]):void
-    get_style_property(property_name: string, value: GObject.Value):void
+    get_style(...args: any):void
+    get_style_property(property_name: string, value: any):void
     get_style_valist(args: any):void
     get_valist(state: StateFlags, args: any):void
     has_class(class_name: string):boolean
     has_region(region_name: string, flags_return: RegionFlags):boolean
     invalidate():void
-    list_classes():GLib.List
-    list_regions():GLib.List
-    lookup_color(color_name: string, color: Gdk.RGBA):boolean
-    lookup_icon_set(stock_id: string):IconSet
-    notify_state_change(window: Gdk.Window, region_id: any, state: StateType, state_value: boolean):void
+    list_classes():any
+    list_regions():any
+    lookup_color(color_name: string, color: any):boolean
+    lookup_icon_set(stock_id: string):any
+    notify_state_change(window: Gdk.Window, region_id: object, state: StateType, state_value: boolean):void
     pop_animatable_region():void
-    push_animatable_region(region_id: any):void
+    push_animatable_region(region_id: object):void
     remove_class(class_name: string):void
-    remove_provider(provider: StyleProvider):void
+    remove_provider(provider: any):void
     remove_region(region_name: string):void
     restore():void
     save():void
@@ -3416,7 +3423,7 @@ declare module "Gtk" {
     set_frame_clock(frame_clock: Gdk.FrameClock):void
     set_junction_sides(sides: JunctionSides):void
     set_parent(parent: StyleContext):void
-    set_path(path: WidgetPath):void
+    set_path(path: any):void
     set_scale(scale: number):void
     set_screen(screen: Gdk.Screen):void
     set_state(flags: StateFlags):void
@@ -3424,14 +3431,14 @@ declare module "Gtk" {
   }
   export class StyleProperties extends GObject.Object {
     clear():void
-    get(state: StateFlags, ...args: any[]):void
-    get_property(property: string, state: StateFlags, value: GObject.Value):boolean
+    get(state: StateFlags, ...args: any):void
+    get_property(property: string, state: StateFlags, value: any):boolean
     get_valist(state: StateFlags, args: any):void
-    lookup_color(name: string):SymbolicColor
-    map_color(name: string, color: SymbolicColor):void
+    lookup_color(name: string):any
+    map_color(name: string, color: any):void
     merge(props_to_merge: StyleProperties, replace: boolean):void
-    set(state: StateFlags, ...args: any[]):void
-    set_property(property: string, state: StateFlags, value: GObject.Value):void
+    set(state: StateFlags, ...args: any):void
+    set_property(property: string, state: StateFlags, value: any):void
     set_valist(state: StateFlags, args: any):void
     unset_property(property: string, state: StateFlags):void
   }
@@ -3464,85 +3471,85 @@ declare module "Gtk" {
   }
   export class TextBuffer extends GObject.Object {
     constructor(table: TextTagTable)
-    add_mark(mark: TextMark, where: TextIter):void
+    add_mark(mark: TextMark, where: any):void
     add_selection_clipboard(clipboard: Clipboard):void
-    apply_tag(tag: TextTag, start: TextIter, end: TextIter):void
-    apply_tag_by_name(name: string, start: TextIter, end: TextIter):void
-    backspace(iter: TextIter, interactive: boolean, default_editable: boolean):boolean
+    apply_tag(tag: TextTag, start: any, end: any):void
+    apply_tag_by_name(name: string, start: any, end: any):void
+    backspace(iter: any, interactive: boolean, default_editable: boolean):boolean
     begin_user_action():void
     copy_clipboard(clipboard: Clipboard):void
-    create_child_anchor(iter: TextIter):TextChildAnchor
-    create_mark(mark_name: string, where: TextIter, left_gravity: boolean):TextMark
-    create_tag(tag_name: string, first_property_name: string, ...args: any[]):TextTag
+    create_child_anchor(iter: any):TextChildAnchor
+    create_mark(mark_name: string, where: any, left_gravity: boolean):TextMark
+    create_tag(tag_name: string, first_property_name: string, ...args: any):TextTag
     cut_clipboard(clipboard: Clipboard, default_editable: boolean):void
-    delete(start: TextIter, end: TextIter):void
-    delete_interactive(start_iter: TextIter, end_iter: TextIter, default_editable: boolean):boolean
+    delete(start: any, end: any):void
+    delete_interactive(start_iter: any, end_iter: any, default_editable: boolean):boolean
     delete_mark(mark: TextMark):void
     delete_mark_by_name(name: string):void
     delete_selection(interactive: boolean, default_editable: boolean):boolean
-    deserialize(content_buffer: TextBuffer, format: Gdk.Atom, iter: TextIter, data: number[], length: number):boolean
-    deserialize_get_can_create_tags(format: Gdk.Atom):boolean
-    deserialize_set_can_create_tags(format: Gdk.Atom, can_create_tags: boolean):void
+    deserialize(content_buffer: TextBuffer, format: any, iter: any, data: number[], length: number):boolean
+    deserialize_get_can_create_tags(format: any):boolean
+    deserialize_set_can_create_tags(format: any, can_create_tags: boolean):void
     end_user_action():void
-    get_bounds(start: TextIter, end: TextIter):void
+    get_bounds(start: any, end: any):void
     get_char_count():number
-    get_copy_target_list():TargetList
-    get_deserialize_formats(n_formats: number):Gdk.Atom[]
-    get_end_iter(iter: TextIter):void
+    get_copy_target_list():any
+    get_deserialize_formats(n_formats: number):any[]
+    get_end_iter(iter: any):void
     get_has_selection():boolean
     get_insert():TextMark
-    get_iter_at_child_anchor(iter: TextIter, anchor: TextChildAnchor):void
-    get_iter_at_line(iter: TextIter, line_number: number):void
-    get_iter_at_line_index(iter: TextIter, line_number: number, byte_index: number):void
-    get_iter_at_line_offset(iter: TextIter, line_number: number, char_offset: number):void
-    get_iter_at_mark(iter: TextIter, mark: TextMark):void
-    get_iter_at_offset(iter: TextIter, char_offset: number):void
+    get_iter_at_child_anchor(iter: any, anchor: TextChildAnchor):void
+    get_iter_at_line(iter: any, line_number: number):void
+    get_iter_at_line_index(iter: any, line_number: number, byte_index: number):void
+    get_iter_at_line_offset(iter: any, line_number: number, char_offset: number):void
+    get_iter_at_mark(iter: any, mark: TextMark):void
+    get_iter_at_offset(iter: any, char_offset: number):void
     get_line_count():number
     get_mark(name: string):TextMark
     get_modified():boolean
-    get_paste_target_list():TargetList
+    get_paste_target_list():any
     get_selection_bound():TextMark
-    get_selection_bounds(start: TextIter, end: TextIter):boolean
-    get_serialize_formats(n_formats: number):Gdk.Atom[]
-    get_slice(start: TextIter, end: TextIter, include_hidden_chars: boolean):string
-    get_start_iter(iter: TextIter):void
+    get_selection_bounds(start: any, end: any):boolean
+    get_serialize_formats(n_formats: number):any[]
+    get_slice(start: any, end: any, include_hidden_chars: boolean):string
+    get_start_iter(iter: any):void
     get_tag_table():TextTagTable
-    get_text(start: TextIter, end: TextIter, include_hidden_chars: boolean):string
-    insert(iter: TextIter, text: string, len: number):void
+    get_text(start: any, end: any, include_hidden_chars: boolean):string
+    insert(iter: any, text: string, len: number):void
     insert_at_cursor(text: string, len: number):void
-    insert_child_anchor(iter: TextIter, anchor: TextChildAnchor):void
-    insert_interactive(iter: TextIter, text: string, len: number, default_editable: boolean):boolean
+    insert_child_anchor(iter: any, anchor: TextChildAnchor):void
+    insert_interactive(iter: any, text: string, len: number, default_editable: boolean):boolean
     insert_interactive_at_cursor(text: string, len: number, default_editable: boolean):boolean
-    insert_markup(iter: TextIter, markup: string, len: number):void
-    insert_pixbuf(iter: TextIter, pixbuf: GdkPixbuf.Pixbuf):void
-    insert_range(iter: TextIter, start: TextIter, end: TextIter):void
-    insert_range_interactive(iter: TextIter, start: TextIter, end: TextIter, default_editable: boolean):boolean
-    insert_with_tags(iter: TextIter, text: string, len: number, first_tag: TextTag, ...args: any[]):void
-    insert_with_tags_by_name(iter: TextIter, text: string, len: number, first_tag_name: string, ...args: any[]):void
-    move_mark(mark: TextMark, where: TextIter):void
-    move_mark_by_name(name: string, where: TextIter):void
-    paste_clipboard(clipboard: Clipboard, override_location: TextIter, default_editable: boolean):void
-    place_cursor(where: TextIter):void
-    register_deserialize_format(mime_type: string, function_: TextBufferDeserializeFunc, user_data: any, user_data_destroy: GLib.DestroyNotify):Gdk.Atom
-    register_deserialize_tagset(tagset_name: string):Gdk.Atom
-    register_serialize_format(mime_type: string, function_: TextBufferSerializeFunc, user_data: any, user_data_destroy: GLib.DestroyNotify):Gdk.Atom
-    register_serialize_tagset(tagset_name: string):Gdk.Atom
-    remove_all_tags(start: TextIter, end: TextIter):void
+    insert_markup(iter: any, markup: string, len: number):void
+    insert_pixbuf(iter: any, pixbuf: any):void
+    insert_range(iter: any, start: any, end: any):void
+    insert_range_interactive(iter: any, start: any, end: any, default_editable: boolean):boolean
+    insert_with_tags(iter: any, text: string, len: number, first_tag: TextTag, ...args: any):void
+    insert_with_tags_by_name(iter: any, text: string, len: number, first_tag_name: string, ...args: any):void
+    move_mark(mark: TextMark, where: any):void
+    move_mark_by_name(name: string, where: any):void
+    paste_clipboard(clipboard: Clipboard, override_location: any, default_editable: boolean):void
+    place_cursor(where: any):void
+    register_deserialize_format(mime_type: string, function_: any, user_data: object, user_data_destroy: any):any
+    register_deserialize_tagset(tagset_name: string):any
+    register_serialize_format(mime_type: string, function_: any, user_data: object, user_data_destroy: any):any
+    register_serialize_tagset(tagset_name: string):any
+    remove_all_tags(start: any, end: any):void
     remove_selection_clipboard(clipboard: Clipboard):void
-    remove_tag(tag: TextTag, start: TextIter, end: TextIter):void
-    remove_tag_by_name(name: string, start: TextIter, end: TextIter):void
-    select_range(ins: TextIter, bound: TextIter):void
-    serialize(content_buffer: TextBuffer, format: Gdk.Atom, start: TextIter, end: TextIter, length: number):number[]
+    remove_tag(tag: TextTag, start: any, end: any):void
+    remove_tag_by_name(name: string, start: any, end: any):void
+    select_range(ins: any, bound: any):void
+    serialize(content_buffer: TextBuffer, format: any, start: any, end: any, length: number):number[]
     set_modified(setting: boolean):void
     set_text(text: string, len: number):void
-    unregister_deserialize_format(format: Gdk.Atom):void
-    unregister_serialize_format(format: Gdk.Atom):void
+    unregister_deserialize_format(format: any):void
+    unregister_serialize_format(format: any):void
   }
   export class TextCellAccessible extends RendererCellAccessible {
   }
   export class TextChildAnchor extends GObject.Object {
     get_deleted():boolean
-    get_widgets():GLib.List
+    get_widgets():any
   }
   export class TextMark extends GObject.Object {
     constructor(name: string, left_gravity: boolean)
@@ -3555,13 +3562,13 @@ declare module "Gtk" {
   }
   export class TextTag extends GObject.Object {
     constructor(name: string)
-    event(event_object: GObject.Object, event: Gdk.Event, iter: TextIter):boolean
+    event(event_object: GObject.Object, event: any, iter: any):boolean
     get_priority():number
     set_priority(priority: number):void
   }
   export class TextTagTable extends GObject.Object {
     add(tag: TextTag):boolean
-    foreach(func: TextTagTableForeach, data: any):void
+    foreach(func: any, data: object):void
     get_size():number
     lookup(name: string):TextTag
     remove(tag: TextTag):void
@@ -3570,51 +3577,51 @@ declare module "Gtk" {
     constructor(buffer: TextBuffer)
     add_child_at_anchor(child: Widget, anchor: TextChildAnchor):void
     add_child_in_window(child: Widget, which_window: TextWindowType, xpos: number, ypos: number):void
-    backward_display_line(iter: TextIter):boolean
-    backward_display_line_start(iter: TextIter):boolean
+    backward_display_line(iter: any):boolean
+    backward_display_line_start(iter: any):boolean
     buffer_to_window_coords(win: TextWindowType, buffer_x: number, buffer_y: number, window_x: number, window_y: number):void
-    forward_display_line(iter: TextIter):boolean
-    forward_display_line_end(iter: TextIter):boolean
+    forward_display_line(iter: any):boolean
+    forward_display_line_end(iter: any):boolean
     get_accepts_tab():boolean
     get_border_window_size(type: TextWindowType):number
     get_bottom_margin():number
     get_buffer():TextBuffer
-    get_cursor_locations(iter: TextIter, strong: Gdk.Rectangle, weak: Gdk.Rectangle):void
+    get_cursor_locations(iter: any, strong: any, weak: any):void
     get_cursor_visible():boolean
-    get_default_attributes():TextAttributes
+    get_default_attributes():any
     get_editable():boolean
     get_hadjustment():Adjustment
     get_indent():number
     get_input_hints():InputHints
     get_input_purpose():InputPurpose
-    get_iter_at_location(iter: TextIter, x: number, y: number):void
-    get_iter_at_position(iter: TextIter, trailing: number, x: number, y: number):void
-    get_iter_location(iter: TextIter, location: Gdk.Rectangle):void
+    get_iter_at_location(iter: any, x: number, y: number):void
+    get_iter_at_position(iter: any, trailing: number, x: number, y: number):void
+    get_iter_location(iter: any, location: any):void
     get_justification():Justification
     get_left_margin():number
-    get_line_at_y(target_iter: TextIter, y: number, line_top: number):void
-    get_line_yrange(iter: TextIter, y: number, height: number):void
+    get_line_at_y(target_iter: any, y: number, line_top: number):void
+    get_line_yrange(iter: any, y: number, height: number):void
     get_monospace():boolean
     get_overwrite():boolean
     get_pixels_above_lines():number
     get_pixels_below_lines():number
     get_pixels_inside_wrap():number
     get_right_margin():number
-    get_tabs():Pango.TabArray
+    get_tabs():any
     get_top_margin():number
     get_vadjustment():Adjustment
-    get_visible_rect(visible_rect: Gdk.Rectangle):void
+    get_visible_rect(visible_rect: any):void
     get_window(win: TextWindowType):Gdk.Window
     get_window_type(window: Gdk.Window):TextWindowType
     get_wrap_mode():WrapMode
-    im_context_filter_keypress(event: Gdk.EventKey):boolean
+    im_context_filter_keypress(event: any):boolean
     move_child(child: Widget, xpos: number, ypos: number):void
     move_mark_onscreen(mark: TextMark):boolean
-    move_visually(iter: TextIter, count: number):boolean
+    move_visually(iter: any, count: number):boolean
     place_cursor_onscreen():boolean
     reset_im_context():void
     scroll_mark_onscreen(mark: TextMark):void
-    scroll_to_iter(iter: TextIter, within_margin: number, use_align: boolean, xalign: number, yalign: number):boolean
+    scroll_to_iter(iter: any, within_margin: number, use_align: boolean, xalign: number, yalign: number):boolean
     scroll_to_mark(mark: TextMark, within_margin: number, use_align: boolean, xalign: number, yalign: number):void
     set_accepts_tab(accepts_tab: boolean):void
     set_border_window_size(type: TextWindowType, size: number):void
@@ -3633,36 +3640,36 @@ declare module "Gtk" {
     set_pixels_below_lines(pixels_below_lines: number):void
     set_pixels_inside_wrap(pixels_inside_wrap: number):void
     set_right_margin(right_margin: number):void
-    set_tabs(tabs: Pango.TabArray):void
+    set_tabs(tabs: any):void
     set_top_margin(top_margin: number):void
     set_wrap_mode(wrap_mode: WrapMode):void
-    starts_display_line(iter: TextIter):boolean
+    starts_display_line(iter: any):boolean
     window_to_buffer_coords(win: TextWindowType, window_x: number, window_y: number, buffer_x: number, buffer_y: number):void
   }
   export class TextViewAccessible extends ContainerAccessible {
   }
   export class ThemingEngine extends GObject.Object {
-    get(state: StateFlags, ...args: any[]):void
-    get_background_color(state: StateFlags, color: Gdk.RGBA):void
-    get_border(state: StateFlags, border: Border):void
-    get_border_color(state: StateFlags, color: Gdk.RGBA):void
-    get_color(state: StateFlags, color: Gdk.RGBA):void
+    get(state: StateFlags, ...args: any):void
+    get_background_color(state: StateFlags, color: any):void
+    get_border(state: StateFlags, border: any):void
+    get_border_color(state: StateFlags, color: any):void
+    get_color(state: StateFlags, color: any):void
     get_direction():TextDirection
-    get_font(state: StateFlags):Pango.FontDescription
+    get_font(state: StateFlags):any
     get_junction_sides():JunctionSides
-    get_margin(state: StateFlags, margin: Border):void
-    get_padding(state: StateFlags, padding: Border):void
-    get_path():WidgetPath
-    get_property(property: string, state: StateFlags, value: GObject.Value):void
+    get_margin(state: StateFlags, margin: any):void
+    get_padding(state: StateFlags, padding: any):void
+    get_path():any
+    get_property(property: string, state: StateFlags, value: any):void
     get_screen():Gdk.Screen
     get_state():StateFlags
-    get_style(...args: any[]):void
-    get_style_property(property_name: string, value: GObject.Value):void
+    get_style(...args: any):void
+    get_style_property(property_name: string, value: any):void
     get_style_valist(args: any):void
     get_valist(state: StateFlags, args: any):void
     has_class(style_class: string):boolean
     has_region(style_region: string, flags: RegionFlags):boolean
-    lookup_color(color_name: string, color: Gdk.RGBA):boolean
+    lookup_color(color_name: string, color: any):boolean
     state_is_running(state: StateType, progress: number):boolean
   }
   export class ToggleAction extends Action {
@@ -3716,7 +3723,7 @@ declare module "Gtk" {
     get_orientation():Orientation
     get_proxy_menu_item(menu_item_id: string):Widget
     get_relief_style():ReliefStyle
-    get_text_alignment():gfloat
+    get_text_alignment():number
     get_text_orientation():Orientation
     get_text_size_group():SizeGroup
     get_toolbar_style():ToolbarStyle
@@ -3757,7 +3764,7 @@ declare module "Gtk" {
   }
   export class ToolPalette extends Container {
     add_drag_dest(widget: Widget, flags: DestDefaults, targets: ToolPaletteDragTargets, actions: Gdk.DragAction):void
-    get_drag_item(selection: SelectionData):Widget
+    get_drag_item(selection: any):Widget
     get_drop_group(x: number, y: number):ToolItemGroup
     get_drop_item(x: number, y: number):ToolItem
     get_exclusive(group: ToolItemGroup):boolean
@@ -3795,91 +3802,91 @@ declare module "Gtk" {
   }
   export class Tooltip extends GObject.Object {
     set_custom(custom_widget: Widget):void
-    set_icon(pixbuf: GdkPixbuf.Pixbuf):void
-    set_icon_from_gicon(gicon: Gio.Icon, size: number):void
+    set_icon(pixbuf: any):void
+    set_icon_from_gicon(gicon: any, size: number):void
     set_icon_from_icon_name(icon_name: string, size: number):void
     set_icon_from_stock(stock_id: string, size: number):void
     set_markup(markup: string):void
     set_text(text: string):void
-    set_tip_area(rect: Gdk.Rectangle):void
+    set_tip_area(rect: any):void
   }
   export class ToplevelAccessible extends Atk.Object {
-    get_children():GLib.List
+    get_children():any
   }
   export class TreeModelFilter extends GObject.Object {
     clear_cache():void
-    convert_child_iter_to_iter(filter_iter: TreeIter, child_iter: TreeIter):boolean
-    convert_child_path_to_path(child_path: TreePath):TreePath
-    convert_iter_to_child_iter(child_iter: TreeIter, filter_iter: TreeIter):void
-    convert_path_to_child_path(filter_path: TreePath):TreePath
-    get_model():TreeModel
+    convert_child_iter_to_iter(filter_iter: any, child_iter: any):boolean
+    convert_child_path_to_path(child_path: any):any
+    convert_iter_to_child_iter(child_iter: any, filter_iter: any):void
+    convert_path_to_child_path(filter_path: any):any
+    get_model():any
     refilter():void
-    set_modify_func(n_columns: number, types: number[], func: TreeModelFilterModifyFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_modify_func(n_columns: number, types: any[], func: any, data: object, destroy: any):void
     set_visible_column(column: number):void
-    set_visible_func(func: TreeModelFilterVisibleFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_visible_func(func: any, data: object, destroy: any):void
   }
   export class TreeModelSort extends GObject.Object {
     clear_cache():void
-    convert_child_iter_to_iter(sort_iter: TreeIter, child_iter: TreeIter):boolean
-    convert_child_path_to_path(child_path: TreePath):TreePath
-    convert_iter_to_child_iter(child_iter: TreeIter, sorted_iter: TreeIter):void
-    convert_path_to_child_path(sorted_path: TreePath):TreePath
-    get_model():TreeModel
-    iter_is_valid(iter: TreeIter):boolean
+    convert_child_iter_to_iter(sort_iter: any, child_iter: any):boolean
+    convert_child_path_to_path(child_path: any):any
+    convert_iter_to_child_iter(child_iter: any, sorted_iter: any):void
+    convert_path_to_child_path(sorted_path: any):any
+    get_model():any
+    iter_is_valid(iter: any):boolean
     reset_default_sort_func():void
   }
   export class TreeSelection extends GObject.Object {
     count_selected_rows():number
     get_mode():SelectionMode
-    get_select_function():TreeSelectionFunc
-    get_selected(model: TreeModel, iter: TreeIter):boolean
-    get_selected_rows(model: TreeModel):GLib.List
+    get_select_function():any
+    get_selected(model: any, iter: any):boolean
+    get_selected_rows(model: any):any
     get_tree_view():TreeView
     get_user_data():object
-    iter_is_selected(iter: TreeIter):boolean
-    path_is_selected(path: TreePath):boolean
+    iter_is_selected(iter: any):boolean
+    path_is_selected(path: any):boolean
     select_all():void
-    select_iter(iter: TreeIter):void
-    select_path(path: TreePath):void
-    select_range(start_path: TreePath, end_path: TreePath):void
-    selected_foreach(func: TreeSelectionForeachFunc, data: any):void
+    select_iter(iter: any):void
+    select_path(path: any):void
+    select_range(start_path: any, end_path: any):void
+    selected_foreach(func: any, data: object):void
     set_mode(type: SelectionMode):void
-    set_select_function(func: TreeSelectionFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_select_function(func: any, data: object, destroy: any):void
     unselect_all():void
-    unselect_iter(iter: TreeIter):void
-    unselect_path(path: TreePath):void
-    unselect_range(start_path: TreePath, end_path: TreePath):void
+    unselect_iter(iter: any):void
+    unselect_path(path: any):void
+    unselect_range(start_path: any, end_path: any):void
   }
   export class TreeStore extends GObject.Object {
-    constructor(n_columns: number, ...args: any[])
-    constructor(n_columns: number, types: number[])
-    append(iter: TreeIter, parent: TreeIter):void
+    constructor(n_columns: number, ...args: any)
+    constructor(n_columns: number, types: any[])
+    append(iter: any, parent: any):void
     clear():void
-    insert(iter: TreeIter, parent: TreeIter, position: number):void
-    insert_after(iter: TreeIter, parent: TreeIter, sibling: TreeIter):void
-    insert_before(iter: TreeIter, parent: TreeIter, sibling: TreeIter):void
-    insert_with_values(iter: TreeIter, parent: TreeIter, position: number, ...args: any[]):void
-    insert_with_valuesv(iter: TreeIter, parent: TreeIter, position: number, columns: number[], values: GObject.Value[], n_values: number):void
-    is_ancestor(iter: TreeIter, descendant: TreeIter):boolean
-    iter_depth(iter: TreeIter):number
-    iter_is_valid(iter: TreeIter):boolean
-    move_after(iter: TreeIter, position: TreeIter):void
-    move_before(iter: TreeIter, position: TreeIter):void
-    prepend(iter: TreeIter, parent: TreeIter):void
-    remove(iter: TreeIter):boolean
-    reorder(parent: TreeIter, new_order: number[]):void
-    set(iter: TreeIter, ...args: any[]):void
-    set_column_types(n_columns: number, types: number[]):void
-    set_valist(iter: TreeIter, var_args: any):void
-    set_value(iter: TreeIter, column: number, value: GObject.Value):void
-    set_valuesv(iter: TreeIter, columns: number[], values: GObject.Value[], n_values: number):void
-    swap(a: TreeIter, b: TreeIter):void
+    insert(iter: any, parent: any, position: number):void
+    insert_after(iter: any, parent: any, sibling: any):void
+    insert_before(iter: any, parent: any, sibling: any):void
+    insert_with_values(iter: any, parent: any, position: number, ...args: any):void
+    insert_with_valuesv(iter: any, parent: any, position: number, columns: number[], values: any[], n_values: number):void
+    is_ancestor(iter: any, descendant: any):boolean
+    iter_depth(iter: any):number
+    iter_is_valid(iter: any):boolean
+    move_after(iter: any, position: any):void
+    move_before(iter: any, position: any):void
+    prepend(iter: any, parent: any):void
+    remove(iter: any):boolean
+    reorder(parent: any, new_order: number[]):void
+    set(iter: any, ...args: any):void
+    set_column_types(n_columns: number, types: any[]):void
+    set_valist(iter: any, var_args: any):void
+    set_value(iter: any, column: number, value: any):void
+    set_valuesv(iter: any, columns: number[], values: any[], n_values: number):void
+    swap(a: any, b: any):void
   }
   export class TreeView extends Container {
-    constructor(model: TreeModel)
+    constructor(model: any)
     append_column(column: TreeViewColumn):number
     collapse_all():void
-    collapse_row(path: TreePath):boolean
+    collapse_row(path: any):boolean
     columns_autosize():void
     convert_bin_window_to_tree_coords(bx: number, by: number, tx: number, ty: number):void
     convert_bin_window_to_widget_coords(bx: number, by: number, wx: number, wy: number):void
@@ -3887,21 +3894,21 @@ declare module "Gtk" {
     convert_tree_to_widget_coords(tx: number, ty: number, wx: number, wy: number):void
     convert_widget_to_bin_window_coords(wx: number, wy: number, bx: number, by: number):void
     convert_widget_to_tree_coords(wx: number, wy: number, tx: number, ty: number):void
-    create_row_drag_icon(path: TreePath):cairo.Surface
-    enable_model_drag_dest(targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
-    enable_model_drag_source(start_button_mask: Gdk.ModifierType, targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
+    create_row_drag_icon(path: any):any
+    enable_model_drag_dest(targets: any[], n_targets: number, actions: Gdk.DragAction):void
+    enable_model_drag_source(start_button_mask: Gdk.ModifierType, targets: any[], n_targets: number, actions: Gdk.DragAction):void
     expand_all():void
-    expand_row(path: TreePath, open_all: boolean):boolean
-    expand_to_path(path: TreePath):void
+    expand_row(path: any, open_all: boolean):boolean
+    expand_to_path(path: any):void
     get_activate_on_single_click():boolean
-    get_background_area(path: TreePath, column: TreeViewColumn, rect: Gdk.Rectangle):void
+    get_background_area(path: any, column: TreeViewColumn, rect: any):void
     get_bin_window():Gdk.Window
-    get_cell_area(path: TreePath, column: TreeViewColumn, rect: Gdk.Rectangle):void
+    get_cell_area(path: any, column: TreeViewColumn, rect: any):void
     get_column(n: number):TreeViewColumn
-    get_columns():GLib.List
-    get_cursor(path: TreePath, focus_column: TreeViewColumn):void
-    get_dest_row_at_pos(drag_x: number, drag_y: number, path: TreePath, pos: TreeViewDropPosition):boolean
-    get_drag_dest_row(path: TreePath, pos: TreeViewDropPosition):void
+    get_columns():any
+    get_cursor(path: any, focus_column: TreeViewColumn):void
+    get_dest_row_at_pos(drag_x: number, drag_y: number, path: any, pos: TreeViewDropPosition):boolean
+    get_drag_dest_row(path: any, pos: TreeViewDropPosition):void
     get_enable_search():boolean
     get_enable_tree_lines():boolean
     get_expander_column():TreeViewColumn
@@ -3913,42 +3920,42 @@ declare module "Gtk" {
     get_hover_expand():boolean
     get_hover_selection():boolean
     get_level_indentation():number
-    get_model():TreeModel
+    get_model():any
     get_n_columns():number
-    get_path_at_pos(x: number, y: number, path: TreePath, column: TreeViewColumn, cell_x: number, cell_y: number):boolean
+    get_path_at_pos(x: number, y: number, path: any, column: TreeViewColumn, cell_x: number, cell_y: number):boolean
     get_reorderable():boolean
-    get_row_separator_func():TreeViewRowSeparatorFunc
+    get_row_separator_func():any
     get_rubber_banding():boolean
     get_rules_hint():boolean
     get_search_column():number
     get_search_entry():Entry
-    get_search_equal_func():TreeViewSearchEqualFunc
-    get_search_position_func():TreeViewSearchPositionFunc
+    get_search_equal_func():any
+    get_search_position_func():any
     get_selection():TreeSelection
     get_show_expanders():boolean
     get_tooltip_column():number
-    get_tooltip_context(x: number, y: number, keyboard_tip: boolean, model: TreeModel, path: TreePath, iter: TreeIter):boolean
+    get_tooltip_context(x: number, y: number, keyboard_tip: boolean, model: any, path: any, iter: any):boolean
     get_vadjustment():Adjustment
-    get_visible_range(start_path: TreePath, end_path: TreePath):boolean
-    get_visible_rect(visible_rect: Gdk.Rectangle):void
+    get_visible_range(start_path: any, end_path: any):boolean
+    get_visible_rect(visible_rect: any):void
     insert_column(column: TreeViewColumn, position: number):number
-    insert_column_with_attributes(position: number, title: string, cell: CellRenderer, ...args: any[]):number
-    insert_column_with_data_func(position: number, title: string, cell: CellRenderer, func: TreeCellDataFunc, data: any, dnotify: GLib.DestroyNotify):number
-    is_blank_at_pos(x: number, y: number, path: TreePath, column: TreeViewColumn, cell_x: number, cell_y: number):boolean
+    insert_column_with_attributes(position: number, title: string, cell: CellRenderer, ...args: any):number
+    insert_column_with_data_func(position: number, title: string, cell: CellRenderer, func: any, data: object, dnotify: any):number
+    is_blank_at_pos(x: number, y: number, path: any, column: TreeViewColumn, cell_x: number, cell_y: number):boolean
     is_rubber_banding_active():boolean
-    map_expanded_rows(func: TreeViewMappingFunc, data: any):void
+    map_expanded_rows(func: any, data: object):void
     move_column_after(column: TreeViewColumn, base_column: TreeViewColumn):void
     remove_column(column: TreeViewColumn):number
-    row_activated(path: TreePath, column: TreeViewColumn):void
-    row_expanded(path: TreePath):boolean
-    scroll_to_cell(path: TreePath, column: TreeViewColumn, use_align: boolean, row_align: gfloat, col_align: gfloat):void
+    row_activated(path: any, column: TreeViewColumn):void
+    row_expanded(path: any):boolean
+    scroll_to_cell(path: any, column: TreeViewColumn, use_align: boolean, row_align: number, col_align: number):void
     scroll_to_point(tree_x: number, tree_y: number):void
     set_activate_on_single_click(single: boolean):void
-    set_column_drag_function(func: TreeViewColumnDropFunc, user_data: any, destroy: GLib.DestroyNotify):void
-    set_cursor(path: TreePath, focus_column: TreeViewColumn, start_editing: boolean):void
-    set_cursor_on_cell(path: TreePath, focus_column: TreeViewColumn, focus_cell: CellRenderer, start_editing: boolean):void
-    set_destroy_count_func(func: TreeDestroyCountFunc, data: any, destroy: GLib.DestroyNotify):void
-    set_drag_dest_row(path: TreePath, pos: TreeViewDropPosition):void
+    set_column_drag_function(func: any, user_data: object, destroy: any):void
+    set_cursor(path: any, focus_column: TreeViewColumn, start_editing: boolean):void
+    set_cursor_on_cell(path: any, focus_column: TreeViewColumn, focus_cell: CellRenderer, start_editing: boolean):void
+    set_destroy_count_func(func: any, data: object, destroy: any):void
+    set_drag_dest_row(path: any, pos: TreeViewDropPosition):void
     set_enable_search(enable_search: boolean):void
     set_enable_tree_lines(enabled: boolean):void
     set_expander_column(column: TreeViewColumn):void
@@ -3960,19 +3967,19 @@ declare module "Gtk" {
     set_hover_expand(expand: boolean):void
     set_hover_selection(hover: boolean):void
     set_level_indentation(indentation: number):void
-    set_model(model: TreeModel):void
+    set_model(model: any):void
     set_reorderable(reorderable: boolean):void
-    set_row_separator_func(func: TreeViewRowSeparatorFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_row_separator_func(func: any, data: object, destroy: any):void
     set_rubber_banding(enable: boolean):void
     set_rules_hint(setting: boolean):void
     set_search_column(column: number):void
     set_search_entry(entry: Entry):void
-    set_search_equal_func(search_equal_func: TreeViewSearchEqualFunc, search_user_data: any, search_destroy: GLib.DestroyNotify):void
-    set_search_position_func(func: TreeViewSearchPositionFunc, data: any, destroy: GLib.DestroyNotify):void
+    set_search_equal_func(search_equal_func: any, search_user_data: object, search_destroy: any):void
+    set_search_position_func(func: any, data: object, destroy: any):void
     set_show_expanders(enabled: boolean):void
-    set_tooltip_cell(tooltip: Tooltip, path: TreePath, column: TreeViewColumn, cell: CellRenderer):void
+    set_tooltip_cell(tooltip: Tooltip, path: any, column: TreeViewColumn, cell: CellRenderer):void
     set_tooltip_column(column: number):void
-    set_tooltip_row(tooltip: Tooltip, path: TreePath):void
+    set_tooltip_row(tooltip: Tooltip, path: any):void
     set_vadjustment(adjustment: Adjustment):void
     unset_rows_drag_dest():void
     unset_rows_drag_source():void
@@ -3981,17 +3988,17 @@ declare module "Gtk" {
   }
   export class TreeViewColumn extends GObject.InitiallyUnowned {
     constructor(area: CellArea)
-    constructor(title: string, cell: CellRenderer, ...args: any[])
+    constructor(title: string, cell: CellRenderer, ...args: any)
     add_attribute(cell_renderer: CellRenderer, attribute: string, column: number):void
     cell_get_position(cell_renderer: CellRenderer, x_offset: number, width: number):boolean
-    cell_get_size(cell_area: Gdk.Rectangle, x_offset: number, y_offset: number, width: number, height: number):void
+    cell_get_size(cell_area: any, x_offset: number, y_offset: number, width: number, height: number):void
     cell_is_visible():boolean
-    cell_set_cell_data(tree_model: TreeModel, iter: TreeIter, is_expander: boolean, is_expanded: boolean):void
+    cell_set_cell_data(tree_model: any, iter: any, is_expander: boolean, is_expanded: boolean):void
     clear():void
     clear_attributes(cell_renderer: CellRenderer):void
     clicked():void
     focus_cell(cell: CellRenderer):void
-    get_alignment():gfloat
+    get_alignment():number
     get_button():Widget
     get_clickable():boolean
     get_expand():boolean
@@ -4014,9 +4021,9 @@ declare module "Gtk" {
     pack_end(cell: CellRenderer, expand: boolean):void
     pack_start(cell: CellRenderer, expand: boolean):void
     queue_resize():void
-    set_alignment(xalign: gfloat):void
-    set_attributes(cell_renderer: CellRenderer, ...args: any[]):void
-    set_cell_data_func(cell_renderer: CellRenderer, func: TreeCellDataFunc, func_data: any, destroy: GLib.DestroyNotify):void
+    set_alignment(xalign: number):void
+    set_attributes(cell_renderer: CellRenderer, ...args: any):void
+    set_cell_data_func(cell_renderer: CellRenderer, func: any, func_data: object, destroy: any):void
     set_clickable(clickable: boolean):void
     set_expand(expand: boolean):void
     set_fixed_width(fixed_width: number):void
@@ -4035,15 +4042,15 @@ declare module "Gtk" {
   }
   export class UIManager extends GObject.Object {
     add_ui(merge_id: number, path: string, name: string, action: string, type: UIManagerItemType, top: boolean):void
-    add_ui_from_file(filename: filename):number
+    add_ui_from_file(filename: any):number
     add_ui_from_resource(resource_path: string):number
     add_ui_from_string(buffer: string, length: number):number
     ensure_update():void
     get_accel_group():AccelGroup
     get_action(path: string):Action
-    get_action_groups():GLib.List
+    get_action_groups():any
     get_add_tearoffs():boolean
-    get_toplevels(types: UIManagerItemType):GLib.SList
+    get_toplevels(types: UIManagerItemType):any
     get_ui():string
     get_widget(path: string):Widget
     insert_action_group(action_group: ActionGroup, pos: number):void
@@ -4082,13 +4089,13 @@ declare module "Gtk" {
   export class VolumeButton extends ScaleButton {
   }
   export class Widget extends GObject.InitiallyUnowned {
-    constructor(type: number, first_property_name: string, ...args: any[])
+    constructor(type: any, first_property_name: string, ...args: any)
     activate():boolean
     add_accelerator(accel_signal: string, accel_group: AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags):void
     add_device_events(device: Gdk.Device, events: Gdk.EventMask):void
     add_events(events: number):void
     add_mnemonic_label(label: Widget):void
-    add_tick_callback(callback: TickCallback, user_data: any, notify: GLib.DestroyNotify):number
+    add_tick_callback(callback: any, user_data: object, notify: any):number
     can_activate_accel(signal_id: number):boolean
     child_focus(direction: DirectionType):boolean
     child_notify(child_property: string):void
@@ -4099,53 +4106,53 @@ declare module "Gtk" {
     destroy():void
     destroyed(widget_pointer: Widget):void
     device_is_shadowed(device: Gdk.Device):boolean
-    drag_begin(targets: TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event):Gdk.DragContext
-    drag_begin_with_coordinates(targets: TargetList, actions: Gdk.DragAction, button: number, event: Gdk.Event, x: number, y: number):Gdk.DragContext
+    drag_begin(targets: any, actions: Gdk.DragAction, button: number, event: any):Gdk.DragContext
+    drag_begin_with_coordinates(targets: any, actions: Gdk.DragAction, button: number, event: any, x: number, y: number):Gdk.DragContext
     drag_check_threshold(start_x: number, start_y: number, current_x: number, current_y: number):boolean
     drag_dest_add_image_targets():void
     drag_dest_add_text_targets():void
     drag_dest_add_uri_targets():void
-    drag_dest_find_target(context: Gdk.DragContext, target_list: TargetList):Gdk.Atom
-    drag_dest_get_target_list():TargetList
+    drag_dest_find_target(context: Gdk.DragContext, target_list: any):any
+    drag_dest_get_target_list():any
     drag_dest_get_track_motion():boolean
-    drag_dest_set(flags: DestDefaults, targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
+    drag_dest_set(flags: DestDefaults, targets: any[], n_targets: number, actions: Gdk.DragAction):void
     drag_dest_set_proxy(proxy_window: Gdk.Window, protocol: Gdk.DragProtocol, use_coordinates: boolean):void
-    drag_dest_set_target_list(target_list: TargetList):void
+    drag_dest_set_target_list(target_list: any):void
     drag_dest_set_track_motion(track_motion: boolean):void
     drag_dest_unset():void
-    drag_get_data(context: Gdk.DragContext, target: Gdk.Atom, time_: guint32):void
+    drag_get_data(context: Gdk.DragContext, target: any, time_: number):void
     drag_highlight():void
     drag_source_add_image_targets():void
     drag_source_add_text_targets():void
     drag_source_add_uri_targets():void
-    drag_source_get_target_list():TargetList
-    drag_source_set(start_button_mask: Gdk.ModifierType, targets: TargetEntry[], n_targets: number, actions: Gdk.DragAction):void
-    drag_source_set_icon_gicon(icon: Gio.Icon):void
+    drag_source_get_target_list():any
+    drag_source_set(start_button_mask: Gdk.ModifierType, targets: any[], n_targets: number, actions: Gdk.DragAction):void
+    drag_source_set_icon_gicon(icon: any):void
     drag_source_set_icon_name(icon_name: string):void
-    drag_source_set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf):void
+    drag_source_set_icon_pixbuf(pixbuf: any):void
     drag_source_set_icon_stock(stock_id: string):void
-    drag_source_set_target_list(target_list: TargetList):void
+    drag_source_set_target_list(target_list: any):void
     drag_source_unset():void
     drag_unhighlight():void
-    draw(cr: cairo.Context):void
+    draw(cr: any):void
     ensure_style():void
     error_bell():void
-    event(event: Gdk.Event):boolean
+    event(event: any):boolean
     freeze_child_notify():void
     get_accessible():Atk.Object
-    get_action_group(prefix: string):Gio.ActionGroup
+    get_action_group(prefix: string):any
     get_allocated_baseline():number
     get_allocated_height():number
     get_allocated_width():number
-    get_allocation(allocation: Allocation):void
-    get_ancestor(widget_type: number):Widget
+    get_allocation(allocation: any):void
+    get_ancestor(widget_type: any):Widget
     get_app_paintable():boolean
     get_can_default():boolean
     get_can_focus():boolean
-    get_child_requisition(requisition: Requisition):void
+    get_child_requisition(requisition: any):void
     get_child_visible():boolean
-    get_clip(clip: Allocation):void
-    get_clipboard(selection: Gdk.Atom):Clipboard
+    get_clip(clip: any):void
+    get_clipboard(selection: any):Clipboard
     get_composite_name():string
     get_device_enabled(device: Gdk.Device):boolean
     get_device_events(device: Gdk.Device):Gdk.EventMask
@@ -4154,7 +4161,7 @@ declare module "Gtk" {
     get_double_buffered():boolean
     get_events():number
     get_font_map():Pango.FontMap
-    get_font_options():cairo.FontOptions
+    get_font_options():any
     get_frame_clock():Gdk.FrameClock
     get_halign():Align
     get_has_tooltip():boolean
@@ -4176,18 +4183,18 @@ declare module "Gtk" {
     get_pango_context():Pango.Context
     get_parent():Widget
     get_parent_window():Gdk.Window
-    get_path():WidgetPath
+    get_path():any
     get_pointer(x: number, y: number):void
     get_preferred_height(minimum_height: number, natural_height: number):void
     get_preferred_height_and_baseline_for_width(width: number, minimum_height: number, natural_height: number, minimum_baseline: number, natural_baseline: number):void
     get_preferred_height_for_width(width: number, minimum_height: number, natural_height: number):void
-    get_preferred_size(minimum_size: Requisition, natural_size: Requisition):void
+    get_preferred_size(minimum_size: any, natural_size: any):void
     get_preferred_width(minimum_width: number, natural_width: number):void
     get_preferred_width_for_height(height: number, minimum_width: number, natural_width: number):void
     get_realized():boolean
     get_receives_default():boolean
     get_request_mode():SizeRequestMode
-    get_requisition(requisition: Requisition):void
+    get_requisition(requisition: any):void
     get_root_window():Gdk.Window
     get_scale_factor():number
     get_screen():Gdk.Screen
@@ -4199,7 +4206,7 @@ declare module "Gtk" {
     get_style():Style
     get_style_context():StyleContext
     get_support_multidevice():boolean
-    get_template_child(widget_type: number, name: string):GObject.Object
+    get_template_child(widget_type: any, name: string):GObject.Object
     get_tooltip_markup():string
     get_tooltip_text():string
     get_tooltip_window():Window
@@ -4225,9 +4232,9 @@ declare module "Gtk" {
     hide_on_delete():boolean
     in_destruction():boolean
     init_template():void
-    input_shape_combine_region(region: cairo.Region):void
-    insert_action_group(name: string, group: Gio.ActionGroup):void
-    intersect(area: Gdk.Rectangle, intersection: Gdk.Rectangle):boolean
+    input_shape_combine_region(region: any):void
+    insert_action_group(name: string, group: any):void
+    intersect(area: any, intersection: any):boolean
     is_ancestor(ancestor: Widget):boolean
     is_composited():boolean
     is_drawable():boolean
@@ -4236,50 +4243,50 @@ declare module "Gtk" {
     is_toplevel():boolean
     is_visible():boolean
     keynav_failed(direction: DirectionType):boolean
-    list_accel_closures():GLib.List
+    list_accel_closures():any
     list_action_prefixes():string[]
-    list_mnemonic_labels():GLib.List
+    list_mnemonic_labels():any
     map():void
     mnemonic_activate(group_cycling: boolean):boolean
-    modify_base(state: StateType, color: Gdk.Color):void
-    modify_bg(state: StateType, color: Gdk.Color):void
-    modify_cursor(primary: Gdk.Color, secondary: Gdk.Color):void
-    modify_fg(state: StateType, color: Gdk.Color):void
-    modify_font(font_desc: Pango.FontDescription):void
+    modify_base(state: StateType, color: any):void
+    modify_bg(state: StateType, color: any):void
+    modify_cursor(primary: any, secondary: any):void
+    modify_fg(state: StateType, color: any):void
+    modify_font(font_desc: any):void
     modify_style(style: RcStyle):void
-    modify_text(state: StateType, color: Gdk.Color):void
-    override_background_color(state: StateFlags, color: Gdk.RGBA):void
-    override_color(state: StateFlags, color: Gdk.RGBA):void
-    override_cursor(cursor: Gdk.RGBA, secondary_cursor: Gdk.RGBA):void
-    override_font(font_desc: Pango.FontDescription):void
-    override_symbolic_color(name: string, color: Gdk.RGBA):void
+    modify_text(state: StateType, color: any):void
+    override_background_color(state: StateFlags, color: any):void
+    override_color(state: StateFlags, color: any):void
+    override_cursor(cursor: any, secondary_cursor: any):void
+    override_font(font_desc: any):void
+    override_symbolic_color(name: string, color: any):void
     path(path_length: number, path: string, path_reversed: string):void
     queue_compute_expand():void
     queue_draw():void
     queue_draw_area(x: number, y: number, width: number, height: number):void
-    queue_draw_region(region: cairo.Region):void
+    queue_draw_region(region: any):void
     queue_resize():void
     queue_resize_no_redraw():void
     realize():void
-    region_intersect(region: cairo.Region):cairo.Region
+    region_intersect(region: any):any
     register_window(window: Gdk.Window):void
     remove_accelerator(accel_group: AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType):boolean
     remove_mnemonic_label(label: Widget):void
     remove_tick_callback(id: number):void
-    render_icon(stock_id: string, size: number, detail: string):GdkPixbuf.Pixbuf
-    render_icon_pixbuf(stock_id: string, size: number):GdkPixbuf.Pixbuf
+    render_icon(stock_id: string, size: number, detail: string):any
+    render_icon_pixbuf(stock_id: string, size: number):any
     reparent(new_parent: Widget):void
     reset_rc_styles():void
     reset_style():void
-    send_expose(event: Gdk.Event):number
-    send_focus_change(event: Gdk.Event):boolean
+    send_expose(event: any):number
+    send_focus_change(event: any):boolean
     set_accel_path(accel_path: string, accel_group: AccelGroup):void
-    set_allocation(allocation: Allocation):void
+    set_allocation(allocation: any):void
     set_app_paintable(app_paintable: boolean):void
     set_can_default(can_default: boolean):void
     set_can_focus(can_focus: boolean):void
     set_child_visible(is_visible: boolean):void
-    set_clip(clip: Allocation):void
+    set_clip(clip: any):void
     set_composite_name(name: string):void
     set_device_enabled(device: Gdk.Device, enabled: boolean):void
     set_device_events(device: Gdk.Device, events: Gdk.EventMask):void
@@ -4287,7 +4294,7 @@ declare module "Gtk" {
     set_double_buffered(double_buffered: boolean):void
     set_events(events: number):void
     set_font_map(font_map: Pango.FontMap):void
-    set_font_options(options: cairo.FontOptions):void
+    set_font_options(options: any):void
     set_halign(align: Align):void
     set_has_tooltip(has_tooltip: boolean):void
     set_has_window(has_window: boolean):void
@@ -4323,16 +4330,16 @@ declare module "Gtk" {
     set_visible(visible: boolean):void
     set_visual(visual: Gdk.Visual):void
     set_window(window: Gdk.Window):void
-    shape_combine_region(region: cairo.Region):void
+    shape_combine_region(region: any):void
     show():void
     show_all():void
     show_now():void
-    size_allocate(allocation: Allocation):void
-    size_allocate_with_baseline(allocation: Allocation, baseline: number):void
-    size_request(requisition: Requisition):void
+    size_allocate(allocation: any):void
+    size_allocate_with_baseline(allocation: any, baseline: number):void
+    size_request(requisition: any):void
     style_attach():void
-    style_get(first_property_name: string, ...args: any[]):void
-    style_get_property(property_name: string, value: GObject.Value):void
+    style_get(first_property_name: string, ...args: any):void
+    style_get_property(property_name: string, value: any):void
     style_get_valist(first_property_name: string, var_args: any):void
     thaw_child_notify():void
     translate_coordinates(dest_widget: Widget, src_x: number, src_y: number, dest_x: number, dest_y: number):boolean
@@ -4349,11 +4356,11 @@ declare module "Gtk" {
     constructor(type: WindowType)
     activate_default():boolean
     activate_focus():boolean
-    activate_key(event: Gdk.EventKey):boolean
+    activate_key(event: any):boolean
     add_accel_group(accel_group: AccelGroup):void
     add_mnemonic(keyval: number, target: Widget):void
-    begin_move_drag(button: number, root_x: number, root_y: number, timestamp: guint32):void
-    begin_resize_drag(edge: Gdk.WindowEdge, button: number, root_x: number, root_y: number, timestamp: guint32):void
+    begin_move_drag(button: number, root_x: number, root_y: number, timestamp: number):void
+    begin_resize_drag(edge: Gdk.WindowEdge, button: number, root_x: number, root_y: number, timestamp: number):void
     close():void
     deiconify():void
     fullscreen():void
@@ -4373,8 +4380,8 @@ declare module "Gtk" {
     get_group():WindowGroup
     get_has_resize_grip():boolean
     get_hide_titlebar_when_maximized():boolean
-    get_icon():GdkPixbuf.Pixbuf
-    get_icon_list():GLib.List
+    get_icon():any
+    get_icon_list():any
     get_icon_name():string
     get_mnemonic_modifier():Gdk.ModifierType
     get_mnemonics_visible():boolean
@@ -4382,7 +4389,7 @@ declare module "Gtk" {
     get_opacity():number
     get_position(root_x: number, root_y: number):void
     get_resizable():boolean
-    get_resize_grip_area(rect: Gdk.Rectangle):boolean
+    get_resize_grip_area(rect: any):boolean
     get_role():string
     get_screen():Gdk.Screen
     get_size(width: number, height: number):void
@@ -4404,8 +4411,8 @@ declare module "Gtk" {
     move(x: number, y: number):void
     parse_geometry(geometry: string):boolean
     present():void
-    present_with_time(timestamp: guint32):void
-    propagate_key_event(event: Gdk.EventKey):boolean
+    present_with_time(timestamp: number):void
+    propagate_key_event(event: any):boolean
     remove_accel_group(accel_group: AccelGroup):void
     remove_mnemonic(keyval: number, target: Widget):void
     reshow_with_initial_size():void
@@ -4424,14 +4431,14 @@ declare module "Gtk" {
     set_focus(focus: Widget):void
     set_focus_on_map(setting: boolean):void
     set_focus_visible(setting: boolean):void
-    set_geometry_hints(geometry_widget: Widget, geometry: Gdk.Geometry, geom_mask: Gdk.WindowHints):void
+    set_geometry_hints(geometry_widget: Widget, geometry: any, geom_mask: Gdk.WindowHints):void
     set_gravity(gravity: Gdk.Gravity):void
     set_has_resize_grip(value: boolean):void
     set_has_user_ref_count(setting: boolean):void
     set_hide_titlebar_when_maximized(setting: boolean):void
-    set_icon(icon: GdkPixbuf.Pixbuf):void
-    set_icon_from_file(filename: filename):boolean
-    set_icon_list(list: GLib.List):void
+    set_icon(icon: any):void
+    set_icon_from_file(filename: any):boolean
+    set_icon_list(list: any):void
     set_icon_name(name: string):void
     set_keep_above(setting: boolean):void
     set_keep_below(setting: boolean):void
@@ -4463,7 +4470,7 @@ declare module "Gtk" {
     add_window(window: Window):void
     get_current_device_grab(device: Gdk.Device):Widget
     get_current_grab():Widget
-    list_windows():GLib.List
+    list_windows():any
     remove_window(window: Window):void
   }
 }
