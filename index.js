@@ -1,1 +1,1 @@
-// n.a.
+module.exports = require('./girtdts')

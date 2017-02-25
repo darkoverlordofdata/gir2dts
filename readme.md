@@ -1,6 +1,6 @@
 # gir2dts #
 
-Create Gtk applications written with TypeScript
+Create Gtk applications with Gjs/TypeScript
 
 Provides normalized access to amd, commonjs and gjs imports
 
