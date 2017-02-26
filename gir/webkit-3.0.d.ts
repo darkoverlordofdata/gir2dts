@@ -6,6 +6,11 @@ declare module 'WebKit' {
     import * as GObject from "GObject"
     import * as Gio from "Gio"
     import * as Gtk from "Gtk"
+    export const MAJOR_VERSION:number
+    export const MICRO_VERSION:number
+    export const MINOR_VERSION:number
+    export const USER_AGENT_MAJOR_VERSION:number
+    export const USER_AGENT_MINOR_VERSION:number
     export function application_cache_get_database_directory_path():string
     export function application_cache_get_maximum_size():number
     export function application_cache_set_maximum_size(size: number):void
@@ -180,7 +185,6 @@ declare module 'WebKit' {
         EMPTY_DOCUMENT,
     }
     export class DOMAttr extends DOMNode {
-        constructor(config?: any)
         get_is_id():boolean
         get_name():string
         get_owner_element():DOMElement
@@ -189,7 +193,6 @@ declare module 'WebKit' {
         set_value(value: string):void
     }
     export class DOMAudioTrack extends DOMObject {
-        constructor(config?: any)
         get_enabled():boolean
         get_id():string
         get_kind():string
@@ -198,21 +201,18 @@ declare module 'WebKit' {
         set_enabled(value: boolean):void
     }
     export class DOMAudioTrackList extends DOMObject {
-        constructor(config?: any)
         dispatch_event(evt: DOMEvent):boolean
         get_length():number
         get_track_by_id(id: string):DOMAudioTrack
         item(index: number):DOMAudioTrack
     }
     export class DOMBarInfo extends DOMObject {
-        constructor(config?: any)
+        static get_visible(self: any):boolean
     }
     export class DOMBarProp extends DOMObject {
-        constructor(config?: any)
         get_visible():boolean
     }
     export class DOMBatteryManager extends DOMObject {
-        constructor(config?: any)
         dispatch_event(event: DOMEvent):boolean
         get_charging():boolean
         get_charging_time():number
@@ -220,28 +220,23 @@ declare module 'WebKit' {
         get_level():number
     }
     export class DOMBlob extends DOMObject {
-        constructor(config?: any)
         get_size():number
         slice(start: number, end: number, contentType: string):DOMBlob
         webkit_slice(start: number, end: number, content_type: string):DOMBlob
     }
     export class DOMCDATASection extends DOMText {
-        constructor(config?: any)
     }
     export class DOMCSSRule extends DOMObject {
-        constructor(config?: any)
         get_css_text():string
         get_parent_rule():DOMCSSRule
         get_parent_style_sheet():DOMCSSStyleSheet
         set_css_text(value: string):void
     }
     export class DOMCSSRuleList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMCSSRule
     }
     export class DOMCSSStyleDeclaration extends DOMObject {
-        constructor(config?: any)
         get_css_text():string
         get_length():number
         get_parent_rule():DOMCSSRule
@@ -257,7 +252,6 @@ declare module 'WebKit' {
 
     }
     export class DOMCSSStyleSheet extends DOMStyleSheet {
-        constructor(config?: any)
         add_rule(selector: string, style: string, index: number):number
         delete_rule(index: number):void
         get_css_rules():DOMCSSRuleList
@@ -267,13 +261,11 @@ declare module 'WebKit' {
         remove_rule(index: number):void
     }
     export class DOMCSSValue extends DOMObject {
-        constructor(config?: any)
         get_css_text():string
         get_css_value_type():number
         set_css_text(value: string):void
     }
     export class DOMCharacterData extends DOMNode {
-        constructor(config?: any)
         append_data(data: string):void
         delete_data(offset: number, length: number):void
         get_data():string
@@ -286,16 +278,13 @@ declare module 'WebKit' {
         substring_data(offset: number, length: number):string
     }
     export class DOMComment extends DOMCharacterData {
-        constructor(config?: any)
     }
     export class DOMConsole extends DOMObject {
-        constructor(config?: any)
         get_memory():any
         group_end():void
         time(title: string):void
     }
     export class DOMDOMApplicationCache extends DOMObject {
-        constructor(config?: any)
         abort():void
         dispatch_event(evt: DOMEvent):boolean
         get_status():number
@@ -303,7 +292,6 @@ declare module 'WebKit' {
         update():void
     }
     export class DOMDOMImplementation extends DOMObject {
-        constructor(config?: any)
         create_css_style_sheet(title: string, media: string):DOMCSSStyleSheet
         create_document(namespaceURI: string, qualifiedName: string, doctype: DOMDocumentType):DOMDocument
         create_document_type(qualifiedName: string, publicId: string, systemId: string):DOMDocumentType
@@ -311,25 +299,21 @@ declare module 'WebKit' {
         has_feature(feature: string, version: string):boolean
     }
     export class DOMDOMMimeType extends DOMObject {
-        constructor(config?: any)
         get_description():string
         get_enabled_plugin():DOMDOMPlugin
         get_suffixes():string
     }
     export class DOMDOMMimeTypeArray extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMDOMMimeType
         named_item(name: string):DOMDOMMimeType
     }
     export class DOMDOMNamedFlowCollection extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMWebKitNamedFlow
         named_item(name: string):DOMWebKitNamedFlow
     }
     export class DOMDOMPlugin extends DOMObject {
-        constructor(config?: any)
         get_description():string
         get_filename():string
         get_length():number
@@ -338,14 +322,12 @@ declare module 'WebKit' {
         named_item(name: string):DOMDOMMimeType
     }
     export class DOMDOMPluginArray extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMDOMPlugin
         named_item(name: string):DOMDOMPlugin
         refresh(reload: boolean):void
     }
     export class DOMDOMSecurityPolicy extends DOMObject {
-        constructor(config?: any)
         allows_connection_to(url: string):boolean
         allows_font_from(url: string):boolean
         allows_form_action(url: string):boolean
@@ -363,7 +345,6 @@ declare module 'WebKit' {
         get_report_ur_is():DOMDOMStringList
     }
     export class DOMDOMSelection extends DOMObject {
-        constructor(config?: any)
         add_range(range: DOMRange):void
         collapse(node: DOMNode, index: number):void
         collapse_to_end():void
@@ -390,21 +371,17 @@ declare module 'WebKit' {
         set_position(node: DOMNode, offset: number):void
     }
     export class DOMDOMSettableTokenList extends DOMDOMTokenList {
-        constructor(config?: any)
         get_value():string
         set_value(value: string):void
     }
     export class DOMDOMStringList extends DOMObject {
-        constructor(config?: any)
         contains(string: string):boolean
         get_length():number
         item(index: number):string
     }
     export class DOMDOMStringMap extends DOMObject {
-        constructor(config?: any)
     }
     export class DOMDOMTokenList extends DOMObject {
-        constructor(config?: any)
         add(tokens: string):void
         contains(token: string):boolean
         get_length():number
@@ -413,7 +390,6 @@ declare module 'WebKit' {
         toggle(token: string, force: boolean):boolean
     }
     export class DOMDOMWindow extends DOMObject {
-        constructor(config?: any)
         alert(message: string):void
         atob(string: string):string
         blur():void
@@ -495,15 +471,12 @@ declare module 'WebKit' {
         webkit_convert_point_from_page_to_node(node: DOMNode, p: DOMWebKitPoint):DOMWebKitPoint
     }
     export class DOMDOMWindowCSS extends DOMObject {
-        constructor(config?: any)
         supports(property: string, value: string):boolean
     }
     export class DOMDatabase extends DOMObject {
-        constructor(config?: any)
         get_version():string
     }
     export class DOMDocument extends DOMNode {
-        constructor(config?: any)
         adopt_node(source: DOMNode):DOMNode
         caret_range_from_point(x: number, y: number):DOMRange
         create_attribute(name: string):DOMAttr
@@ -597,12 +570,10 @@ declare module 'WebKit' {
         webkit_get_named_flows():DOMDOMNamedFlowCollection
     }
     export class DOMDocumentFragment extends DOMNode {
-        constructor(config?: any)
         query_selector(selectors: string):DOMElement
         query_selector_all(selectors: string):DOMNodeList
     }
     export class DOMDocumentType extends DOMNode {
-        constructor(config?: any)
         get_entities():DOMNamedNodeMap
         get_internal_subset():string
         get_name():string
@@ -612,7 +583,6 @@ declare module 'WebKit' {
         remove():void
     }
     export class DOMElement extends DOMNode {
-        constructor(config?: any)
         blur():void
         focus():void
         get_attribute(name: string):string
@@ -676,10 +646,8 @@ declare module 'WebKit' {
         webkit_request_pointer_lock():void
     }
     export class DOMEntityReference extends DOMNode {
-        constructor(config?: any)
     }
     export class DOMEvent extends DOMObject {
-        constructor(config?: any)
         get_bubbles():boolean
         get_cancel_bubble():boolean
         get_cancelable():boolean
@@ -698,32 +666,26 @@ declare module 'WebKit' {
         stop_propagation():void
     }
     export class DOMFile extends DOMBlob {
-        constructor(config?: any)
         get_name():string
         get_webkit_relative_path():string
     }
     export class DOMFileList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMFile
     }
     export class DOMGamepad extends DOMObject {
-        constructor(config?: any)
         get_id():string
         get_index():number
         get_timestamp():number
     }
     export class DOMGamepadList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMGamepad
     }
     export class DOMGeolocation extends DOMObject {
-        constructor(config?: any)
         clear_watch(watchID: number):void
     }
     export class DOMHTMLAnchorElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_charset():string
         get_coords():string
         get_download():string
@@ -764,7 +726,6 @@ declare module 'WebKit' {
         set_target(value: string):void
     }
     export class DOMHTMLAppletElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_alt():string
         get_archive():string
@@ -789,7 +750,6 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLAreaElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_alt():string
         get_coords():string
         get_hash():string
@@ -813,22 +773,18 @@ declare module 'WebKit' {
         set_target(value: string):void
     }
     export class DOMHTMLAudioElement extends DOMHTMLMediaElement {
-        constructor(config?: any)
     }
     export class DOMHTMLBRElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_clear():string
         set_clear(value: string):void
     }
     export class DOMHTMLBaseElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_href():string
         get_target():string
         set_href(value: string):void
         set_target(value: string):void
     }
     export class DOMHTMLBaseFontElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_color():string
         get_face():string
         get_size():number
@@ -837,7 +793,6 @@ declare module 'WebKit' {
         set_size(value: number):void
     }
     export class DOMHTMLBodyElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_a_link():string
         get_background():string
         get_bg_color():string
@@ -852,7 +807,6 @@ declare module 'WebKit' {
         set_v_link(value: string):void
     }
     export class DOMHTMLButtonElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_autofocus():boolean
         get_disabled():boolean
@@ -880,40 +834,33 @@ declare module 'WebKit' {
         set_value(value: string):void
     }
     export class DOMHTMLCanvasElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_height():number
         get_width():number
         set_height(value: number):void
         set_width(value: number):void
     }
     export class DOMHTMLCollection extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMNode
         named_item(name: string):DOMNode
     }
     export class DOMHTMLDListElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_compact():boolean
         set_compact(value: boolean):void
     }
     export class DOMHTMLDetailsElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_open():boolean
         set_open(value: boolean):void
     }
     export class DOMHTMLDirectoryElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_compact():boolean
         set_compact(value: boolean):void
     }
     export class DOMHTMLDivElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         set_align(value: string):void
     }
     export class DOMHTMLDocument extends DOMDocument {
-        constructor(config?: any)
         capture_events():void
         clear():void
         close():void
@@ -943,7 +890,6 @@ declare module 'WebKit' {
         set_vlink_color(value: string):void
     }
     export class DOMHTMLElement extends DOMElement {
-        constructor(config?: any)
         click():void
         get_access_key():string
         get_children():DOMHTMLCollection
@@ -994,7 +940,6 @@ declare module 'WebKit' {
         set_webkitdropzone(value: string):void
     }
     export class DOMHTMLEmbedElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_height():number
         get_name():string
@@ -1007,7 +952,6 @@ declare module 'WebKit' {
         set_width(value: number):void
     }
     export class DOMHTMLFieldSetElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_disabled():boolean
         get_elements():DOMHTMLCollection
@@ -1021,7 +965,6 @@ declare module 'WebKit' {
         set_name(value: string):void
     }
     export class DOMHTMLFontElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_color():string
         get_face():string
         get_size():string
@@ -1030,7 +973,6 @@ declare module 'WebKit' {
         set_size(value: string):void
     }
     export class DOMHTMLFormElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         dispatch_form_change():void
         dispatch_form_input():void
@@ -1062,7 +1004,6 @@ declare module 'WebKit' {
         submit():void
     }
     export class DOMHTMLFrameElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_content_document():DOMDocument
         get_content_window():DOMDOMWindow
         get_frame_border():string
@@ -1085,14 +1026,12 @@ declare module 'WebKit' {
         set_src(value: string):void
     }
     export class DOMHTMLFrameSetElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_cols():string
         get_rows():string
         set_cols(value: string):void
         set_rows(value: string):void
     }
     export class DOMHTMLHRElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_no_shade():boolean
         get_size():string
@@ -1103,24 +1042,20 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLHeadElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_profile():string
         set_profile(value: string):void
     }
     export class DOMHTMLHeadingElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         set_align(value: string):void
     }
     export class DOMHTMLHtmlElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_manifest():string
         get_version():string
         set_manifest(value: string):void
         set_version(value: string):void
     }
     export class DOMHTMLIFrameElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_content_document():DOMDocument
         get_content_window():DOMDOMWindow
@@ -1151,7 +1086,6 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLImageElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_alt():string
         get_border():string
@@ -1189,7 +1123,6 @@ declare module 'WebKit' {
         set_width(value: number):void
     }
     export class DOMHTMLInputElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_accept():string
         get_align():string
@@ -1288,7 +1221,6 @@ declare module 'WebKit' {
         step_up(n: number):void
     }
     export class DOMHTMLKeygenElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_autofocus():boolean
         get_challenge():string
@@ -1308,25 +1240,21 @@ declare module 'WebKit' {
         set_name(value: string):void
     }
     export class DOMHTMLLIElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_value():number
         set_value(value: number):void
     }
     export class DOMHTMLLabelElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_control():DOMHTMLElement
         get_form():DOMHTMLFormElement
         get_html_for():string
         set_html_for(value: string):void
     }
     export class DOMHTMLLegendElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_form():DOMHTMLFormElement
         set_align(value: string):void
     }
     export class DOMHTMLLinkElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_charset():string
         get_disabled():boolean
         get_href():string
@@ -1346,13 +1274,11 @@ declare module 'WebKit' {
         set_target(value: string):void
     }
     export class DOMHTMLMapElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_areas():DOMHTMLCollection
         get_name():string
         set_name(value: string):void
     }
     export class DOMHTMLMarqueeElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_behavior():string
         get_bg_color():string
         get_direction():string
@@ -1379,7 +1305,6 @@ declare module 'WebKit' {
         stop():void
     }
     export class DOMHTMLMediaElement extends DOMHTMLElement {
-        constructor(config?: any)
         add_text_track(kind: string, label: string, language: string):DOMTextTrack
         can_play_type(type: string):string
         fast_seek(time: number):void
@@ -1438,12 +1363,10 @@ declare module 'WebKit' {
         webkit_show_playback_target_picker():void
     }
     export class DOMHTMLMenuElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_compact():boolean
         set_compact(value: boolean):void
     }
     export class DOMHTMLMetaElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_content():string
         get_http_equiv():string
         get_name():string
@@ -1454,14 +1377,12 @@ declare module 'WebKit' {
         set_scheme(value: string):void
     }
     export class DOMHTMLModElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_cite():string
         get_date_time():string
         set_cite(value: string):void
         set_date_time(value: string):void
     }
     export class DOMHTMLOListElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_compact():boolean
         get_reversed():boolean
         get_start():number
@@ -1470,7 +1391,6 @@ declare module 'WebKit' {
         set_start(value: number):void
     }
     export class DOMHTMLObjectElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_align():string
         get_archive():string
@@ -1510,14 +1430,12 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLOptGroupElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_disabled():boolean
         get_label():string
         set_disabled(value: boolean):void
         set_label(value: string):void
     }
     export class DOMHTMLOptionElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_default_selected():boolean
         get_disabled():boolean
         get_form():DOMHTMLFormElement
@@ -1533,19 +1451,16 @@ declare module 'WebKit' {
         set_value(value: string):void
     }
     export class DOMHTMLOptionsCollection extends DOMHTMLCollection {
-        constructor(config?: any)
         get_length():number
         get_selected_index():number
         named_item(name: string):DOMNode
         set_selected_index(value: number):void
     }
     export class DOMHTMLParagraphElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         set_align(value: string):void
     }
     export class DOMHTMLParamElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_name():string
         get_value():string
         get_value_type():string
@@ -1554,22 +1469,22 @@ declare module 'WebKit' {
         set_value_type(value: string):void
     }
     export class DOMHTMLPreElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_width():number
         get_wrap():boolean
         set_width(value: number):void
         set_wrap(value: boolean):void
     }
     export class DOMHTMLPropertiesCollection extends DOMHTMLCollection {
-        constructor(config?: any)
+        static get_length(self: any):number
+        static get_names(self: any):DOMDOMStringList
+        static item(self: any, index: number):DOMNode
+        static named_item(self: any, name: string):any
     }
     export class DOMHTMLQuoteElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_cite():string
         set_cite(value: string):void
     }
     export class DOMHTMLScriptElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_async():boolean
         get_charset():string
         get_cross_origin():string
@@ -1590,7 +1505,6 @@ declare module 'WebKit' {
         set_text(value: string):void
     }
     export class DOMHTMLSelectElement extends DOMHTMLElement {
-        constructor(config?: any)
         add(element: DOMHTMLElement, before: DOMHTMLElement):void
         check_validity():boolean
         get_autofocus():boolean
@@ -1625,7 +1539,6 @@ declare module 'WebKit' {
         set_value(value: string):void
     }
     export class DOMHTMLStyleElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_disabled():boolean
         get_media():string
         get_scoped():boolean
@@ -1635,12 +1548,10 @@ declare module 'WebKit' {
         set_scoped(value: boolean):void
     }
     export class DOMHTMLTableCaptionElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         set_align(value: string):void
     }
     export class DOMHTMLTableCellElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_abbr():string
         get_align():string
         get_axis():string
@@ -1672,7 +1583,6 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLTableColElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_align():string
         get_ch():string
         get_ch_off():string
@@ -1687,7 +1597,6 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLTableElement extends DOMHTMLElement {
-        constructor(config?: any)
         create_caption():DOMHTMLElement
         create_t_body():DOMHTMLElement
         create_t_foot():DOMHTMLElement
@@ -1725,7 +1634,6 @@ declare module 'WebKit' {
         set_width(value: string):void
     }
     export class DOMHTMLTableRowElement extends DOMHTMLElement {
-        constructor(config?: any)
         delete_cell(index: number):void
         get_align():string
         get_bg_color():string
@@ -1743,7 +1651,6 @@ declare module 'WebKit' {
         set_v_align(value: string):void
     }
     export class DOMHTMLTableSectionElement extends DOMHTMLElement {
-        constructor(config?: any)
         delete_row(index: number):void
         get_align():string
         get_ch():string
@@ -1757,7 +1664,6 @@ declare module 'WebKit' {
         set_v_align(value: string):void
     }
     export class DOMHTMLTextAreaElement extends DOMHTMLElement {
-        constructor(config?: any)
         check_validity():boolean
         get_autocapitalize():string
         get_autocorrect():boolean
@@ -1808,17 +1714,14 @@ declare module 'WebKit' {
         set_wrap(value: string):void
     }
     export class DOMHTMLTitleElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_text():string
         set_text(value: string):void
     }
     export class DOMHTMLUListElement extends DOMHTMLElement {
-        constructor(config?: any)
         get_compact():boolean
         set_compact(value: boolean):void
     }
     export class DOMHTMLVideoElement extends DOMHTMLMediaElement {
-        constructor(config?: any)
         get_height():number
         get_poster():string
         get_video_height():number
@@ -1839,14 +1742,12 @@ declare module 'WebKit' {
         webkit_exit_fullscreen():void
     }
     export class DOMHistory extends DOMObject {
-        constructor(config?: any)
         back():void
         forward():void
         get_length():number
         go(distance: number):void
     }
     export class DOMKeyboardEvent extends DOMUIEvent {
-        constructor(config?: any)
         get_alt_graph_key():boolean
         get_alt_key():boolean
         get_ctrl_key():boolean
@@ -1858,7 +1759,6 @@ declare module 'WebKit' {
         init_keyboard_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string, location: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean):void
     }
     export class DOMLocation extends DOMObject {
-        constructor(config?: any)
         get_ancestor_origins():DOMDOMStringList
         get_hash():string
         get_host():string
@@ -1871,7 +1771,6 @@ declare module 'WebKit' {
         get_search():string
     }
     export class DOMMediaController extends DOMObject {
-        constructor(config?: any)
         get_buffered():DOMTimeRanges
         get_current_time():number
         get_default_playback_rate():number
@@ -1893,11 +1792,9 @@ declare module 'WebKit' {
         unpause():void
     }
     export class DOMMediaError extends DOMObject {
-        constructor(config?: any)
         get_code():number
     }
     export class DOMMediaList extends DOMObject {
-        constructor(config?: any)
         append_medium(newMedium: string):void
         delete_medium(oldMedium: string):void
         get_length():number
@@ -1906,21 +1803,19 @@ declare module 'WebKit' {
         set_media_text(value: string):void
     }
     export class DOMMediaQueryList extends DOMObject {
-        constructor(config?: any)
         get_matches():boolean
         get_media():string
     }
     export class DOMMemoryInfo extends DOMObject {
-        constructor(config?: any)
+        static get_js_heap_size_limit(self: any):number
+        static get_total_js_heap_size(self: any):number
+        static get_used_js_heap_size(self: any):number
     }
     export class DOMMessagePort extends DOMObject {
-        constructor(config?: any)
     }
     export class DOMMicroDataItemValue extends DOMObject {
-        constructor(config?: any)
     }
     export class DOMMouseEvent extends DOMUIEvent {
-        constructor(config?: any)
         get_alt_key():boolean
         get_button():number
         get_client_x():number
@@ -1942,7 +1837,6 @@ declare module 'WebKit' {
         init_mouse_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: any):void
     }
     export class DOMNamedNodeMap extends DOMObject {
-        constructor(config?: any)
         get_length():number
         get_named_item(name: string):DOMNode
         get_named_item_ns(namespaceURI: string, localName: string):DOMNode
@@ -1953,7 +1847,6 @@ declare module 'WebKit' {
         set_named_item_ns(node: DOMNode):DOMNode
     }
     export class DOMNavigator extends DOMObject {
-        constructor(config?: any)
         get_app_code_name():string
         get_app_name():string
         get_app_version():string
@@ -1980,7 +1873,6 @@ declare module 'WebKit' {
         webkit_get_gamepads():DOMGamepadList
     }
     export class DOMNode extends DOMObject {
-        constructor(config?: any)
         append_child(newChild: DOMNode):DOMNode
         clone_node(deep: boolean):DOMNode
         compare_document_position(other: DOMNode):number
@@ -2020,11 +1912,9 @@ declare module 'WebKit' {
         set_text_content(value: string):void
     }
     export class DOMNodeFilter extends DOMObject {
-        constructor(config?: any)
         accept_node(n: DOMNode):any
     }
     export class DOMNodeIterator extends DOMObject {
-        constructor(config?: any)
         detach():void
         get_expand_entity_references():boolean
         get_filter():DOMNodeFilter
@@ -2036,38 +1926,31 @@ declare module 'WebKit' {
         previous_node():DOMNode
     }
     export class DOMNodeList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMNode
     }
     export class DOMObject extends GObject.Object {
-        constructor(config?: any)
     }
     export class DOMPerformance extends DOMObject {
-        constructor(config?: any)
         get_memory():any
         get_navigation():DOMPerformanceNavigation
         get_timing():DOMPerformanceTiming
         now():number
     }
     export class DOMPerformanceEntry extends DOMObject {
-        constructor(config?: any)
         get_duration():number
         get_entry_type():string
         get_name():string
         get_start_time():number
     }
     export class DOMPerformanceEntryList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMPerformanceEntry
     }
     export class DOMPerformanceNavigation extends DOMObject {
-        constructor(config?: any)
         get_redirect_count():number
     }
     export class DOMPerformanceTiming extends DOMObject {
-        constructor(config?: any)
         get_connect_end():number
         get_connect_start():number
         get_dom_complete():number
@@ -2091,17 +1974,16 @@ declare module 'WebKit' {
         get_unload_event_start():number
     }
     export class DOMProcessingInstruction extends DOMCharacterData {
-        constructor(config?: any)
         get_data():string
         get_sheet():DOMStyleSheet
         get_target():string
         set_data(value: string):void
     }
     export class DOMPropertyNodeList extends DOMNodeList {
-        constructor(config?: any)
+        static get_length(self: any):number
+        static item(self: any, index: number):DOMNode
     }
     export class DOMRange extends DOMObject {
-        constructor(config?: any)
         clone_contents():DOMDocumentFragment
         clone_range():DOMRange
         collapse(toStart: boolean):void
@@ -2135,7 +2017,6 @@ declare module 'WebKit' {
         to_string():string
     }
     export class DOMScreen extends DOMObject {
-        constructor(config?: any)
         get_avail_height():number
         get_avail_left():number
         get_avail_top():number
@@ -2146,7 +2027,6 @@ declare module 'WebKit' {
         get_width():number
     }
     export class DOMShadowRoot extends DOMDocumentFragment {
-        constructor(config?: any)
         element_from_point(x: number, y: number):DOMElement
         get_active_element():DOMElement
         get_apply_author_styles():boolean
@@ -2162,7 +2042,6 @@ declare module 'WebKit' {
         set_reset_style_inheritance(value: boolean):void
     }
     export class DOMStorage extends DOMObject {
-        constructor(config?: any)
         clear():void
         get_item(key: string):string
         get_length():number
@@ -2171,17 +2050,13 @@ declare module 'WebKit' {
         set_item(key: string, data: string):void
     }
     export class DOMStorageInfo extends DOMObject {
-        constructor(config?: any)
     }
     export class DOMStorageQuota extends DOMObject {
-        constructor(config?: any)
     }
     export class DOMStyleMedia extends DOMObject {
-        constructor(config?: any)
         match_medium(mediaquery: string):boolean
     }
     export class DOMStyleSheet extends DOMObject {
-        constructor(config?: any)
         get_disabled():boolean
         get_href():string
         get_media():DOMMediaList
@@ -2191,18 +2066,15 @@ declare module 'WebKit' {
         set_disabled(value: boolean):void
     }
     export class DOMStyleSheetList extends DOMObject {
-        constructor(config?: any)
         get_length():number
         item(index: number):DOMStyleSheet
     }
     export class DOMText extends DOMCharacterData {
-        constructor(config?: any)
         get_whole_text():string
         replace_whole_text(content: string):DOMText
         split_text(offset: number):DOMText
     }
     export class DOMTextTrack extends DOMObject {
-        constructor(config?: any)
         add_cue(cue: DOMTextTrackCue):void
         dispatch_event(evt: DOMEvent):boolean
         get_active_cues():DOMTextTrackCueList
@@ -2216,7 +2088,6 @@ declare module 'WebKit' {
         set_mode(value: string):void
     }
     export class DOMTextTrackCue extends DOMObject {
-        constructor(config?: any)
         dispatch_event(evt: DOMEvent):boolean
         get_align():string
         get_cue_as_html():DOMDocumentFragment
@@ -2244,26 +2115,22 @@ declare module 'WebKit' {
         set_vertical(value: string):void
     }
     export class DOMTextTrackCueList extends DOMObject {
-        constructor(config?: any)
         get_cue_by_id(id: string):DOMTextTrackCue
         get_length():number
         item(index: number):DOMTextTrackCue
     }
     export class DOMTextTrackList extends DOMObject {
-        constructor(config?: any)
         dispatch_event(evt: DOMEvent):boolean
         get_length():number
         get_track_by_id(id: string):DOMTextTrack
         item(index: number):DOMTextTrack
     }
     export class DOMTimeRanges extends DOMObject {
-        constructor(config?: any)
         end(index: number):number
         get_length():number
         start(index: number):number
     }
     export class DOMTouch extends DOMObject {
-        constructor(config?: any)
         get_client_x():number
         get_client_y():number
         get_identifier():number
@@ -2278,10 +2145,8 @@ declare module 'WebKit' {
         get_webkit_rotation_angle():number
     }
     export class DOMTrackEvent extends DOMEvent {
-        constructor(config?: any)
     }
     export class DOMTreeWalker extends DOMObject {
-        constructor(config?: any)
         first_child():DOMNode
         get_current_node():DOMNode
         get_expand_entity_references():boolean
@@ -2297,7 +2162,6 @@ declare module 'WebKit' {
         set_current_node(value: DOMNode):void
     }
     export class DOMUIEvent extends DOMEvent {
-        constructor(config?: any)
         get_char_code():number
         get_detail():number
         get_key_code():number
@@ -2310,7 +2174,6 @@ declare module 'WebKit' {
         init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number):void
     }
     export class DOMValidityState extends DOMObject {
-        constructor(config?: any)
         get_bad_input():boolean
         get_custom_error():boolean
         get_pattern_mismatch():boolean
@@ -2323,7 +2186,6 @@ declare module 'WebKit' {
         get_value_missing():boolean
     }
     export class DOMVideoPlaybackQuality extends DOMObject {
-        constructor(config?: any)
         get_corrupted_video_frames():number
         get_creation_time():number
         get_dropped_video_frames():number
@@ -2331,7 +2193,6 @@ declare module 'WebKit' {
         get_total_video_frames():number
     }
     export class DOMVideoTrack extends DOMObject {
-        constructor(config?: any)
         get_id():string
         get_kind():string
         get_label():string
@@ -2340,14 +2201,12 @@ declare module 'WebKit' {
         set_selected(value: boolean):void
     }
     export class DOMVideoTrackList extends DOMObject {
-        constructor(config?: any)
         dispatch_event(evt: DOMEvent):boolean
         get_length():number
         get_track_by_id(id: string):DOMVideoTrack
         item(index: number):DOMVideoTrack
     }
     export class DOMWebKitNamedFlow extends DOMObject {
-        constructor(config?: any)
         dispatch_event(event: DOMEvent):boolean
         get_content():DOMNodeList
         get_content_nodes():DOMNodeList
@@ -2360,14 +2219,12 @@ declare module 'WebKit' {
         get_regions_by_content_node(content_node: DOMNode):DOMNodeList
     }
     export class DOMWebKitPoint extends DOMObject {
-        constructor(config?: any)
         get_x():number
         get_y():number
         set_x(value: number):void
         set_y(value: number):void
     }
     export class DOMWheelEvent extends DOMMouseEvent {
-        constructor(config?: any)
         get_delta_mode():number
         get_delta_x():number
         get_delta_y():number
@@ -2379,15 +2236,12 @@ declare module 'WebKit' {
         init_wheel_event(wheelDeltaX: number, wheelDeltaY: number, view: DOMDOMWindow, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean):void
     }
     export class DOMXPathExpression extends DOMObject {
-        constructor(config?: any)
         evaluate(contextNode: DOMNode, type: number, inResult: DOMXPathResult):DOMXPathResult
     }
     export class DOMXPathNSResolver extends DOMObject {
-        constructor(config?: any)
         lookup_namespace_uri(prefix: string):string
     }
     export class DOMXPathResult extends DOMObject {
-        constructor(config?: any)
         get_boolean_value():boolean
         get_invalid_iterator_state():boolean
         get_number_value():number
@@ -2415,7 +2269,6 @@ declare module 'WebKit' {
         start():void
     }
     export class FaviconDatabase extends GObject.Object {
-        constructor(config?: any)
         clear():void
         get_favicon_pixbuf(page_uri: string, width: number, height: number, cancellable: Gio.Cancellable, callback: any, user_data: any):void
         get_favicon_pixbuf_finish(result: any):any
@@ -2425,7 +2278,6 @@ declare module 'WebKit' {
         try_get_favicon_pixbuf(page_uri: string, width: number, height: number):any
     }
     export class FileChooserRequest extends GObject.Object {
-        constructor(config?: any)
         get_mime_types():string[]
         get_mime_types_filter():Gtk.FileFilter
         get_select_multiple():boolean
@@ -2433,13 +2285,10 @@ declare module 'WebKit' {
         select_files(files: string[]):void
     }
     export class GeolocationPolicyDecision extends GObject.Object {
-        constructor(config?: any)
     }
     export class HitTestResult extends GObject.Object {
-        constructor(config?: any)
     }
     export class IconDatabase extends GObject.Object {
-        constructor(config?: any)
         clear():void
         get_icon_pixbuf(page_uri: string):any
         get_icon_uri(page_uri: string):string
@@ -2460,7 +2309,6 @@ declare module 'WebKit' {
         set_uri(uri: string):void
     }
     export class SecurityOrigin extends GObject.Object {
-        constructor(config?: any)
         get_all_web_databases():any
         get_host():string
         get_port():number
@@ -2470,14 +2318,13 @@ declare module 'WebKit' {
         set_web_database_quota(quota: number):void
     }
     export class SoupAuthDialog extends GObject.Object {
-        constructor(config?: any)
     }
     export class ViewportAttributes extends GObject.Object {
-        constructor(config?: any)
         recompute():void
     }
     export class WebBackForwardList extends GObject.Object {
         constructor(config?: any)
+        static new_with_web_view(web_view: WebView):WebBackForwardList
         add_item(history_item: WebHistoryItem):void
         clear():void
         contains_item(history_item: WebHistoryItem):boolean
@@ -2497,6 +2344,7 @@ declare module 'WebKit' {
     }
     export class WebDataSource extends GObject.Object {
         constructor(config?: any)
+        static new_with_request(request: NetworkRequest):WebDataSource
         get_data():any
         get_encoding():string
         get_initial_request():NetworkRequest
@@ -2508,7 +2356,6 @@ declare module 'WebKit' {
         is_loading():boolean
     }
     export class WebDatabase extends GObject.Object {
-        constructor(config?: any)
         get_display_name():string
         get_expected_size():number
         get_filename():string
@@ -2547,6 +2394,7 @@ declare module 'WebKit' {
     }
     export class WebHistoryItem extends GObject.Object {
         constructor(config?: any)
+        static new_with_data(uri: string, title: string):WebHistoryItem
         copy():WebHistoryItem
         get_alternate_title():string
         get_last_visited_time():number
@@ -2556,7 +2404,6 @@ declare module 'WebKit' {
         set_alternate_title(title: string):void
     }
     export class WebInspector extends GObject.Object {
-        constructor(config?: any)
         close():void
         get_inspected_uri():string
         get_web_view():WebView
@@ -2565,7 +2412,6 @@ declare module 'WebKit' {
         show():void
     }
     export class WebNavigationAction extends GObject.Object {
-        constructor(config?: any)
         get_button():number
         get_modifier_state():number
         get_original_uri():string
@@ -2575,7 +2421,6 @@ declare module 'WebKit' {
         set_reason(reason: WebNavigationReason):void
     }
     export class WebPlugin extends GObject.Object {
-        constructor(config?: any)
         get_description():string
         get_enabled():boolean
         get_mimetypes():any
@@ -2584,13 +2429,12 @@ declare module 'WebKit' {
         set_enabled(enabled: boolean):void
     }
     export class WebPluginDatabase extends GObject.Object {
-        constructor(config?: any)
+        static plugins_list_free(list: any):void
         get_plugin_for_mimetype(mime_type: string):WebPlugin
         get_plugins():any
         refresh():void
     }
     export class WebPolicyDecision extends GObject.Object {
-        constructor(config?: any)
         download():void
         ignore():void
         use():void

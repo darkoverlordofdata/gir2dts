@@ -6,15 +6,16 @@ Provides normalized access to amd, commonjs and gjs imports
 
 
 ## rules
+Conversion is iterative and requres patching capability.
 
 * numeric typedefs are replaced with 'number'
 * constructirs are replaced with default one optional hash table parameter
 * only functions, enums, and classes
 * anything else, not defined in this group of modules, gets replaced with 'any'
-
-this leaves 'inconsistencies' in Gir: 
-some method overrides also change the method signature. Wtf Gnome?
-So these have to be patched using patch entries in the json config.
+* to be done, as dicovered:
+    * methods that are not implemented the same as in Gir
+    * methods/objects that just aren't in Gir at all (Gtk.Settings::gtk_theme_name)
+    * fix with add/patch entries in gir2dts.json
 
 ## example
 

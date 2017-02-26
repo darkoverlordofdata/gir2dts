@@ -23,6 +23,7 @@
                     "connect": "connect(...args: any[]):any",
                     "get_valist": "get_valist(...args: any[]):void",
                     "get_property": "get_property(...args: any[]):any",
+                    "newv": "static newv(...args: any[]):Object",
                     "replace_data": "replace_data(...args: any[]):any",
                     "set_property": "set_property(...args: any[]):void",
                     "set_valist": "set_valist(...args: any[]):void"
@@ -34,6 +35,13 @@
             "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
             "output": "gir/gtk-3.0.d.ts",
             "import": ["GObject", "GLib", "Gio", "Gdk", "Atk","Pango"],
+            "add": {
+                "Settings": {
+                    "gtk_application_prefer_dark_theme": "gtk_application_prefer_dark_theme: boolean",
+                    "gtk_theme_name": "gtk_theme_name: string"
+                    
+                }
+            },
             "patch" : {
                 "Bin": {
                     "mnemonic_activate": "mnemonic_activate(...args: any[]):boolean"
@@ -42,8 +50,20 @@
                     "remove" : "remove(...args: any[]):void",
                     "child_notify": "child_notify(...args: any[]):void"
                 },
+                "CheckButton": {
+                    "new_with_label": "static new_with_label(...args: any[]):CheckButton"
+                },
+                "CheckMenuItem": {
+                    "new_with_label": "static new_with_label(...args: any[]):CheckMenuItem"
+                },
                 "ComboBoxText": {
                     "remove" : "remove(...args: any[]):void"
+                },
+                "LinkButton": {
+                    "new_with_label": "static new_with_label(...args: any[]):LinkButton"
+                },
+                "ListStore": {
+                    "newv": "static newv(...args: any[]):ListStore"
                 },
                 "MenuButton": {
                     "get_direction": "get_direction(): number",
@@ -51,6 +71,18 @@
                 },
                 "MenuItem": {
                     "activate": "activate():any"
+                },
+                "RadioButton": {
+                    "new_with_label": "static new_with_label(...args: any[]):RadioButton",
+                    "new_with_mnemonic": "static new_with_mnemonic(...args: any[]):RadioButton"
+                },
+                "RadioMenuItem": {
+                    "new_with_label": "static new_with_label(...args: any[]):RadioMenuItem",
+                    "new_with_mnemonic": "static new_with_mnemonic(...args: any[]):RadioMenuItem"
+                },
+                "RadioToolButton": {
+                    "new_with_label": "static new_with_label(...args: any[]):RadioToolButton",
+                    "new_from_stock": "static new_from_stock(...args: any[]):RadioToolButton"
                 },
                 "Statusbar": {
                     "remove" : "remove(...args: any[]):void"
@@ -75,6 +107,9 @@
                 "TextView": {
                     "get_window": "get_window(win?: number):Gdk.Window"
                 },
+                "TreeStore": {
+                    "newv": "static newv(...args: any[]):TreeStore"
+                },
                 "ThemingEngine": {
                     "get_property": "get_property(...args: any[]):any",
                     "get_valist": "get_valist(...args: any[]):void"
@@ -82,6 +117,9 @@
                 "ToggleButton": {
                     "get_direction": "get_direction(): number",
                     "set_direction": "set_direction(dir: number):void"
+                },
+                "ToggleToolButton": {
+                    "new_from_stock": "static new_from_stock(...args: any[]):ToggleToolButton"
                 },
                 "Toolbar": {
                     "get_style": "get_style():number",

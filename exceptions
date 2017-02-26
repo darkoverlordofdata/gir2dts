@@ -1,0 +1,11 @@
+gir/gio-2.0.d.ts(1060,18): error TS2417: Class static side 'typeof DBusObjectManagerClient' incorrectly extends base class static side 'typeof Object'.
+  Types of property 'new' are incompatible.
+    Type '(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: stri...' is not assignable to type '(object_type: any, first_property_name: string, ...args: any[]) => any'.
+      Types of parameters 'flags' and 'first_property_name' are incompatible.
+        Type 'string' is not assignable to type 'DBusObjectManagerClientFlags'.
+
+gir/gio-2.0.d.ts(1094,18): error TS2417: Class static side 'typeof DBusProxy' incorrectly extends base class static side 'typeof Object'.
+  Types of property 'new' are incompatible.
+    Type '(connection: DBusConnection, flags: DBusProxyFlags, info: any, name: string, object_path: string,...' is not assignable to type '(object_type: any, first_property_name: string, ...args: any[]) => any'.
+      Types of parameters 'flags' and 'first_property_name' are incompatible.
+        Type 'string' is not assignable to type 'DBusProxyFlags'.

@@ -69,31 +69,35 @@ define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (req
     // horizontal and vertical boxes
     var hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
     var vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
-    // Setting up optional Dark theme (gotta love it!)
-    // ./browser.js google.com --dark
+    var gtkSettings = Gtk.Settings.get_default();
+    gtkSettings.gtk_application_prefer_dark_theme = true;
+    //Setting up optional Dark theme (gotta love it!)
+    //./browser.js google.com --dark
     if (argv.some(function (info) { return info === '--dark'; })) {
-        var gtkSettings = Gtk.Settings.get_default();
-        gtkSettings.gtk_application_prefer_dark_theme = true;
-        gtkSettings.gtk_theme_name = 'Adwaita';
+        var gtkSettings_1 = Gtk.Settings.get_default();
+        gtkSettings_1.gtk_application_prefer_dark_theme = true;
+        gtkSettings_1.gtk_theme_name = 'Adwaita';
     }
     else if (argv.some(function (info) { return info === '--light'; })) {
-        var gtkSettings = Gtk.Settings.get_default();
-        gtkSettings.gtk_application_prefer_dark_theme = false;
-        gtkSettings.gtk_theme_name = 'Adwaita';
+        var gtkSettings_2 = Gtk.Settings.get_default();
+        gtkSettings_2.gtk_application_prefer_dark_theme = false;
+        gtkSettings_2.gtk_theme_name = 'Adwaita';
     }
-    // open first argument or Google
+    // open first argument or shameless plug
     webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'));
+    // TODO: what is 'load-changed' for WebKit3?
+    // can't change to new page until this gets fixed
     //whenever a new page is loaded ...
     // webView.connect('load-changed', (widget, loadEvent, data) => {
     //     switch (loadEvent) {
     //       case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
     //         // ... update the URL bar with the current adress
-    //         urlBar.set_text(widget.get_uri());
-    //         button.back.set_sensitive(webView.can_go_back());
-    //         button.forward.set_sensitive(webView.can_go_forward());
-    //         break;
+    //         urlBar.set_text(widget.get_uri())
+    //         button.back.set_sensitive(webView.can_go_back())
+    //         button.forward.set_sensitive(webView.can_go_forward())
+    //         break
     //     }
-    // });
+    // })
     // configure buttons actions
     button.back.connect('clicked', function () { return webView.go_back(); });
     button.forward.connect('clicked', function () { return webView.go_forward(); });

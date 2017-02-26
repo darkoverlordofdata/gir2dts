@@ -11,6 +11,108 @@ declare module 'Gio' {
         static new_for_path(path: string): File
     }
 
+    export const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_DELETE:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_READ:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_RENAME:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_TRASH:string
+    export const FILE_ATTRIBUTE_ACCESS_CAN_WRITE:string
+    export const FILE_ATTRIBUTE_DOS_IS_ARCHIVE:string
+    export const FILE_ATTRIBUTE_DOS_IS_SYSTEM:string
+    export const FILE_ATTRIBUTE_ETAG_VALUE:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_FREE:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_READONLY:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_SIZE:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_TYPE:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_USED:string
+    export const FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW:string
+    export const FILE_ATTRIBUTE_GVFS_BACKEND:string
+    export const FILE_ATTRIBUTE_ID_FILE:string
+    export const FILE_ATTRIBUTE_ID_FILESYSTEM:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE:string
+    export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE:string
+    export const FILE_ATTRIBUTE_OWNER_GROUP:string
+    export const FILE_ATTRIBUTE_OWNER_USER:string
+    export const FILE_ATTRIBUTE_OWNER_USER_REAL:string
+    export const FILE_ATTRIBUTE_PREVIEW_ICON:string
+    export const FILE_ATTRIBUTE_SELINUX_CONTEXT:string
+    export const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE:string
+    export const FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE:string
+    export const FILE_ATTRIBUTE_STANDARD_COPY_NAME:string
+    export const FILE_ATTRIBUTE_STANDARD_DESCRIPTION:string
+    export const FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME:string
+    export const FILE_ATTRIBUTE_STANDARD_EDIT_NAME:string
+    export const FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE:string
+    export const FILE_ATTRIBUTE_STANDARD_ICON:string
+    export const FILE_ATTRIBUTE_STANDARD_IS_BACKUP:string
+    export const FILE_ATTRIBUTE_STANDARD_IS_HIDDEN:string
+    export const FILE_ATTRIBUTE_STANDARD_IS_SYMLINK:string
+    export const FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL:string
+    export const FILE_ATTRIBUTE_STANDARD_IS_VOLATILE:string
+    export const FILE_ATTRIBUTE_STANDARD_NAME:string
+    export const FILE_ATTRIBUTE_STANDARD_SIZE:string
+    export const FILE_ATTRIBUTE_STANDARD_SORT_ORDER:string
+    export const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON:string
+    export const FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET:string
+    export const FILE_ATTRIBUTE_STANDARD_TARGET_URI:string
+    export const FILE_ATTRIBUTE_STANDARD_TYPE:string
+    export const FILE_ATTRIBUTE_THUMBNAILING_FAILED:string
+    export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID:string
+    export const FILE_ATTRIBUTE_THUMBNAIL_PATH:string
+    export const FILE_ATTRIBUTE_TIME_ACCESS:string
+    export const FILE_ATTRIBUTE_TIME_ACCESS_USEC:string
+    export const FILE_ATTRIBUTE_TIME_CHANGED:string
+    export const FILE_ATTRIBUTE_TIME_CHANGED_USEC:string
+    export const FILE_ATTRIBUTE_TIME_CREATED:string
+    export const FILE_ATTRIBUTE_TIME_CREATED_USEC:string
+    export const FILE_ATTRIBUTE_TIME_MODIFIED:string
+    export const FILE_ATTRIBUTE_TIME_MODIFIED_USEC:string
+    export const FILE_ATTRIBUTE_TRASH_DELETION_DATE:string
+    export const FILE_ATTRIBUTE_TRASH_ITEM_COUNT:string
+    export const FILE_ATTRIBUTE_TRASH_ORIG_PATH:string
+    export const FILE_ATTRIBUTE_UNIX_BLOCKS:string
+    export const FILE_ATTRIBUTE_UNIX_BLOCK_SIZE:string
+    export const FILE_ATTRIBUTE_UNIX_DEVICE:string
+    export const FILE_ATTRIBUTE_UNIX_GID:string
+    export const FILE_ATTRIBUTE_UNIX_INODE:string
+    export const FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT:string
+    export const FILE_ATTRIBUTE_UNIX_MODE:string
+    export const FILE_ATTRIBUTE_UNIX_NLINK:string
+    export const FILE_ATTRIBUTE_UNIX_RDEV:string
+    export const FILE_ATTRIBUTE_UNIX_UID:string
+    export const MENU_ATTRIBUTE_ACTION:string
+    export const MENU_ATTRIBUTE_ACTION_NAMESPACE:string
+    export const MENU_ATTRIBUTE_ICON:string
+    export const MENU_ATTRIBUTE_LABEL:string
+    export const MENU_ATTRIBUTE_TARGET:string
+    export const MENU_LINK_SECTION:string
+    export const MENU_LINK_SUBMENU:string
+    export const NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME:string
+    export const NETWORK_MONITOR_EXTENSION_POINT_NAME:string
+    export const PROXY_EXTENSION_POINT_NAME:string
+    export const PROXY_RESOLVER_EXTENSION_POINT_NAME:string
+    export const TLS_BACKEND_EXTENSION_POINT_NAME:string
+    export const TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT:string
+    export const TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER:string
+    export const VFS_EXTENSION_POINT_NAME:string
+    export const VOLUME_IDENTIFIER_KIND_CLASS:string
+    export const VOLUME_IDENTIFIER_KIND_HAL_UDI:string
+    export const VOLUME_IDENTIFIER_KIND_LABEL:string
+    export const VOLUME_IDENTIFIER_KIND_NFS_MOUNT:string
+    export const VOLUME_IDENTIFIER_KIND_UNIX_DEVICE:string
+    export const VOLUME_IDENTIFIER_KIND_UUID:string
+    export const VOLUME_MONITOR_EXTENSION_POINT_NAME:string
     export function action_name_is_valid(action_name: string):boolean
     export function action_parse_detailed_name(detailed_name: string, action_name: string, target_value: any):boolean
     export function action_print_detailed_name(action_name: string, target_value: any):string
@@ -682,7 +784,7 @@ declare module 'Gio' {
         FINAL_TRY,
     }
     export class AppInfoMonitor extends GObject.Object {
-        constructor(config?: any)
+        static get():AppInfoMonitor
     }
     export class AppLaunchContext extends GObject.Object {
         constructor(config?: any)
@@ -694,6 +796,8 @@ declare module 'Gio' {
         unsetenv(variable: string):void
     }
     export class Application extends GObject.Object {
+        static get_default():Application
+        static id_is_valid(application_id: string):boolean
         constructor(config?: any)
         activate():void
         add_main_option(long_name: string, short_name: number, flags: GLib.OptionFlags, arg: GLib.OptionArg, description: string, arg_description: string):void
@@ -715,7 +819,7 @@ declare module 'Gio' {
         quit():void
         register(cancellable: Cancellable):boolean
         release():void
-        run(argc: number, argv: string[]):number
+        run(argv:string[]):number
         send_notification(id: string, notification: Notification):void
         set_action_group(action_group: any):void
         set_application_id(application_id: string):void
@@ -728,7 +832,6 @@ declare module 'Gio' {
         withdraw_notification(id: string):void
     }
     export class ApplicationCommandLine extends GObject.Object {
-        constructor(config?: any)
         create_file_for_arg(arg: string):any
         get_arguments(argc: number):string[]
         get_cwd():string
@@ -745,6 +848,7 @@ declare module 'Gio' {
     }
     export class BufferedInputStream extends FilterInputStream {
         constructor(config?: any)
+        static new_sized(base_stream: InputStream, size: number):BufferedInputStream
         fill(count: number, cancellable: Cancellable):number
         fill_async(count: number, io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
         fill_finish(result: any):number
@@ -757,6 +861,7 @@ declare module 'Gio' {
     }
     export class BufferedOutputStream extends FilterOutputStream {
         constructor(config?: any)
+        static new_sized(base_stream: OutputStream, size: number):BufferedOutputStream
         get_auto_grow():boolean
         get_buffer_size():number
         set_auto_grow(auto_grow: boolean):void
@@ -767,6 +872,7 @@ declare module 'Gio' {
         get_bytes():any
     }
     export class Cancellable extends GObject.Object {
+        static get_current():Cancellable
         constructor(config?: any)
         cancel():void
         connect(callback: any, data: any, data_destroy_func: any):number
@@ -806,7 +912,7 @@ declare module 'Gio' {
         to_string():string
     }
     export class DBusActionGroup extends GObject.Object {
-        constructor(config?: any)
+        static get(connection: DBusConnection, bus_name: string, object_path: string):DBusActionGroup
     }
     export class DBusAuthObserver extends GObject.Object {
         constructor(config?: any)
@@ -814,7 +920,12 @@ declare module 'Gio' {
         authorize_authenticated_peer(stream: IOStream, credentials: Credentials):boolean
     }
     export class DBusConnection extends GObject.Object {
+        static new_for_address(address: string, flags: DBusConnectionFlags, observer: DBusAuthObserver, cancellable: Cancellable, callback: any, user_data: any):void
         constructor(config?: any)
+        static new_finish(res: any):DBusConnection
+        static new_for_address_finish(res: any):DBusConnection
+        static new_for_address_sync(address: string, flags: DBusConnectionFlags, observer: DBusAuthObserver, cancellable: Cancellable):DBusConnection
+        static new_sync(stream: IOStream, guid: string, flags: DBusConnectionFlags, observer: DBusAuthObserver, cancellable: Cancellable):DBusConnection
         add_filter(filter_function: any, user_data: any, user_data_free_func: any):number
         call(bus_name: string, object_path: string, interface_name: string, method_name: string, parameters: any, reply_type: any, flags: DBusCallFlags, timeout_msec: number, cancellable: Cancellable, callback: any, user_data: any):void
         call_finish(res: any):any
@@ -857,7 +968,6 @@ declare module 'Gio' {
         unregister_subtree(registration_id: number):boolean
     }
     export class DBusInterfaceSkeleton extends GObject.Object {
-        constructor(config?: any)
         export(connection: DBusConnection, object_path: string):boolean
         flush():void
         get_connection():DBusConnection
@@ -873,10 +983,14 @@ declare module 'Gio' {
         unexport_from_connection(connection: DBusConnection):void
     }
     export class DBusMenuModel extends MenuModel {
-        constructor(config?: any)
+        static get(connection: DBusConnection, bus_name: string, object_path: string):DBusMenuModel
     }
     export class DBusMessage extends GObject.Object {
+        static bytes_needed(blob: number[], blob_len: number):number
         constructor(config?: any)
+        static new_from_blob(blob: number[], blob_len: number, capabilities: DBusCapabilityFlags):DBusMessage
+        static new_method_call(name: string, path: string, interface_: string, method: string):DBusMessage
+        static new_signal(path: string, interface_: string, signal: string):DBusMessage
         copy():DBusMessage
         get_arg0():string
         get_body():any
@@ -923,7 +1037,6 @@ declare module 'Gio' {
         to_gerror():boolean
     }
     export class DBusMethodInvocation extends GObject.Object {
-        constructor(config?: any)
         get_connection():DBusConnection
         get_interface_name():string
         get_message():DBusMessage
@@ -944,7 +1057,12 @@ declare module 'Gio' {
         take_error(error: any):void
     }
     export class DBusObjectManagerClient extends GObject.Object {
+        static new_for_bus(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: any, get_proxy_type_user_data: any, get_proxy_type_destroy_notify: any, cancellable: Cancellable, callback: any, user_data: any):void
         constructor(config?: any)
+        static new_finish(res: any):DBusObjectManagerClient
+        static new_for_bus_finish(res: any):DBusObjectManagerClient
+        static new_for_bus_sync(bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: any, get_proxy_type_user_data: any, get_proxy_type_destroy_notify: any, cancellable: Cancellable):DBusObjectManagerClient
+        static new_sync(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: any, get_proxy_type_user_data: any, get_proxy_type_destroy_notify: any, cancellable: Cancellable):DBusObjectManagerClient
         get_connection():DBusConnection
         get_flags():DBusObjectManagerClientFlags
         get_name():string
@@ -972,7 +1090,12 @@ declare module 'Gio' {
         set_object_path(object_path: string):void
     }
     export class DBusProxy extends GObject.Object {
+        static new_for_bus(bus_type: BusType, flags: DBusProxyFlags, info: any, name: string, object_path: string, interface_name: string, cancellable: Cancellable, callback: any, user_data: any):void
         constructor(config?: any)
+        static new_finish(res: any):DBusProxy
+        static new_for_bus_finish(res: any):DBusProxy
+        static new_for_bus_sync(bus_type: BusType, flags: DBusProxyFlags, info: any, name: string, object_path: string, interface_name: string, cancellable: Cancellable):DBusProxy
+        static new_sync(connection: DBusConnection, flags: DBusProxyFlags, info: any, name: string, object_path: string, interface_name: string, cancellable: Cancellable):DBusProxy
         call(method_name: string, parameters: any, flags: DBusCallFlags, timeout_msec: number, cancellable: Cancellable, callback: any, user_data: any):void
         call_finish(res: any):any
         call_sync(method_name: string, parameters: any, flags: DBusCallFlags, timeout_msec: number, cancellable: Cancellable):any
@@ -995,6 +1118,7 @@ declare module 'Gio' {
     }
     export class DBusServer extends GObject.Object {
         constructor(config?: any)
+        static new_sync(address: string, flags: DBusServerFlags, guid: string, observer: DBusAuthObserver, cancellable: Cancellable):DBusServer
         get_client_address():string
         get_flags():DBusServerFlags
         get_guid():string
@@ -1041,7 +1165,12 @@ declare module 'Gio' {
         set_byte_order(order: DataStreamByteOrder):void
     }
     export class DesktopAppInfo extends GObject.Object {
+        static get_implementations(interface: string):any
+        static search(search_string: string):any[]
+        static set_desktop_env(desktop_env: string):void
         constructor(config?: any)
+        static new_from_filename(filename: string):DesktopAppInfo
+        static new_from_keyfile(key_file: any):DesktopAppInfo
         get_action_name(action_name: string):string
         get_boolean(key: string):boolean
         get_categories():string
@@ -1060,6 +1189,7 @@ declare module 'Gio' {
     }
     export class Emblem extends GObject.Object {
         constructor(config?: any)
+        static new_with_origin(icon: any, origin: EmblemOrigin):Emblem
         get_icon():any
         get_origin():EmblemOrigin
     }
@@ -1071,7 +1201,6 @@ declare module 'Gio' {
         get_icon():any
     }
     export class FileEnumerator extends GObject.Object {
-        constructor(config?: any)
         close(cancellable: Cancellable):boolean
         close_async(io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
         close_finish(result: any):boolean
@@ -1086,7 +1215,6 @@ declare module 'Gio' {
         set_pending(pending: boolean):void
     }
     export class FileIOStream extends IOStream {
-        constructor(config?: any)
         get_etag():string
         query_info(attributes: string, cancellable: Cancellable):FileInfo
         query_info_async(attributes: string, io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1162,20 +1290,17 @@ declare module 'Gio' {
         unset_attribute_mask():void
     }
     export class FileInputStream extends InputStream {
-        constructor(config?: any)
         query_info(attributes: string, cancellable: Cancellable):FileInfo
         query_info_async(attributes: string, io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
         query_info_finish(result: any):FileInfo
     }
     export class FileMonitor extends GObject.Object {
-        constructor(config?: any)
         cancel():boolean
         emit_event(child: any, other_file: any, event_type: FileMonitorEvent):void
         is_cancelled():boolean
         set_rate_limit(limit_msecs: number):void
     }
     export class FileOutputStream extends OutputStream {
-        constructor(config?: any)
         get_etag():string
         query_info(attributes: string, cancellable: Cancellable):FileInfo
         query_info_async(attributes: string, io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1188,24 +1313,23 @@ declare module 'Gio' {
         set_dirs_only(dirs_only: boolean):void
     }
     export class FilterInputStream extends InputStream {
-        constructor(config?: any)
         get_base_stream():InputStream
         get_close_base_stream():boolean
         set_close_base_stream(close_base: boolean):void
     }
     export class FilterOutputStream extends OutputStream {
-        constructor(config?: any)
         get_base_stream():OutputStream
         get_close_base_stream():boolean
         set_close_base_stream(close_base: boolean):void
     }
     export class IOModule extends GObject.TypeModule {
+        static query():string[]
         constructor(config?: any)
         load():void
         unload():void
     }
     export class IOStream extends GObject.Object {
-        constructor(config?: any)
+        static splice_finish(result: any):boolean
         clear_pending():void
         close(cancellable: Cancellable):boolean
         close_async(io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1219,6 +1343,10 @@ declare module 'Gio' {
     }
     export class InetAddress extends GObject.Object {
         constructor(config?: any)
+        static new_any(family: SocketFamily):InetAddress
+        static new_from_bytes(bytes: number[], family: SocketFamily):InetAddress
+        static new_from_string(string: string):InetAddress
+        static new_loopback(family: SocketFamily):InetAddress
         equal(other_address: InetAddress):boolean
         get_family():SocketFamily
         get_is_any():boolean
@@ -1237,6 +1365,7 @@ declare module 'Gio' {
     }
     export class InetAddressMask extends GObject.Object {
         constructor(config?: any)
+        static new_from_string(mask_string: string):InetAddressMask
         equal(mask2: InetAddressMask):boolean
         get_address():InetAddress
         get_family():SocketFamily
@@ -1246,13 +1375,13 @@ declare module 'Gio' {
     }
     export class InetSocketAddress extends SocketAddress {
         constructor(config?: any)
+        static new_from_string(address: string, port: number):InetSocketAddress
         get_address():InetAddress
         get_flowinfo():number
         get_port():number
         get_scope_id():number
     }
     export class InputStream extends GObject.Object {
-        constructor(config?: any)
         clear_pending():void
         close(cancellable: Cancellable):boolean
         close_async(io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1285,11 +1414,14 @@ declare module 'Gio' {
     }
     export class MemoryInputStream extends InputStream {
         constructor(config?: any)
+        static new_from_bytes(bytes: any):MemoryInputStream
+        static new_from_data(data: number[], len: number, destroy: any):MemoryInputStream
         add_bytes(bytes: any):void
         add_data(data: number[], len: number, destroy: any):void
     }
     export class MemoryOutputStream extends OutputStream {
         constructor(config?: any)
+        static new_resizable():MemoryOutputStream
         get_data():any
         get_data_size():number
         get_size():number
@@ -1315,7 +1447,6 @@ declare module 'Gio' {
         remove_all():void
     }
     export class MenuAttributeIter extends GObject.Object {
-        constructor(config?: any)
         get_name():string
         get_next(out_name: string, value: any):boolean
         get_value():any
@@ -1323,6 +1454,9 @@ declare module 'Gio' {
     }
     export class MenuItem extends GObject.Object {
         constructor(config?: any)
+        static new_from_model(model: MenuModel, item_index: number):MenuItem
+        static new_section(label: string, section: MenuModel):MenuItem
+        static new_submenu(label: string, submenu: MenuModel):MenuItem
         get_attribute(attribute: string, format_string: string, ...args: any[]):boolean
         get_attribute_value(attribute: string, expected_type: any):any
         get_link(link: string):MenuModel
@@ -1338,14 +1472,12 @@ declare module 'Gio' {
         set_submenu(submenu: MenuModel):void
     }
     export class MenuLinkIter extends GObject.Object {
-        constructor(config?: any)
         get_name():string
         get_next(out_link: string, value: MenuModel):boolean
         get_value():MenuModel
         next():boolean
     }
     export class MenuModel extends GObject.Object {
-        constructor(config?: any)
         get_item_attribute(item_index: number, attribute: string, format_string: string, ...args: any[]):boolean
         get_item_attribute_value(item_index: number, attribute: string, expected_type: any):any
         get_item_link(item_index: number, link: string):MenuModel
@@ -1372,10 +1504,12 @@ declare module 'Gio' {
         set_username(username: string):void
     }
     export class NativeVolumeMonitor extends VolumeMonitor {
-        constructor(config?: any)
     }
     export class NetworkAddress extends GObject.Object {
+        static parse(host_and_port: string, default_port: number):NetworkAddress
+        static parse_uri(uri: string, default_port: number):NetworkAddress
         constructor(config?: any)
+        static new_loopback(port: number):NetworkAddress
         get_hostname():string
         get_port():number
         get_scheme():string
@@ -1403,7 +1537,6 @@ declare module 'Gio' {
         set_urgent(urgent: boolean):void
     }
     export class OutputStream extends GObject.Object {
-        constructor(config?: any)
         clear_pending():void
         close(cancellable: Cancellable):boolean
         close_async(io_priority: number, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1431,7 +1564,6 @@ declare module 'Gio' {
         write_finish(result: any):number
     }
     export class Permission extends GObject.Object {
-        constructor(config?: any)
         acquire(cancellable: Cancellable):boolean
         acquire_async(cancellable: Cancellable, callback: any, user_data: any):void
         acquire_finish(result: any):boolean
@@ -1457,10 +1589,11 @@ declare module 'Gio' {
         get_username():string
     }
     export class ProxyAddressEnumerator extends SocketAddressEnumerator {
-        constructor(config?: any)
     }
     export class Resolver extends GObject.Object {
-        constructor(config?: any)
+        static free_addresses(addresses: any):void
+        static free_targets(targets: any):void
+        static get_default():Resolver
         lookup_by_address(address: InetAddress, cancellable: Cancellable):string
         lookup_by_address_async(address: InetAddress, cancellable: Cancellable, callback: any, user_data: any):void
         lookup_by_address_finish(result: any):string
@@ -1476,7 +1609,15 @@ declare module 'Gio' {
         set_default():void
     }
     export class Settings extends GObject.Object {
+        static list_relocatable_schemas():string[]
+        static list_schemas():string[]
+        static sync():void
+        static unbind(object: GObject.Object, property: string):void
         constructor(config?: any)
+        static new_full(schema: any, backend: any, path: string):Settings
+        static new_with_backend(schema_id: string, backend: any):Settings
+        static new_with_backend_and_path(schema_id: string, backend: any, path: string):Settings
+        static new_with_path(schema_id: string, path: string):Settings
         apply():void
         bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags):void
         bind_with_mapping(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags, get_mapping: any, set_mapping: any, user_data: any, destroy: any):void
@@ -1518,6 +1659,7 @@ declare module 'Gio' {
     }
     export class SimpleAction extends GObject.Object {
         constructor(config?: any)
+        static new_stateful(name: string, parameter_type: any, state: any):SimpleAction
         set_enabled(enabled: boolean):void
         set_state(value: any):void
         set_state_hint(state_hint: any):void
@@ -1530,7 +1672,11 @@ declare module 'Gio' {
         remove(action_name: string):void
     }
     export class SimpleAsyncResult extends GObject.Object {
+        static is_valid(result: any, source: GObject.Object, source_tag: any):boolean
         constructor(config?: any)
+        static new_error(source_object: GObject.Object, callback: any, user_data: any, domain: any, code: number, format: string, ...args: any[]):SimpleAsyncResult
+        static new_from_error(source_object: GObject.Object, callback: any, user_data: any, error: any):SimpleAsyncResult
+        static new_take_error(source_object: GObject.Object, callback: any, user_data: any, error: any):SimpleAsyncResult
         complete():void
         complete_in_idle():void
         get_op_res_gboolean():boolean
@@ -1556,13 +1702,13 @@ declare module 'Gio' {
         constructor(config?: any)
     }
     export class SimpleProxyResolver extends GObject.Object {
-        constructor(config?: any)
         set_default_proxy(default_proxy: string):void
         set_ignore_hosts(ignore_hosts: string):void
         set_uri_proxy(uri_scheme: string, proxy: string):void
     }
     export class Socket extends GObject.Object {
         constructor(config?: any)
+        static new_from_fd(fd: number):Socket
         accept(cancellable: Cancellable):Socket
         bind(address: SocketAddress, allow_reuse: boolean):boolean
         check_connect_result():boolean
@@ -1619,12 +1765,12 @@ declare module 'Gio' {
     }
     export class SocketAddress extends GObject.Object {
         constructor(config?: any)
+        static new_from_native(native: any, len: number):SocketAddress
         get_family():SocketFamily
         get_native_size():number
         to_native(dest: any, destlen: number):boolean
     }
     export class SocketAddressEnumerator extends GObject.Object {
-        constructor(config?: any)
         next(cancellable: Cancellable):SocketAddress
         next_async(cancellable: Cancellable, callback: any, user_data: any):void
         next_finish(result: any):SocketAddress
@@ -1664,7 +1810,8 @@ declare module 'Gio' {
         set_tls_validation_flags(flags: TlsCertificateFlags):void
     }
     export class SocketConnection extends IOStream {
-        constructor(config?: any)
+        static factory_lookup_type(family: SocketFamily, type: SocketType, protocol_id: number):any
+        static factory_register_type(g_type: any, family: SocketFamily, type: SocketType, protocol: number):void
         connect(address: SocketAddress, cancellable: Cancellable):boolean
         connect_async(address: SocketAddress, cancellable: Cancellable, callback: any, user_data: any):void
         connect_finish(result: any):boolean
@@ -1674,7 +1821,7 @@ declare module 'Gio' {
         is_connected():boolean
     }
     export class SocketControlMessage extends GObject.Object {
-        constructor(config?: any)
+        static deserialize(level: number, type: number, size: number, data: number[]):SocketControlMessage
         get_level():number
         get_msg_type():number
         get_size():number
@@ -1703,6 +1850,7 @@ declare module 'Gio' {
     }
     export class Subprocess extends GObject.Object {
         constructor(config?: any)
+        static newv(argv: string[], flags: SubprocessFlags):Subprocess
         communicate(stdin_buf: any, cancellable: Cancellable, stdout_buf: any, stderr_buf: any):boolean
         communicate_async(stdin_buf: any, cancellable: Cancellable, callback: any, user_data: any):void
         communicate_finish(result: any, stdout_buf: any, stderr_buf: any):boolean
@@ -1748,6 +1896,9 @@ declare module 'Gio' {
         unsetenv(variable: string):void
     }
     export class Task extends GObject.Object {
+        static is_valid(result: any, source_object: GObject.Object):boolean
+        static report_error(source_object: GObject.Object, callback: any, callback_data: any, source_tag: any, error: any):void
+        static report_new_error(source_object: GObject.Object, callback: any, callback_data: any, source_tag: any, domain: any, code: number, format: string, ...args: any[]):void
         constructor(config?: any)
         attach_source(source: any, callback: any):void
         get_cancellable():Cancellable
@@ -1778,7 +1929,6 @@ declare module 'Gio' {
         set_task_data(task_data: any, task_data_destroy: any):void
     }
     export class TcpConnection extends SocketConnection {
-        constructor(config?: any)
         get_graceful_disconnect():boolean
         set_graceful_disconnect(graceful_disconnect: boolean):void
     }
@@ -1787,6 +1937,7 @@ declare module 'Gio' {
         get_base_io_stream():IOStream
     }
     export class TestDBus extends GObject.Object {
+        static unset():void
         constructor(config?: any)
         add_service_dir(path: string):void
         down():void
@@ -1797,6 +1948,8 @@ declare module 'Gio' {
     }
     export class ThemedIcon extends GObject.Object {
         constructor(config?: any)
+        static new_from_names(iconnames: string[], len: number):ThemedIcon
+        static new_with_default_fallbacks(iconname: string):ThemedIcon
         append_name(iconname: string):void
         get_names():string[]
         prepend_name(iconname: string):void
@@ -1805,13 +1958,16 @@ declare module 'Gio' {
         constructor(config?: any)
     }
     export class TlsCertificate extends GObject.Object {
+        static list_new_from_file(file: string):any
         constructor(config?: any)
+        static new_from_file(file: string):TlsCertificate
+        static new_from_files(cert_file: string, key_file: string):TlsCertificate
+        static new_from_pem(data: string, length: number):TlsCertificate
         get_issuer():TlsCertificate
         is_same(cert_two: TlsCertificate):boolean
         verify(identity: any, trusted_ca: TlsCertificate):TlsCertificateFlags
     }
     export class TlsConnection extends IOStream {
-        constructor(config?: any)
         emit_accept_certificate(peer_cert: TlsCertificate, errors: TlsCertificateFlags):boolean
         get_certificate():TlsCertificate
         get_database():TlsDatabase
@@ -1832,7 +1988,6 @@ declare module 'Gio' {
         set_use_system_certdb(use_system_certdb: boolean):void
     }
     export class TlsDatabase extends GObject.Object {
-        constructor(config?: any)
         create_certificate_handle(certificate: TlsCertificate):string
         lookup_certificate_for_handle(handle: string, interaction: TlsInteraction, flags: TlsDatabaseLookupFlags, cancellable: Cancellable):TlsCertificate
         lookup_certificate_for_handle_async(handle: string, interaction: TlsInteraction, flags: TlsDatabaseLookupFlags, cancellable: Cancellable, callback: any, user_data: any):void
@@ -1848,7 +2003,6 @@ declare module 'Gio' {
         verify_chain_finish(result: any):TlsCertificateFlags
     }
     export class TlsInteraction extends GObject.Object {
-        constructor(config?: any)
         ask_password(password: TlsPassword, cancellable: Cancellable):TlsInteractionResult
         ask_password_async(password: TlsPassword, cancellable: Cancellable, callback: any, user_data: any):void
         ask_password_finish(result: any):TlsInteractionResult
@@ -1871,7 +2025,6 @@ declare module 'Gio' {
         set_warning(warning: string):void
     }
     export class UnixConnection extends SocketConnection {
-        constructor(config?: any)
         receive_credentials(cancellable: Cancellable):Credentials
         receive_credentials_async(cancellable: Cancellable, callback: any, user_data: any):void
         receive_credentials_finish(result: any):Credentials
@@ -1882,11 +2035,14 @@ declare module 'Gio' {
         send_fd(fd: number, cancellable: Cancellable):boolean
     }
     export class UnixCredentialsMessage extends SocketControlMessage {
+        static is_supported():boolean
         constructor(config?: any)
+        static new_with_credentials(credentials: Credentials):UnixCredentialsMessage
         get_credentials():Credentials
     }
     export class UnixFDList extends GObject.Object {
         constructor(config?: any)
+        static new_from_array(fds: number[], n_fds: number):UnixFDList
         append(fd: number):number
         get(index_: number):number
         get_length():number
@@ -1895,6 +2051,7 @@ declare module 'Gio' {
     }
     export class UnixFDMessage extends SocketControlMessage {
         constructor(config?: any)
+        static new_with_fd_list(fd_list: UnixFDList):UnixFDMessage
         append_fd(fd: number):boolean
         get_fd_list():UnixFDList
         steal_fds(length: number):number[]
@@ -1906,6 +2063,7 @@ declare module 'Gio' {
         set_close_fd(close_fd: boolean):void
     }
     export class UnixMountMonitor extends GObject.Object {
+        static get():UnixMountMonitor
         constructor(config?: any)
         set_rate_limit(limit_msec: number):void
     }
@@ -1916,14 +2074,18 @@ declare module 'Gio' {
         set_close_fd(close_fd: boolean):void
     }
     export class UnixSocketAddress extends SocketAddress {
+        static abstract_names_supported():boolean
         constructor(config?: any)
+        static new_abstract(path: number[], path_len: number):UnixSocketAddress
+        static new_with_type(path: number[], path_len: number, type: UnixSocketAddressType):UnixSocketAddress
         get_address_type():UnixSocketAddressType
         get_is_abstract():boolean
         get_path():string
         get_path_len():number
     }
     export class Vfs extends GObject.Object {
-        constructor(config?: any)
+        static get_default():Vfs
+        static get_local():Vfs
         get_file_for_path(path: string):any
         get_file_for_uri(uri: string):any
         get_supported_uri_schemes():string[]
@@ -1931,7 +2093,8 @@ declare module 'Gio' {
         parse_name(parse_name: string):any
     }
     export class VolumeMonitor extends GObject.Object {
-        constructor(config?: any)
+        static adopt_orphan_mount(mount: any):any
+        static get():VolumeMonitor
         get_connected_drives():any
         get_mount_for_uuid(uuid: string):any
         get_mounts():any

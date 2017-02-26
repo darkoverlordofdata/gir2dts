@@ -4,6 +4,12 @@
  */
 declare module 'Atk' {
     import * as GObject from "GObject"
+    export const BINARY_AGE:number
+    export const INTERFACE_AGE:number
+    export const MAJOR_VERSION:number
+    export const MICRO_VERSION:number
+    export const MINOR_VERSION:number
+    export const VERSION_MIN_REQUIRED:number
     export function add_focus_tracker(focus_tracker: any):number
     export function add_global_event_listener(listener: any, event_type: string):number
     export function add_key_event_listener(listener: any, data: any):number
@@ -326,11 +332,10 @@ declare module 'Atk' {
         INLINE,
     }
     export class GObjectAccessible extends Object {
-        constructor(config?: any)
+        static for_object(obj: GObject.Object):Object
         get_object():GObject.Object
     }
     export class Hyperlink extends GObject.Object {
-        constructor(config?: any)
         get_end_index():number
         get_n_anchors():number
         get_object(i: number):Object
@@ -341,7 +346,7 @@ declare module 'Atk' {
         is_valid():boolean
     }
     export class Misc extends GObject.Object {
-        constructor(config?: any)
+        static get_instance():Misc
         threads_enter():void
         threads_leave():void
     }
@@ -352,7 +357,6 @@ declare module 'Atk' {
         constructor(config?: any)
     }
     export class Object extends GObject.Object {
-        constructor(config?: any)
         add_relationship(relationship: RelationType, target: Object):boolean
         connect_property_change_handler(handler: any):number
         get_attributes():any
@@ -379,7 +383,6 @@ declare module 'Atk' {
         set_role(role: Role):void
     }
     export class ObjectFactory extends GObject.Object {
-        constructor(config?: any)
         create_accessible(obj: GObject.Object):Object
         get_accessible_type():any
         invalidate():void
@@ -389,7 +392,6 @@ declare module 'Atk' {
         get_id():string
     }
     export class Registry extends GObject.Object {
-        constructor(config?: any)
         get_factory(type: any):ObjectFactory
         get_factory_type(type: any):any
         set_factory_type(type: any, factory_type: any):void
@@ -431,6 +433,5 @@ declare module 'Atk' {
         xor_sets(compare_set: StateSet):StateSet
     }
     export class Util extends GObject.Object {
-        constructor(config?: any)
     }
 }

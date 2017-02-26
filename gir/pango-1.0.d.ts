@@ -4,6 +4,18 @@
  */
 declare module 'Pango' {
     import * as GObject from "GObject"
+    export const ANALYSIS_FLAG_CENTERED_BASELINE:number
+    export const ANALYSIS_FLAG_IS_ELLIPSIS:number
+    export const ATTR_INDEX_FROM_TEXT_BEGINNING:number
+    export const ENGINE_TYPE_LANG:string
+    export const ENGINE_TYPE_SHAPE:string
+    export const GLYPH_EMPTY:any
+    export const GLYPH_INVALID_INPUT:any
+    export const GLYPH_UNKNOWN_FLAG:any
+    export const RENDER_TYPE_NONE:string
+    export const SCALE:number
+    export const UNKNOWN_GLYPH_HEIGHT:number
+    export const UNKNOWN_GLYPH_WIDTH:number
     export function attr_background_alpha_new(alpha: number):any
     export function attr_background_new(red: number, green: number, blue: number):any
     export function attr_fallback_new(enable_fallback: boolean):any
@@ -345,16 +357,13 @@ declare module 'Pango' {
         set_matrix(matrix: any):void
     }
     export class Engine extends GObject.Object {
-        constructor(config?: any)
     }
     export class EngineLang extends Engine {
-        constructor(config?: any)
     }
     export class EngineShape extends Engine {
-        constructor(config?: any)
     }
     export class Font extends GObject.Object {
-        constructor(config?: any)
+        static descriptions_free(descs: any[], n_descs: number):void
         describe():any
         describe_with_absolute_size():any
         find_shaper(language: any, ch: number):EngineShape
@@ -364,20 +373,17 @@ declare module 'Pango' {
         get_metrics(language: any):any
     }
     export class FontFace extends GObject.Object {
-        constructor(config?: any)
         describe():any
         get_face_name():string
         is_synthesized():boolean
         list_sizes(sizes: number[], n_sizes: number):void
     }
     export class FontFamily extends GObject.Object {
-        constructor(config?: any)
         get_name():string
         is_monospace():boolean
         list_faces(faces: FontFace[], n_faces: number):void
     }
     export class FontMap extends GObject.Object {
-        constructor(config?: any)
         changed():void
         create_context():Context
         get_serial():number
@@ -387,7 +393,6 @@ declare module 'Pango' {
         load_fontset(context: Context, desc: any, language: any):Fontset
     }
     export class Fontset extends GObject.Object {
-        constructor(config?: any)
         foreach(func: any, data: any):void
         get_font(wc: number):Font
         get_metrics():any
@@ -457,7 +462,6 @@ declare module 'Pango' {
         xy_to_index(x: number, y: number, index_: number, trailing: number):boolean
     }
     export class Renderer extends GObject.Object {
-        constructor(config?: any)
         activate():void
         deactivate():void
         draw_error_underline(x: number, y: number, width: number, height: number):void

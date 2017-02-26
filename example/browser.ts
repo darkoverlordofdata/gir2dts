@@ -26,79 +26,84 @@ let scrollWindow = new Gtk.ScrolledWindow({})
 let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL})
 let vbox = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL})
 
-// Setting up optional Dark theme (gotta love it!)
-// ./browser.js google.com --dark
+let gtkSettings = Gtk.Settings.get_default()
+gtkSettings.gtk_application_prefer_dark_theme = true
+
+//Setting up optional Dark theme (gotta love it!)
+//./browser.js google.com --dark
 if (argv.some(info => info === '--dark')) {
-    let gtkSettings = Gtk.Settings.get_default();
-    gtkSettings.gtk_application_prefer_dark_theme = true;
-    gtkSettings.gtk_theme_name = 'Adwaita';
+    let gtkSettings = Gtk.Settings.get_default()
+    gtkSettings.gtk_application_prefer_dark_theme = true
+    gtkSettings.gtk_theme_name = 'Adwaita'
 } else if(argv.some(info => info === '--light')) {
-    let gtkSettings = Gtk.Settings.get_default();
-    gtkSettings.gtk_application_prefer_dark_theme = false;
-    gtkSettings.gtk_theme_name = 'Adwaita';
+    let gtkSettings = Gtk.Settings.get_default()
+    gtkSettings.gtk_application_prefer_dark_theme = false
+    gtkSettings.gtk_theme_name = 'Adwaita'
 }
 
-// open first argument or Google
-webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'));
+// open first argument or shameless plug
+webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'))
 
+// TODO: what is 'load-changed' for WebKit3?
+// can't change to new page until this gets fixed
 //whenever a new page is loaded ...
 // webView.connect('load-changed', (widget, loadEvent, data) => {
 //     switch (loadEvent) {
 //       case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
 //         // ... update the URL bar with the current adress
-//         urlBar.set_text(widget.get_uri());
-//         button.back.set_sensitive(webView.can_go_back());
-//         button.forward.set_sensitive(webView.can_go_forward());
-//         break;
+//         urlBar.set_text(widget.get_uri())
+//         button.back.set_sensitive(webView.can_go_back())
+//         button.forward.set_sensitive(webView.can_go_forward())
+//         break
 //     }
-// });
+// })
 
 // configure buttons actions
-button.back.connect('clicked', () => webView.go_back());
-button.forward.connect('clicked', () => webView.go_forward());
-button.refresh.connect('clicked', () => webView.reload());
+button.back.connect('clicked', () => webView.go_back())
+button.forward.connect('clicked', () => webView.go_forward())
+button.refresh.connect('clicked', () => webView.reload())
 
 // enrich the toolbar
-toolbar.add(button.back);
-toolbar.add(button.forward);
-toolbar.add(button.refresh);
+toolbar.add(button.back)
+toolbar.add(button.forward)
+toolbar.add(button.refresh)
 
 // define "enter" / call-to-action event
 // whenever the url changes on the bar
 urlBar.connect('activate', () => {
-    let href = url(urlBar.get_text());
-    urlBar.set_text(href);
-    webView.load_uri(href);
-});
+    let href = url(urlBar.get_text())
+    urlBar.set_text(href)
+    webView.load_uri(href)
+})
 
 // make the container scrollable
-scrollWindow.add(webView);
+scrollWindow.add(webView)
 
 // pack horizontally toolbar and url bar
-hbox.pack_start(toolbar, false, false, 0);
-hbox.pack_start(urlBar, true, true, 8);
+hbox.pack_start(toolbar, false, false, 0)
+hbox.pack_start(urlBar, true, true, 8)
 
 // pack vertically top bar (hbox) and scrollable window
-vbox.pack_start(hbox, false, true, 0);
-vbox.pack_start(scrollWindow, true, true, 0);
+vbox.pack_start(hbox, false, true, 0)
+vbox.pack_start(scrollWindow, true, true, 0)
 
 // configure main window
-window.set_default_size(1024, 720);
-window.set_resizable(true);
+window.set_default_size(1024, 720)
+window.set_resizable(true)
 window.connect('show', () => {
     // bring it on top in OSX
-    window.set_keep_above(true);
+    window.set_keep_above(true)
     Gtk.main()
-});
-window.connect('destroy', () => Gtk.main_quit());
-window.connect('delete_event', () => false);
+})
+window.connect('destroy', () => Gtk.main_quit())
+window.connect('delete_event', () => false)
 
 // add vertical ui and show them all
-window.add(vbox);
-window.show_all();
+window.add(vbox)
+window.show_all()
 
 // little helper
 // if link doesn't have a protocol, prefixes it via http://
 function url(href) {
-    return /^([a-z]{2,}):/.test(href) ? href : ('http://' + href);
+    return /^([a-z]{2,}):/.test(href) ? href : ('http://' + href)
 }

@@ -9,6 +9,267 @@ declare module 'Gtk' {
     import * as Gdk from "Gdk"
     import * as Atk from "Atk"
     import * as Pango from "Pango"
+    export const BINARY_AGE:number
+    export const INPUT_ERROR:number
+    export const INTERFACE_AGE:number
+    export const LEVEL_BAR_OFFSET_HIGH:string
+    export const LEVEL_BAR_OFFSET_LOW:string
+    export const MAJOR_VERSION:number
+    export const MAX_COMPOSE_LEN:number
+    export const MICRO_VERSION:number
+    export const MINOR_VERSION:number
+    export const PAPER_NAME_A3:string
+    export const PAPER_NAME_A4:string
+    export const PAPER_NAME_A5:string
+    export const PAPER_NAME_B5:string
+    export const PAPER_NAME_EXECUTIVE:string
+    export const PAPER_NAME_LEGAL:string
+    export const PAPER_NAME_LETTER:string
+    export const PATH_PRIO_MASK:number
+    export const PRINT_SETTINGS_COLLATE:string
+    export const PRINT_SETTINGS_DEFAULT_SOURCE:string
+    export const PRINT_SETTINGS_DITHER:string
+    export const PRINT_SETTINGS_DUPLEX:string
+    export const PRINT_SETTINGS_FINISHINGS:string
+    export const PRINT_SETTINGS_MEDIA_TYPE:string
+    export const PRINT_SETTINGS_NUMBER_UP:string
+    export const PRINT_SETTINGS_NUMBER_UP_LAYOUT:string
+    export const PRINT_SETTINGS_N_COPIES:string
+    export const PRINT_SETTINGS_ORIENTATION:string
+    export const PRINT_SETTINGS_OUTPUT_BASENAME:string
+    export const PRINT_SETTINGS_OUTPUT_BIN:string
+    export const PRINT_SETTINGS_OUTPUT_DIR:string
+    export const PRINT_SETTINGS_OUTPUT_FILE_FORMAT:string
+    export const PRINT_SETTINGS_OUTPUT_URI:string
+    export const PRINT_SETTINGS_PAGE_RANGES:string
+    export const PRINT_SETTINGS_PAGE_SET:string
+    export const PRINT_SETTINGS_PAPER_FORMAT:string
+    export const PRINT_SETTINGS_PAPER_HEIGHT:string
+    export const PRINT_SETTINGS_PAPER_WIDTH:string
+    export const PRINT_SETTINGS_PRINTER:string
+    export const PRINT_SETTINGS_PRINTER_LPI:string
+    export const PRINT_SETTINGS_PRINT_PAGES:string
+    export const PRINT_SETTINGS_QUALITY:string
+    export const PRINT_SETTINGS_RESOLUTION:string
+    export const PRINT_SETTINGS_RESOLUTION_X:string
+    export const PRINT_SETTINGS_RESOLUTION_Y:string
+    export const PRINT_SETTINGS_REVERSE:string
+    export const PRINT_SETTINGS_SCALE:string
+    export const PRINT_SETTINGS_USE_COLOR:string
+    export const PRINT_SETTINGS_WIN32_DRIVER_EXTRA:string
+    export const PRINT_SETTINGS_WIN32_DRIVER_VERSION:string
+    export const PRIORITY_RESIZE:number
+    export const STOCK_ABOUT:string
+    export const STOCK_ADD:string
+    export const STOCK_APPLY:string
+    export const STOCK_BOLD:string
+    export const STOCK_CANCEL:string
+    export const STOCK_CAPS_LOCK_WARNING:string
+    export const STOCK_CDROM:string
+    export const STOCK_CLEAR:string
+    export const STOCK_CLOSE:string
+    export const STOCK_COLOR_PICKER:string
+    export const STOCK_CONNECT:string
+    export const STOCK_CONVERT:string
+    export const STOCK_COPY:string
+    export const STOCK_CUT:string
+    export const STOCK_DELETE:string
+    export const STOCK_DIALOG_AUTHENTICATION:string
+    export const STOCK_DIALOG_ERROR:string
+    export const STOCK_DIALOG_INFO:string
+    export const STOCK_DIALOG_QUESTION:string
+    export const STOCK_DIALOG_WARNING:string
+    export const STOCK_DIRECTORY:string
+    export const STOCK_DISCARD:string
+    export const STOCK_DISCONNECT:string
+    export const STOCK_DND:string
+    export const STOCK_DND_MULTIPLE:string
+    export const STOCK_EDIT:string
+    export const STOCK_EXECUTE:string
+    export const STOCK_FILE:string
+    export const STOCK_FIND:string
+    export const STOCK_FIND_AND_REPLACE:string
+    export const STOCK_FLOPPY:string
+    export const STOCK_FULLSCREEN:string
+    export const STOCK_GOTO_BOTTOM:string
+    export const STOCK_GOTO_FIRST:string
+    export const STOCK_GOTO_LAST:string
+    export const STOCK_GOTO_TOP:string
+    export const STOCK_GO_BACK:string
+    export const STOCK_GO_DOWN:string
+    export const STOCK_GO_FORWARD:string
+    export const STOCK_GO_UP:string
+    export const STOCK_HARDDISK:string
+    export const STOCK_HELP:string
+    export const STOCK_HOME:string
+    export const STOCK_INDENT:string
+    export const STOCK_INDEX:string
+    export const STOCK_INFO:string
+    export const STOCK_ITALIC:string
+    export const STOCK_JUMP_TO:string
+    export const STOCK_JUSTIFY_CENTER:string
+    export const STOCK_JUSTIFY_FILL:string
+    export const STOCK_JUSTIFY_LEFT:string
+    export const STOCK_JUSTIFY_RIGHT:string
+    export const STOCK_LEAVE_FULLSCREEN:string
+    export const STOCK_MEDIA_FORWARD:string
+    export const STOCK_MEDIA_NEXT:string
+    export const STOCK_MEDIA_PAUSE:string
+    export const STOCK_MEDIA_PLAY:string
+    export const STOCK_MEDIA_PREVIOUS:string
+    export const STOCK_MEDIA_RECORD:string
+    export const STOCK_MEDIA_REWIND:string
+    export const STOCK_MEDIA_STOP:string
+    export const STOCK_MISSING_IMAGE:string
+    export const STOCK_NETWORK:string
+    export const STOCK_NEW:string
+    export const STOCK_NO:string
+    export const STOCK_OK:string
+    export const STOCK_OPEN:string
+    export const STOCK_ORIENTATION_LANDSCAPE:string
+    export const STOCK_ORIENTATION_PORTRAIT:string
+    export const STOCK_ORIENTATION_REVERSE_LANDSCAPE:string
+    export const STOCK_ORIENTATION_REVERSE_PORTRAIT:string
+    export const STOCK_PAGE_SETUP:string
+    export const STOCK_PASTE:string
+    export const STOCK_PREFERENCES:string
+    export const STOCK_PRINT:string
+    export const STOCK_PRINT_ERROR:string
+    export const STOCK_PRINT_PAUSED:string
+    export const STOCK_PRINT_PREVIEW:string
+    export const STOCK_PRINT_REPORT:string
+    export const STOCK_PRINT_WARNING:string
+    export const STOCK_PROPERTIES:string
+    export const STOCK_QUIT:string
+    export const STOCK_REDO:string
+    export const STOCK_REFRESH:string
+    export const STOCK_REMOVE:string
+    export const STOCK_REVERT_TO_SAVED:string
+    export const STOCK_SAVE:string
+    export const STOCK_SAVE_AS:string
+    export const STOCK_SELECT_ALL:string
+    export const STOCK_SELECT_COLOR:string
+    export const STOCK_SELECT_FONT:string
+    export const STOCK_SORT_ASCENDING:string
+    export const STOCK_SORT_DESCENDING:string
+    export const STOCK_SPELL_CHECK:string
+    export const STOCK_STOP:string
+    export const STOCK_STRIKETHROUGH:string
+    export const STOCK_UNDELETE:string
+    export const STOCK_UNDERLINE:string
+    export const STOCK_UNDO:string
+    export const STOCK_UNINDENT:string
+    export const STOCK_YES:string
+    export const STOCK_ZOOM_100:string
+    export const STOCK_ZOOM_FIT:string
+    export const STOCK_ZOOM_IN:string
+    export const STOCK_ZOOM_OUT:string
+    export const STYLE_CLASS_ACCELERATOR:string
+    export const STYLE_CLASS_ARROW:string
+    export const STYLE_CLASS_BACKGROUND:string
+    export const STYLE_CLASS_BOTTOM:string
+    export const STYLE_CLASS_BUTTON:string
+    export const STYLE_CLASS_CALENDAR:string
+    export const STYLE_CLASS_CELL:string
+    export const STYLE_CLASS_CHECK:string
+    export const STYLE_CLASS_COMBOBOX_ENTRY:string
+    export const STYLE_CLASS_CONTEXT_MENU:string
+    export const STYLE_CLASS_CSD:string
+    export const STYLE_CLASS_CURSOR_HANDLE:string
+    export const STYLE_CLASS_DEFAULT:string
+    export const STYLE_CLASS_DESTRUCTIVE_ACTION:string
+    export const STYLE_CLASS_DIM_LABEL:string
+    export const STYLE_CLASS_DND:string
+    export const STYLE_CLASS_DOCK:string
+    export const STYLE_CLASS_ENTRY:string
+    export const STYLE_CLASS_ERROR:string
+    export const STYLE_CLASS_EXPANDER:string
+    export const STYLE_CLASS_FLAT:string
+    export const STYLE_CLASS_FRAME:string
+    export const STYLE_CLASS_GRIP:string
+    export const STYLE_CLASS_HEADER:string
+    export const STYLE_CLASS_HIGHLIGHT:string
+    export const STYLE_CLASS_HORIZONTAL:string
+    export const STYLE_CLASS_IMAGE:string
+    export const STYLE_CLASS_INFO:string
+    export const STYLE_CLASS_INLINE_TOOLBAR:string
+    export const STYLE_CLASS_INSERTION_CURSOR:string
+    export const STYLE_CLASS_LABEL:string
+    export const STYLE_CLASS_LEFT:string
+    export const STYLE_CLASS_LEVEL_BAR:string
+    export const STYLE_CLASS_LINKED:string
+    export const STYLE_CLASS_LIST:string
+    export const STYLE_CLASS_LIST_ROW:string
+    export const STYLE_CLASS_MARK:string
+    export const STYLE_CLASS_MENU:string
+    export const STYLE_CLASS_MENUBAR:string
+    export const STYLE_CLASS_MENUITEM:string
+    export const STYLE_CLASS_MESSAGE_DIALOG:string
+    export const STYLE_CLASS_MONOSPACE:string
+    export const STYLE_CLASS_NEEDS_ATTENTION:string
+    export const STYLE_CLASS_NOTEBOOK:string
+    export const STYLE_CLASS_OSD:string
+    export const STYLE_CLASS_OVERSHOOT:string
+    export const STYLE_CLASS_PANE_SEPARATOR:string
+    export const STYLE_CLASS_PAPER:string
+    export const STYLE_CLASS_POPOVER:string
+    export const STYLE_CLASS_POPUP:string
+    export const STYLE_CLASS_PRIMARY_TOOLBAR:string
+    export const STYLE_CLASS_PROGRESSBAR:string
+    export const STYLE_CLASS_PULSE:string
+    export const STYLE_CLASS_QUESTION:string
+    export const STYLE_CLASS_RADIO:string
+    export const STYLE_CLASS_RAISED:string
+    export const STYLE_CLASS_READ_ONLY:string
+    export const STYLE_CLASS_RIGHT:string
+    export const STYLE_CLASS_RUBBERBAND:string
+    export const STYLE_CLASS_SCALE:string
+    export const STYLE_CLASS_SCALE_HAS_MARKS_ABOVE:string
+    export const STYLE_CLASS_SCALE_HAS_MARKS_BELOW:string
+    export const STYLE_CLASS_SCROLLBAR:string
+    export const STYLE_CLASS_SCROLLBARS_JUNCTION:string
+    export const STYLE_CLASS_SEPARATOR:string
+    export const STYLE_CLASS_SIDEBAR:string
+    export const STYLE_CLASS_SLIDER:string
+    export const STYLE_CLASS_SPINBUTTON:string
+    export const STYLE_CLASS_SPINNER:string
+    export const STYLE_CLASS_STATUSBAR:string
+    export const STYLE_CLASS_SUBTITLE:string
+    export const STYLE_CLASS_SUGGESTED_ACTION:string
+    export const STYLE_CLASS_TITLE:string
+    export const STYLE_CLASS_TITLEBAR:string
+    export const STYLE_CLASS_TOOLBAR:string
+    export const STYLE_CLASS_TOOLTIP:string
+    export const STYLE_CLASS_TOP:string
+    export const STYLE_CLASS_TOUCH_SELECTION:string
+    export const STYLE_CLASS_TROUGH:string
+    export const STYLE_CLASS_UNDERSHOOT:string
+    export const STYLE_CLASS_VERTICAL:string
+    export const STYLE_CLASS_VIEW:string
+    export const STYLE_CLASS_WARNING:string
+    export const STYLE_CLASS_WIDE:string
+    export const STYLE_PROPERTY_BACKGROUND_COLOR:string
+    export const STYLE_PROPERTY_BACKGROUND_IMAGE:string
+    export const STYLE_PROPERTY_BORDER_COLOR:string
+    export const STYLE_PROPERTY_BORDER_RADIUS:string
+    export const STYLE_PROPERTY_BORDER_STYLE:string
+    export const STYLE_PROPERTY_BORDER_WIDTH:string
+    export const STYLE_PROPERTY_COLOR:string
+    export const STYLE_PROPERTY_FONT:string
+    export const STYLE_PROPERTY_MARGIN:string
+    export const STYLE_PROPERTY_PADDING:string
+    export const STYLE_PROVIDER_PRIORITY_APPLICATION:number
+    export const STYLE_PROVIDER_PRIORITY_FALLBACK:number
+    export const STYLE_PROVIDER_PRIORITY_SETTINGS:number
+    export const STYLE_PROVIDER_PRIORITY_THEME:number
+    export const STYLE_PROVIDER_PRIORITY_USER:number
+    export const STYLE_REGION_COLUMN:string
+    export const STYLE_REGION_COLUMN_HEADER:string
+    export const STYLE_REGION_ROW:string
+    export const STYLE_REGION_TAB:string
+    export const TEXT_VIEW_PRIORITY_VALIDATE:number
+    export const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID:number
+    export const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID:number
     export function accel_groups_activate(object: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType):boolean
     export function accel_groups_from_object(object: GObject.Object):any
     export function accelerator_get_default_mod_mask():Gdk.ModifierType
@@ -75,9 +336,9 @@ declare module 'Gtk' {
     export function icon_size_register(name: string, width: number, height: number):number
     export function icon_size_register_alias(alias: string, target: number):void
     export function icon_theme_error_quark():any
-    export function init(argv: string[]):void
-    export function init_check(argc: number, argv: string[]):boolean
-    export function init_with_args(argc: number, argv: string[], parameter_string: string, entries: any[], translation_domain: string):boolean
+    export function init(argv:string[]):void
+    export function init_check(argv:string[]):boolean
+    export function init_with_args(argv:string[], parameter_string: string, entries: any[], translation_domain: string):boolean
     export function key_snooper_install(snooper: any, func_data: any):number
     export function key_snooper_remove(snooper_handler_id: number):void
     export function main():void
@@ -108,7 +369,7 @@ declare module 'Gtk' {
     export function paint_vline(style: Style, cr: any, state_type: StateType, widget: Widget, detail: string, y1_: number, y2_: number, x: number):void
     export function paper_size_get_default():string
     export function paper_size_get_paper_sizes(include_custom: boolean):any
-    export function parse_args(argc: number, argv: string[]):boolean
+    export function parse_args(argv:string[]):boolean
     export function print_error_quark():any
     export function print_run_page_setup_dialog(parent: Window, page_setup: PageSetup, settings: PrintSettings):PageSetup
     export function print_run_page_setup_dialog_async(parent: Window, page_setup: PageSetup, settings: PrintSettings, done_cb: any, data: any):void
@@ -1097,6 +1358,7 @@ declare module 'Gtk' {
         set_wrap_license(wrap_license: boolean):void
     }
     export class AccelGroup extends GObject.Object {
+        static from_accel_closure(closure: any):AccelGroup
         constructor(config?: any)
         activate(accel_quark: any, acceleratable: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType):boolean
         connect(accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags, closure: any):void
@@ -1121,10 +1383,22 @@ declare module 'Gtk' {
         set_accel_widget(accel_widget: Widget):void
     }
     export class AccelMap extends GObject.Object {
-        constructor(config?: any)
+        static add_entry(accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType):void
+        static add_filter(filter_pattern: string):void
+        static change_entry(accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, replace: boolean):boolean
+        static foreach(data: any, foreach_func: any):void
+        static foreach_unfiltered(data: any, foreach_func: any):void
+        static get():AccelMap
+        static load(file_name: any):void
+        static load_fd(fd: number):void
+        static load_scanner(scanner: any):void
+        static lock_path(accel_path: string):void
+        static lookup_entry(accel_path: string, key: any):boolean
+        static save(file_name: any):void
+        static save_fd(fd: number):void
+        static unlock_path(accel_path: string):void
     }
     export class Accessible extends Atk.Object {
-        constructor(config?: any)
         connect_widget_destroyed():void
         get_widget():Widget
         set_widget(widget: Widget):void
@@ -1244,6 +1518,7 @@ declare module 'Gtk' {
     }
     export class AppChooserDialog extends Dialog {
         constructor(config?: any)
+        static new_for_content_type(parent: Window, flags: DialogFlags, content_type: string):AppChooserDialog
         get_heading():string
         get_widget():Widget
         set_heading(heading: string):void
@@ -1297,7 +1572,6 @@ declare module 'Gtk' {
         set(arrow_type: ArrowType, shadow_type: ShadowType):void
     }
     export class ArrowAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class AspectFrame extends Frame {
         constructor(config?: any)
@@ -1334,11 +1608,9 @@ declare module 'Gtk' {
         update_buttons_state():void
     }
     export class Bin extends Container {
-        constructor(config?: any)
         get_child():Widget
     }
     export class BooleanCellAccessible extends RendererCellAccessible {
-        constructor(config?: any)
     }
     export class Box extends Container {
         constructor(config?: any)
@@ -1358,6 +1630,9 @@ declare module 'Gtk' {
     }
     export class Builder extends GObject.Object {
         constructor(config?: any)
+        static new_from_file(filename: string):Builder
+        static new_from_resource(resource_path: string):Builder
+        static new_from_string(string: string, length: number):Builder
         add_callback_symbol(callback_name: string, callback_symbol: any):void
         add_callback_symbols(first_callback_name: string, first_callback_symbol: any, ...args: any[]):void
         add_from_file(filename: string):number
@@ -1382,6 +1657,10 @@ declare module 'Gtk' {
     }
     export class Button extends Bin {
         constructor(config?: any)
+        static new_from_icon_name(icon_name: string, size: number):Button
+        static new_from_stock(stock_id: string):Button
+        static new_with_label(label: string):Button
+        static new_with_mnemonic(label: string):Button
         clicked():void
         enter():void
         get_alignment(xalign: number, yalign: number):void
@@ -1408,7 +1687,6 @@ declare module 'Gtk' {
         set_use_underline(use_underline: boolean):void
     }
     export class ButtonAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class ButtonBox extends Box {
         constructor(config?: any)
@@ -1437,10 +1715,8 @@ declare module 'Gtk' {
         unmark_day(day: number):void
     }
     export class CellAccessible extends Accessible {
-        constructor(config?: any)
     }
     export class CellArea extends GObject.InitiallyUnowned {
-        constructor(config?: any)
         activate(context: CellAreaContext, widget: Widget, cell_area: any, flags: CellRendererState, edit_only: boolean):boolean
         activate_cell(widget: Widget, renderer: CellRenderer, event: any, cell_area: any, flags: CellRendererState):boolean
         add(renderer: CellRenderer):void
@@ -1494,7 +1770,6 @@ declare module 'Gtk' {
         set_spacing(spacing: number):void
     }
     export class CellAreaContext extends GObject.Object {
-        constructor(config?: any)
         allocate(width: number, height: number):void
         get_allocation(width: number, height: number):void
         get_area():CellArea
@@ -1507,7 +1782,6 @@ declare module 'Gtk' {
         reset():void
     }
     export class CellRenderer extends GObject.InitiallyUnowned {
-        constructor(config?: any)
         activate(event: any, widget: Widget, path: string, background_area: any, cell_area: any, flags: CellRendererState):boolean
         get_aligned_area(widget: Widget, flags: CellRendererState, cell_area: any, aligned_area: any):void
         get_alignment(xalign: number, yalign: number):void
@@ -1566,6 +1840,10 @@ declare module 'Gtk' {
     }
     export class CellView extends Widget {
         constructor(config?: any)
+        static new_with_context(area: CellArea, context: CellAreaContext):CellView
+        static new_with_markup(markup: string):CellView
+        static new_with_pixbuf(pixbuf: any):CellView
+        static new_with_text(text: string):CellView
         get_displayed_row():any
         get_draw_sensitive():boolean
         get_fit_model():boolean
@@ -1580,9 +1858,15 @@ declare module 'Gtk' {
     }
     export class CheckButton extends ToggleButton {
         constructor(config?: any)
+        static new_with_label(...args: any[]):CheckButton
+
+        static new_with_mnemonic(label: string):CheckButton
     }
     export class CheckMenuItem extends MenuItem {
         constructor(config?: any)
+        static new_with_label(...args: any[]):CheckMenuItem
+
+        static new_with_mnemonic(label: string):CheckMenuItem
         get_active():boolean
         get_draw_as_radio():boolean
         get_inconsistent():boolean
@@ -1592,10 +1876,11 @@ declare module 'Gtk' {
         toggled():void
     }
     export class CheckMenuItemAccessible extends MenuItemAccessible {
-        constructor(config?: any)
     }
     export class Clipboard extends GObject.Object {
-        constructor(config?: any)
+        static get(selection: any):Clipboard
+        static get_default(display: Gdk.Display):Clipboard
+        static get_for_display(display: Gdk.Display, selection: any):Clipboard
         clear():void
         get_display():Gdk.Display
         get_owner():GObject.Object
@@ -1625,6 +1910,8 @@ declare module 'Gtk' {
     }
     export class ColorButton extends Button {
         constructor(config?: any)
+        static new_with_color(color: any):ColorButton
+        static new_with_rgba(rgba: any):ColorButton
         get_alpha():number
         get_color(color: any):void
         get_rgba(rgba: any):void
@@ -1643,6 +1930,9 @@ declare module 'Gtk' {
         constructor(config?: any)
     }
     export class ColorSelection extends Box {
+        static palette_from_string(str: string, colors: any[], n_colors: number):boolean
+        static palette_to_string(colors: any[], n_colors: number):string
+        static set_change_palette_with_screen_hook(func: any):any
         constructor(config?: any)
         get_current_alpha():number
         get_current_color(color: any):void
@@ -1668,6 +1958,11 @@ declare module 'Gtk' {
     }
     export class ComboBox extends Bin {
         constructor(config?: any)
+        static new_with_area(area: CellArea):ComboBox
+        static new_with_area_and_entry(area: CellArea):ComboBox
+        static new_with_entry():ComboBox
+        static new_with_model(model: any):ComboBox
+        static new_with_model_and_entry(model: any):ComboBox
         get_active():number
         get_active_id():string
         get_active_iter(iter: any):boolean
@@ -1705,10 +2000,10 @@ declare module 'Gtk' {
         set_wrap_width(width: number):void
     }
     export class ComboBoxAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class ComboBoxText extends ComboBox {
         constructor(config?: any)
+        static new_with_entry():ComboBoxText
         append(id: string, text: string):void
         append_text(text: string):void
         get_active_text():string
@@ -1721,7 +2016,6 @@ declare module 'Gtk' {
         remove_all():void
     }
     export class Container extends Widget {
-        constructor(config?: any)
         add(widget: Widget):void
         add_with_properties(widget: Widget, first_prop_name: string, ...args: any[]):void
         check_resize():void
@@ -1759,7 +2053,6 @@ declare module 'Gtk' {
         unset_focus_chain():void
     }
     export class ContainerAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class ContainerCellAccessible extends CellAccessible {
         constructor(config?: any)
@@ -1768,6 +2061,8 @@ declare module 'Gtk' {
         remove_child(child: CellAccessible):void
     }
     export class CssProvider extends GObject.Object {
+        static get_default():CssProvider
+        static get_named(name: string, variant: string):CssProvider
         constructor(config?: any)
         load_from_data(data: number[], length: number):boolean
         load_from_file(file: any):boolean
@@ -1777,6 +2072,7 @@ declare module 'Gtk' {
     }
     export class Dialog extends Window {
         constructor(config?: any)
+        static new_with_buttons(title: string, parent: Window, flags: DialogFlags, first_button_text: string, ...args: any[]):Dialog
         add_action_widget(child: Widget, response_id: number):void
         add_button(button_text: string, response_id: number):Widget
         add_buttons(first_button_text: string, ...args: any[]):void
@@ -1797,6 +2093,7 @@ declare module 'Gtk' {
     }
     export class Entry extends Widget {
         constructor(config?: any)
+        static new_with_buffer(buffer: EntryBuffer):Entry
         get_activates_default():boolean
         get_alignment():number
         get_attributes():any
@@ -1873,7 +2170,6 @@ declare module 'Gtk' {
         unset_invisible_char():void
     }
     export class EntryAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class EntryBuffer extends GObject.Object {
         constructor(config?: any)
@@ -1890,6 +2186,7 @@ declare module 'Gtk' {
     }
     export class EntryCompletion extends GObject.Object {
         constructor(config?: any)
+        static new_with_area(area: CellArea):EntryCompletion
         complete():void
         compute_prefix(key: string):string
         delete_action(index_: number):void
@@ -1917,7 +2214,6 @@ declare module 'Gtk' {
         set_text_column(column: number):void
     }
     export class EntryIconAccessible extends Atk.Object {
-        constructor(config?: any)
     }
     export class EventBox extends Bin {
         constructor(config?: any)
@@ -1927,7 +2223,6 @@ declare module 'Gtk' {
         set_visible_window(visible_window: boolean):void
     }
     export class EventController extends GObject.Object {
-        constructor(config?: any)
         get_propagation_phase():PropagationPhase
         get_widget():Widget
         handle_event(event: any):boolean
@@ -1936,6 +2231,7 @@ declare module 'Gtk' {
     }
     export class Expander extends Bin {
         constructor(config?: any)
+        static new_with_mnemonic(label: string):Expander
         get_expanded():boolean
         get_label():string
         get_label_fill():boolean
@@ -1954,10 +2250,10 @@ declare module 'Gtk' {
         set_use_underline(use_underline: boolean):void
     }
     export class ExpanderAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class FileChooserButton extends Box {
         constructor(config?: any)
+        static new_with_dialog(dialog: Dialog):FileChooserButton
         get_focus_on_click():boolean
         get_title():string
         get_width_chars():number
@@ -2020,7 +2316,6 @@ declare module 'Gtk' {
         unselect_child(child: FlowBoxChild):void
     }
     export class FlowBoxAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class FlowBoxChild extends Bin {
         constructor(config?: any)
@@ -2029,10 +2324,10 @@ declare module 'Gtk' {
         is_selected():boolean
     }
     export class FlowBoxChildAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class FontButton extends Button {
         constructor(config?: any)
+        static new_with_font(fontname: string):FontButton
         get_font_name():string
         get_show_size():boolean
         get_show_style():boolean
@@ -2089,7 +2384,6 @@ declare module 'Gtk' {
         set_shadow_type(type: ShadowType):void
     }
     export class FrameAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class GLArea extends Widget {
         constructor(config?: any)
@@ -2111,7 +2405,6 @@ declare module 'Gtk' {
         set_required_version(major: number, minor: number):void
     }
     export class Gesture extends EventController {
-        constructor(config?: any)
         get_bounding_box(rect: any):boolean
         get_bounding_box_center(x: number, y: number):boolean
         get_device():Gdk.Device
@@ -2155,7 +2448,6 @@ declare module 'Gtk' {
         get_angle_delta():number
     }
     export class GestureSingle extends Gesture {
-        constructor(config?: any)
         get_button():number
         get_current_button():number
         get_current_sequence():any
@@ -2206,6 +2498,7 @@ declare module 'Gtk' {
         constructor(config?: any)
     }
     export class HSV extends Widget {
+        static to_rgb(h: number, s: number, v: number, r: number, g: number, b: number):void
         constructor(config?: any)
         get_color(h: number, s: number, v: number):void
         get_metrics(size: number, ring_width: number):void
@@ -2215,6 +2508,7 @@ declare module 'Gtk' {
     }
     export class HScale extends Scale {
         constructor(config?: any)
+        static new_with_range(min: number, max: number, step: number):HScale
     }
     export class HScrollbar extends Scrollbar {
         constructor(config?: any)
@@ -2250,7 +2544,6 @@ declare module 'Gtk' {
         set_title(title: string):void
     }
     export class IMContext extends GObject.Object {
-        constructor(config?: any)
         delete_surrounding(offset: number, n_chars: number):boolean
         filter_keypress(event: any):boolean
         focus_in():void
@@ -2274,6 +2567,7 @@ declare module 'Gtk' {
         set_context_id(context_id: string):void
     }
     export class IconFactory extends GObject.Object {
+        static lookup_default(stock_id: string):any
         constructor(config?: any)
         add(stock_id: string, icon_set: any):void
         add_default():void
@@ -2282,6 +2576,7 @@ declare module 'Gtk' {
     }
     export class IconInfo extends GObject.Object {
         constructor(config?: any)
+        static new_for_pixbuf(icon_theme: IconTheme, pixbuf: any):IconInfo
         copy():IconInfo
         free():void
         get_attach_points(points: any[], n_points: number):boolean
@@ -2306,6 +2601,9 @@ declare module 'Gtk' {
         set_raw_coordinates(raw_coordinates: boolean):void
     }
     export class IconTheme extends GObject.Object {
+        static add_builtin_icon(icon_name: string, size: number, pixbuf: any):void
+        static get_default():IconTheme
+        static get_for_screen(screen: Gdk.Screen):IconTheme
         constructor(config?: any)
         add_resource_path(path: string):void
         append_search_path(path: any):void
@@ -2332,6 +2630,8 @@ declare module 'Gtk' {
     }
     export class IconView extends Container {
         constructor(config?: any)
+        static new_with_area(area: CellArea):IconView
+        static new_with_model(model: any):IconView
         convert_widget_to_bin_window_coords(wx: number, wy: number, bx: number, by: number):void
         create_drag_icon(path: any):any
         enable_model_drag_dest(targets: any[], n_targets: number, actions: Gdk.DragAction):void
@@ -2395,10 +2695,18 @@ declare module 'Gtk' {
         unset_model_drag_source():void
     }
     export class IconViewAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class Image extends Misc {
         constructor(config?: any)
+        static new_from_animation(animation: any):Image
+        static new_from_file(filename: any):Image
+        static new_from_gicon(icon: any, size: number):Image
+        static new_from_icon_name(icon_name: string, size: number):Image
+        static new_from_icon_set(icon_set: any, size: number):Image
+        static new_from_pixbuf(pixbuf: any):Image
+        static new_from_resource(resource_path: string):Image
+        static new_from_stock(stock_id: string, size: number):Image
+        static new_from_surface(surface: any):Image
         clear():void
         get_animation():any
         get_gicon(gicon: any, size: number):void
@@ -2420,13 +2728,14 @@ declare module 'Gtk' {
         set_pixel_size(pixel_size: number):void
     }
     export class ImageAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class ImageCellAccessible extends RendererCellAccessible {
-        constructor(config?: any)
     }
     export class ImageMenuItem extends MenuItem {
         constructor(config?: any)
+        static new_from_stock(stock_id: string, accel_group: AccelGroup):ImageMenuItem
+        static new_with_label(label: string):ImageMenuItem
+        static new_with_mnemonic(label: string):ImageMenuItem
         get_always_show_image():boolean
         get_image():Widget
         get_use_stock():boolean
@@ -2437,6 +2746,7 @@ declare module 'Gtk' {
     }
     export class InfoBar extends Box {
         constructor(config?: any)
+        static new_with_buttons(first_button_text: string, ...args: any[]):InfoBar
         add_action_widget(child: Widget, response_id: number):void
         add_button(button_text: string, response_id: number):Button
         add_buttons(first_button_text: string, ...args: any[]):void
@@ -2452,11 +2762,13 @@ declare module 'Gtk' {
     }
     export class Invisible extends Widget {
         constructor(config?: any)
+        static new_for_screen(screen: Gdk.Screen):Invisible
         get_screen():Gdk.Screen
         set_screen(screen: Gdk.Screen):void
     }
     export class Label extends Misc {
         constructor(config?: any)
+        static new_with_mnemonic(str: string):Label
         get_angle():number
         get_attributes():any
         get_current_uri():string
@@ -2507,7 +2819,6 @@ declare module 'Gtk' {
         set_yalign(yalign: number):void
     }
     export class LabelAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class Layout extends Container {
         constructor(config?: any)
@@ -2523,6 +2834,7 @@ declare module 'Gtk' {
     }
     export class LevelBar extends Widget {
         constructor(config?: any)
+        static new_for_interval(min_value: number, max_value: number):LevelBar
         add_offset_value(name: string, value: number):void
         get_inverted():boolean
         get_max_value():number
@@ -2538,17 +2850,17 @@ declare module 'Gtk' {
         set_value(value: number):void
     }
     export class LevelBarAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class LinkButton extends Button {
         constructor(config?: any)
+        static new_with_label(...args: any[]):LinkButton
+
         get_uri():string
         get_visited():boolean
         set_uri(uri: string):void
         set_visited(visited: boolean):void
     }
     export class LinkButtonAccessible extends ButtonAccessible {
-        constructor(config?: any)
     }
     export class ListBox extends Container {
         constructor(config?: any)
@@ -2581,7 +2893,6 @@ declare module 'Gtk' {
         unselect_row(row: ListBoxRow):void
     }
     export class ListBoxAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class ListBoxRow extends Bin {
         constructor(config?: any)
@@ -2596,10 +2907,11 @@ declare module 'Gtk' {
         set_selectable(selectable: boolean):void
     }
     export class ListBoxRowAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class ListStore extends GObject.Object {
         constructor(config?: any)
+        static newv(...args: any[]):ListStore
+
         append(iter: any):void
         clear():void
         insert(iter: any, position: number):void
@@ -2626,10 +2938,11 @@ declare module 'Gtk' {
         set_permission(permission: Gio.Permission):void
     }
     export class LockButtonAccessible extends ButtonAccessible {
-        constructor(config?: any)
     }
     export class Menu extends MenuShell {
+        static get_for_attach_widget(widget: Widget):any
         constructor(config?: any)
+        static new_from_model(model: Gio.MenuModel):Menu
         attach(child: Widget, left_attach: number, right_attach: number, top_attach: number, bottom_attach: number):void
         attach_to_widget(attach_widget: Widget, detacher: any):void
         detach():void
@@ -2656,10 +2969,10 @@ declare module 'Gtk' {
         set_title(title: string):void
     }
     export class MenuAccessible extends MenuShellAccessible {
-        constructor(config?: any)
     }
     export class MenuBar extends MenuShell {
         constructor(config?: any)
+        static new_from_model(model: Gio.MenuModel):MenuBar
         get_child_pack_direction():PackDirection
         get_pack_direction():PackDirection
         set_child_pack_direction(child_pack_dir: PackDirection):void
@@ -2683,10 +2996,11 @@ declare module 'Gtk' {
         set_use_popover(use_popover: boolean):void
     }
     export class MenuButtonAccessible extends ToggleButtonAccessible {
-        constructor(config?: any)
     }
     export class MenuItem extends Bin {
         constructor(config?: any)
+        static new_with_label(label: string):MenuItem
+        static new_with_mnemonic(label: string):MenuItem
         activate():any
 
         deselect():void
@@ -2707,10 +3021,8 @@ declare module 'Gtk' {
         toggle_size_request(requisition: number):void
     }
     export class MenuItemAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class MenuShell extends Container {
-        constructor(config?: any)
         activate_item(menu_item: Widget, force_deactivate: boolean):void
         append(child: MenuItem):void
         bind_model(model: Gio.MenuModel, action_namespace: string, with_separators: boolean):void
@@ -2727,10 +3039,10 @@ declare module 'Gtk' {
         set_take_focus(take_focus: boolean):void
     }
     export class MenuShellAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class MenuToolButton extends ToolButton {
         constructor(config?: any)
+        static new_from_stock(stock_id: string):MenuToolButton
         get_menu():Widget
         set_arrow_tooltip_markup(markup: string):void
         set_arrow_tooltip_text(text: string):void
@@ -2738,6 +3050,7 @@ declare module 'Gtk' {
     }
     export class MessageDialog extends Dialog {
         constructor(config?: any)
+        static new_with_markup(parent: Window, flags: DialogFlags, type: MessageType, buttons: ButtonsType, message_format: string, ...args: any[]):MessageDialog
         format_secondary_markup(message_format: string, ...args: any[]):void
         format_secondary_text(message_format: string, ...args: any[]):void
         get_image():Widget
@@ -2746,7 +3059,6 @@ declare module 'Gtk' {
         set_markup(str: string):void
     }
     export class Misc extends Widget {
-        constructor(config?: any)
         get_alignment(xalign: number, yalign: number):void
         get_padding(xpad: number, ypad: number):void
         set_alignment(xalign: number, yalign: number):void
@@ -2811,14 +3123,13 @@ declare module 'Gtk' {
         set_tab_reorderable(child: Widget, reorderable: boolean):void
     }
     export class NotebookAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class NotebookPageAccessible extends Atk.Object {
         constructor(config?: any)
         invalidate():void
     }
     export class NumerableIcon extends Gio.EmblemedIcon {
-        constructor(config?: any)
+        static new_with_style_context(base_icon: any, context: StyleContext):any
         get_background_gicon():any
         get_background_icon_name():string
         get_count():number
@@ -2844,6 +3155,8 @@ declare module 'Gtk' {
     }
     export class PageSetup extends GObject.Object {
         constructor(config?: any)
+        static new_from_file(file_name: any):PageSetup
+        static new_from_key_file(key_file: any, group_name: string):PageSetup
         copy():PageSetup
         get_bottom_margin(unit: Unit):number
         get_left_margin(unit: Unit):number
@@ -2882,7 +3195,6 @@ declare module 'Gtk' {
         set_wide_handle(wide: boolean):void
     }
     export class PanedAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class PlacesSidebar extends ScrolledWindow {
         constructor(config?: any)
@@ -2912,6 +3224,7 @@ declare module 'Gtk' {
     }
     export class Plug extends Window {
         constructor(config?: any)
+        static new_for_display(display: Gdk.Display, socket_id: any):Plug
         construct(socket_id: any):void
         construct_for_display(display: Gdk.Display, socket_id: any):void
         get_embedded():boolean
@@ -2920,6 +3233,7 @@ declare module 'Gtk' {
     }
     export class Popover extends Bin {
         constructor(config?: any)
+        static new_from_model(relative_to: Widget, model: Gio.MenuModel):Popover
         bind_model(model: Gio.MenuModel, action_namespace: string):void
         get_default_widget():Widget
         get_modal():boolean
@@ -2935,14 +3249,12 @@ declare module 'Gtk' {
         set_transitions_enabled(transitions_enabled: boolean):void
     }
     export class PopoverAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class PopoverMenu extends Popover {
         constructor(config?: any)
         open_submenu(name: string):void
     }
     export class PrintContext extends GObject.Object {
-        constructor(config?: any)
         create_pango_context():Pango.Context
         create_pango_layout():Pango.Layout
         get_cairo_context():any
@@ -2989,6 +3301,8 @@ declare module 'Gtk' {
     }
     export class PrintSettings extends GObject.Object {
         constructor(config?: any)
+        static new_from_file(file_name: any):PrintSettings
+        static new_from_key_file(key_file: any, group_name: string):PrintSettings
         copy():PrintSettings
         foreach(func: any, user_data: any):void
         get(key: string):string
@@ -3078,7 +3392,6 @@ declare module 'Gtk' {
         set_text(text: string):void
     }
     export class ProgressBarAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class RadioAction extends ToggleAction {
         constructor(config?: any)
@@ -3090,29 +3403,44 @@ declare module 'Gtk' {
     }
     export class RadioButton extends CheckButton {
         constructor(config?: any)
+        static new_from_widget(radio_group_member: RadioButton):RadioButton
+        static new_with_label(...args: any[]):RadioButton
+
+        static new_with_label_from_widget(radio_group_member: RadioButton, label: string):RadioButton
+        static new_with_mnemonic(...args: any[]):RadioButton
+
+        static new_with_mnemonic_from_widget(radio_group_member: RadioButton, label: string):RadioButton
         get_group():any
         join_group(group_source: RadioButton):void
         set_group(group: any):void
     }
     export class RadioButtonAccessible extends ToggleButtonAccessible {
-        constructor(config?: any)
     }
     export class RadioMenuItem extends CheckMenuItem {
         constructor(config?: any)
+        static new_from_widget(group: RadioMenuItem):RadioMenuItem
+        static new_with_label(...args: any[]):RadioMenuItem
+
+        static new_with_label_from_widget(group: RadioMenuItem, label: string):RadioMenuItem
+        static new_with_mnemonic(...args: any[]):RadioMenuItem
+
+        static new_with_mnemonic_from_widget(group: RadioMenuItem, label: string):RadioMenuItem
         get_group():any
         join_group(group_source: RadioMenuItem):void
         set_group(group: any):void
     }
     export class RadioMenuItemAccessible extends CheckMenuItemAccessible {
-        constructor(config?: any)
     }
     export class RadioToolButton extends ToggleToolButton {
         constructor(config?: any)
+        static new_from_stock(...args: any[]):RadioToolButton
+
+        static new_from_widget(group: RadioToolButton):RadioToolButton
+        static new_with_stock_from_widget(group: RadioToolButton, stock_id: string):RadioToolButton
         get_group():any
         set_group(group: any):void
     }
     export class Range extends Widget {
-        constructor(config?: any)
         get_adjustment():Adjustment
         get_fill_level():number
         get_flippable():boolean
@@ -3143,7 +3471,6 @@ declare module 'Gtk' {
         set_value(value: number):void
     }
     export class RangeAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class RcStyle extends GObject.Object {
         constructor(config?: any)
@@ -3151,19 +3478,23 @@ declare module 'Gtk' {
     }
     export class RecentAction extends Action {
         constructor(config?: any)
+        static new_for_manager(name: string, label: string, tooltip: string, stock_id: string, manager: RecentManager):RecentAction
         get_show_numbers():boolean
         set_show_numbers(show_numbers: boolean):void
     }
     export class RecentChooserDialog extends Dialog {
         constructor(config?: any)
+        static new_for_manager(title: string, parent: Window, manager: RecentManager, first_button_text: string, ...args: any[]):RecentChooserDialog
     }
     export class RecentChooserMenu extends Menu {
         constructor(config?: any)
+        static new_for_manager(manager: RecentManager):RecentChooserMenu
         get_show_numbers():boolean
         set_show_numbers(show_numbers: boolean):void
     }
     export class RecentChooserWidget extends Box {
         constructor(config?: any)
+        static new_for_manager(manager: RecentManager):RecentChooserWidget
     }
     export class RecentFilter extends GObject.InitiallyUnowned {
         constructor(config?: any)
@@ -3180,6 +3511,7 @@ declare module 'Gtk' {
         set_name(name: string):void
     }
     export class RecentManager extends GObject.Object {
+        static get_default():RecentManager
         constructor(config?: any)
         add_full(uri: string, recent_data: any):boolean
         add_item(uri: string):boolean
@@ -3205,6 +3537,7 @@ declare module 'Gtk' {
     }
     export class Scale extends Range {
         constructor(config?: any)
+        static new_with_range(orientation: Orientation, min: number, max: number, step: number):Scale
         add_mark(value: number, position: PositionType, markup: string):void
         clear_marks():void
         get_digits():number
@@ -3219,7 +3552,6 @@ declare module 'Gtk' {
         set_value_pos(pos: PositionType):void
     }
     export class ScaleAccessible extends RangeAccessible {
-        constructor(config?: any)
     }
     export class ScaleButton extends Button {
         constructor(config?: any)
@@ -3233,7 +3565,6 @@ declare module 'Gtk' {
         set_value(value: number):void
     }
     export class ScaleButtonAccessible extends ButtonAccessible {
-        constructor(config?: any)
     }
     export class Scrollbar extends Range {
         constructor(config?: any)
@@ -3266,7 +3597,6 @@ declare module 'Gtk' {
         unset_placement():void
     }
     export class ScrolledWindowAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class SearchBar extends Bin {
         constructor(config?: any)
@@ -3293,7 +3623,12 @@ declare module 'Gtk' {
         set_draw(draw: boolean):void
     }
     export class Settings extends GObject.Object {
-        constructor(config?: any)
+        static get_default():Settings
+        static get_for_screen(screen: Gdk.Screen):Settings
+        static install_property(pspec: GObject.ParamSpec):void
+        static install_property_parser(pspec: GObject.ParamSpec, parser: any):void
+        gtk_application_prefer_dark_theme: boolean
+        gtk_theme_name: string
         set_double_property(name: string, v_double: number, origin: string):void
         set_long_property(name: string, v_long: number, origin: string):void
         set_property_value(name: string, svalue: any):void
@@ -3317,6 +3652,7 @@ declare module 'Gtk' {
     }
     export class SpinButton extends Entry {
         constructor(config?: any)
+        static new_with_range(min: number, max: number, step: number):SpinButton
         configure(adjustment: Adjustment, climb_rate: number, digits: number):void
         get_adjustment():Adjustment
         get_digits():number
@@ -3341,7 +3677,6 @@ declare module 'Gtk' {
         update():void
     }
     export class SpinButtonAccessible extends EntryAccessible {
-        constructor(config?: any)
     }
     export class Spinner extends Widget {
         constructor(config?: any)
@@ -3349,7 +3684,6 @@ declare module 'Gtk' {
         stop():void
     }
     export class SpinnerAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class Stack extends Container {
         constructor(config?: any)
@@ -3386,7 +3720,13 @@ declare module 'Gtk' {
         set_stack(stack: Stack):void
     }
     export class StatusIcon extends GObject.Object {
+        static position_menu(menu: Menu, x: number, y: number, push_in: boolean, user_data: StatusIcon):void
         constructor(config?: any)
+        static new_from_file(filename: any):StatusIcon
+        static new_from_gicon(icon: any):StatusIcon
+        static new_from_icon_name(icon_name: string):StatusIcon
+        static new_from_pixbuf(pixbuf: any):StatusIcon
+        static new_from_stock(stock_id: string):StatusIcon
         get_geometry(screen: Gdk.Screen, area: any, orientation: Orientation):boolean
         get_gicon():any
         get_has_tooltip():boolean
@@ -3426,7 +3766,6 @@ declare module 'Gtk' {
         remove_all(context_id: number):void
     }
     export class StatusbarAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class Style extends GObject.Object {
         constructor(config?: any)
@@ -3445,6 +3784,9 @@ declare module 'Gtk' {
         set_background(window: Gdk.Window, state_type: StateType):void
     }
     export class StyleContext extends GObject.Object {
+        static add_provider_for_screen(screen: Gdk.Screen, provider: any, priority: number):void
+        static remove_provider_for_screen(screen: Gdk.Screen, provider: any):void
+        static reset_widgets(screen: Gdk.Screen):void
         constructor(config?: any)
         add_class(class_name: string):void
         add_provider(provider: any, priority: number):void
@@ -3502,6 +3844,8 @@ declare module 'Gtk' {
         state_is_running(state: StateType, progress: number):boolean
     }
     export class StyleProperties extends GObject.Object {
+        static lookup_property(property_name: string, parse_func: any, pspec: GObject.ParamSpec):boolean
+        static register_property(parse_func: any, pspec: GObject.ParamSpec):void
         constructor(config?: any)
         clear():void
         get(state: StateFlags, ...args: any[]):void
@@ -3529,7 +3873,6 @@ declare module 'Gtk' {
 
     }
     export class SwitchAccessible extends WidgetAccessible {
-        constructor(config?: any)
     }
     export class Table extends Container {
         constructor(config?: any)
@@ -3628,7 +3971,6 @@ declare module 'Gtk' {
         unregister_serialize_format(format: any):void
     }
     export class TextCellAccessible extends RendererCellAccessible {
-        constructor(config?: any)
     }
     export class TextChildAnchor extends GObject.Object {
         constructor(config?: any)
@@ -3660,6 +4002,7 @@ declare module 'Gtk' {
     }
     export class TextView extends Container {
         constructor(config?: any)
+        static new_with_buffer(buffer: TextBuffer):TextView
         add_child_at_anchor(child: Widget, anchor: TextChildAnchor):void
         add_child_in_window(child: Widget, which_window: TextWindowType, xpos: number, ypos: number):void
         backward_display_line(iter: any):boolean
@@ -3733,10 +4076,10 @@ declare module 'Gtk' {
         window_to_buffer_coords(win: TextWindowType, window_x: number, window_y: number, buffer_x: number, buffer_y: number):void
     }
     export class TextViewAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class ThemingEngine extends GObject.Object {
-        constructor(config?: any)
+        static load(name: string):ThemingEngine
+        static register_property(name_space: string, parse_func: any, pspec: GObject.ParamSpec):void
         get(state: StateFlags, ...args: any[]):void
         get_background_color(state: StateFlags, color: any):void
         get_border(state: StateFlags, border: any):void
@@ -3772,6 +4115,8 @@ declare module 'Gtk' {
     }
     export class ToggleButton extends Button {
         constructor(config?: any)
+        static new_with_label(label: string):ToggleButton
+        static new_with_mnemonic(label: string):ToggleButton
         get_active():boolean
         get_inconsistent():boolean
         get_mode():boolean
@@ -3781,15 +4126,17 @@ declare module 'Gtk' {
         toggled():void
     }
     export class ToggleButtonAccessible extends ButtonAccessible {
-        constructor(config?: any)
     }
     export class ToggleToolButton extends ToolButton {
         constructor(config?: any)
+        static new_from_stock(...args: any[]):ToggleToolButton
+
         get_active():boolean
         set_active(is_active: boolean):void
     }
     export class ToolButton extends ToolItem {
         constructor(config?: any)
+        static new_from_stock(stock_id: string):ToolButton
         get_icon_name():string
         get_icon_widget():Widget
         get_label():string
@@ -3853,6 +4200,8 @@ declare module 'Gtk' {
         set_label_widget(label_widget: Widget):void
     }
     export class ToolPalette extends Container {
+        static get_drag_target_group():any
+        static get_drag_target_item():any
         constructor(config?: any)
         add_drag_dest(widget: Widget, flags: DestDefaults, targets: ToolPaletteDragTargets, actions: Gdk.DragAction):void
         get_drag_item(selection: any):Widget
@@ -3897,7 +4246,7 @@ declare module 'Gtk' {
         unset_style():void
     }
     export class Tooltip extends GObject.Object {
-        constructor(config?: any)
+        static trigger_tooltip_query(display: Gdk.Display):void
         set_custom(custom_widget: Widget):void
         set_icon(pixbuf: any):void
         set_icon_from_gicon(gicon: any, size: number):void
@@ -3908,11 +4257,9 @@ declare module 'Gtk' {
         set_tip_area(rect: any):void
     }
     export class ToplevelAccessible extends Atk.Object {
-        constructor(config?: any)
         get_children():any
     }
     export class TreeModelFilter extends GObject.Object {
-        constructor(config?: any)
         clear_cache():void
         convert_child_iter_to_iter(filter_iter: any, child_iter: any):boolean
         convert_child_path_to_path(child_path: any):any
@@ -3925,7 +4272,6 @@ declare module 'Gtk' {
         set_visible_func(func: any, data: any, destroy: any):void
     }
     export class TreeModelSort extends GObject.Object {
-        constructor(config?: any)
         clear_cache():void
         convert_child_iter_to_iter(sort_iter: any, child_iter: any):boolean
         convert_child_path_to_path(child_path: any):any
@@ -3936,7 +4282,6 @@ declare module 'Gtk' {
         reset_default_sort_func():void
     }
     export class TreeSelection extends GObject.Object {
-        constructor(config?: any)
         count_selected_rows():number
         get_mode():SelectionMode
         get_select_function():any
@@ -3960,6 +4305,8 @@ declare module 'Gtk' {
     }
     export class TreeStore extends GObject.Object {
         constructor(config?: any)
+        static newv(...args: any[]):TreeStore
+
         append(iter: any, parent: any):void
         clear():void
         insert(iter: any, parent: any, position: number):void
@@ -3984,6 +4331,7 @@ declare module 'Gtk' {
     }
     export class TreeView extends Container {
         constructor(config?: any)
+        static new_with_model(model: any):TreeView
         append_column(column: TreeViewColumn):number
         collapse_all():void
         collapse_row(path: any):boolean
@@ -4085,10 +4433,11 @@ declare module 'Gtk' {
         unset_rows_drag_source():void
     }
     export class TreeViewAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class TreeViewColumn extends GObject.InitiallyUnowned {
         constructor(config?: any)
+        static new_with_area(area: CellArea):TreeViewColumn
+        static new_with_attributes(title: string, cell: CellRenderer, ...args: any[]):TreeViewColumn
         add_attribute(cell_renderer: CellRenderer, attribute: string, column: number):void
         cell_get_position(cell_renderer: CellRenderer, x_offset: number, width: number):boolean
         cell_get_size(cell_area: any, x_offset: number, y_offset: number, width: number, height: number):void
@@ -4171,6 +4520,7 @@ declare module 'Gtk' {
     }
     export class VScale extends Scale {
         constructor(config?: any)
+        static new_with_range(min: number, max: number, step: number):VScale
     }
     export class VScrollbar extends Scrollbar {
         constructor(config?: any)
@@ -4193,6 +4543,11 @@ declare module 'Gtk' {
         constructor(config?: any)
     }
     export class Widget extends GObject.InitiallyUnowned {
+        static get_default_direction():TextDirection
+        static get_default_style():Style
+        static pop_composite_child():void
+        static push_composite_child():void
+        static set_default_direction(dir: TextDirection):void
         constructor(config?: any)
         activate():any
 
@@ -4465,9 +4820,17 @@ declare module 'Gtk' {
         unset_state_flags(flags: StateFlags):void
     }
     export class WidgetAccessible extends Accessible {
-        constructor(config?: any)
     }
     export class Window extends Bin {
+        static get_default_icon_list():any
+        static get_default_icon_name():string
+        static list_toplevels():any
+        static set_auto_startup_notification(setting: boolean):void
+        static set_default_icon(icon: any):void
+        static set_default_icon_from_file(filename: any):boolean
+        static set_default_icon_list(list: any):void
+        static set_default_icon_name(name: string):void
+        static set_interactive_debugging(enable: boolean):void
         constructor(config?: any)
         activate_default():boolean
         activate_focus():boolean
@@ -4581,7 +4944,6 @@ declare module 'Gtk' {
         unstick():void
     }
     export class WindowAccessible extends ContainerAccessible {
-        constructor(config?: any)
     }
     export class WindowGroup extends GObject.Object {
         constructor(config?: any)

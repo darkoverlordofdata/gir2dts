@@ -7,6 +7,7 @@
  */
 const fs = require('fs')
 const os = require('os')
+const util = require('util')
 const {execSync} = require('child_process')
 const {parseString} = require('xml2js')
 
@@ -38,6 +39,9 @@ function build(cfg, gir) {
             "outFile": "index.js"       // the target executable
         },
         "files": [
+            "src/gjs.d.ts",
+            "src/gjs.js",
+            "example/browser.ts"
         ]
     }
     for (let name in gir) {
@@ -47,7 +51,7 @@ function build(cfg, gir) {
         let out = []
         out.push(generateModule(name, gir[name], cfg.module[name]))
         fs.writeFileSync(cfg.module[name].output, out.join('\n'))
-        ts.files.push(cfg.module[name].output)
+        ts.files.unshift(cfg.module[name].output)
     }
     fs.writeFileSync("./tsconfig.json", JSON.stringify(ts, null, 2))
 }
@@ -107,12 +111,20 @@ function generateModule(name, gir, module) {
         .replace(/\: object/g, ": any")
         .replace(/\):object/g, "):any")
         .replace(/\.\.\.args\: any\)/g, "...args: any[])")
+        .replace(/argc\: number, argv\: string\[\]/g, "argv:string[]")
 }
 
 
 function addGirInfo(modName, gir, patch, add, out) {
 
     let ns = gir.repository.namespace[0]
+
+    // Constants
+    if (ns.constant)
+        for (let constant of ns.constant) {
+            let name = constant.$['name'] 
+            out.push(`    export const ${name}:${getType(modName, constant)}`)
+        }
 
     // Get the requested functions
     if (ns.function) 
@@ -190,10 +202,77 @@ function addGirInfo(modName, gir, patch, add, out) {
                     def.push(` extends ${klass.$['parent']}`)
                 def.push(' {')
                 out.push(def.join(''))
-                if (klass.constructor) {
+
+                /**
+                 * Static methods (functions)
+                 */
+                if (klass.function) {
+                    for (let func of klass.function) {
+                        if (func.$['name'] === "new") continue // n.a.
+                        if (func.$['name'] === "newv") continue // FIXME!
+                        let line = []
+                        // if (pt && pt[method.$['name']]) {
+                        //     out.push('        '+pt[method.$['name']])
+                        // } else {
+                            line.push(`        static ${func.$['name']}(`)
+                            if (func.parameters) {
+                                if (func.parameters[0].parameter)
+                                    for (let parameter of func.parameters[0].parameter) {
+                                        let name = getName(parameter.$['name'])
+                                        if (name === '...') name = '...args'
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
+                                        line.push(', ')
+                                    }
+                            }
+                            if (line[line.length-1] === ', ')
+                                line[line.length-1] = ")"
+                            else
+                                line.push(')')
+                            line.push(getReturnType(modName, func))
+                        // }
+                        out.push(line.join(''))
+                    }
+                    
+                }
+                /**
+                 * Constructors
+                 */
+                if (klass.constructor[0]) {
                     out.push("        constructor(config?: any)")
+                    for (let ctor in klass.constructor) {
+                        let constructor = klass.constructor[ctor]
+                        if (typeof constructor === 'object') {
+                            if (constructor.$['name'] === 'new') continue
+                            let line = []
+                            if (pt && pt[constructor.$['name']]) {
+                                out.push('        '+pt[constructor.$['name']])
+                            } else {
+                                line.push(`        static ${constructor.$['name']}(`)
+                                if (constructor.parameters) {
+                                    for (let parameter of constructor.parameters[0].parameter) {
+                                        let name = getName(parameter.$['name'])
+                                        if (name === '...') name = '...args'
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
+                                        line.push(', ')
+                                    }
+                                }
+                                if (line[line.length-1] === ', ')
+                                    line[line.length-1] = `):${name}`
+                                else
+                                    line.push(`):${name}`)
+                            }
+                            out.push(line.join(''))
+                        }
+                    }
+
                 }
 
+                // if (name === "Object") {
+                //     console.log(name + " "+ JSON.stringify(ad, null, 2))
+                // }
+                // if (name === "Settings") {
+                //     console.log(name + " "+ JSON.stringify(ad, null, 2))
+                // }
                 if (ad) {
                     for (let mn in ad) {
                         out.push('        '+ad[mn])
@@ -201,6 +280,9 @@ function addGirInfo(modName, gir, patch, add, out) {
 
                 }
 
+                /**
+                 * Methods
+                 */
                 if (klass.method) {
                     for (let method of klass.method) {
                         let line = []

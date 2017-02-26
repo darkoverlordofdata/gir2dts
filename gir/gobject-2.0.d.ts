@@ -3,6 +3,21 @@
  *
  */
 declare module 'GObject' {
+    export const PARAM_MASK:number
+    export const PARAM_STATIC_STRINGS:number
+    export const PARAM_USER_SHIFT:number
+    export const SIGNAL_FLAGS_MASK:number
+    export const SIGNAL_MATCH_MASK:number
+    export const TYPE_FLAG_RESERVED_ID_BIT:any
+    export const TYPE_FUNDAMENTAL_MAX:number
+    export const TYPE_FUNDAMENTAL_SHIFT:number
+    export const TYPE_RESERVED_BSE_FIRST:number
+    export const TYPE_RESERVED_BSE_LAST:number
+    export const TYPE_RESERVED_GLIB_FIRST:number
+    export const TYPE_RESERVED_GLIB_LAST:number
+    export const TYPE_RESERVED_USER_FIRST:number
+    export const VALUE_COLLECT_FORMAT_MAX_LENGTH:number
+    export const VALUE_NOCOPY_CONTENTS:number
     export function boxed_copy(boxed_type: any, src_boxed: any):any
     export function boxed_free(boxed_type: any, boxed: any):void
     export function boxed_type_register_static(name: string, boxed_copy: any, boxed_free: any):any
@@ -243,7 +258,6 @@ declare module 'GObject' {
         DEEP_DERIVABLE,
     }
     export class Binding extends Object {
-        constructor(config?: any)
         get_flags():BindingFlags
         get_source():Object
         get_source_property():string
@@ -252,13 +266,23 @@ declare module 'GObject' {
         unbind():void
     }
     export class InitiallyUnowned extends Object {
-        constructor(config?: any)
     }
     export class Object {
+        static compat_control(what: number, data: any):number
+        static connect(object: any, signal_spec: string, ...args: any[]):any
+        static disconnect(object: any, signal_spec: string, ...args: any[]):void
+        static get(object: any, first_property_name: string, ...args: any[]):void
+        static interface_find_property(g_iface: any, property_name: string):ParamSpec
+        static interface_install_property(g_iface: any, pspec: ParamSpec):void
+        static interface_list_properties(g_iface: any, n_properties_p: number):ParamSpec[]
+        static set(object: any, first_property_name: string, ...args: any[]):void
         constructor(config?: any)
+        static new_valist(object_type: any, first_property_name: string, var_args: any):Object
+        static newv(object_type: any, n_parameters: number, parameters: any[]):Object
         connect(...args: any[]):any
         get_valist(...args: any[]):void
         get_property(...args: any[]):any
+        static newv(...args: any[]):Object
         replace_data(...args: any[]):any
         set_property(...args: any[]):void
         set_valist(...args: any[]):void
@@ -300,7 +324,7 @@ declare module 'GObject' {
         weak_unref(notify: any, data: any):void
     }
     export class ParamSpec {
-        constructor(config?: any)
+        static internal(param_type: any, name: string, nick: string, blurb: string, flags: ParamFlags):any
         get_blurb():string
         get_default_value():any
         get_name():string
@@ -317,76 +341,52 @@ declare module 'GObject' {
         unref():void
     }
     export class ParamSpecBoolean extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecBoxed extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecChar extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecDouble extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecEnum extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecFlags extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecFloat extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecGType extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecInt extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecInt64 extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecLong extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecObject extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecOverride extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecParam extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecPointer extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecString extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecUChar extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecUInt extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecUInt64 extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecULong extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecUnichar extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecValueArray extends ParamSpec {
-        constructor(config?: any)
     }
     export class ParamSpecVariant extends ParamSpec {
-        constructor(config?: any)
     }
     export class TypeModule extends Object {
-        constructor(config?: any)
         add_interface(instance_type: any, interface_type: any, interface_info: any):void
         register_enum(name: string, const_static_values: any):any
         register_flags(name: string, const_static_values: any):any
