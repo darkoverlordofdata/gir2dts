@@ -82,8 +82,8 @@ define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (req
         gtkSettings.gtk_theme_name = 'Adwaita';
     }
     // open first argument or Google
-    webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'google.com'));
-    // whenever a new page is loaded ...
+    webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'));
+    //whenever a new page is loaded ...
     // webView.connect('load-changed', (widget, loadEvent, data) => {
     //     switch (loadEvent) {
     //       case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
