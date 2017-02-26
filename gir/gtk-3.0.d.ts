@@ -75,7 +75,7 @@ declare module 'Gtk' {
     export function icon_size_register(name: string, width: number, height: number):number
     export function icon_size_register_alias(alias: string, target: number):void
     export function icon_theme_error_quark():any
-    export function init(argc: number, argv: string[]):void
+    export function init(argv: string[]):void
     export function init_check(argc: number, argv: string[]):boolean
     export function init_with_args(argc: number, argv: string[], parameter_string: string, entries: any[], translation_domain: string):boolean
     export function key_snooper_install(snooper: any, func_data: any):number

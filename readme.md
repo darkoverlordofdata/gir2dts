@@ -4,7 +4,6 @@ Create Gtk applications with Gjs/TypeScript
 
 Provides normalized access to amd, commonjs and gjs imports
 
-wip - not yet fully automated. The current payload had to be manually scrubbed before release.
 
 ## rules
 

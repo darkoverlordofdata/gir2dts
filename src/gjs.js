@@ -30,6 +30,7 @@ Object.defineProperties(window, {
         Gtk:     { id: 'Gtk',     exports: imports.gi.Gtk },
         GLib:    { id: 'GLib',    exports: imports.gi.GLib },
         Pango:   { id: 'Pango',   exports: imports.gi.Pango },
+        WebKit:  { id: 'WebKit',  exports: imports.gi.WebKit },
         GObject: { id: 'GObject', exports: imports.gi.GObject }
     }))},
     _: {value: imports.gettext.gettext }

@@ -1,0 +1,17 @@
+{
+    "version": "0.1.0",
+    "command": "/bin/sh",
+    "cwd": "${workspaceRoot}",
+    "isShellCommand": true,
+    "args": ["-c"],
+    "showOutput": "always",
+    "echoCommand": true,
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "isBuildCommand": true,
+            "taskName": "build",
+            "args": ["/usr/bin/time tsc"]
+        }
+    ]
+}
