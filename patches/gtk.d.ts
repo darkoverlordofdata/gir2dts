@@ -1,6 +1,0 @@
-    import * as GObject from "GObject"
-    import * as GLib from "GLib"
-    import * as Gio from "Gio"
-    import * as Gdk from "Gdk"
-    import * as Atk from "Atk"
-    import * as Pango from "Pango"

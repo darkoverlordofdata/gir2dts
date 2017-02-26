@@ -3,91 +3,146 @@
         "Atk": {
             "source": "/usr/share/gir-1.0/Atk-1.0.gir",
             "output": "gir/atk-1.0.d.ts",
-            "patch": "patches/atk.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
-
+            "import": ["GObject"]
         },
         "Gio": {
             "source": "/usr/share/gir-1.0/Gio-2.0.gir",
             "output": "gir/gio-2.0.d.ts",
             "patch": "patches/gio.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
-
+            "import": ["GObject", "GLib"]
         },
         "GLib": {
             "source": "/usr/share/gir-1.0/GLib-2.0.gir",
-            "output": "gir/glib-2.0.d.ts",
-            "patch": "",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
-
+            "output": "gir/glib-2.0.d.ts"
         },
         "GObject": {
             "source": "/usr/share/gir-1.0/GObject-2.0.gir",
             "output": "gir/gobject-2.0.d.ts",
-            "patch": "patches/gobject.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
+            "add": {
+                "Object": {
+                    "connect": "connect(...args: any[]):any",
+                    "get_valist": "get_valist(...args: any[]):void",
+                    "get_property": "get_property(...args: any[]):any",
+                    "replace_data": "replace_data(...args: any[]):any",
+                    "set_property": "set_property(...args: any[]):void",
+                    "set_valist": "set_valist(...args: any[]):void"
+                }
             }
 
         },
         "Gtk": {
             "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
             "output": "gir/gtk-3.0.d.ts",
-            "patch": "patches/gtk.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
+            "import": ["GObject", "GLib", "Gio", "Gdk", "Atk","Pango"],
+            "patch" : {
+                "Bin": {
+                    "mnemonic_activate": "mnemonic_activate(...args: any[]):boolean"
+                },
+                "Container": {
+                    "remove" : "remove(...args: any[]):void",
+                    "child_notify": "child_notify(...args: any[]):void"
+                },
+                "ComboBoxText": {
+                    "remove" : "remove(...args: any[]):void"
+                },
+                "MenuButton": {
+                    "get_direction": "get_direction(): number",
+                    "set_direction": "set_direction(dir: number):void"
+                },
+                "MenuItem": {
+                    "activate": "activate():any"
+                },
+                "Statusbar": {
+                    "remove" : "remove(...args: any[]):void"
+                },
+                "Style": {
+                    "get_valist": "get_valist(...args: any[]):void"
+                },
+                "StyleContext": {
+                    "get_property": "get_property(...args: any[]):any",
+                    "get_valist": "get_valist(...args: any[]):void"
+                },
+                "StyleProperties": {
+                    "get_property": "get_property(...args: any[]):any",
+                    "get_valist": "get_valist(...args: any[]):void",
+                    "set_property": "set_property(...args: any[]):void",
+                    "set_valist": "set_valist(...args: any[]):void"
+                },
+                "Switch": {
+                    "get_state": "get_state():number",
+                    "set_state": "set_state(state: number)"
+                },
+                "TextView": {
+                    "get_window": "get_window(win?: number):Gdk.Window"
+                },
+                "ThemingEngine": {
+                    "get_property": "get_property(...args: any[]):any",
+                    "get_valist": "get_valist(...args: any[]):void"
+                },
+                "ToggleButton": {
+                    "get_direction": "get_direction(): number",
+                    "set_direction": "set_direction(dir: number):void"
+                },
+                "Toolbar": {
+                    "get_style": "get_style():number",
+                    "set_style": "set_style(style: number)"
+                },
+                "ToolPalette": {
+                    "get_style": "get_style():number",
+                    "set_style": "set_style(style: number)"
+                },
+                "Widget": {
+                    "activate": "activate():any",
+                    "child_notify": "child_notify(...args: any[]):void",
+                    "get_state": "get_state():number",
+                    "get_settings": "get_settings():any",
+                    "get_style": "get_style():number",
+                    "get_window": "get_window(win?: number):Gdk.Window",
+                    "get_direction": "get_direction(): number",
+                    "set_direction": "set_direction(dir: number):void",
+                    "set_state": "set_state(state: number)",
+                    "set_style": "set_style(style: number)"
+                },
+                "Window": {
+                    "mnemonic_activate": "mnemonic_activate(...args: any[]):boolean"
+                }
             }
-
         },
         "Gdk": {
             "source": "/usr/share/gir-1.0/Gdk-3.0.gir",
             "output": "gir/gdk-3.0.d.ts",
-            "patch": "patches/gdk.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
-
+            "import": ["GObject", "Gio", "Pango"]
         },
         "Pango": {
             "source": "/usr/share/gir-1.0/Pango-1.0.gir",
             "output": "gir/pango-1.0.d.ts",
-            "patch": "patches/pango.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
-
+            "import": ["GObject"]
         },
         "WebKit": {
             "source": "/usr/share/gir-1.0/WebKit-3.0.gir",
             "output": "gir/webkit-3.0.d.ts",
-            "patch": "patches/webkit.d.ts",
-            "types": {
-                "enum": ["*"],
-                "function": ["*"],
-                "class": ["*"]
-            }
+            "import": ["GObject", "Gio", "Gtk"],
+            "patch": {
+                "DOMCharacterData": {
+                    "replace_data": "replace_data(...args: any[]):any"
+                },
+                "DOMCSSStyleDeclaration": {
+                    "set_property": "set_property(...args: any[]):void"
+                },
+                "DOMElement": {
+                    "remove": "remove(index?: number):void"
+                },
+                "DOMHTMLSelectElement": {
+                    "remove": "remove(index?: number):void"
+                },
+                "DOMObject": {
+                    "set_property": "set_property(...args: any[]):void"
+                },
+                "WebView": {
+                    "get_settings": "get_settings():any"
+                }
 
+            }
         }
     }
 }
-

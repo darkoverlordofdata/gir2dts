@@ -1,0 +1,7 @@
+bruce@barsoom:~/gjs/gir2dts$ tsc
+gir/gtk-3.0.d.ts(3504,18): error TS2415: Class 'StyleProperties' incorrectly extends base class 'Object'.
+  Types of property 'set_valist' are incompatible.
+    Type '(state: StateFlags, args: any) => void' is not assignable to type '(first_property_name: string, var_args: any) => void'.
+      Types of parameters 'state' and 'first_property_name' are incompatible.
+        Type 'string' is not assignable to type 'StateFlags'.
+bruce@barsoom:~/gjs/gir2dts$ 

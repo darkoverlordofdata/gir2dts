@@ -6,6 +6,18 @@ Provides normalized access to amd, commonjs and gjs imports
 
 wip - not yet fully automated. The current payload had to be manually scrubbed before release.
 
+## rules
+
+* numeric typedefs are replaced with 'number'
+* constructirs are replaced with default one optional hash table parameter
+* only functions, enums, and classes
+* anything else, not defined in this group of modules, gets replaced with 'any'
+
+this leaves 'inconsistencies' in Gir: 
+some method overrides also change the method signature. Wtf Gnome?
+So these have to be patched using patch entries in the json config.
+
+## example
 
 example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player)
 ```
