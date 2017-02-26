@@ -98,7 +98,7 @@ function generateModule(name, gir, module) {
     switch (typeof module.patch) {
         case 'string':
             out.push(fs.readFileSync(module.patch, {encoding: 'utf8'}))
-            addGirInfo(name, gir, {}, {}, out)
+            addGirInfo(name, gir, {}, module.add, out)
             break
         case 'object':
             addGirInfo(name, gir, module.patch, module.add, out)

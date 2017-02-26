@@ -1540,6 +1540,7 @@ declare module 'Gtk' {
     }
     export class Application extends Gio.Application {
         constructor(config?: any)
+        add_action(action: any)
         add_accelerator(accelerator: string, action_name: string, parameter: any):void
         add_window(window: Window):void
         get_accels_for_action(detailed_action_name: string):string[]
@@ -2064,7 +2065,8 @@ declare module 'Gtk' {
         static get_default():CssProvider
         static get_named(name: string, variant: string):CssProvider
         constructor(config?: any)
-        load_from_data(data: number[], length: number):boolean
+        load_from_data(...args:any[]):boolean
+
         load_from_file(file: any):boolean
         load_from_path(path: string):boolean
         load_from_resource(resource_path: string):void
@@ -2263,6 +2265,7 @@ declare module 'Gtk' {
     }
     export class FileChooserDialog extends Dialog {
         constructor(config?: any)
+        set_select_multiple(select: boolean)
     }
     export class FileChooserWidget extends Box {
         constructor(config?: any)
@@ -2912,7 +2915,9 @@ declare module 'Gtk' {
         constructor(config?: any)
         static newv(...args: any[]):ListStore
 
-        append(iter: any):void
+        get_value(iter: any, index: number): any
+        append():any
+
         clear():void
         insert(iter: any, position: number):void
         insert_after(iter: any, sibling: any):void
@@ -2926,7 +2931,8 @@ declare module 'Gtk' {
         remove(iter: any):boolean
         reorder(new_order: number[]):void
         set(iter: any, ...args: any[]):void
-        set_column_types(n_columns: number, types: any[]):void
+        set_column_types(types: number[]):void
+
         set_valist(iter: any, var_args: any):void
         set_value(iter: any, column: number, value: any):void
         set_valuesv(iter: any, columns: number[], values: any[], n_values: number):void
@@ -4285,7 +4291,8 @@ declare module 'Gtk' {
         count_selected_rows():number
         get_mode():SelectionMode
         get_select_function():any
-        get_selected(model: any, iter: any):boolean
+        get_selected():any
+
         get_selected_rows(model: any):any
         get_tree_view():TreeView
         get_user_data():any

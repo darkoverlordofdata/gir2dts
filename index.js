@@ -46,7 +46,6 @@ Object.defineProperties(String.prototype, {
 });
 define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (require, exports, Gtk, WebKit) {
     "use strict";
-    print("Hello!");
     var argv = ARGV;
     Gtk.init(null);
     var window = new Gtk.Window({
@@ -85,19 +84,18 @@ define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (req
     }
     // open first argument or shameless plug
     webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'));
-    // TODO: what is 'load-changed' for WebKit3?
     // can't change to new page until this gets fixed
     //whenever a new page is loaded ...
-    // webView.connect('load-changed', (widget, loadEvent, data) => {
-    //     switch (loadEvent) {
-    //       case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
-    //         // ... update the URL bar with the current adress
-    //         urlBar.set_text(widget.get_uri())
-    //         button.back.set_sensitive(webView.can_go_back())
-    //         button.forward.set_sensitive(webView.can_go_forward())
-    //         break
-    //     }
-    // })
+    webView.connect('document-load-finished', function (widget, loadEvent, data) {
+        switch (loadEvent) {
+            case 2:
+                // ... update the URL bar with the current adress
+                urlBar.set_text(widget.get_uri());
+                button.back.set_sensitive(webView.can_go_back());
+                button.forward.set_sensitive(webView.can_go_forward());
+                break;
+        }
+    });
     // configure buttons actions
     button.back.connect('clicked', function () { return webView.go_back(); });
     button.forward.connect('clicked', function () { return webView.go_forward(); });

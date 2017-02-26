@@ -13,11 +13,17 @@
         },
         "GLib": {
             "source": "/usr/share/gir-1.0/GLib-2.0.gir",
-            "output": "gir/glib-2.0.d.ts"
+            "output": "gir/glib-2.0.d.ts",
+            "add": {
+                "Application": {
+                    "run": "run(argv: any)"
+                }
+            }
         },
         "GObject": {
             "source": "/usr/share/gir-1.0/GObject-2.0.gir",
             "output": "gir/gobject-2.0.d.ts",
+            "patch": "patches/gobject.d.ts",
             "add": {
                 "Object": {
                     "connect": "connect(...args: any[]):any",
@@ -36,6 +42,15 @@
             "output": "gir/gtk-3.0.d.ts",
             "import": ["GObject", "GLib", "Gio", "Gdk", "Atk","Pango"],
             "add": {
+                "Application": {
+                    "add_action": "add_action(action: any)"
+                },
+                "FileChooserDialog": {
+                    "set_select_multiple": "set_select_multiple(select: boolean)"
+                },
+                "ListStore": {
+                    "get_value": "get_value(iter: any, index: number): any"
+                },
                 "Settings": {
                     "gtk_application_prefer_dark_theme": "gtk_application_prefer_dark_theme: boolean",
                     "gtk_theme_name": "gtk_theme_name: string"
@@ -59,11 +74,16 @@
                 "ComboBoxText": {
                     "remove" : "remove(...args: any[]):void"
                 },
+                "CssProvider": {
+                    "load_from_data": "load_from_data(...args:any[]):boolean"
+                },
                 "LinkButton": {
                     "new_with_label": "static new_with_label(...args: any[]):LinkButton"
                 },
                 "ListStore": {
-                    "newv": "static newv(...args: any[]):ListStore"
+                    "append": "append():any",
+                    "newv": "static newv(...args: any[]):ListStore",
+                    "set_column_types": "set_column_types(types: number[]):void"
                 },
                 "MenuButton": {
                     "get_direction": "get_direction(): number",
@@ -106,6 +126,9 @@
                 },
                 "TextView": {
                     "get_window": "get_window(win?: number):Gdk.Window"
+                },
+                "TreeSelection": {
+                    "get_selected": "get_selected():any"
                 },
                 "TreeStore": {
                     "newv": "static newv(...args: any[]):TreeStore"

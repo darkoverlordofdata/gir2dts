@@ -3,6 +3,8 @@
  *
  */
 declare module 'GObject' {
+    export const TYPE_STRING: number
+
     export const PARAM_MASK:number
     export const PARAM_STATIC_STRINGS:number
     export const PARAM_USER_SHIFT:number

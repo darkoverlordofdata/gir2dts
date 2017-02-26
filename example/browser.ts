@@ -1,6 +1,6 @@
 import * as Gtk from 'Gtk'
 import * as WebKit from 'WebKit'
-print("Hello!")
+
 let argv = ARGV
 
 Gtk.init(null)
@@ -44,19 +44,18 @@ if (argv.some(info => info === '--dark')) {
 // open first argument or shameless plug
 webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'))
 
-// TODO: what is 'load-changed' for WebKit3?
 // can't change to new page until this gets fixed
 //whenever a new page is loaded ...
-// webView.connect('load-changed', (widget, loadEvent, data) => {
-//     switch (loadEvent) {
-//       case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
-//         // ... update the URL bar with the current adress
-//         urlBar.set_text(widget.get_uri())
-//         button.back.set_sensitive(webView.can_go_back())
-//         button.forward.set_sensitive(webView.can_go_forward())
-//         break
-//     }
-// })
+webView.connect('document-load-finished', (widget, loadEvent, data) => {
+    switch (loadEvent) {
+      case 2: // XXX: where is WEBKIT_LOAD_COMMITTED ?
+        // ... update the URL bar with the current adress
+        urlBar.set_text(widget.get_uri())
+        button.back.set_sensitive(webView.can_go_back())
+        button.forward.set_sensitive(webView.can_go_forward())
+        break
+    }
+})
 
 // configure buttons actions
 button.back.connect('clicked', () => webView.go_back())

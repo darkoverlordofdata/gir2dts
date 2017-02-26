@@ -1,3 +1,30 @@
+bruce@barsoom:~/gjs/bosco$ tsc
+src/Player.ts(54,22): error TS2339: Property 'add_action' does not exist on type 'Application'.
+src/Player.ts(63,22): error TS2339: Property 'add_action' does not exist on type 'Application'.
+src/Player.ts(72,22): error TS2339: Property 'add_action' does not exist on type 'Application'.
+
+src/PlayerWindow.ts(60,5): error TS2346: Supplied parameters do not match any signature of call target.
+src/PlayerWindow.ts(62,5): error TS2346: Supplied parameters do not match any signature of call target.
+src/PlayerWindow.ts(154,17): error TS2339: Property 'set_select_multiple' does not exist on type 'FileChooserDialog'.
+src/tabs/NotebookTab.ts(42,5): error TS2346: Supplied parameters do not match any signature of call target.
+src/tabs/NotebookTab.ts(42,46): error TS2339: Property 'TYPE_STRING' does not exist on type 'typeof 'GObject''.
+src/tabs/NotebookTab.ts(42,67): error TS2339: Property 'TYPE_STRING' does not exist on type 'typeof 'GObject''.
+src/tabs/NotebookTab.ts(42,88): error TS2339: Property 'TYPE_STRING' does not exist on type 'typeof 'GObject''.
+src/tabs/NotebookTab.ts(88,31): error TS2346: Supplied parameters do not match any signature of call target.
+src/tabs/NotebookTab.ts(96,37): error TS2346: Supplied parameters do not match any signature of call target.
+src/tabs/NotebookTab.ts(98,24): error TS2339: Property 'get_value' does not exist on type 'ListStore'.
+src/tabs/NotebookTab.ts(99,24): error TS2339: Property 'get_value' does not exist on type 'ListStore'.
+src/tabs/NotebookTab.ts(100,24): error TS2339: Property 'get_value' does not exist on type 'ListStore'.
+bruce@barsoom:~/gjs/bosco$ 
+
+    export class ListStore extends GObject.Object {
+        get_value(iter: any, index: number): any
+      // set_column_types(n_columns: number, types: number[]):void
+        set_column_types(types: number[]):void
+
+===============================================================================================
+
+
 gir/gio-2.0.d.ts(1060,18): error TS2417: Class static side 'typeof DBusObjectManagerClient' incorrectly extends base class static side 'typeof Object'.
   Types of property 'new' are incompatible.
     Type '(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: stri...' is not assignable to type '(object_type: any, first_property_name: string, ...args: any[]) => any'.
