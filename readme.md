@@ -6,15 +6,13 @@ Provides normalized access to amd, commonjs and gjs imports
 
 
 ## rules
-Conversion is iterative and requres patching capability.
+Conversion is iterative
 
 * numeric typedefs are replaced with 'number'
 * constructirs are replaced with default one optional hash table parameter
 * only functions, enums, and classes
 * anything else, not defined in this group of modules, gets replaced with 'any'
-* to be done, as dicovered:
-    * methods that are not implemented the same as in Gir
-    * methods/objects that just aren't in Gir at all (Gtk.Settings::gtk_theme_name)
+* as dicovered:
     * fix with add/patch entries in gir2dts.json
 
 ## example
@@ -30,15 +28,15 @@ example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player
         "allowJs": true 
     },
     "files": [
-        "node_modules/gir2dts/src/gjs.d.ts",     // Gjs
-        "node_modules/gir2dts/src/gobject.d.ts", // GObject
-        "node_modules/gir2dts/src/atk.d.ts",     // Atk
-        "node_modules/gir2dts/src/glib.d.ts",    // GLib
-        "node_modules/gir2dts/src/gio.d.ts",     // Gio
-        "node_modules/gir2dts/src/gdk.d.ts",     // Gdk
-        "node_modules/gir2dts/src/gtk.d.ts",     // Gtk
-        "node_modules/gir2dts/src/pango.d.ts",   // Pango
-        "node_modules/gir2dts/src/gjs.js",       // module loader/helper
+        "node_modules/gir2dts/src/gjs.d.ts",            // Gjs
+        "node_modules/gir2dts/src/gobject-2.0.d.ts",    // GObject
+        "node_modules/gir2dts/src/atk-1.0.d.ts",        // Atk
+        "node_modules/gir2dts/src/glib-2.0.d.ts",       // GLib
+        "node_modules/gir2dts/src/gio-2.0.d.ts",        // Gio
+        "node_modules/gir2dts/src/gdk-3.0.d.ts",        // Gdk
+        "node_modules/gir2dts/src/gtk-3.0.d.ts",        // Gtk
+        "node_modules/gir2dts/src/pango-1.0.d.ts",      // Pango
+        "node_modules/gir2dts/src/gjs.js",              // module loader/helper
         
         "src/common.d.ts",                  // nodejs: xml2js
         "src/common.js",                    // browserify bundle
@@ -64,7 +62,3 @@ import {NotebookTab} from 'tabs/NotebookTab'    // From local project folder
 export class ResourceTab extends NotebookTab {
 ...    
 ```
-
-Clutter-1.0.gir
-GtkClutter-1.0.gir
-ClutterGdk-1.0.git

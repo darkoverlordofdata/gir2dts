@@ -84,7 +84,8 @@ define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (req
         gtkSettings_2.gtk_theme_name = 'Adwaita';
     }
     // open first argument or shameless plug
-    webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'));
+    //webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'))
+    webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'google.com'));
     // can't change to new page until this gets fixed
     //whenever a new page is loaded ...
     webView.connect('document-load-finished', function (widget, loadEvent, data) {

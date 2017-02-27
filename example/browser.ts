@@ -39,6 +39,7 @@ if (argv.some(info => info === '--dark')) {
 } else if(argv.some(info => info === '--light')) {
     let gtkSettings = Gtk.Settings.get_default()
     gtkSettings.gtk_application_prefer_dark_theme = false
+
     gtkSettings.gtk_theme_name = 'Adwaita'
 }
 
