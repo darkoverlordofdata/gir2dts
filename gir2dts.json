@@ -5,6 +5,12 @@
             "output": "src/atk-1.0.d.ts",
             "import": ["GObject"]
         },
+        "Gda": {
+            "source": "/usr/share/gir-1.0/Gda-5.0.gir",
+            "output": "src/gda-5.0.d.ts",
+            "import": ["GObject", "GLib"]
+
+        },
         "Gio": {
             "source": "/usr/share/gir-1.0/Gio-2.0.gir",
             "output": "src/gio-2.0.d.ts",

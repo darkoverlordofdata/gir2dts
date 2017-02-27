@@ -109,7 +109,7 @@ function generateModule(name, gir, module) {
     out.push('}')
     return out.join('\n') // fixups:
         .replace(/\: object/g, ": any")
-        .replace(/\):object/g, "):any")
+        .replace(/\:object/g, ":any")
         .replace(/\.\.\.args\: any\)/g, "...args: any[])")
         .replace(/argc\: number, argv\: string\[\]/g, "argv:string[]")
 }

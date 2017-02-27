@@ -1,5 +1,8 @@
 #!/usr/bin/gjs
-
+###
+#  from https://media.readthedocs.org/pdf/gjs-tutorial/latest/gjs-tutorial.pdf
+#  lesson 4.3 ListBox page 14
+###
 Gtk = imports.gi.Gtk
 Lang = imports.lang
 

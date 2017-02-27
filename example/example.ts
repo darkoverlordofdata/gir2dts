@@ -1,3 +1,7 @@
+/**
+ * from https://media.readthedocs.org/pdf/gjs-tutorial/latest/gjs-tutorial.pdf
+ * lesson 4.3 ListBox page 14
+ */
 import * as Gtk from 'Gtk'
 
 class ListBoxRowWithData {
@@ -22,6 +26,9 @@ class ListBoxWindow {
         this.object.add(box_outer)
 
         let listbox = new Gtk.ListBox()
+        // property not defined error:
+        //  listbox.selection_mode = Gtk.SelectionMode.NONE
+        // use the api instead:
         listbox.set_selection_mode(Gtk.SelectionMode.NONE)
         box_outer.pack_start(listbox, true, true, 0)
 
@@ -37,6 +44,9 @@ class ListBoxWindow {
         vbox.pack_start(label2, true, true, 0)
 
         let swtch = new Gtk.Switch()
+        // property not defined error:
+        //  swtch.valign = Gtk.Align.CENTER
+        // use the api instead:
         swtch.set_valign(Gtk.Align.CENTER)
         hbox.pack_start(swtch, false, true, 0)
 
