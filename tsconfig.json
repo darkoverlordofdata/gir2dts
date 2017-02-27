@@ -17,6 +17,6 @@
     "src/atk-1.0.d.ts",
     "src/gjs.d.ts",
     "src/gjs.js",
-    "example/browser.ts"
+    "example/example.ts"
   ]
 }

@@ -44,7 +44,8 @@ if (argv.some(info => info === '--dark')) {
 }
 
 // open first argument or shameless plug
-webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'))
+
+webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'https://darkoverlordofdata.com'))
 
 // can't change to new page until this gets fixed
 //whenever a new page is loaded ...
@@ -106,5 +107,5 @@ window.show_all()
 // little helper
 // if link doesn't have a protocol, prefixes it via http://
 function url(href) {
-    return /^([a-z]{2,}):/.test(href) ? href : ('http://' + href)
+    return /^([a-z]{2,}):/.test(href) ? href : ('https://' + href)
 }

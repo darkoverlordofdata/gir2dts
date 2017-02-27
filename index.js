@@ -44,99 +44,75 @@ Object.defineProperties(define, {
 Object.defineProperties(String.prototype, {
     format: { value: imports.format.format }
 });
-define("example/browser", ["require", "exports", "Gtk", "WebKit"], function (require, exports, Gtk, WebKit) {
+define("example/example", ["require", "exports", "Gtk"], function (require, exports, Gtk) {
     "use strict";
-    var argv = ARGV;
-    Gtk.init(null);
-    var window = new Gtk.Window({
-        title: 'jsGtk+ browser',
-        type: Gtk.WindowType.TOPLEVEL,
-        window_position: Gtk.WindowPosition.CENTER
-    });
-    var webView = new WebKit.WebView();
-    var toolbar = new Gtk.Toolbar();
-    // buttons to go back, go forward, or refresh
-    var button = {
-        back: Gtk.ToolButton.new_from_stock(Gtk.STOCK_GO_BACK),
-        forward: Gtk.ToolButton.new_from_stock(Gtk.STOCK_GO_FORWARD),
-        refresh: Gtk.ToolButton.new_from_stock(Gtk.STOCK_REFRESH)
-    };
-    // where the URL is written and shown
-    var urlBar = new Gtk.Entry();
-    // the browser container, so that's scrollable
-    var scrollWindow = new Gtk.ScrolledWindow({});
-    // horizontal and vertical boxes
-    var hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
-    var vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
-    var gtkSettings = Gtk.Settings.get_default();
-    gtkSettings.gtk_application_prefer_dark_theme = true;
-    //gtkSettings.gtk_theme_name = 'Adwaita'
-    //Setting up optional Dark theme (gotta love it!)
-    //./browser.js google.com --dark
-    if (argv.some(function (info) { return info === '--dark'; })) {
-        var gtkSettings_1 = Gtk.Settings.get_default();
-        gtkSettings_1.gtk_application_prefer_dark_theme = true;
-        gtkSettings_1.gtk_theme_name = 'Adwaita';
-    }
-    else if (argv.some(function (info) { return info === '--light'; })) {
-        var gtkSettings_2 = Gtk.Settings.get_default();
-        gtkSettings_2.gtk_application_prefer_dark_theme = false;
-        gtkSettings_2.gtk_theme_name = 'Adwaita';
-    }
-    // open first argument or shameless plug
-    //webView.load_uri(url(argv.filter(url => '-' !== url[0])[0] || 'darkoverlordofdata.com/spaceship-warrior-ts/'))
-    webView.load_uri(url(argv.filter(function (url) { return '-' !== url[0]; })[0] || 'google.com'));
-    // can't change to new page until this gets fixed
-    //whenever a new page is loaded ...
-    webView.connect('document-load-finished', function (widget, loadEvent, data) {
-        switch (loadEvent) {
-            case 2:
-                // ... update the URL bar with the current adress
-                urlBar.set_text(widget.get_uri());
-                button.back.set_sensitive(webView.can_go_back());
-                button.forward.set_sensitive(webView.can_go_forward());
-                break;
+    var ListBoxRowWithData = (function () {
+        function ListBoxRowWithData(data) {
+            this.object = new Gtk.ListBoxRow();
+            /* create a custom 'data' field for sorting */
+            this.object['data'] = data;
+            this.object.add(new Gtk.Label({ label: data }));
         }
-    });
-    // configure buttons actions
-    button.back.connect('clicked', function () { return webView.go_back(); });
-    button.forward.connect('clicked', function () { return webView.go_forward(); });
-    button.refresh.connect('clicked', function () { return webView.reload(); });
-    // enrich the toolbar
-    toolbar.add(button.back);
-    toolbar.add(button.forward);
-    toolbar.add(button.refresh);
-    // define "enter" / call-to-action event
-    // whenever the url changes on the bar
-    urlBar.connect('activate', function () {
-        var href = url(urlBar.get_text());
-        urlBar.set_text(href);
-        webView.load_uri(href);
-    });
-    // make the container scrollable
-    scrollWindow.add(webView);
-    // pack horizontally toolbar and url bar
-    hbox.pack_start(toolbar, false, false, 0);
-    hbox.pack_start(urlBar, true, true, 8);
-    // pack vertically top bar (hbox) and scrollable window
-    vbox.pack_start(hbox, false, true, 0);
-    vbox.pack_start(scrollWindow, true, true, 0);
-    // configure main window
-    window.set_default_size(1024, 720);
-    window.set_resizable(true);
-    window.connect('show', function () {
-        // bring it on top in OSX
-        window.set_keep_above(true);
-        Gtk.main();
-    });
-    window.connect('destroy', function () { return Gtk.main_quit(); });
-    window.connect('delete_event', function () { return false; });
-    // add vertical ui and show them all
-    window.add(vbox);
-    window.show_all();
-    // little helper
-    // if link doesn't have a protocol, prefixes it via http://
-    function url(href) {
-        return /^([a-z]{2,}):/.test(href) ? href : ('http://' + href);
-    }
+        return ListBoxRowWithData;
+    }());
+    var ListBoxWindow = (function () {
+        function ListBoxWindow() {
+            this.object = new Gtk.Window({
+                window_position: Gtk.WindowPosition.CENTER,
+                title: "ListBox Demo"
+            });
+            var box_outer = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, spacing: 6 });
+            this.object.add(box_outer);
+            var listbox = new Gtk.ListBox();
+            listbox.set_selection_mode(Gtk.SelectionMode.NONE);
+            box_outer.pack_start(listbox, true, true, 0);
+            var row = new Gtk.ListBoxRow();
+            var hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 50 });
+            row.add(hbox);
+            var vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
+            hbox.pack_start(vbox, true, true, 0);
+            var label1 = new Gtk.Label({ label: "Automatic Date & Time", xalign: 0 });
+            var label2 = new Gtk.Label({ label: "Requires internet access", xalign: 0 });
+            vbox.pack_start(label1, true, true, 0);
+            vbox.pack_start(label2, true, true, 0);
+            var swtch = new Gtk.Switch();
+            swtch.set_valign(Gtk.Align.CENTER);
+            hbox.pack_start(swtch, false, true, 0);
+            listbox.add(row);
+            row = new Gtk.ListBoxRow();
+            hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 50 });
+            row.add(hbox);
+            var label = new Gtk.Label({ label: "Enable Automatic Update", xalign: 0 });
+            var check = new Gtk.CheckButton();
+            hbox.pack_start(label, true, true, 0);
+            hbox.pack_start(check, false, true, 0);
+            listbox.add(row);
+            row = new Gtk.ListBoxRow();
+            hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 50 });
+            row.add(hbox);
+            label = new Gtk.Label({ label: "Date Format", xalign: 0 });
+            var combo = new Gtk.ComboBoxText();
+            combo.insert(0, "0", "24-hour");
+            combo.insert(1, "1", "AM/PM");
+            hbox.pack_start(label, true, true, 0);
+            hbox.pack_start(combo, false, true, 0);
+            listbox.add(row);
+            var listbox2 = new Gtk.ListBox();
+            var items = "This is a sorted ListBox Fail".split(' ');
+            items.forEach(function (item) { return listbox2.add(new ListBoxRowWithData(item).object); });
+            var sortFunc = (function (row1, row2, data, notifyDestroy) { return row1.data.toLowerCase() > row2.data.toLowerCase(); });
+            var filterFunc = (function (row, data, notifyDestroy) { return (row.data != 'Fail'); });
+            listbox2.connect("row-activated", function (widget, row) { return print(row.data); });
+            listbox2.set_sort_func(sortFunc, null, false);
+            listbox2.set_filter_func(filterFunc, null, false);
+            box_outer.pack_start(listbox2, true, true, 0);
+            listbox2.show_all();
+        }
+        return ListBoxWindow;
+    }());
+    Gtk.init(null);
+    var win = new ListBoxWindow();
+    win.object.connect("delete-event", Gtk.main_quit);
+    win.object.show_all();
+    Gtk.main();
 });
