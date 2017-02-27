@@ -28,6 +28,7 @@ let vbox = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL})
 
 let gtkSettings = Gtk.Settings.get_default()
 gtkSettings.gtk_application_prefer_dark_theme = true
+//gtkSettings.gtk_theme_name = 'Adwaita'
 
 //Setting up optional Dark theme (gotta love it!)
 //./browser.js google.com --dark

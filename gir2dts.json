@@ -2,18 +2,18 @@
     "module": {
         "Atk": {
             "source": "/usr/share/gir-1.0/Atk-1.0.gir",
-            "output": "gir/atk-1.0.d.ts",
+            "output": "src/atk-1.0.d.ts",
             "import": ["GObject"]
         },
         "Gio": {
             "source": "/usr/share/gir-1.0/Gio-2.0.gir",
-            "output": "gir/gio-2.0.d.ts",
+            "output": "src/gio-2.0.d.ts",
             "patch": "patches/gio.d.ts",
             "import": ["GObject", "GLib"]
         },
         "GLib": {
             "source": "/usr/share/gir-1.0/GLib-2.0.gir",
-            "output": "gir/glib-2.0.d.ts",
+            "output": "src/glib-2.0.d.ts",
             "add": {
                 "Application": {
                     "run": "run(argv: any)"
@@ -22,7 +22,7 @@
         },
         "GObject": {
             "source": "/usr/share/gir-1.0/GObject-2.0.gir",
-            "output": "gir/gobject-2.0.d.ts",
+            "output": "src/gobject-2.0.d.ts",
             "patch": "patches/gobject.d.ts",
             "add": {
                 "Object": {
@@ -35,11 +35,10 @@
                     "set_valist": "set_valist(...args: any[]):void"
                 }
             }
-
         },
         "Gtk": {
             "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
-            "output": "gir/gtk-3.0.d.ts",
+            "output": "src/gtk-3.0.d.ts",
             "import": ["GObject", "GLib", "Gio", "Gdk", "Atk","Pango"],
             "add": {
                 "Application": {
@@ -171,17 +170,17 @@
         },
         "Gdk": {
             "source": "/usr/share/gir-1.0/Gdk-3.0.gir",
-            "output": "gir/gdk-3.0.d.ts",
+            "output": "src/gdk-3.0.d.ts",
             "import": ["GObject", "Gio", "Pango"]
         },
         "Pango": {
             "source": "/usr/share/gir-1.0/Pango-1.0.gir",
-            "output": "gir/pango-1.0.d.ts",
+            "output": "src/pango-1.0.d.ts",
             "import": ["GObject"]
         },
         "WebKit": {
             "source": "/usr/share/gir-1.0/WebKit-3.0.gir",
-            "output": "gir/webkit-3.0.d.ts",
+            "output": "src/webkit-3.0.d.ts",
             "import": ["GObject", "Gio", "Gtk"],
             "patch": {
                 "DOMCharacterData": {

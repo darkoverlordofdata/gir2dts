@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * girtdts
+ * gir2dts
  * 
- * Convert a Gnome Gir bindings file to typescript declarations
+ * Convert Gnome Gir bindings file to typescript declarations
  * 
  */
 const fs = require('fs')
@@ -13,7 +13,7 @@ const {parseString} = require('xml2js')
 
 const cfg = require('./gir2dts.json')
 const sym = {}
-let gir = {}
+const gir = {}
 let count = Object.keys(cfg.module).length
 
 for (let name in cfg.module) {
@@ -32,10 +32,10 @@ for (let name in cfg.module) {
 function build(cfg, gir) {
     const ts = {
         "compilerOptions": {
-            "target": "es5",                    // es5 compatability for gjs
-            "module": "amd",                    // pack using amd module format
-            "rootDir": "src",                   // maodule names based from src
-            "allowJs": true,                    // amd loader & nodejs modules are js
+            "target": "es5",            // es5 compatability for gjs
+            "module": "amd",            // pack using amd module format
+            "rootDir": "src",           // maodule names based from src
+            "allowJs": true,            // amd loader & nodejs modules are js
             "outFile": "index.js"       // the target executable
         },
         "files": [
@@ -208,7 +208,7 @@ function addGirInfo(modName, gir, patch, add, out) {
                  */
                 if (klass.function) {
                     for (let func of klass.function) {
-                        if (func.$['name'] === "new") continue // n.a.
+                        if (func.$['name'] === "new") continue // Use standard constructor
                         if (func.$['name'] === "newv") continue // FIXME!
                         let line = []
                         // if (pt && pt[method.$['name']]) {

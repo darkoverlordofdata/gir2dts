@@ -64,3 +64,7 @@ import {NotebookTab} from 'tabs/NotebookTab'    // From local project folder
 export class ResourceTab extends NotebookTab {
 ...    
 ```
+
+Clutter-1.0.gir
+GtkClutter-1.0.gir
+ClutterGdk-1.0.git
