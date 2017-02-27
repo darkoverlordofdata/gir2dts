@@ -41,7 +41,7 @@ function build(cfg, gir) {
         "files": [
             "src/gjs.d.ts",
             "src/gjs.js",
-            "example/browser.ts"
+            "example/record-collection.ts"
         ]
     }
     for (let name in gir) {

@@ -26,6 +26,7 @@ Object.defineProperties(window, {
         Lang:    { id: 'Lang',    exports: imports.lang },
         Gio:     { id: 'Gio',     exports: imports.gi.Gio },
         Atk:     { id: 'Atk',     exports: imports.gi.Atk },
+        Gda:     { id: 'Gda',     exports: imports.gi.Gda },
         Gdk:     { id: 'Gdk',     exports: imports.gi.Gdk },
         Gtk:     { id: 'Gtk',     exports: imports.gi.Gtk },
         GLib:    { id: 'GLib',    exports: imports.gi.GLib },

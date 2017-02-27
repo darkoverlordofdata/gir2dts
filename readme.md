@@ -15,6 +15,23 @@ Conversion is iterative
 * as dicovered:
     * fix with add/patch entries in gir2dts.json
 
+## differences
+
+The original javascript uses
+```
+this.text.buffer.text = text
+```
+
+In typescript, I follow the published gtk api:
+```
+this.text.get_buffer().set_text(text, text.length)
+```
+
+Where does gjs get .buffer from? Gir doesn't define any fields. 
+Vapi's can, but the vapi for Gtk doesn't define this field.
+Apparently, you have to look at the source code or a web page to know it's there. 
+
+
 ## example
 
 example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player)

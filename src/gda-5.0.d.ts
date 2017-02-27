@@ -749,7 +749,8 @@ declare module 'Gda' {
         rollback_savepoint(name: string):boolean
         rollback_transaction(name: string):boolean
         statement_execute(stmt: Statement, params: Set, model_usage: StatementModelUsage, last_insert_row: Set):GObject.Object
-        statement_execute_non_select(stmt: Statement, params: Set, last_insert_row: Set):number
+        statement_execute_non_select(stmt: Statement, params: Set, last_insert_row?: Set):number
+
         statement_execute_select(stmt: Statement, params: Set):any
         statement_execute_select_full(stmt: Statement, params: Set, model_usage: StatementModelUsage, col_types: any[]):any
         statement_execute_select_fullv(stmt: Statement, params: Set, model_usage: StatementModelUsage, error: any, ...args: any[]):any

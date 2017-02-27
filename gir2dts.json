@@ -8,7 +8,12 @@
         "Gda": {
             "source": "/usr/share/gir-1.0/Gda-5.0.gir",
             "output": "src/gda-5.0.d.ts",
-            "import": ["GObject", "GLib"]
+            "import": ["GObject", "GLib"],
+            "patch": {
+                "Connection": {
+                    "statement_execute_non_select": "statement_execute_non_select(stmt: Statement, params: Set, last_insert_row?: Set):number"
+                }
+            }
 
         },
         "Gio": {
