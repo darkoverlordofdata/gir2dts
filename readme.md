@@ -4,17 +4,11 @@ Create Gtk applications with Gjs/TypeScript
 
 Provides normalized access to amd, commonjs and gjs imports
 
-
-## rules
-Conversion is iterative
-
-* numeric typedefs are replaced with 'number'
-* constructirs are replaced with default one optional hash table parameter
-* only functions, enums, and classes
-* anything else, not defined in this group of modules, gets replaced with 'any'
-* as dicovered:
-    * fix with add/patch entries in gir2dts.json
-
+## install
+```
+cd myproject
+npm install --save-dev gir2dts
+```
 
 ## dependancies
 The following modules must be installed, this is needed for minimal Gtk support:
@@ -35,6 +29,17 @@ define.imports({
     WebKit: imports.gi.WebKit
 })
 ```
+
+## rules
+Conversion is iterative
+
+* numeric typedefs are replaced with 'number'
+* constructirs are replaced with default one optional hash table parameter
+* only functions, enums, and classes
+* anything else, not defined in this group of modules, gets replaced with 'any'
+* as dicovered:
+    * fix with add/patch entries in gir2dts.json
+
 
 
 ## differences
