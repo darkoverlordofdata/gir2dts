@@ -106,3 +106,10 @@ import {NotebookTab} from 'tabs/NotebookTab'    // From local project folder
 export class ResourceTab extends NotebookTab {
 ...    
 ```
+
+### todo?
+file:///usr/share/gir-1.0/Gee-0.8.gir
+file:///usr/share/gir-1.0/GdkPixbuf-2.0.gir
+file:///usr/share/gir-1.0/GtkClutter-1.0.gir
+file:///usr/share/gir-1.0/Soup-2.4.gir
+

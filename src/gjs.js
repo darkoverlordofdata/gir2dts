@@ -36,7 +36,7 @@ Object.defineProperties(window, {
 })
 Object.defineProperties(define, {
     amd:     { value: true },
-    version: { value: '0.0.1' },
+    version: { value: '0.0.6' },
     path:    { value: (path) => imports.searchPath.unshift(path) },
     plugin:  { value: (name, context) => imports[name].attach(context) },
     imports: { value: (libs) => define([], ()=> libs)}

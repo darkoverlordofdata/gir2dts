@@ -15,6 +15,7 @@ class Demo  {
     this.setupWindow()
     this.setupDatabase()
     this.selectData()
+
   }
 
   setupWindow() {
