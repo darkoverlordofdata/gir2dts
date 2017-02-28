@@ -26,12 +26,10 @@ Object.defineProperties(window, {
             Lang: { id: 'Lang', exports: imports.lang },
             Gio: { id: 'Gio', exports: imports.gi.Gio },
             Atk: { id: 'Atk', exports: imports.gi.Atk },
-            Gda: { id: 'Gda', exports: imports.gi.Gda },
             Gdk: { id: 'Gdk', exports: imports.gi.Gdk },
             Gtk: { id: 'Gtk', exports: imports.gi.Gtk },
             GLib: { id: 'GLib', exports: imports.gi.GLib },
             Pango: { id: 'Pango', exports: imports.gi.Pango },
-            WebKit: { id: 'WebKit', exports: imports.gi.WebKit },
             GObject: { id: 'GObject', exports: imports.gi.GObject }
         })) },
     _: { value: imports.gettext.gettext }
@@ -40,10 +38,18 @@ Object.defineProperties(define, {
     amd: { value: true },
     version: { value: '0.0.1' },
     path: { value: function (path) { return imports.searchPath.unshift(path); } },
-    plugin: { value: function (name, context) { return imports[name].attach(context); } }
+    plugin: { value: function (name, context) { return imports[name].attach(context); } },
+    imports: { value: function (libs) { return define([], function () { return libs; }); } }
 });
 Object.defineProperties(String.prototype, {
     format: { value: imports.format.format }
+});
+/**
+ * Optional imports:
+ */
+define.imports({
+    Gda: imports.gi.Gda,
+    WebKit: imports.gi.WebKit
 });
 define("example/record-collection", ["require", "exports", "Gtk", "Gda", "GLib"], function (require, exports, Gtk, Gda, GLib) {
     "use strict";
@@ -90,8 +96,10 @@ define("example/record-collection", ["require", "exports", "Gtk", "Gda", "GLib"]
             this.window.show_all();
         };
         Demo.prototype.setupDatabase = function () {
-            this.connection = new Gda.Connection({ provider: Gda.Config.get_provider("SQLite"),
-                cnc_string: "DB_DIR=" + GLib.get_home_dir() + ";DB_NAME=gnome_demo" });
+            this.connection = new Gda.Connection({
+                provider: Gda.Config.get_provider("SQLite"),
+                cnc_string: "DB_DIR=" + GLib.get_home_dir() + ";DB_NAME=gnome_demo"
+            });
             this.connection.open();
             try {
                 var dm = this.connection.execute_select_command("select * from demo");
@@ -114,12 +122,14 @@ define("example/record-collection", ["require", "exports", "Gtk", "Gda", "GLib"]
             this.count_label.set_label("<i>" + dm.get_n_rows() + " record(s)</i>");
         };
         Demo.prototype.showError = function (msg) {
-            var dialog = new Gtk.MessageDialog({ message_type: Gtk.MessageType.ERROR,
+            var dialog = new Gtk.MessageDialog({
+                message_type: Gtk.MessageType.ERROR,
                 buttons: Gtk.ButtonsType.CLOSE,
                 text: msg,
                 transient_for: this.window,
                 modal: true,
-                destroy_with_parent: true });
+                destroy_with_parent: true
+            });
             dialog.run();
             dialog.destroy();
         };

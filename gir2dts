@@ -41,6 +41,7 @@ function build(cfg, gir) {
         "files": [
             "src/gjs.d.ts",
             "src/gjs.js",
+            "example/imports.ts",
             "example/record-collection.ts"
         ]
     }

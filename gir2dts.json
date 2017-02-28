@@ -47,6 +47,12 @@
                 }
             }
         },
+        
+        "GtkSource": {
+            "source": "/usr/share/gir-1.0/GtkSource-3.0.gir",
+            "output": "src/gtksource-3.0.d.ts",
+            "import": ["GObject", "Gio", "Gdk", "Gtk"]
+        },
         "Gtk": {
             "source": "/usr/share/gir-1.0/Gtk-3.0.gir",
             "output": "src/gtk-3.0.d.ts",

@@ -11,6 +11,7 @@
     "src/pango-1.0.d.ts",
     "src/gdk-3.0.d.ts",
     "src/gtk-3.0.d.ts",
+    "src/gtksource-3.0.d.ts",
     "src/gobject-2.0.d.ts",
     "src/glib-2.0.d.ts",
     "src/gio-2.0.d.ts",
@@ -18,6 +19,7 @@
     "src/atk-1.0.d.ts",
     "src/gjs.d.ts",
     "src/gjs.js",
+    "example/imports.ts",
     "example/record-collection.ts"
   ]
 }

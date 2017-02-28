@@ -26,12 +26,10 @@ Object.defineProperties(window, {
         Lang:    { id: 'Lang',    exports: imports.lang },
         Gio:     { id: 'Gio',     exports: imports.gi.Gio },
         Atk:     { id: 'Atk',     exports: imports.gi.Atk },
-        Gda:     { id: 'Gda',     exports: imports.gi.Gda },
         Gdk:     { id: 'Gdk',     exports: imports.gi.Gdk },
         Gtk:     { id: 'Gtk',     exports: imports.gi.Gtk },
         GLib:    { id: 'GLib',    exports: imports.gi.GLib },
         Pango:   { id: 'Pango',   exports: imports.gi.Pango },
-        WebKit:  { id: 'WebKit',  exports: imports.gi.WebKit },
         GObject: { id: 'GObject', exports: imports.gi.GObject }
     }))},
     _: {value: imports.gettext.gettext }
@@ -40,7 +38,8 @@ Object.defineProperties(define, {
     amd:     { value: true },
     version: { value: '0.0.1' },
     path:    { value: (path) => imports.searchPath.unshift(path) },
-    plugin:  { value: (name, context) => imports[name].attach(context) }
+    plugin:  { value: (name, context) => imports[name].attach(context) },
+    imports: { value: (libs) => define([], ()=> libs)}
 })
 Object.defineProperties(String.prototype, {
     format: { value: imports.format.format } 

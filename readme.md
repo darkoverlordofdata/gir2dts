@@ -15,6 +15,28 @@ Conversion is iterative
 * as dicovered:
     * fix with add/patch entries in gir2dts.json
 
+
+## dependancies
+The following modules must be installed, this is needed for minimal Gtk support:
+
+    imports.lang
+    imports.gi.Gio
+    imports.gi.Atk
+    imports.gi.Gdk
+    imports.gi.Gtk
+    imports.gi.GLib
+    imports.gi.Pango
+    imports.gi.GObject
+
+Additional modules may be declared per application; currently two additional module have been converted:
+```
+define.imports({
+    Gda: imports.gi.Gda,
+    WebKit: imports.gi.WebKit
+})
+```
+
+
 ## differences
 
 The original javascript uses
