@@ -197,7 +197,7 @@
         },
         "Soup": {
             "source": "/usr/share/gir-1.0/Soup-2.4.gir",
-            "output": "src/source-2.4.d.ts",
+            "output": "src/soup-2.4.d.ts",
             "import": ["GObject", "Gio", "GLib"]
         },
         "WebKit": {
