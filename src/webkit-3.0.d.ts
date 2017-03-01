@@ -6,6 +6,7 @@ declare module 'WebKit' {
     import * as GObject from "GObject"
     import * as Gio from "Gio"
     import * as Gtk from "Gtk"
+    import * as Soup from "Soup"
     export const MAJOR_VERSION:number
     export const MICRO_VERSION:number
     export const MINOR_VERSION:number
@@ -19,7 +20,7 @@ declare module 'WebKit' {
     export function geolocation_policy_allow(decision: GeolocationPolicyDecision):void
     export function geolocation_policy_deny(decision: GeolocationPolicyDecision):void
     export function get_cache_model():CacheModel
-    export function get_default_session():any
+    export function get_default_session():Soup.Session
     export function get_default_web_database_quota():number
     export function get_favicon_database():FaviconDatabase
     export function get_icon_database():IconDatabase
@@ -2297,13 +2298,13 @@ declare module 'WebKit' {
     }
     export class NetworkRequest extends GObject.Object {
         constructor(config?: any)
-        get_message():any
+        get_message():Soup.Message
         get_uri():string
         set_uri(uri: string):void
     }
     export class NetworkResponse extends GObject.Object {
         constructor(config?: any)
-        get_message():any
+        get_message():Soup.Message
         get_suggested_filename():string
         get_uri():string
         set_uri(uri: string):void

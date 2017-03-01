@@ -195,10 +195,15 @@
             "output": "src/pango-1.0.d.ts",
             "import": ["GObject"]
         },
+        "Soup": {
+            "source": "/usr/share/gir-1.0/Soup-2.4.gir",
+            "output": "src/source-2.4.d.ts",
+            "import": ["GObject", "Gio", "GLib"]
+        },
         "WebKit": {
             "source": "/usr/share/gir-1.0/WebKit-3.0.gir",
             "output": "src/webkit-3.0.d.ts",
-            "import": ["GObject", "Gio", "Gtk"],
+            "import": ["GObject", "Gio", "Gtk", "Soup"],
             "patch": {
                 "DOMCharacterData": {
                     "replace_data": "replace_data(...args: any[]):any"

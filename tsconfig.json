@@ -8,6 +8,7 @@
   },
   "files": [
     "src/webkit-3.0.d.ts",
+    "src/source-2.4.d.ts",
     "src/pango-1.0.d.ts",
     "src/gdk-3.0.d.ts",
     "src/gtk-3.0.d.ts",
