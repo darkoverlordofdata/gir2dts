@@ -1,0 +1,42 @@
+#!/usr/bin/env coffee
+
+fs = require('fs')
+buildNode = (line) ->
+  fields = line.match(/(?:[^\s"]+|"[^"]*")+/g)
+  node = node: fields.shift(), attr: []
+  for field in fields
+    [name, value] = field.split('=')
+    value = value[1...-1] if value[0] is '"'
+    node.attr.push [name, value]
+  return node
+
+toString = (node) ->
+  s = ''
+  for attr in node.attr
+    [name, value] = attr
+    s += name+'="'+value+'" '
+  return s
+
+# load whitespace separated values:
+lines = fs.readFileSync('hud.fnt', 'utf8').split('\n')
+
+info = buildNode(lines.shift())
+common = buildNode(lines.shift())
+page = buildNode(lines.shift())
+chars = buildNode(lines.shift())
+lines.pop()
+
+out = ['<?xml version="1.0"?>', '<font>']
+out.push '  <info '+toString(info)+'/>'
+out.push '  <common '+toString(common)+'/>'
+out.push '  <pages>'
+out.push '    <page '+toString(page)+'/>'
+out.push '  </pages>'
+out.push '  <chars '+toString(chars)+'>'
+for line in lines
+  char = buildNode(line)
+  out.push '    <char '+toString(char)+'/>'
+out.push '  </chars>'
+out.push '</font>'
+
+fs.writeFile('hud.xml', out.join('\n'))

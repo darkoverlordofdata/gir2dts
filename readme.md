@@ -113,3 +113,4 @@ file:///usr/share/gir-1.0/GdkPixbuf-2.0.gir
 file:///usr/share/gir-1.0/GtkClutter-1.0.gir
 file:///usr/share/gir-1.0/Soup-2.4.gir
 
+             "args": ["/usr/bin/time browserify --standalone bundle src/lib.js -o src/common.js && /usr/bin/time tsc"]

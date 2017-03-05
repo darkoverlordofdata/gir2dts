@@ -1,49 +1,4 @@
-/**
- *  Copyright 2017 darkoverlordofdata
- *
- * Module loader/gjs helper
- * normalized access to amd, commonjs and gjs imports
- *
- */
-Object.defineProperties(window, {
-    define: { value: (function (modules) {
-            return function (name, deps, callback) {
-                if (typeof name !== 'string') {
-                    var bundle = deps();
-                    for (name in bundle)
-                        modules[name] = { id: name, exports: bundle[name] };
-                }
-                else {
-                    modules[name] = { id: name, exports: {} };
-                    var args = [function (name) { return modules[name] ? modules[name].exports : imports[name]; },
-                        modules[name].exports];
-                    for (var i = 2; i < deps.length; i++)
-                        args.push(modules[deps[i]].exports);
-                    callback.apply(modules[name].exports, args);
-                }
-            };
-        }({
-            Lang: { id: 'Lang', exports: imports.lang },
-            Gio: { id: 'Gio', exports: imports.gi.Gio },
-            Atk: { id: 'Atk', exports: imports.gi.Atk },
-            Gdk: { id: 'Gdk', exports: imports.gi.Gdk },
-            Gtk: { id: 'Gtk', exports: imports.gi.Gtk },
-            GLib: { id: 'GLib', exports: imports.gi.GLib },
-            Pango: { id: 'Pango', exports: imports.gi.Pango },
-            GObject: { id: 'GObject', exports: imports.gi.GObject }
-        })) },
-    _: { value: imports.gettext.gettext }
-});
-Object.defineProperties(define, {
-    amd: { value: true },
-    version: { value: '0.0.6' },
-    path: { value: function (path) { return imports.searchPath.unshift(path); } },
-    plugin: { value: function (name, context) { return imports[name].attach(context); } },
-    imports: { value: function (libs) { return define([], function () { return libs; }); } }
-});
-Object.defineProperties(String.prototype, {
-    format: { value: imports.format.format }
-});
+#!/usr/bin/env gjs
 (function (f) { if (typeof exports === "object" && typeof module !== "undefined") {
     module.exports = f();
 }
@@ -522,7 +477,6 @@ else {
                     var Liquid;
                     module.exports = Liquid = (function () {
                         function Liquid() { }
-                        Liquid.Liquid = Liquid;
                         Liquid.FilterSeparator = /\|/;
                         Liquid.ArgumentSeparator = ',';
                         Liquid.FilterArgumentSeparator = ':';
@@ -2872,12 +2826,59 @@ else {
             }, {}] }, {}, [5])(5);
 });
 /**
+ *  Copyright 2017 darkoverlordofdata
+ *
+ * Module loader/gjs helper
+ * normalized access to amd, commonjs and gjs imports
+ *
+ */
+Object.defineProperties(window, {
+    define: { value: (function (modules) {
+            return function (name, deps, callback) {
+                if (typeof name !== 'string') {
+                    var bundle = deps();
+                    for (name in bundle)
+                        modules[name] = { id: name, exports: bundle[name] };
+                }
+                else {
+                    modules[name] = { id: name, exports: {} };
+                    var args = [function (name) { return modules[name] ? modules[name].exports : imports[name]; },
+                        modules[name].exports];
+                    for (var i = 2; i < deps.length; i++)
+                        args.push(modules[deps[i]].exports);
+                    callback.apply(modules[name].exports, args);
+                }
+            };
+        }({
+            Lang: { id: 'Lang', exports: imports.lang },
+            Gio: { id: 'Gio', exports: imports.gi.Gio },
+            Atk: { id: 'Atk', exports: imports.gi.Atk },
+            Gdk: { id: 'Gdk', exports: imports.gi.Gdk },
+            Gtk: { id: 'Gtk', exports: imports.gi.Gtk },
+            GLib: { id: 'GLib', exports: imports.gi.GLib },
+            Pango: { id: 'Pango', exports: imports.gi.Pango },
+            GObject: { id: 'GObject', exports: imports.gi.GObject }
+        })) },
+    _: { value: imports.gettext.gettext }
+});
+Object.defineProperties(define, {
+    amd: { value: true },
+    version: { value: '0.0.6' },
+    path: { value: function (path) { return imports.searchPath.unshift(path); } },
+    plugin: { value: function (name, context) { return imports[name].attach(context); } },
+    imports: { value: function (libs) { return define([], function () { return libs; }); } }
+});
+Object.defineProperties(String.prototype, {
+    format: { value: imports.format.format }
+});
+/**
  * Import ambient modules
  */
 define.imports({
     Gda: imports.gi.Gda,
     Soup: imports.gi.Soup,
-    WebKit: imports.gi.WebKit
+    WebKit: imports.gi.WebKit,
+    Liquid: window['Liquid']
 });
 define("example/mimetypes", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3001,80 +3002,24 @@ define("example/Simple", ["require", "exports", "Gtk", "Gio", "Soup", "example/m
             this.handler = fn;
             this.method = method;
         }
-        /**
-         * Check if this middleware controller is a match
-         * @param path
-         * @param method
-         */
-        Controller.prototype.match = function (method, path) {
-            if (this.method === 'get' && method !== 'GET')
+        Controller.prototype.match = function (str, msg) {
+            if (this.method === 'get' && msg['method'] !== 'GET')
                 return false;
-            if (this.method === 'put' && method !== 'PUT')
+            if (this.method === 'put' && msg['method'] !== 'PUT')
                 return false;
-            if (this.method === 'post' && method !== 'POST')
+            if (this.method === 'post' && msg['method'] !== 'POST')
                 return false;
-            if (this.method === 'delete' && method !== 'DELETE')
+            if (this.method === 'delete' && msg['method'] !== 'DELETE')
                 return false;
             if (this.method === 'get' && this.path === '*')
                 return true;
             if (this.method === 'use' && this.path == null)
                 return this.handler != null;
-            return this.useRe ? this.re.test(path) : this.path === path;
+            return this.useRe ? this.re.test(str) : this.path === str;
         };
         return Controller;
     }());
     exports.Controller = Controller;
-    /**
-     * pseudo Request
-     */
-    var Request = (function () {
-        function Request(srv, msg, path, query, client) {
-            this.srv = srv;
-            this.path = path;
-            this.query = query;
-            this.client = client;
-            this.method = msg['method'];
-        }
-        return Request;
-    }());
-    exports.Request = Request;
-    /**
-     * pseudo Response
-     */
-    var Response = (function () {
-        function Response(app, msg) {
-            this.app = app;
-            this.msg = msg;
-            this.completed = false;
-        }
-        Response.prototype.send = function (body) {
-            this.msg.set_response("text/html", Soup.MemoryUse.COPY, body, body.length);
-            this.msg.set_status(200);
-            this.completed = true;
-        };
-        Response.prototype.render = function (view, locals) {
-            if (locals === void 0) { locals = {}; }
-            var file = Gio.file_new_for_path(this.app.settings.views + "/" + view);
-            if (file.query_exists(null)) {
-                var _a = file.load_contents(null), success = _a[0], tmp = _a[1], length_1 = _a[2];
-                if (success) {
-                    var ext = view.split('.').pop();
-                    var page = this.app.engines[ext] ? this.app.engines[ext](String(tmp), locals) : String(tmp);
-                    this.msg.set_response("text/html", Soup.MemoryUse.COPY, page, page.length);
-                    this.msg.set_status(200);
-                    this.completed = true;
-                }
-            }
-        };
-        Response.prototype.redirect = function (status, url) {
-            if (typeof url === 'undefined')
-                _a = [302, String(status)], status = _a[0], url = _a[1];
-            this.msg.set_redirect(Number(status), url);
-            var _a;
-        };
-        return Response;
-    }());
-    exports.Response = Response;
     /**
      * Express style interface
      * Naive Routing
@@ -3089,30 +3034,18 @@ define("example/Simple", ["require", "exports", "Gtk", "Gio", "Soup", "example/m
             this.engines = {};
             this.app = new Gtk.Application({ application_id: 'com.d16a.sample', flags: Gio.ApplicationFlags.FLAGS_NONE });
             this.app.connect('activate', function () {
+                // cache templates for error conditions
                 _this.srv = new Soup.Server();
                 _this.srv.add_handler(null, function (srv, msg, path, query, client) {
-                    var req = new Request(srv, msg, path, query, client);
-                    var res = new Response(_this, msg);
-                    req.baseUrl = _this.base;
-                    _this.handler(req, res);
+                    _this.handler(srv, msg, path, query, client);
                 }, null, null);
                 _this.srv.listen_all(_this.port, 0);
                 _this.callback();
             });
         }
-        /**
-         * Property settings
-         * @param name
-         * @param value
-         */
         Server.prototype.set = function (name, value) {
             this.settings[name] = value;
         };
-        /**
-         * Template engine
-         * @param ext - registered extension
-         * @param fn  - renderer
-         */
         Server.prototype.engine = function (ext, fn) {
             this.engines[ext] = fn;
         };
@@ -3160,19 +3093,36 @@ define("example/Simple", ["require", "exports", "Gtk", "Gio", "Soup", "example/m
             this.callback = callback;
             this.app.run(null);
         };
+        Server.prototype.render = function (msg, view, data) {
+            var file = Gio.file_new_for_path(this.settings.views + "/" + view);
+            if (file.query_exists(null)) {
+                var _a = file.load_contents(null), success = _a[0], tmp = _a[1], length_1 = _a[2];
+                if (success) {
+                    var ext = view.split('.').pop();
+                    var page = this.engines[ext](String(tmp), data);
+                    msg.set_response("text/html", Soup.MemoryUse.COPY, page, page.length);
+                    msg.set_status(200);
+                    this.completed = true;
+                }
+            }
+        };
         /**
          * Top level handler. Go thru the stack and find a match
          * visit all the middleware on the way
          *
-         * @param req
-         * @param res
+         * @param srv
+         * @param msg
+         * @param path
+         * @param query
+         * @param client
          */
-        Server.prototype.handler = function (req, res) {
+        Server.prototype.handler = function (srv, msg, path, query, client) {
             for (var _i = 0, _a = this.stack; _i < _a.length; _i++) {
                 var controller = _a[_i];
-                if (controller.match(req.method, req.path)) {
-                    controller.handler(req, res);
-                    if (res.completed)
+                if (controller.match(path, msg)) {
+                    this.completed = false;
+                    controller.handler(srv, msg, path, query, client);
+                    if (this.completed)
                         return;
                 }
             }
@@ -3181,16 +3131,16 @@ define("example/Simple", ["require", "exports", "Gtk", "Gio", "Soup", "example/m
          * set static base middleware
          * @param path
          */
-        Server.prototype.static = function (base) {
+        Server.prototype.static = function (path) {
             var _this = this;
-            this.base = base;
-            return function (req, res) {
-                var key = "" + base + req.path;
+            this.base = path;
+            return function (srv, msg, path, query, client) {
+                var key = "" + _this.base + path;
                 if (_this.cache[key]) {
                     var cache = _this.cache[key];
-                    res.msg.set_response(cache.mimetype, Soup.MemoryUse.COPY, cache.data, cache.length);
-                    res.msg.set_status(200);
-                    res.completed = true;
+                    msg.set_response(cache.mimetype, Soup.MemoryUse.COPY, cache.data, cache.length);
+                    msg.set_status(200);
+                    _this.completed = true;
                     return;
                 }
                 var file = Gio.file_new_for_path(key);
@@ -3198,14 +3148,14 @@ define("example/Simple", ["require", "exports", "Gtk", "Gio", "Soup", "example/m
                     var _a = file.load_contents(null), success = _a[0], data = _a[1], length_2 = _a[2];
                     if (success) {
                         var mimetype = "text/html";
-                        var i = req.path.lastIndexOf('.');
-                        var ext = req.path.substr(i + 1);
+                        var i = path.lastIndexOf('.');
+                        var ext = path.substr(i + 1);
                         if (mimetypes_1.mimetypes[ext])
                             mimetype = typeof mimetypes_1.mimetypes[ext] === 'string' ? mimetypes_1.mimetypes[ext] : mimetypes_1.mimetypes[ext][0];
                         _this.cache[key] = { mimetype: mimetype, data: data, length: length_2 };
-                        res.msg.set_response(mimetype, Soup.MemoryUse.COPY, data, length_2);
-                        res.msg.set_status(200);
-                        res.completed = true;
+                        msg.set_response(mimetype, Soup.MemoryUse.COPY, data, length_2);
+                        msg.set_status(200);
+                        _this.completed = true;
                     }
                 }
             };
@@ -3248,7 +3198,7 @@ define("example/test_data", ["require", "exports"], function (require, exports) 
         description: "List of Products ~ This is a list of products with price and description."
     };
 });
-define("example/ouroboros", ["require", "exports", "Gtk", "WebKit", "Liquid", "example/Simple", "example/test_data"], function (require, exports, Gtk, WebKit, Liquid, Simple, test_data_1) {
+define("example/test_server", ["require", "exports", "Gtk", "WebKit", "Liquid", "example/Simple", "example/test_data"], function (require, exports, Gtk, WebKit, Liquid, Simple, test_data_1) {
     "use strict";
     Gtk.init(null);
     Liquid.Template.registerFilter(test_data_1.ProuctsFilter);
@@ -3258,39 +3208,106 @@ define("example/ouroboros", ["require", "exports", "Gtk", "WebKit", "Liquid", "e
         if (data === void 0) { data = {}; }
         return Liquid.Template.parse(src).render(data);
     });
-    app.use(app.static('./example/web'));
-    app.get(/\/menu\b/, function (req, res) {
-        res.render('menu.html');
+    app.use(app.static('/home/bruce/Git/spaceship-warrior-ts/web'));
+    app.get(/\/test\b/, function (srv, msg, path, query, client) {
+        app.render(msg, 'test.liquid', test_data_1.data);
     });
-    app.get(/\/test\b/, function (req, res) {
-        res.render('test.liquid', test_data_1.data);
+    app.get('*', function (srv, msg, path, query, client) {
+        app.render(msg, '404.liquid', { msg: "unable to locate " + path });
     });
-    app.get('*', function (req, res) {
-        print(JSON.stringify(req.query, null, 2));
-        res.render('404.liquid', { msg: "unable to locate " + req.path });
-    });
-    var gtkSettings = Gtk.Settings.get_default();
-    gtkSettings.gtk_application_prefer_dark_theme = true;
-    var webView = new WebKit.WebView();
-    var scrollWindow = new Gtk.ScrolledWindow({});
-    var vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
-    scrollWindow.add(webView);
-    vbox.pack_start(scrollWindow, true, true, 0);
     var window = new Gtk.Window({
-        title: 'Orobouros',
+        title: 'jsGtk+ browser',
         type: Gtk.WindowType.TOPLEVEL,
         window_position: Gtk.WindowPosition.CENTER
     });
+    var webView = new WebKit.WebView();
+    var toolbar = new Gtk.Toolbar();
+    // buttons to go back, go forward, or refresh
+    var button = {
+        back: Gtk.ToolButton.new_from_stock(Gtk.STOCK_GO_BACK),
+        forward: Gtk.ToolButton.new_from_stock(Gtk.STOCK_GO_FORWARD),
+        refresh: Gtk.ToolButton.new_from_stock(Gtk.STOCK_REFRESH)
+    };
+    // where the URL is written and shown
+    var urlBar = new Gtk.Entry();
+    // the browser container, so that's scrollable
+    var scrollWindow = new Gtk.ScrolledWindow({});
+    // horizontal and vertical boxes
+    var hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+    var vbox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL });
+    var gtkSettings = Gtk.Settings.get_default();
+    gtkSettings.gtk_application_prefer_dark_theme = true;
+    //gtkSettings.gtk_theme_name = 'Adwaita'
+    //Setting up optional Dark theme (gotta love it!)
+    //./browser.js google.com --dark
+    if (ARGV.some(function (info) { return info === '--dark'; })) {
+        var gtkSettings_1 = Gtk.Settings.get_default();
+        gtkSettings_1.gtk_application_prefer_dark_theme = true;
+        gtkSettings_1.gtk_theme_name = 'Adwaita';
+    }
+    else if (ARGV.some(function (info) { return info === '--light'; })) {
+        var gtkSettings_2 = Gtk.Settings.get_default();
+        gtkSettings_2.gtk_application_prefer_dark_theme = false;
+        gtkSettings_2.gtk_theme_name = 'Adwaita';
+    }
+    // open first argument or shameless plug
+    // webView.load_uri(url(ARGV.filter(url => '-' !== url[0])[0] || 'https://darkoverlordofdata.com'))
+    // can't change to new page until this gets fixed
+    //whenever a new page is loaded ...
+    webView.connect('document-load-finished', function (widget, loadEvent, data) {
+        switch (loadEvent) {
+            case 2:
+                // ... update the URL bar with the current adress
+                urlBar.set_text(widget.get_uri());
+                button.back.set_sensitive(webView.can_go_back());
+                button.forward.set_sensitive(webView.can_go_forward());
+                break;
+        }
+    });
+    // configure buttons actions
+    button.back.connect('clicked', function () { return webView.go_back(); });
+    button.forward.connect('clicked', function () { return webView.go_forward(); });
+    button.refresh.connect('clicked', function () { return webView.reload(); });
+    // enrich the toolbar
+    toolbar.add(button.back);
+    toolbar.add(button.forward);
+    toolbar.add(button.refresh);
+    // define "enter" / call-to-action event
+    // whenever the url changes on the bar
+    urlBar.connect('activate', function () {
+        var href = url(urlBar.get_text());
+        urlBar.set_text(href);
+        webView.load_uri(href);
+    });
+    // make the container scrollable
+    scrollWindow.add(webView);
+    // pack horizontally toolbar and url bar
+    // hbox.pack_start(toolbar, false, false, 0)
+    // hbox.pack_start(urlBar, true, true, 8)
+    // pack vertically top bar (hbox) and scrollable window
+    // vbox.pack_start(hbox, false, true, 0)
+    vbox.pack_start(scrollWindow, true, true, 0);
     // configure main window
     window.set_default_size(1024, 720);
     window.set_resizable(true);
+    // window.connect('show', () => {
+    //     // bring it on top in OSX
+    //     window.set_keep_above(true)
+    //     //Gtk.main()
+    // })
     window.connect('destroy', function () { return Gtk.main_quit(); });
     window.connect('delete_event', function () { return false; });
+    // add vertical ui and show them all
     window.add(vbox);
     window.show_all();
+    // little helper
+    // if link doesn't have a protocol, prefixes it via http://
+    function url(href) {
+        return /^([a-z]{2,}):/.test(href) ? href : ('https://' + href);
+    }
     app.listen(0xd16a, function () {
-        // webView.load_uri(`http://0.0.0.0:${app.port}/index.html`)
-        webView.load_uri("http://0.0.0.0:" + app.port + "/app.html");
+        print("started on http://localhost:" + app.port + "/test");
+        webView.load_uri("http://0.0.0.0:" + app.port + "/index.html");
     });
     Gtk.main();
 });

@@ -681,7 +681,8 @@ declare module 'Soup' {
         set_priority(priority: MessagePriority):void
         set_redirect(status_code: number, redirect_uri: string):void
         set_request(content_type: string, req_use: MemoryUse, req_body: number[], req_length: number):void
-        set_response(content_type: string, resp_use: MemoryUse, resp_body: number[], resp_length: number):void
+        set_response(content_type: string, resp_use: MemoryUse, resp_body: string, resp_length: number):void
+
         set_status(status_code: number):void
         set_status_full(status_code: number, reason_phrase: string):void
         set_uri(uri: any):void

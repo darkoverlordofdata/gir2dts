@@ -198,7 +198,12 @@
         "Soup": {
             "source": "/usr/share/gir-1.0/Soup-2.4.gir",
             "output": "src/soup-2.4.d.ts",
-            "import": ["GObject", "Gio", "GLib"]
+            "import": ["GObject", "Gio", "GLib"],
+            "patch": {
+                "Message": {
+                    "set_response": "set_response(content_type: string, resp_use: MemoryUse, resp_body: string, resp_length: number):void"
+                }
+            }
         },
         "WebKit": {
             "source": "/usr/share/gir-1.0/WebKit-3.0.gir",

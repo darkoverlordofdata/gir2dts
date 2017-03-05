@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/darkoverlordofdata/gir2dts#readme",
   "dependencies": {
-    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "xml2js": "^0.4.17",
+    "liquid.coffee": "^0.1.7"
   }
 }
