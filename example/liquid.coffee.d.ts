@@ -1,6 +1,4 @@
-
 declare module 'Liquid' {
-//Liquid['Liquid'] = Liquid
 
     export const VERSION: string
 
@@ -20,3 +18,4 @@ declare module 'Liquid' {
         renderWithErrors(): string
     }
 }
+

@@ -57,7 +57,6 @@ window.add(vbox)
 window.show_all()
 
 app.listen(0xd16a, () => {
-    // webView.load_uri(`http://0.0.0.0:${app.port}/index.html`)
     webView.load_uri(`http://0.0.0.0:${app.port}/app.html`)
 })
 

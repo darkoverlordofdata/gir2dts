@@ -4,6 +4,8 @@
     "module": "amd",
     "rootDir": "src",
     "allowJs": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
     "outFile": "index.js"
   },
   "files": [
@@ -20,9 +22,11 @@
     "src/atk-1.0.d.ts",
     "src/gjs.d.ts",
     "example/liquid.coffee.d.ts",
+    "example/common.d.ts",
     "src/gjs.js",
+    "example/common.js",
     "node_modules/liquid.coffee/dist/liquid.coffee.js",
     "example/imports.ts",
-    "example/ouroboros.ts"
+    "example/hello.ts"
   ]
 }
