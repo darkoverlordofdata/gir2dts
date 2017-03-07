@@ -22,10 +22,10 @@
     "src/atk-1.0.d.ts",
     "src/gjs.d.ts",
     "example/liquid.coffee.d.ts",
-    "example/common.d.ts",
+    "example/node.d.ts",
     "src/gjs.js",
-    "example/common.js",
     "node_modules/liquid.coffee/dist/liquid.coffee.js",
+    "example/node.js",
     "example/imports.ts",
     "example/hello.ts"
   ]

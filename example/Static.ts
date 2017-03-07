@@ -26,17 +26,20 @@ export const Static = { /** plugin - serve static content */
                 let [success, data, length] = file.load_contents(null)
                 if (success) {
 
-                    let mimetype = "text/html"
-                    let i = this.request.path.lastIndexOf('.')
-                    let ext = this.request.path.substr(i+1)
-                    if (mimetypes[ext])
-                        mimetype = typeof mimetypes[ext] === 'string' ? mimetypes[ext] : mimetypes[ext][0]
+                    const ext = this.request.path.split('.').pop()
+                    const mimetype = (mimetypes[ext]) 
+                        ? typeof mimetypes[ext] === 'string' 
+                            ? mimetypes[ext] 
+                            : mimetypes[ext][0]
+                        : "text/html"
 
                     cache[key] = {mimetype: mimetype, data:data, length: length}
 
                     this.request.msg.set_response(mimetype, Soup.MemoryUse.COPY, data, length)
                     this.request.msg.set_status(200)
                 }
+            } else {
+                this.request.msg.set_status(404)
             }
         })
     }

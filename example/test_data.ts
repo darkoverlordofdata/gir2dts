@@ -1,9 +1,10 @@
 export class ProuctsFilter {
 
     /* bug? filter not called in assign  */
-    static concat(input, arrray) {
-        print('CONCAT ')
-        return input.concat(arrray)
+    static concat(input, array) {
+        return []
+        // print('CONCAT ')
+        // return input.concat(array)
     }
 
     static price(integer) {

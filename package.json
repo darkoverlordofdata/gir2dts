@@ -1,6 +1,6 @@
 {
   "name": "gir2dts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Convert gir metadata to *.d.ts format",
   "main": "index.js",
   "scripts": {

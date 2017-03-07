@@ -22,10 +22,11 @@ The following modules must be installed, this is needed for minimal Gtk support:
     imports.gi.Pango
     imports.gi.GObject
 
-Additional modules may be declared per application; currently two additional module have been converted:
+Additional modules may be declared per application; currently 3 additional module have been converted:
 ```
 define.imports({
     Gda: imports.gi.Gda,
+    Soup: imports.gi.Soup,
     WebKit: imports.gi.WebKit
 })
 ```
@@ -111,6 +112,4 @@ export class ResourceTab extends NotebookTab {
 file:///usr/share/gir-1.0/Gee-0.8.gir
 file:///usr/share/gir-1.0/GdkPixbuf-2.0.gir
 file:///usr/share/gir-1.0/GtkClutter-1.0.gir
-file:///usr/share/gir-1.0/Soup-2.4.gir
 
-             "args": ["/usr/bin/time browserify --standalone bundle src/lib.js -o src/common.js && /usr/bin/time tsc"]
