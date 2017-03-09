@@ -1,7 +1,7 @@
 /**
  *  Copyright 2017 darkoverlordofdata
  * 
- * Module loader/gjs helper
+ * Simple module loader/gjs helper
  * normalized access to amd, commonjs and gjs imports
  * 
  */
@@ -32,16 +32,20 @@ Object.defineProperties(window, {
         Pango:   { id: 'Pango',   exports: imports.gi.Pango },
         GObject: { id: 'GObject', exports: imports.gi.GObject }
     }))},
+    console: {value: {
+        log()   { print.apply(null, arguments) },
+        warn()  { print.apply(null, arguments) },
+        error() { print.apply(null, arguments) },
+        info()  { print.apply(null, arguments) }
+    }},
     _: {value: imports.gettext.gettext }
 })
 Object.defineProperties(define, {
     amd:     { value: true },
-    version: { value: '0.0.6' },
+    version: { value: '0.1.0' },
     path:    { value: (path) => imports.searchPath.unshift(path) },
-    plugin:  { value: (name, context) => imports[name].attach(context) },
     imports: { value: (libs) => define([], ()=> libs)}
 })
 Object.defineProperties(String.prototype, {
-    format: { value: imports.format.format } 
+    printf: { value: imports.format.format } 
 })
-

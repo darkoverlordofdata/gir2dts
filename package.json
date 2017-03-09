@@ -1,6 +1,6 @@
 {
   "name": "gir2dts",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Convert gir metadata to *.d.ts format",
   "main": "index.js",
   "scripts": {
@@ -22,11 +22,8 @@
   },
   "homepage": "https://github.com/darkoverlordofdata/gir2dts#readme",
   "dependencies": {
-    "callable-object": "^1.0.2",
-    "route-parser": "0.0.5"
   },
   "devDependencies": {
-    "xml2js": "^0.4.17",
-    "liquid.coffee": "^0.1.7"
+    "xml2js": "^0.4.17"
   }
 }

@@ -12,6 +12,9 @@ declare const ARGV: string[]
  * print to console
  */
 declare function print(...args: any[])
+declare function printerr(...args: any[])
+declare function log(message: any)
+declare function logError(message: any)
 /**
  * get module as value
  */
@@ -49,7 +52,6 @@ declare namespace imports {
 declare namespace define {
     export var version: string
     export function path(path: string)
-    export function plugin(name: string, context: IPlugin)
     export function imports(libraries: any)
 }
 
@@ -57,15 +59,7 @@ declare namespace define {
  * extend String with imports.format.format
  */
 declare interface String  {
-    format(...args: any[]): string
-}
-
-/**
- * Simple Plugin architecture
- */
-declare interface IPlugin {
-    attach(any)
-    detach()
+    printf(...args: any[]): string
 }
 
 /**

@@ -1,68 +1,17 @@
 # gir2dts #
 
-Create Gtk applications with Gjs/TypeScript
-
-Provides normalized access to amd, commonjs and gjs imports
+Generated *.d.ts files for using Gir with Typescript 
 
 ## install
 ```
 cd myproject
 npm install --save-dev gir2dts
 ```
-
-## dependancies
-The following modules must be installed, this is needed for minimal Gtk support:
-
-    imports.lang
-    imports.gi.Gio
-    imports.gi.Atk
-    imports.gi.Gdk
-    imports.gi.Gtk
-    imports.gi.GLib
-    imports.gi.Pango
-    imports.gi.GObject
-
-Additional modules may be declared per application; currently 3 additional module have been converted:
-```
-define.imports({
-    Gda: imports.gi.Gda,
-    Soup: imports.gi.Soup,
-    WebKit: imports.gi.WebKit
-})
-```
-
-## rules
-Conversion is iterative
-
-* numeric typedefs are replaced with 'number'
-* constructirs are replaced with default one optional hash table parameter
-* only functions, enums, and classes
-* anything else, not defined in this group of modules, gets replaced with 'any'
-* as dicovered:
-    * fix with add/patch entries in gir2dts.json
-
-
-
-## differences
-
-The original javascript uses
-```
-this.text.buffer.text = text
-```
-
-In typescript, I follow the published gtk api:
-```
-this.text.get_buffer().set_text(text, text.length)
-```
-
-Where does gjs get .buffer from? Gir doesn't define any fields. 
-Vapi's can, but the vapi for Gtk doesn't define this field.
-Apparently, you have to look at the source code or a web page to know it's there. 
-
+then include in tsconfig.json
 
 ## example
 
-example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player)
+example tsconfig: (from https://github.com/darkoverlordofdata/bosco-player)
 ```
 {
     "compilerOptions": {
@@ -91,25 +40,31 @@ example tsconfig usage: (from https://github.com/darkoverlordofdata/bosco-player
 }
 ```
 
-### example
+also, see https://github.com/darkoverlordofdata/ouroboros, uses WebKit and Soup
 
-usage combining different sources
+## rules
+Conversion is iterative
 
+* numeric typedefs are replaced with 'number'
+* constructors are replaced with default having one optional hash table parameter
+* only constants, functions, enums, and classes
+* anything else, not defined in this group of modules, gets replaced with 'any'
+* as dicovered:
+    * fix with add/patch entries in gir2dts.json
+
+
+
+## differences
+
+The original javascript uses
 ```
-import * as Gtk from 'Gtk'                      // From Gir
-import {parseString} from 'xml2js'              // From nodejs via browserify
-import {NotebookTab} from 'tabs/NotebookTab'    // From local project folder
-/**
- *
- * GResource data view
- *
- */
-export class ResourceTab extends NotebookTab {
-...    
+this.text.buffer.text = text
 ```
 
-### todo?
-file:///usr/share/gir-1.0/Gee-0.8.gir
-file:///usr/share/gir-1.0/GdkPixbuf-2.0.gir
-file:///usr/share/gir-1.0/GtkClutter-1.0.gir
+In typescript, you may either:
+```
+this.text.get_buffer().set_text(text, text.length)
+this.text['buffer'] = text
+```
+
 
