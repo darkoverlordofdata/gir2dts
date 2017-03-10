@@ -68,3 +68,9 @@ this.text['buffer'] = text
 ```
 
 
+## why?
+
+Why? I couldn't have said it better:
+
+https://www.webreflection.co.uk/blog/2015/11/30/how-to-export-javascript-modules#the-curious-case-of-gjs-modules
+
