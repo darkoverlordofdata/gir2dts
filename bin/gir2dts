@@ -11,7 +11,7 @@ const util = require('util')
 const {execSync} = require('child_process')
 const {parseString} = require('xml2js')
 
-const cfg = require('../../gir2dts.json')
+const cfg = require('../../../gir2dts.json')
 const sym = {}
 const gir = {}
 let count = Object.keys(cfg.module).length
