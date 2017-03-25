@@ -1,8 +1,11 @@
 {
   "name": "gir2dts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convert gir metadata to *.d.ts format",
   "main": "index.js",
+  "bin": {
+    "gir2dts": "./bin/gir2dts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index"
