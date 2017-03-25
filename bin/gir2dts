@@ -1,0 +1,397 @@
+#!/usr/bin/env node
+/**
+ * gir2dts
+ * 
+ * Convert Gnome Gir bindings file to typescript declarations
+ * 
+ */
+const fs = require('fs')
+const os = require('os')
+const util = require('util')
+const {execSync} = require('child_process')
+const {parseString} = require('xml2js')
+
+const cfg = require('../../gir2dts.json')
+const sym = {}
+const gir = {}
+let count = Object.keys(cfg.module).length
+
+for (let name in cfg.module) {
+    let src = fs.readFileSync(cfg.module[name].source, {encoding: 'utf8'})
+    // provide a closure so we know which request completed
+    ;(function(name, src){
+        parseString(src, (err, res) => { 
+            gir[name] = res 
+            count--
+            console.log(`${count} ${name}`)
+            if (count <= 0) build(cfg, gir)
+        })
+    })(name, src)
+}
+
+function build(cfg, gir) {
+    const ts = {
+        "compilerOptions": {
+            "target": "es5",            // es5 compatability for gjs
+            "module": "amd",            // pack using amd module format
+            "rootDir": "src",           // maodule names based from src
+            "allowJs": true,            // amd loader & nodejs modules are js
+            "outFile": "index.js"       // the target executable
+        },
+        "files": [
+            "src/gjs.d.ts",
+            "src/gjs.js",
+            "example/imports.ts",
+            "example/record-collection.ts"
+        ]
+    }
+    for (let name in gir) {
+        getSymbols(name, gir[name])
+    }
+    for (let name in cfg.module) {
+        let out = []
+        out.push(generateModule(name, gir[name], cfg.module[name]))
+        fs.writeFileSync(cfg.module[name].output, out.join('\n'))
+        ts.files.unshift(cfg.module[name].output)
+    }
+    fs.writeFileSync("./tsconfig.json", JSON.stringify(ts, null, 2))
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// pass 1 - generate a symbol table of all known identifiers
+////////////////////////////////////////////////////////////////////////////////////////////
+function getSymbols(module, gir) {
+
+    let ns = gir.repository.namespace[0]
+    if (ns.function) 
+        for (let func of ns.function) {
+            let name = getName(func.$['name'])
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.enumeration)
+        for (let enumeration of ns.enumeration) {
+            let name = enumeration.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.bitfield)
+        for (let bitfield of ns.bitfield) {
+            let name = bitfield.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+    if (ns.class)
+        for (let klass of ns.class) {
+            let name = klass.$['name']
+            sym[`${module}.${name}`] = `${module}.${name}`
+        }
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+// pass 2 - process each file
+////////////////////////////////////////////////////////////////////////////////////////////
+function generateModule(name, gir, module) {
+    out = ['/**']
+    out.push(` * ${name}.d.ts`)
+    out.push(' *')
+    out.push(' */')
+    out.push(`declare module '${name}' {`)
+    if (module.import)
+        for (let im of module.import)
+            out.push(`    import * as ${im} from "${im}"`)
+    switch (typeof module.patch) {
+        case 'string':
+            out.push(fs.readFileSync(module.patch, {encoding: 'utf8'}))
+            addGirInfo(name, gir, {}, module.add, out)
+            break
+        case 'object':
+            addGirInfo(name, gir, module.patch, module.add, out)
+            break
+        default:
+            addGirInfo(name, gir, module.patch, module.add, out)
+    }
+    out.push('}')
+    return out.join('\n') // fixups:
+        .replace(/\: object/g, ": any")
+        .replace(/\:object/g, ":any")
+        .replace(/\.\.\.args\: any\)/g, "...args: any[])")
+        .replace(/argc\: number, argv\: string\[\]/g, "argv:string[]")
+}
+
+
+function addGirInfo(modName, gir, patch, add, out) {
+
+    let ns = gir.repository.namespace[0]
+
+    // Constants
+    if (ns.constant)
+        for (let constant of ns.constant) {
+            let name = constant.$['name'] 
+            out.push(`    export const ${name}:${getType(modName, constant)}`)
+        }
+
+    // Get the requested functions
+    if (ns.function) 
+        for (let func of ns.function) {
+            let name = getName(func.$['name'])
+            
+            try {
+                let def = []
+                def.push(`    export function ${name}(`)
+                if (func.parameters) {
+                    if (func.parameters[0].parameter)
+                        for (let parameter of func.parameters[0].parameter) {
+                            let name = getName(parameter.$['name'])
+                            if (name === '...') name = '...args'
+                            def.push(`${name}: ${getType(modName, parameter)}`)
+                            def.push(', ')
+                        }
+                }
+                if (def[def.length-1] === ', ')
+                    def[def.length-1] = ")"
+                else
+                    def.push(')')
+                def.push(getReturnType(modName, func))
+                out.push(def.join(''))
+            } catch (e) {
+                console.log(e.message)
+            }
+        }
+
+
+    // Get the requested enums        
+    if (ns.enumeration)
+        for (let enumeration of ns.enumeration) {
+            let name = enumeration.$['name']
+            try {
+                out.push(`    export enum ${name} {`)
+                for (let member of enumeration.member) {
+                    let name = member.$['name'].toUpperCase()
+                    if (name[0] >= '0' && name[0] <= '9') name = "_"+name
+                    out.push(`        ${name},`)
+                }
+                out.push('    }')
+            } catch (e) {
+                console.log(e.message)
+            }
+        }
+
+    // Bitfield is a type of enum
+    if (ns.bitfield)
+        for (let bitfield of ns.bitfield) {
+            let name = bitfield.$['name']
+            try {
+                out.push(`    export enum ${name}{`)
+                for (let member of bitfield.member) {
+                    let name = member.$['name'].toUpperCase()
+                    if (name[0] >= '0' && name[0] <= '9') name = "_"+name
+                    out.push(`        ${name},`)
+                }
+                out.push('    }')
+            } catch (e) {
+                console.log(e.message)
+            }
+        }
+
+    // Get the requested classes
+    if (ns.class)
+        for (let klass of ns.class) {
+            let name = klass.$['name']
+            let pt = patch ? patch[name] : null
+            let ad = add ? add[name] : null
+            try {
+                let def = []
+                def.push(`    export class ${name}`)
+                if (klass.$['parent']) 
+                    def.push(` extends ${klass.$['parent']}`)
+                def.push(' {')
+                out.push(def.join(''))
+
+                /**
+                 * Static methods (functions)
+                 */
+                if (klass.function) {
+                    for (let func of klass.function) {
+                        if (func.$['name'] === "new") continue // Use standard constructor
+                        if (func.$['name'] === "newv") continue // FIXME!
+                        let line = []
+                        // if (pt && pt[method.$['name']]) {
+                        //     out.push('        '+pt[method.$['name']])
+                        // } else {
+                            line.push(`        static ${func.$['name']}(`)
+                            if (func.parameters) {
+                                if (func.parameters[0].parameter)
+                                    for (let parameter of func.parameters[0].parameter) {
+                                        let name = getName(parameter.$['name'])
+                                        if (name === '...') name = '...args'
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
+                                        line.push(', ')
+                                    }
+                            }
+                            if (line[line.length-1] === ', ')
+                                line[line.length-1] = ")"
+                            else
+                                line.push(')')
+                            line.push(getReturnType(modName, func))
+                        // }
+                        out.push(line.join(''))
+                    }
+                    
+                }
+                /**
+                 * Constructors
+                 */
+                if (klass.constructor[0]) {
+                    out.push("        constructor(config?: any)")
+                    for (let ctor in klass.constructor) {
+                        let constructor = klass.constructor[ctor]
+                        if (typeof constructor === 'object') {
+                            if (constructor.$['name'] === 'new') continue
+                            let line = []
+                            if (pt && pt[constructor.$['name']]) {
+                                out.push('        '+pt[constructor.$['name']])
+                            } else {
+                                line.push(`        static ${constructor.$['name']}(`)
+                                if (constructor.parameters) {
+                                    for (let parameter of constructor.parameters[0].parameter) {
+                                        let name = getName(parameter.$['name'])
+                                        if (name === '...') name = '...args'
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
+                                        line.push(', ')
+                                    }
+                                }
+                                if (line[line.length-1] === ', ')
+                                    line[line.length-1] = `):${name}`
+                                else
+                                    line.push(`):${name}`)
+                            }
+                            out.push(line.join(''))
+                        }
+                    }
+
+                }
+
+                // if (name === "Object") {
+                //     console.log(name + " "+ JSON.stringify(ad, null, 2))
+                // }
+                // if (name === "Settings") {
+                //     console.log(name + " "+ JSON.stringify(ad, null, 2))
+                // }
+                if (ad) {
+                    for (let mn in ad) {
+                        out.push('        '+ad[mn])
+                    }
+
+                }
+
+                /**
+                 * Methods
+                 */
+                if (klass.method) {
+                    for (let method of klass.method) {
+                        let line = []
+                        if (pt && pt[method.$['name']]) {
+                            out.push('        '+pt[method.$['name']])
+                        } else {
+                            line.push(`        ${method.$['name']}(`)
+                            if (method.parameters) {
+                                if (method.parameters[0].parameter)
+                                    for (let parameter of method.parameters[0].parameter) {
+                                        let name = getName(parameter.$['name'])
+                                        if (name === '...') name = '...args'
+                                        line.push(`${name}: ${getType(modName, parameter)}`)
+                                        line.push(', ')
+                                    }
+                            }
+                            if (line[line.length-1] === ', ')
+                                line[line.length-1] = ")"
+                            else
+                                line.push(')')
+                            line.push(getReturnType(modName, method))
+                        }
+                        out.push(line.join(''))
+                    }
+                }
+                
+                out.push('    }')
+            } catch (e) {
+                console.log(e.message)
+            }
+        }
+        
+    return out.join("\n")
+}
+
+/* Fixup: reserved keyword is identifier name */
+function getName(name) {
+    switch(name) {
+        case 'in': return 'in_'
+        case 'function': return 'function_'
+        case 'true': return 'true_'
+        case 'false': return 'false_'
+        case 'break': return 'break_'
+    }
+    return name
+}
+
+/* Decode the type */
+function getType(modName, parameter) {
+    let [name, isArray] = ['', '']
+
+    if (parameter.array) {
+        isArray = '[]'
+        if (parameter.array[0].type) {
+            name = parameter.array[0].type[0].$['name']
+        }
+    } else if (parameter.type) {
+        name = parameter.type[0].$['name']
+    }
+
+    let x = name.split(' ')
+    if (x.length === 1) 
+        name = x[0]
+    else    
+        name = x[1]
+
+    switch(name) {
+        case '':         return 'any'+isArray
+        case 'utf8':     return 'string'+isArray
+        case 'none':     return 'void'+isArray
+        case 'double':   return 'number'+isArray
+        case 'guint32':   return 'number'+isArray
+        case 'guint16':   return 'number'+isArray
+        case 'gint16':   return 'number'+isArray
+        case 'gunichar':   return 'number'+isArray
+        case 'gint8':   return 'number'+isArray
+        case 'gint32':   return 'number'+isArray
+        case 'gushort':   return 'number'+isArray
+        case 'gfloat':   return 'number'+isArray
+        case 'gboolean': return 'boolean'+isArray
+        case 'gpointer': return 'object'+isArray
+        case 'gchar':    return 'number'+isArray
+        case 'guint':    return 'number'+isArray
+        case 'glong':    return 'number'+isArray
+        case 'gulong':   return 'number'+isArray
+        case 'gint':     return 'number'+isArray
+        case 'guint8':   return 'number'+isArray
+        case 'guint64':  return 'number'+isArray
+        case 'gint64':   return 'number'+isArray
+        case 'gdouble':  return 'number'+isArray
+        case 'gssize':   return 'number'+isArray
+        case 'gsize':    return 'number'+isArray
+        case 'long':    return 'number'+isArray
+        case 'object':   return 'any'+isArray
+        case 'va_list':  return 'any'+isArray
+        default:
+            if (sym[name] || sym[`${modName}.${name}`]) 
+                return name+isArray
+            else
+                return 'any'+isArray
+    }
+    return '_unknown'+isArray
+}
+
+/* Process the return type */
+function getReturnType(modName, method) {
+    if (method['return-value']) {
+        return ':'+getType(modName, method['return-value'][0])
+    } else return ''
+
+}
