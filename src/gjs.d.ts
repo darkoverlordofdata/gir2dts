@@ -66,5 +66,5 @@ declare interface String  {
  * Gnome class polyfills
  */
 declare module "Lang" {
-    export function Class(properties: any)
+    export function Class(properties: any): void
 }
