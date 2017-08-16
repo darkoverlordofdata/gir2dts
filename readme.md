@@ -12,7 +12,7 @@ then include in tsconfig.json
 ## example
 
 example tsconfig: (from https://github.com/darkoverlordofdata/bosco-player)
-```
+```json
 {
     "compilerOptions": {
         "target": "es5",                    // es5 compatability for gjs
@@ -42,6 +42,55 @@ example tsconfig: (from https://github.com/darkoverlordofdata/bosco-player)
 
 also, see https://github.com/darkoverlordofdata/ouroboros, uses WebKit and Soup
 
+## Usage for compatible Libraries
+
+This assumes you already have a single top level file `src/main.ts` that (re-)exports all public declarations.
+Then, create a JavaScript file `exports.js` that exports the desired components by declaring them as top level constants (the name is arbitrary).
+Example:
+
+```typescript
+// src/main.ts
+
+export const foo = 42;
+```
+
+```javascript
+// exports.js
+
+const __LIBRARY__ = {}
+define("__LIBRARY__", ["require", "exports", "src/main"], function (require, exports, main_1) {
+    "use strict";
+    function __export(m) {
+        for (var p in m) if (!__LIBRARY__.hasOwnProperty(p)) __LIBRARY__[p] = m[p];
+    }
+    Object.defineProperty(exports, "__esModule", { value: true });
+    __export(main_1);
+});
+
+const foo = __LIBRARY__.foo;
+// potentially mode gnome js "exports"
+```
+
+Finally, add this javascript file as last (!) entry to your tsconfig:
+
+```json
+{
+    // ...
+    "files": [
+        // ...
+        "src/main.ts",  // main library entry point
+        "exports.js"    // exports for compatibility with non-typescript gjs apps
+    ]
+}
+```
+
+The compilated file can then be used for example in a gnome shell plugin by using
+
+```javascript
+const Me = imports.misc.extensionUtils.getCurrentExtension();
+const foo = Me.imports.myExportedLibraryFile.foo; // => 42
+```
+
 ## rules
 Conversion is iterative
 
@@ -57,12 +106,12 @@ Conversion is iterative
 ## differences
 
 The original javascript uses
-```
+```javascript
 this.text.buffer.text = text
 ```
 
 In typescript, you may either:
-```
+```typescript
 this.text.get_buffer().set_text(text, text.length)
 this.text['buffer'] = text
 ```
